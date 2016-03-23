@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="968.5393pt" style="width:578px;height:968px;background:#FFFFE0;" version="1.1" viewBox="0 0 578 968" width="578.6517pt">
+    <defs>
+        <filter height="300%" id="f1" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.247191011235955"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.49438202247191" dy="4.49438202247191" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="344.9438" x="127.5281" y="20.995">XiaDxp - Diagram State - 2015/09/15</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="260.6742" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="268.5393" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="276.4045" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="284.2697" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="292.1348" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="300" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="307.8652" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="315.7303" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="323.5955" y="46.4339">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="20.2247" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="331.4607" y="46.4339">*</text>
+        <ellipse cx="195.318" cy="88.5183" fill="#000000" filter="url(#f1)" rx="11.236" ry="11.236" style="stroke: none; stroke-width: 1.1235955056179776;"/>
+        <rect fill="#CD853F" filter="url(#f1)" height="57.5195" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="260.6742" x="285.2056" y="59.8666"/>
+        <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="285.2056" x2="545.8798" y1="89.1909" y2="89.1909"/>
+        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="20.2247" x="405.4303" y="80.4967">Init</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13.4831" lengthAdjust="spacingAndGlyphs" textLength="238.2022" x="290.8236" y="108.8055">do/Load_Config_File(memorizedAlias)</text>
+        <rect fill="#800080" filter="url(#f1)" height="74.4788" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="141.573" x="180.7112" y="204.8104"/>
+        <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="180.7112" x2="322.2843" y1="234.1347" y2="234.1347"/>
+        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="76.4045" x="213.2955" y="225.4406">Calibrating</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13.4831" lengthAdjust="spacingAndGlyphs" textLength="107.8652" x="186.3292" y="253.7493">do/xiaInit("file.ini")</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13.4831" lengthAdjust="spacingAndGlyphs" textLength="119.1011" x="186.3292" y="270.7086">do/xiaStartSystem()</text>
+        <rect fill="#FF0000" filter="url(#f1)" height="56.1798" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="58.427" x="234.6438" y="813.7992"/>
+        <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="234.6438" x2="293.0708" y1="843.1235" y2="843.1235"/>
+        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="35.9551" x="245.8798" y="834.4293">Fault</text>
+        <rect fill="#FFFF00" filter="url(#f1)" height="56.1798" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="80.8989" x="211.0483" y="366.6081"/>
+        <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="211.0483" x2="291.9472" y1="395.9325" y2="395.9325"/>
+        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="58.427" x="222.2843" y="387.2383">Standby</text>
+        <ellipse cx="263.8573" cy="949.7542" fill="none" filter="url(#f1)" rx="11.236" ry="11.236" style="stroke: #000000; stroke-width: 1.1235955056179776;"/>
+        <ellipse cx="264.4191" cy="950.316" fill="#000000" rx="6.7416" ry="6.7416" style="stroke: none; stroke-width: 1.1235955056179776;"/>
+        <rect fill="#008000" filter="url(#f1)" height="215.8412" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="411.236" x="58.2391" y="510.4284"/>
+        <rect fill="#FFFFE0" height="179.7753" rx="14.0449" ry="14.0449" style="stroke: #FFFFE0; stroke-width: 1.1235955056179776;" width="404.4944" x="61.6099" y="543.1235"/>
+        <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="58.2391" x2="469.4751" y1="539.7527" y2="539.7527"/>
+        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="59.5506" x="234.0818" y="531.0585">Running</text>
+        <rect fill="#008000" filter="url(#f1)" height="91.4381" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="200" x="70.5987" y="618.4044"/>
+        <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="70.5987" x2="270.5987" y1="647.7287" y2="647.7287"/>
+        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="177.5281" x="81.8346" y="639.0345">Acquisition Task Periodic</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13.4831" lengthAdjust="spacingAndGlyphs" textLength="115.7303" x="76.2166" y="667.3433">entry/collect_data()</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13.4831" lengthAdjust="spacingAndGlyphs" textLength="113.4831" x="76.2166" y="684.3026">do/store_statistics</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13.4831" lengthAdjust="spacingAndGlyphs" textLength="93.2584" x="76.2166" y="701.2619">do/store_datas</text>
+        <ellipse cx="170.5987" cy="565.5954" fill="#000000" filter="url(#f1)" rx="11.236" ry="11.236" style="stroke: none; stroke-width: 1.1235955056179776;"/>
+        <path d="M170.5987,576.9999 C170.5987,585.7246 170.5987,598.9386 170.5987,612.3996 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="170.5987,618.1714,175.093,608.0591,170.5987,612.5535,166.1043,608.0591,170.5987,618.1714" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <path d="M271.011,653.4092 C282.9964,655.3184 290.8234,658.8186 290.8234,663.91 C290.8234,668.1262 285.456,671.2513 276.8043,673.2854 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="271.011,674.4108,281.7953,676.8925,276.5257,673.3385,280.0797,668.069,271.011,674.4108" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="128.0899" x="297.5649" y="670.0843">[Xia board is runnig]</text>
+        <path d="M206.9315,88.5183 C231.0719,88.5183 255.2135,88.5183 279.3539,88.5183 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="285.1607,88.5183,275.0483,84.0239,279.5427,88.5183,275.0483,93.0126,285.1607,88.5183" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <path d="M385.4539,117.3598 C360.064,140.7508 323.3944,174.5317 294.8382,200.8385 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="290.6865,204.6632,301.1685,201.1155,294.8178,200.8561,295.0772,194.5054,290.6865,204.6632" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="82.0225" x="349.2506" y="167.1645">[Succeeded]</text>
+        <path d="M453.9629,117.3756 C486.8854,144.6598 529.0258,189.5812 529.0258,240.7654 C529.0258,240.7654 529.0258,240.7654 529.0258,619.4171 C529.0258,669.9756 523.3056,688.3868 489.7,726.1587 C437.3573,784.9913 347.7157,817.598 298.5831,831.8801 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="293.0865,833.4497,304.0447,834.9914,298.4881,831.9055,301.574,826.3489,293.0865,833.4497" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="48.3146" x="530.1494" y="400.8723">[Failed]</text>
+        <path d="M251.4978,279.0756 C251.4978,303.8823 251.4978,336.5711 251.4978,360.6688 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="251.4978,366.2902,255.9921,356.1778,251.4978,360.6722,247.0034,356.1778,251.4978,366.2902" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="82.0225" x="252.6213" y="328.9622">[Succeeded]</text>
+        <path d="M208.5348,279.3441 C156.5472,326.4272 71.7867,413.9924 38.0144,510.4284 C6.3238,600.9194 -12.1498,644.4486 38.0144,726.1587 C79.9637,794.4879 176.7438,823.6239 228.9551,834.7329 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="234.4798,835.8767,225.4895,829.4243,228.9786,834.737,223.6659,838.2261,234.4798,835.8767" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="48.3146" x="62.7335" y="472.7824">[Failed]</text>
+        <path d="M227.1348,422.8767 C219.7607,432.7497 212.6112,444.4621 208.8011,456.4958 C206.0876,465.0654 207.1315,467.8879 208.8011,476.7205 C210.5326,485.8846 212.8483,495.216 215.5517,504.4924 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="217.2831,510.2587,218.678,499.2808,215.6668,504.8783,210.0693,501.867,217.2831,510.2587" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="31.4607" x="209.9247" y="472.7824">Start</text>
+        <path d="M257.8944,510.3857 C256.2404,480.7643 254.5663,450.7711 253.3449,428.907 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="253.0135,422.9632,249.0894,433.3102,253.3264,428.5725,258.0642,432.8095,253.0135,422.9632" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="183.1461" x="255.9921" y="472.7824">![Xia board is running] / Stop</text>
+        <path d="M263.8573,726.2014 C263.8573,755.7081 263.8573,785.5846 263.8573,807.4261 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="263.8573,813.3666,268.3517,803.2542,263.8573,807.7486,259.3629,803.2542,263.8573,813.3666" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14.6067" lengthAdjust="spacingAndGlyphs" textLength="48.3146" x="264.9809" y="776.1532">[Failed]</text>
+        <path d="M263.8573,870.2119 C263.8573,890.0265 263.8573,916.188 263.8573,932.715 " fill="none" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+        <polygon fill="#A80036" points="263.8573,938.3384,268.3517,928.226,263.8573,932.7204,259.3629,928.226,263.8573,938.3384" style="stroke: #A80036; stroke-width: 1.1235955056179776;"/>
+    </g>
+</svg>

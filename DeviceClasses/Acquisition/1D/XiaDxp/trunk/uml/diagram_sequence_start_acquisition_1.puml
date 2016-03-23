@@ -1,0 +1,105 @@
+@startuml
+
+title <b>XiaDxp - Diagram Sequence  : Start - 2015/09/15</b>\n**********************************************
+
+actor User
+
+participant "DataStream" as Stream
+box "NEXUS VIEW" #LightGreen
+	participant Stream
+end box
+
+participant "Device/AttrView" as Device
+box "TANGO VIEW" #LightGreen
+	participant Device
+end box
+
+participant "Controller" as Ctrl
+box "       CONTROLLER      " #Orange
+	participant Ctrl
+end box
+
+participant "Acquisition" as Acq
+participant "HandelHelper" as Handel
+participant "DataStore" as Store
+box "MODEL" #LightBlue
+	participant Acq
+	participant Handel
+    participant Store
+end box
+
+
+User -> Device: Start()
+activate Device
+
+Device -> Ctrl: start()
+activate Ctrl
+
+Ctrl -> Acq : start_acquisition()
+activate Acq
+
+Acq -> Handel : start_acquisition()
+activate Handel
+
+Handel --> Acq 
+deactivate Handel
+
+Acq --> Ctrl
+deactivate Acq
+
+Ctrl --> Device : state (RUNNING/FAULT/...)
+deactivate Ctrl
+deactivate Device
+
+note right 
+            State = RUNNING will activate the Task Periodic loop is enabled 
+end note
+
+activate Acq
+
+loop while  RUNNING & every 100 ms (PERIODIC Task message) & for each channel
+            Acq -> Handel : get_run_data(num_channel, statistics name)
+            activate Handel
+
+            Handel --> Acq :  realtime/livetime/icr/ocr/...
+            deactivate Handel
+
+            Acq -> Store: store_statistics(num_channel)
+            activate Store
+            deactivate Store
+
+            Acq -> Handel : get_mca_data(num_channel)
+            activate Handel
+
+            Handel --> Acq : array of channel data
+            deactivate Handel
+
+
+            Acq -> Store: store_data(num_channel)
+            activate Store            
+            Store -> Store : notify(num_channel)
+            
+            Store -> Ctrl : update_data(num_channel)
+            activate Ctrl #AAEECC
+
+            Ctrl -> Stream : update_data(num_channel)
+            activate Stream #AAEECC
+note left 
+            Push data into Nexus file
+end note
+            deactivate Stream
+
+            Ctrl -> Device : update_data(num_channel)
+            activate Device #AAEECC
+note left 
+            Update Tango stats/channels dynamic attributes
+end note
+            deactivate Device
+            deactivate Ctrl
+            deactivate Store
+
+        end
+
+deactivate Acq
+
+@enduml

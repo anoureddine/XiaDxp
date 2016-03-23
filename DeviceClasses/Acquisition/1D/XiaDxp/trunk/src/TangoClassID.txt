@@ -1,0 +1,11 @@
+/**
+ * Device Class Identification:
+ * 
+ * Class Name   :	XiaDxp
+ * Contact      :	arafat.noureddine@gmail.com
+ * Class Family :	Acquisition
+ * Platform     :	Windows
+ * Bus          :	Not Applicable
+ * Manufacturer :	
+ * Reference    :	
+ */
