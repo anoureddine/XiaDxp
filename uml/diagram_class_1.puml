@@ -2,7 +2,11 @@
 
 title <b>XiaDxp - Diagram Class - 2016/02/24</b>\n**********************************************
 
-abstract class DeviceTask {
+abstract class DeviceTask1 {
+}
+
+
+abstract class DeviceTask2 {
 }
 
 abstract class Acquisition{
@@ -41,8 +45,6 @@ class AcquisitionMapping {
     -check_buffer(int module);
     -readout_buffer(int module);
     -switch_buffer(int module);
-    -process_data(DataBufferContainer* map_buffer);
-    -parse_data(int module, int pixel, DataType* map_buffer);
 }
 
 class DriverHelper {
@@ -85,6 +87,7 @@ abstract class Stream {
     +init(DataStore*) = 0;
     +open() = 0;
     +close() = 0;
+    +abort() = 0;
     +update_data(int channel, DataStore*) = 0;
 }
 
@@ -92,6 +95,7 @@ class StreamNo {
     +init(DataStore*);
     +open();
     +close();
+    +abort();
     +update_data(int channel, DataStore*);
 }
 
@@ -99,6 +103,7 @@ class StreamLog {
     +init(DataStore*);
     +open();
     +close();
+    +abort();
     +update_data(int channel, DataStore*);
 }
 
@@ -106,13 +111,17 @@ class StreamNexus {
     +init(DataStore*);
     +open();
     +close();
+    +abort();
     +update_data(int channel, DataStore*);
     +nexus_reset_file_index();    
-    +set_target_path(const std::string& target_path);
-    +set_file_name(const std::string& file_name);
-    +set_write_mode(const std::string& write_mode);
+    +set_target_path(const string& target_path);
+    +set_file_name(const string& file_name);
+    +set_write_mode(const string& write_mode);
     +set_nb_data_per_acq(int nb_bins);
     +set_nb_acq_per_file(int nb_acq_per_file);
+    __
+    -store_statistics(int module, int channel, int pixel,...);
+    -store_data(int module,int channel,	int pixel, DataType* data,size_t length);
 }
 
 abstract AttrView {
@@ -137,6 +146,9 @@ class DataStore {
     +init(int nb_channels, int nb_pixels, double timebase);
     +start();
     +stop();
+    +process_data(DataBufferContainer* map_buffer);    
+    +close_data();
+    +abort_data();
     +subscribe(Controller*);
     +store_statistics(int channel, int pixel, string& acq_type, PixelData pix_data);
     +store_data(int channel, int pixel, DataType* data, size_t length);
@@ -152,7 +164,12 @@ class DataStore {
     +unsigned long get_triggers(int channel);
 	+unsigned long get_events(int channel);
     __
-    -notify(num_channel)
+    #process_message();
+    __
+    -notify(num_channel);
+    -on_close();
+    -on_abort();
+    -on_process_data(DataBufferContainer& map_buffer);
 }
 
 
@@ -161,6 +178,7 @@ class Controller {
     +save_config(string& file);
     +start();
     +stop();
+    +abort();
     +get_state();
     +int get_nb_modules();    
     +int get_nb_channels();    
@@ -186,10 +204,11 @@ class XiaDxp <<tango device>> {
     +stream_reset_index();
 }
 
-DeviceTask <|-- Acquisition
+DeviceTask1 <|-- Acquisition
 Acquisition <|-- AcquisitionMca
 Acquisition <|-- AcquisitionMapping
 
+DeviceTask2 <|-- DataStore
 
 Stream <|-- StreamNexus
 Stream <|-- StreamLog

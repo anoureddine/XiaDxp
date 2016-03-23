@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="813pt" style="width:1920px;height:813px;" version="1.1" viewBox="0 0 1920 813" width="1920pt">
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="1262pt" style="width:2246px;height:1262px;" version="1.1" viewBox="0 0 2246 1262" width="2246pt">
     <defs>
         <filter height="300%" id="f1" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
@@ -8,309 +8,442 @@
         </filter>
     </defs>
     <g>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="310" x="809.5" y="18.6855">XiaDxp - Diagram Class - 2015/09/15</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="929.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="936.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="943.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="950.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="957.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="964.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="971.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="978.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="985.5" y="41.3262">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="7" x="992.5" y="41.3262">*</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="97" x="1296" y="85.2813"/>
-        <ellipse cx="1311" cy="101.2813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1313.1875,103.0469 L1309.0469,103.0469 L1308.625,104.0781 L1309.0469,104.0781 Q1309.6563,104.0781 1309.9219,104.3125 Q1310.1875,104.5469 1310.1875,104.9375 Q1310.1875,105.3125 1309.9219,105.5469 Q1309.6563,105.7813 1309.0469,105.7813 L1306.75,105.7813 Q1306.1406,105.7813 1305.8828,105.5469 Q1305.625,105.3125 1305.625,104.9219 Q1305.625,104.5469 1305.8984,104.3047 Q1306.1719,104.0625 1306.7969,104.0781 L1309.4688,97.4219 L1308.3594,97.4219 Q1307.75,97.4219 1307.4844,97.1875 Q1307.2188,96.9531 1307.2188,96.5625 Q1307.2188,96.1875 1307.4844,95.9531 Q1307.75,95.7188 1308.3594,95.7188 L1312.0313,95.7188 L1315.4219,104.0781 Q1316.0156,104.0781 1316.2031,104.2188 Q1316.5938,104.4844 1316.5938,104.9375 Q1316.5938,105.3125 1316.3359,105.5469 Q1316.0781,105.7813 1315.4688,105.7813 L1313.1719,105.7813 Q1312.5625,105.7813 1312.2969,105.5469 Q1312.0313,105.3125 1312.0313,104.9219 Q1312.0313,104.5469 1312.2969,104.3125 Q1312.5625,104.0781 1313.1719,104.0781 L1313.5938,104.0781 L1313.1875,103.0469 Z M1312.4688,101.3438 L1311.1094,97.9688 L1309.7344,101.3438 L1312.4688,101.3438 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="1325" y="106.1914">DeviceTask</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1297" x2="1392" y1="117.2813" y2="117.2813"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1297" x2="1392" y1="125.2813" y2="125.2813"/>
-        <rect fill="#FEFECE" filter="url(#f1)" height="172.5234" style="stroke: #A80036; stroke-width: 1.5;" width="148" x="1270.5" y="305.2813"/>
-        <ellipse cx="1310.7" cy="321.2813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1312.8875,323.0469 L1308.7469,323.0469 L1308.325,324.0781 L1308.7469,324.0781 Q1309.3563,324.0781 1309.6219,324.3125 Q1309.8875,324.5469 1309.8875,324.9375 Q1309.8875,325.3125 1309.6219,325.5469 Q1309.3563,325.7813 1308.7469,325.7813 L1306.45,325.7813 Q1305.8406,325.7813 1305.5828,325.5469 Q1305.325,325.3125 1305.325,324.9219 Q1305.325,324.5469 1305.5984,324.3047 Q1305.8719,324.0625 1306.4969,324.0781 L1309.1688,317.4219 L1308.0594,317.4219 Q1307.45,317.4219 1307.1844,317.1875 Q1306.9188,316.9531 1306.9188,316.5625 Q1306.9188,316.1875 1307.1844,315.9531 Q1307.45,315.7188 1308.0594,315.7188 L1311.7313,315.7188 L1315.1219,324.0781 Q1315.7156,324.0781 1315.9031,324.2188 Q1316.2938,324.4844 1316.2938,324.9375 Q1316.2938,325.3125 1316.0359,325.5469 Q1315.7781,325.7813 1315.1688,325.7813 L1312.8719,325.7813 Q1312.2625,325.7813 1311.9969,325.5469 Q1311.7313,325.3125 1311.7313,324.9219 Q1311.7313,324.5469 1311.9969,324.3125 Q1312.2625,324.0781 1312.8719,324.0781 L1313.2938,324.0781 L1312.8875,323.0469 Z M1312.1688,321.3438 L1310.8094,317.9688 L1309.4344,321.3438 L1312.1688,321.3438 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="60" x="1330.3" y="326.1914">Acquisition</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1271.5" x2="1417.5" y1="337.2813" y2="337.2813"/>
-        <ellipse cx="1281.5" cy="349.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="118" x="1290.5" y="352.7002">load_config(string&amp; file);</text>
-        <ellipse cx="1281.5" cy="363.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122" x="1290.5" y="366.5361">save_config(string&amp; file);</text>
-        <ellipse cx="1281.5" cy="377.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="51" x="1290.5" y="380.3721">start() = 0;</text>
-        <ellipse cx="1281.5" cy="391.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="1290.5" y="394.208">stop() = 0;</text>
-        <ellipse cx="1281.5" cy="405.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="56" x="1290.5" y="408.0439">get_state();</text>
-        <ellipse cx="1281.5" cy="418.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90" x="1290.5" y="421.8799">get_nb_modules();</text>
-        <ellipse cx="1281.5" cy="432.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="1290.5" y="435.7158">get_nb_channels();</text>
-        <ellipse cx="1281.5" cy="446.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70" x="1290.5" y="449.5518">get_nb_bins();</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1271.5" x2="1417.5" y1="455.9688" y2="455.9688"/>
-        <polygon fill="#FFFF44" points="1281.5,463.3867,1285.5,467.3867,1281.5,471.3867,1277.5,467.3867" style="stroke: #B38D22; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="119" x="1290.5" y="471.3877">process_message() = 0;</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="111.3438" style="stroke: #A80036; stroke-width: 1.5;" width="127" x="1479" y="655.7813"/>
-        <ellipse cx="1499.85" cy="671.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1502.6156,667.6563 Q1502.7719,667.4375 1502.9594,667.3281 Q1503.1469,667.2188 1503.3656,667.2188 Q1503.7406,667.2188 1503.975,667.4766 Q1504.2094,667.7344 1504.2094,668.3438 L1504.2094,669.7969 Q1504.2094,670.4063 1503.975,670.6719 Q1503.7406,670.9375 1503.3656,670.9375 Q1503.0219,670.9375 1502.8188,670.7344 Q1502.6156,670.5469 1502.5063,670.0313 Q1502.4594,669.6719 1502.2719,669.4844 Q1501.9438,669.1094 1501.3344,668.8906 Q1500.725,668.6719 1500.1,668.6719 Q1499.3344,668.6719 1498.7016,669 Q1498.0688,669.3281 1497.5766,670.0781 Q1497.0844,670.8281 1497.0844,671.8594 L1497.0844,672.9531 Q1497.0844,674.1875 1497.975,675.0078 Q1498.8656,675.8281 1500.4594,675.8281 Q1501.3969,675.8281 1502.0531,675.5781 Q1502.4438,675.4219 1502.8656,674.9844 Q1503.1313,674.7188 1503.2797,674.6406 Q1503.4281,674.5625 1503.6313,674.5625 Q1503.9594,674.5625 1504.2172,674.8203 Q1504.475,675.0781 1504.475,675.4219 Q1504.475,675.7656 1504.1313,676.1719 Q1503.6313,676.75 1502.8344,677.0781 Q1501.7563,677.5313 1500.4594,677.5313 Q1498.9438,677.5313 1497.7406,676.9063 Q1496.7563,676.4063 1496.0688,675.3359 Q1495.3813,674.2656 1495.3813,672.9844 L1495.3813,671.8281 Q1495.3813,670.5 1495.9984,669.3516 Q1496.6156,668.2031 1497.7094,667.5859 Q1498.8031,666.9688 1500.0375,666.9688 Q1500.7719,666.9688 1501.4203,667.1328 Q1502.0688,667.2969 1502.6156,667.6563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="82" x="1515.15" y="676.6914">AcquisitionMca</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1480" x2="1605" y1="687.7813" y2="687.7813"/>
-        <ellipse cx="1490" cy="700.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1499" y="703.2002">start();</text>
-        <ellipse cx="1490" cy="714.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1499" y="717.0361">stop();</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1480" x2="1605" y1="723.4531" y2="723.4531"/>
-        <polygon fill="#FFFF44" points="1490,730.8711,1494,734.8711,1490,738.8711,1486,734.8711" style="stroke: #B38D22; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="1499" y="738.8721">process_message();</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1480" x2="1605" y1="745.2891" y2="745.2891"/>
-        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1487" y="754.707"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="69" x="1499" y="760.708">collect_data();</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="89.5078" style="stroke: #A80036; stroke-width: 1.5;" width="139" x="1071" y="666.2813"/>
-        <ellipse cx="1086" cy="682.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1088.7656,678.1563 Q1088.9219,677.9375 1089.1094,677.8281 Q1089.2969,677.7188 1089.5156,677.7188 Q1089.8906,677.7188 1090.125,677.9766 Q1090.3594,678.2344 1090.3594,678.8438 L1090.3594,680.2969 Q1090.3594,680.9063 1090.125,681.1719 Q1089.8906,681.4375 1089.5156,681.4375 Q1089.1719,681.4375 1088.9688,681.2344 Q1088.7656,681.0469 1088.6563,680.5313 Q1088.6094,680.1719 1088.4219,679.9844 Q1088.0938,679.6094 1087.4844,679.3906 Q1086.875,679.1719 1086.25,679.1719 Q1085.4844,679.1719 1084.8516,679.5 Q1084.2188,679.8281 1083.7266,680.5781 Q1083.2344,681.3281 1083.2344,682.3594 L1083.2344,683.4531 Q1083.2344,684.6875 1084.125,685.5078 Q1085.0156,686.3281 1086.6094,686.3281 Q1087.5469,686.3281 1088.2031,686.0781 Q1088.5938,685.9219 1089.0156,685.4844 Q1089.2813,685.2188 1089.4297,685.1406 Q1089.5781,685.0625 1089.7813,685.0625 Q1090.1094,685.0625 1090.3672,685.3203 Q1090.625,685.5781 1090.625,685.9219 Q1090.625,686.2656 1090.2813,686.6719 Q1089.7813,687.25 1088.9844,687.5781 Q1087.9063,688.0313 1086.6094,688.0313 Q1085.0938,688.0313 1083.8906,687.4063 Q1082.9063,686.9063 1082.2188,685.8359 Q1081.5313,684.7656 1081.5313,683.4844 L1081.5313,682.3281 Q1081.5313,681 1082.1484,679.8516 Q1082.7656,678.7031 1083.8594,678.0859 Q1084.9531,677.4688 1086.1875,677.4688 Q1086.9219,677.4688 1087.5703,677.6328 Q1088.2188,677.7969 1088.7656,678.1563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="107" x="1100" y="687.1914">AcquisitionMapping</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1072" x2="1209" y1="698.2813" y2="698.2813"/>
-        <ellipse cx="1082" cy="710.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1091" y="713.7002">start();</text>
-        <ellipse cx="1082" cy="724.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1091" y="727.5361">stop();</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1072" x2="1209" y1="733.9531" y2="733.9531"/>
-        <polygon fill="#FFFF44" points="1082,741.3711,1086,745.3711,1082,749.3711,1078,745.3711" style="stroke: #B38D22; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="1091" y="749.3721">process_message();</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="172.5234" style="stroke: #A80036; stroke-width: 1.5;" width="199" x="1245" y="624.7813"/>
-        <ellipse cx="1301.75" cy="640.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1304.5156,636.6563 Q1304.6719,636.4375 1304.8594,636.3281 Q1305.0469,636.2188 1305.2656,636.2188 Q1305.6406,636.2188 1305.875,636.4766 Q1306.1094,636.7344 1306.1094,637.3438 L1306.1094,638.7969 Q1306.1094,639.4063 1305.875,639.6719 Q1305.6406,639.9375 1305.2656,639.9375 Q1304.9219,639.9375 1304.7188,639.7344 Q1304.5156,639.5469 1304.4063,639.0313 Q1304.3594,638.6719 1304.1719,638.4844 Q1303.8438,638.1094 1303.2344,637.8906 Q1302.625,637.6719 1302,637.6719 Q1301.2344,637.6719 1300.6016,638 Q1299.9688,638.3281 1299.4766,639.0781 Q1298.9844,639.8281 1298.9844,640.8594 L1298.9844,641.9531 Q1298.9844,643.1875 1299.875,644.0078 Q1300.7656,644.8281 1302.3594,644.8281 Q1303.2969,644.8281 1303.9531,644.5781 Q1304.3438,644.4219 1304.7656,643.9844 Q1305.0313,643.7188 1305.1797,643.6406 Q1305.3281,643.5625 1305.5313,643.5625 Q1305.8594,643.5625 1306.1172,643.8203 Q1306.375,644.0781 1306.375,644.4219 Q1306.375,644.7656 1306.0313,645.1719 Q1305.5313,645.75 1304.7344,646.0781 Q1303.6563,646.5313 1302.3594,646.5313 Q1300.8438,646.5313 1299.6406,645.9063 Q1298.6563,645.4063 1297.9688,644.3359 Q1297.2813,643.2656 1297.2813,641.9844 L1297.2813,640.8281 Q1297.2813,639.5 1297.8984,638.3516 Q1298.5156,637.2031 1299.6094,636.5859 Q1300.7031,635.9688 1301.9375,635.9688 Q1302.6719,635.9688 1303.3203,636.1328 Q1303.9688,636.2969 1304.5156,636.6563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="77" x="1322.25" y="645.6914">HandelHelper</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1246" x2="1443" y1="656.7813" y2="656.7813"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1246" x2="1443" y1="664.7813" y2="664.7813"/>
-        <ellipse cx="1256" cy="677.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="138" x="1265" y="680.2002">load_config_file(string&amp; file);</text>
-        <ellipse cx="1256" cy="691.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="142" x="1265" y="694.0361">save_config_file(string&amp; file);</text>
-        <ellipse cx="1256" cy="704.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="173" x="1265" y="707.8721">start_acquisition(short accumulate);</text>
-        <ellipse cx="1256" cy="718.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="1265" y="721.708">stop_acquisition();</text>
-        <ellipse cx="1256" cy="732.543" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90" x="1265" y="735.5439">get_nb_modules();</text>
-        <ellipse cx="1256" cy="746.3789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="1265" y="749.3799">get_nb_channels();</text>
-        <ellipse cx="1256" cy="760.2148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70" x="1265" y="763.2158">get_nb_bins();</text>
-        <ellipse cx="1256" cy="774.0508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="56" x="1265" y="777.0518">get_state();</text>
-        <ellipse cx="1256" cy="787.8867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="61" x="1265" y="790.8877">is_running();</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="103.3438" style="stroke: #A80036; stroke-width: 1.5;" width="225" x="494" y="340.2813"/>
-        <ellipse cx="582.25" cy="356.2813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M584.4375,358.0469 L580.2969,358.0469 L579.875,359.0781 L580.2969,359.0781 Q580.9063,359.0781 581.1719,359.3125 Q581.4375,359.5469 581.4375,359.9375 Q581.4375,360.3125 581.1719,360.5469 Q580.9063,360.7813 580.2969,360.7813 L578,360.7813 Q577.3906,360.7813 577.1328,360.5469 Q576.875,360.3125 576.875,359.9219 Q576.875,359.5469 577.1484,359.3047 Q577.4219,359.0625 578.0469,359.0781 L580.7188,352.4219 L579.6094,352.4219 Q579,352.4219 578.7344,352.1875 Q578.4688,351.9531 578.4688,351.5625 Q578.4688,351.1875 578.7344,350.9531 Q579,350.7188 579.6094,350.7188 L583.2813,350.7188 L586.6719,359.0781 Q587.2656,359.0781 587.4531,359.2188 Q587.8438,359.4844 587.8438,359.9375 Q587.8438,360.3125 587.5859,360.5469 Q587.3281,360.7813 586.7188,360.7813 L584.4219,360.7813 Q583.8125,360.7813 583.5469,360.5469 Q583.2813,360.3125 583.2813,359.9219 Q583.2813,359.5469 583.5469,359.3125 Q583.8125,359.0781 584.4219,359.0781 L584.8438,359.0781 L584.4375,358.0469 Z M583.7188,356.3438 L582.3594,352.9688 L580.9844,356.3438 L583.7188,356.3438 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="40" x="602.75" y="361.1914">Stream</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="495" x2="718" y1="372.2813" y2="372.2813"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="495" x2="718" y1="380.2813" y2="380.2813"/>
-        <ellipse cx="505" cy="392.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="514" y="395.7002">init(DataStore*) = 0;</text>
-        <ellipse cx="505" cy="406.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="53" x="514" y="409.5361">open() = 0;</text>
-        <ellipse cx="505" cy="420.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="514" y="423.3721">close() = 0;</text>
-        <ellipse cx="505" cy="434.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="199" x="514" y="437.208">update_data(int channel, DataStore*) = 0;</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="103.3438" style="stroke: #A80036; stroke-width: 1.5;" width="207" x="499" y="659.7813"/>
-        <ellipse cx="567.75" cy="675.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M570.5156,671.6563 Q570.6719,671.4375 570.8594,671.3281 Q571.0469,671.2188 571.2656,671.2188 Q571.6406,671.2188 571.875,671.4766 Q572.1094,671.7344 572.1094,672.3438 L572.1094,673.7969 Q572.1094,674.4063 571.875,674.6719 Q571.6406,674.9375 571.2656,674.9375 Q570.9219,674.9375 570.7188,674.7344 Q570.5156,674.5469 570.4063,674.0313 Q570.3594,673.6719 570.1719,673.4844 Q569.8438,673.1094 569.2344,672.8906 Q568.625,672.6719 568,672.6719 Q567.2344,672.6719 566.6016,673 Q565.9688,673.3281 565.4766,674.0781 Q564.9844,674.8281 564.9844,675.8594 L564.9844,676.9531 Q564.9844,678.1875 565.875,679.0078 Q566.7656,679.8281 568.3594,679.8281 Q569.2969,679.8281 569.9531,679.5781 Q570.3438,679.4219 570.7656,678.9844 Q571.0313,678.7188 571.1797,678.6406 Q571.3281,678.5625 571.5313,678.5625 Q571.8594,678.5625 572.1172,678.8203 Q572.375,679.0781 572.375,679.4219 Q572.375,679.7656 572.0313,680.1719 Q571.5313,680.75 570.7344,681.0781 Q569.6563,681.5313 568.3594,681.5313 Q566.8438,681.5313 565.6406,680.9063 Q564.6563,680.4063 563.9688,679.3359 Q563.2813,678.2656 563.2813,676.9844 L563.2813,675.8281 Q563.2813,674.5 563.8984,673.3516 Q564.5156,672.2031 565.6094,671.5859 Q566.7031,670.9688 567.9375,670.9688 Q568.6719,670.9688 569.3203,671.1328 Q569.9688,671.2969 570.5156,671.6563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="61" x="588.25" y="680.6914">StreamLog</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="500" x2="705" y1="691.7813" y2="691.7813"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="500" x2="705" y1="699.7813" y2="699.7813"/>
-        <ellipse cx="510" cy="712.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="519" y="715.2002">init(DataStore*);</text>
-        <ellipse cx="510" cy="726.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="35" x="519" y="729.0361">open();</text>
-        <ellipse cx="510" cy="739.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="37" x="519" y="742.8721">close();</text>
-        <ellipse cx="510" cy="753.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="519" y="756.708">update_data(int channel, DataStore*);</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="186.3594" style="stroke: #A80036; stroke-width: 1.5;" width="260" x="741.5" y="618.2813"/>
-        <ellipse cx="829.75" cy="634.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M832.5156,630.1563 Q832.6719,629.9375 832.8594,629.8281 Q833.0469,629.7188 833.2656,629.7188 Q833.6406,629.7188 833.875,629.9766 Q834.1094,630.2344 834.1094,630.8438 L834.1094,632.2969 Q834.1094,632.9063 833.875,633.1719 Q833.6406,633.4375 833.2656,633.4375 Q832.9219,633.4375 832.7188,633.2344 Q832.5156,633.0469 832.4063,632.5313 Q832.3594,632.1719 832.1719,631.9844 Q831.8438,631.6094 831.2344,631.3906 Q830.625,631.1719 830,631.1719 Q829.2344,631.1719 828.6016,631.5 Q827.9688,631.8281 827.4766,632.5781 Q826.9844,633.3281 826.9844,634.3594 L826.9844,635.4531 Q826.9844,636.6875 827.875,637.5078 Q828.7656,638.3281 830.3594,638.3281 Q831.2969,638.3281 831.9531,638.0781 Q832.3438,637.9219 832.7656,637.4844 Q833.0313,637.2188 833.1797,637.1406 Q833.3281,637.0625 833.5313,637.0625 Q833.8594,637.0625 834.1172,637.3203 Q834.375,637.5781 834.375,637.9219 Q834.375,638.2656 834.0313,638.6719 Q833.5313,639.25 832.7344,639.5781 Q831.6563,640.0313 830.3594,640.0313 Q828.8438,640.0313 827.6406,639.4063 Q826.6563,638.9063 825.9688,637.8359 Q825.2813,636.7656 825.2813,635.4844 L825.2813,634.3281 Q825.2813,633 825.8984,631.8516 Q826.5156,630.7031 827.6094,630.0859 Q828.7031,629.4688 829.9375,629.4688 Q830.6719,629.4688 831.3203,629.6328 Q831.9688,629.7969 832.5156,630.1563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="850.25" y="639.1914">StreamNexus</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="742.5" x2="1000.5" y1="650.2813" y2="650.2813"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="742.5" x2="1000.5" y1="658.2813" y2="658.2813"/>
-        <ellipse cx="752.5" cy="670.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="761.5" y="673.7002">init(DataStore*);</text>
-        <ellipse cx="752.5" cy="684.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="35" x="761.5" y="687.5361">open();</text>
-        <ellipse cx="752.5" cy="698.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="37" x="761.5" y="701.3721">close();</text>
-        <ellipse cx="752.5" cy="712.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="761.5" y="715.208">update_data(int channel, DataStore*);</text>
-        <ellipse cx="752.5" cy="726.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="124" x="761.5" y="729.0439">nexus_reset_file_index();</text>
-        <ellipse cx="752.5" cy="739.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="230" x="761.5" y="742.8799">set_target_path(const std::string&amp; target_path);</text>
-        <ellipse cx="752.5" cy="753.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="212" x="761.5" y="756.7158">set_file_name(const std::string&amp; file_name);</text>
-        <ellipse cx="752.5" cy="767.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="234" x="761.5" y="770.5518">set_write_mode(const std::string&amp; write_mode);</text>
-        <ellipse cx="752.5" cy="781.3867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="169" x="761.5" y="784.3877">set_nb_data_per_acq(int nb_bins);</text>
-        <ellipse cx="752.5" cy="795.2227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="202" x="761.5" y="798.2236">set_nb_acq_per_file(int nb_acq_per_file);</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="103.3438" style="stroke: #A80036; stroke-width: 1.5;" width="225" x="234" y="340.2813"/>
-        <ellipse cx="320.25" cy="356.2813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M322.4375,358.0469 L318.2969,358.0469 L317.875,359.0781 L318.2969,359.0781 Q318.9063,359.0781 319.1719,359.3125 Q319.4375,359.5469 319.4375,359.9375 Q319.4375,360.3125 319.1719,360.5469 Q318.9063,360.7813 318.2969,360.7813 L316,360.7813 Q315.3906,360.7813 315.1328,360.5469 Q314.875,360.3125 314.875,359.9219 Q314.875,359.5469 315.1484,359.3047 Q315.4219,359.0625 316.0469,359.0781 L318.7188,352.4219 L317.6094,352.4219 Q317,352.4219 316.7344,352.1875 Q316.4688,351.9531 316.4688,351.5625 Q316.4688,351.1875 316.7344,350.9531 Q317,350.7188 317.6094,350.7188 L321.2813,350.7188 L324.6719,359.0781 Q325.2656,359.0781 325.4531,359.2188 Q325.8438,359.4844 325.8438,359.9375 Q325.8438,360.3125 325.5859,360.5469 Q325.3281,360.7813 324.7188,360.7813 L322.4219,360.7813 Q321.8125,360.7813 321.5469,360.5469 Q321.2813,360.3125 321.2813,359.9219 Q321.2813,359.5469 321.5469,359.3125 Q321.8125,359.0781 322.4219,359.0781 L322.8438,359.0781 L322.4375,358.0469 Z M321.7188,356.3438 L320.3594,352.9688 L318.9844,356.3438 L321.7188,356.3438 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="340.75" y="361.1914">AttrView</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="235" x2="458" y1="372.2813" y2="372.2813"/>
-        <ellipse cx="245" cy="384.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="254" y="387.7002">init(DataStore*) = 0;</text>
-        <ellipse cx="245" cy="398.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="199" x="254" y="401.5361">update_data(int channel, DataStore*) = 0;</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="235" x2="458" y1="407.9531" y2="407.9531"/>
-        <polygon fill="#FFFF44" points="245,415.3711,249,419.3711,245,423.3711,241,419.3711" style="stroke: #B38D22; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="173" x="254" y="423.3721">init_common_attributes(DataStore*);</text>
-        <polygon fill="#FFFF44" points="245,429.207,249,433.207,245,437.207,241,433.207" style="stroke: #B38D22; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="193" x="254" y="437.208">update_common_attributes(DataStore*);</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="75.6719" style="stroke: #A80036; stroke-width: 1.5;" width="207" x="248" y="673.2813"/>
-        <ellipse cx="314.75" cy="689.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M317.5156,685.1563 Q317.6719,684.9375 317.8594,684.8281 Q318.0469,684.7188 318.2656,684.7188 Q318.6406,684.7188 318.875,684.9766 Q319.1094,685.2344 319.1094,685.8438 L319.1094,687.2969 Q319.1094,687.9063 318.875,688.1719 Q318.6406,688.4375 318.2656,688.4375 Q317.9219,688.4375 317.7188,688.2344 Q317.5156,688.0469 317.4063,687.5313 Q317.3594,687.1719 317.1719,686.9844 Q316.8438,686.6094 316.2344,686.3906 Q315.625,686.1719 315,686.1719 Q314.2344,686.1719 313.6016,686.5 Q312.9688,686.8281 312.4766,687.5781 Q311.9844,688.3281 311.9844,689.3594 L311.9844,690.4531 Q311.9844,691.6875 312.875,692.5078 Q313.7656,693.3281 315.3594,693.3281 Q316.2969,693.3281 316.9531,693.0781 Q317.3438,692.9219 317.7656,692.4844 Q318.0313,692.2188 318.1797,692.1406 Q318.3281,692.0625 318.5313,692.0625 Q318.8594,692.0625 319.1172,692.3203 Q319.375,692.5781 319.375,692.9219 Q319.375,693.2656 319.0313,693.6719 Q318.5313,694.25 317.7344,694.5781 Q316.6563,695.0313 315.3594,695.0313 Q313.8438,695.0313 312.6406,694.4063 Q311.6563,693.9063 310.9688,692.8359 Q310.2813,691.7656 310.2813,690.4844 L310.2813,689.3281 Q310.2813,688 310.8984,686.8516 Q311.5156,685.7031 312.6094,685.0859 Q313.7031,684.4688 314.9375,684.4688 Q315.6719,684.4688 316.3203,684.6328 Q316.9688,684.7969 317.5156,685.1563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65" x="335.25" y="694.1914">AttrViewMca</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="249" x2="454" y1="705.2813" y2="705.2813"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="249" x2="454" y1="713.2813" y2="713.2813"/>
-        <ellipse cx="259" cy="725.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="268" y="728.7002">init(DataStore*);</text>
-        <ellipse cx="259" cy="739.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="268" y="742.5361">update_data(int channel, DataStore*);</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="75.6719" style="stroke: #A80036; stroke-width: 1.5;" width="207" x="6" y="673.2813"/>
-        <ellipse cx="60.25" cy="689.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M63.0156,685.1563 Q63.1719,684.9375 63.3594,684.8281 Q63.5469,684.7188 63.7656,684.7188 Q64.1406,684.7188 64.375,684.9766 Q64.6094,685.2344 64.6094,685.8438 L64.6094,687.2969 Q64.6094,687.9063 64.375,688.1719 Q64.1406,688.4375 63.7656,688.4375 Q63.4219,688.4375 63.2188,688.2344 Q63.0156,688.0469 62.9063,687.5313 Q62.8594,687.1719 62.6719,686.9844 Q62.3438,686.6094 61.7344,686.3906 Q61.125,686.1719 60.5,686.1719 Q59.7344,686.1719 59.1016,686.5 Q58.4688,686.8281 57.9766,687.5781 Q57.4844,688.3281 57.4844,689.3594 L57.4844,690.4531 Q57.4844,691.6875 58.375,692.5078 Q59.2656,693.3281 60.8594,693.3281 Q61.7969,693.3281 62.4531,693.0781 Q62.8438,692.9219 63.2656,692.4844 Q63.5313,692.2188 63.6797,692.1406 Q63.8281,692.0625 64.0313,692.0625 Q64.3594,692.0625 64.6172,692.3203 Q64.875,692.5781 64.875,692.9219 Q64.875,693.2656 64.5313,693.6719 Q64.0313,694.25 63.2344,694.5781 Q62.1563,695.0313 60.8594,695.0313 Q59.3438,695.0313 58.1406,694.4063 Q57.1563,693.9063 56.4688,692.8359 Q55.7813,691.7656 55.7813,690.4844 L55.7813,689.3281 Q55.7813,688 56.3984,686.8516 Q57.0156,685.7031 58.1094,685.0859 Q59.2031,684.4688 60.4375,684.4688 Q61.1719,684.4688 61.8203,684.6328 Q62.4688,684.7969 63.0156,685.1563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="90" x="80.75" y="694.1914">AttrViewMapping</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="212" y1="705.2813" y2="705.2813"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="212" y1="713.2813" y2="713.2813"/>
-        <ellipse cx="17" cy="725.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="26" y="728.7002">init(DataStore*);</text>
-        <ellipse cx="17" cy="739.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="26" y="742.5361">update_data(int channel, DataStore*);</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="297.0469" style="stroke: #A80036; stroke-width: 1.5;" width="387" x="1524" y="243.2813"/>
-        <ellipse cx="1685.75" cy="259.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1688.5156,255.1563 Q1688.6719,254.9375 1688.8594,254.8281 Q1689.0469,254.7188 1689.2656,254.7188 Q1689.6406,254.7188 1689.875,254.9766 Q1690.1094,255.2344 1690.1094,255.8438 L1690.1094,257.2969 Q1690.1094,257.9063 1689.875,258.1719 Q1689.6406,258.4375 1689.2656,258.4375 Q1688.9219,258.4375 1688.7188,258.2344 Q1688.5156,258.0469 1688.4063,257.5313 Q1688.3594,257.1719 1688.1719,256.9844 Q1687.8438,256.6094 1687.2344,256.3906 Q1686.625,256.1719 1686,256.1719 Q1685.2344,256.1719 1684.6016,256.5 Q1683.9688,256.8281 1683.4766,257.5781 Q1682.9844,258.3281 1682.9844,259.3594 L1682.9844,260.4531 Q1682.9844,261.6875 1683.875,262.5078 Q1684.7656,263.3281 1686.3594,263.3281 Q1687.2969,263.3281 1687.9531,263.0781 Q1688.3438,262.9219 1688.7656,262.4844 Q1689.0313,262.2188 1689.1797,262.1406 Q1689.3281,262.0625 1689.5313,262.0625 Q1689.8594,262.0625 1690.1172,262.3203 Q1690.375,262.5781 1690.375,262.9219 Q1690.375,263.2656 1690.0313,263.6719 Q1689.5313,264.25 1688.7344,264.5781 Q1687.6563,265.0313 1686.3594,265.0313 Q1684.8438,265.0313 1683.6406,264.4063 Q1682.6563,263.9063 1681.9688,262.8359 Q1681.2813,261.7656 1681.2813,260.4844 L1681.2813,259.3281 Q1681.2813,258 1681.8984,256.8516 Q1682.5156,255.7031 1683.6094,255.0859 Q1684.7031,254.4688 1685.9375,254.4688 Q1686.6719,254.4688 1687.3203,254.6328 Q1687.9688,254.7969 1688.5156,255.1563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="1706.25" y="264.1914">DataStore</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1525" x2="1910" y1="275.2813" y2="275.2813"/>
-        <ellipse cx="1535" cy="287.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="250" x="1544" y="290.7002">init(int nb_channels, int nb_pixels, double timebase);</text>
-        <ellipse cx="1535" cy="301.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1544" y="304.5361">start();</text>
-        <ellipse cx="1535" cy="315.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1544" y="318.3721">stop();</text>
-        <ellipse cx="1535" cy="329.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="109" x="1544" y="332.208">subscribe(Controller*);</text>
-        <ellipse cx="1535" cy="343.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="361" x="1544" y="346.0439">store_statistics(int channel, int pixel, string&amp; acq_type, PixelData pix_data);</text>
-        <ellipse cx="1535" cy="356.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="304" x="1544" y="359.8799">store_data(int channel, int pixel, DataType* data, size_t length);</text>
-        <ellipse cx="1535" cy="370.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="161" x="1544" y="373.7158">void set_nb_pixels(int nb_pixels);</text>
-        <ellipse cx="1535" cy="384.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="92" x="1544" y="387.5518">int get_nb_pixels();</text>
-        <ellipse cx="1535" cy="398.3867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="241" x="1544" y="401.3877">vector&lt;DataType&gt; get_channel_data(int channel);</text>
-        <ellipse cx="1535" cy="412.2227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="1544" y="415.2236">double get_trigger_livetime(int channel);</text>
-        <ellipse cx="1535" cy="426.0586" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="156" x="1544" y="429.0596">double get_realtime(int channel);</text>
-        <ellipse cx="1535" cy="439.8945" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="154" x="1544" y="442.8955">double get_livetime(int channel);</text>
-        <ellipse cx="1535" cy="453.7305" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="207" x="1544" y="456.7314">double get_output_count_rate(int channel);</text>
-        <ellipse cx="1535" cy="467.5664" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="200" x="1544" y="470.5674">double get_input_count_rate(int channel);</text>
-        <ellipse cx="1535" cy="481.4023" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="162" x="1544" y="484.4033">double get_deadtime(int channel);</text>
-        <ellipse cx="1535" cy="495.2383" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="1544" y="498.2393">unsigned long get_triggers(int channel);</text>
-        <ellipse cx="1535" cy="509.0742" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="187" x="1544" y="512.0752">unsigned long get_events(int channel);</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1525" x2="1910" y1="518.4922" y2="518.4922"/>
-        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1532" y="527.9102"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="99" x="1544" y="533.9111">notify(num_channel)</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="227.8672" style="stroke: #A80036; stroke-width: 1.5;" width="221" x="898" y="277.7813"/>
-        <ellipse cx="977.25" cy="293.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M980.0156,289.6563 Q980.1719,289.4375 980.3594,289.3281 Q980.5469,289.2188 980.7656,289.2188 Q981.1406,289.2188 981.375,289.4766 Q981.6094,289.7344 981.6094,290.3438 L981.6094,291.7969 Q981.6094,292.4063 981.375,292.6719 Q981.1406,292.9375 980.7656,292.9375 Q980.4219,292.9375 980.2188,292.7344 Q980.0156,292.5469 979.9063,292.0313 Q979.8594,291.6719 979.6719,291.4844 Q979.3438,291.1094 978.7344,290.8906 Q978.125,290.6719 977.5,290.6719 Q976.7344,290.6719 976.1016,291 Q975.4688,291.3281 974.9766,292.0781 Q974.4844,292.8281 974.4844,293.8594 L974.4844,294.9531 Q974.4844,296.1875 975.375,297.0078 Q976.2656,297.8281 977.8594,297.8281 Q978.7969,297.8281 979.4531,297.5781 Q979.8438,297.4219 980.2656,296.9844 Q980.5313,296.7188 980.6797,296.6406 Q980.8281,296.5625 981.0313,296.5625 Q981.3594,296.5625 981.6172,296.8203 Q981.875,297.0781 981.875,297.4219 Q981.875,297.7656 981.5313,298.1719 Q981.0313,298.75 980.2344,299.0781 Q979.1563,299.5313 977.8594,299.5313 Q976.3438,299.5313 975.1406,298.9063 Q974.1563,298.4063 973.4688,297.3359 Q972.7813,296.2656 972.7813,294.9844 L972.7813,293.8281 Q972.7813,292.5 973.3984,291.3516 Q974.0156,290.2031 975.1094,289.5859 Q976.2031,288.9688 977.4375,288.9688 Q978.1719,288.9688 978.8203,289.1328 Q979.4688,289.2969 980.0156,289.6563 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="54" x="997.75" y="298.6914">Controller</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="899" x2="1118" y1="309.7813" y2="309.7813"/>
-        <ellipse cx="909" cy="322.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="187" x="918" y="325.2002">load_config(string&amp; mode, string&amp; file);</text>
-        <ellipse cx="909" cy="336.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122" x="918" y="339.0361">save_config(string&amp; file);</text>
-        <ellipse cx="909" cy="349.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="918" y="352.8721">start();</text>
-        <ellipse cx="909" cy="363.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="918" y="366.708">stop();</text>
-        <ellipse cx="909" cy="377.543" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="56" x="918" y="380.5439">get_state();</text>
-        <ellipse cx="909" cy="391.3789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90" x="918" y="394.3799">get_nb_modules();</text>
-        <ellipse cx="909" cy="405.2148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="918" y="408.2158">get_nb_channels();</text>
-        <ellipse cx="909" cy="419.0508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70" x="918" y="422.0518">get_nb_bins();</text>
-        <ellipse cx="909" cy="432.8867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="918" y="435.8877">update_parameters(ConfigLoader conf);</text>
-        <ellipse cx="909" cy="446.7227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="918" y="449.7236">update_data(int channel);</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="899" x2="1118" y1="456.1406" y2="456.1406"/>
-        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="906" y="465.5586"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="150" x="918" y="471.5596">on_abort(Tango::DevFailed df);</text>
-        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="906" y="479.3945"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="151" x="918" y="485.3955">on_alarm(Tango::DevFailed df);</text>
-        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="906" y="493.2305"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="146" x="918" y="499.2314">on_fault(Tango::DevFailed df);</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="111.5313" style="stroke: #A80036; stroke-width: 1.5;" width="201" x="908" y="53.2813"/>
-        <ellipse cx="957.25" cy="73.375" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M960.0156,69.25 Q960.1719,69.0313 960.3594,68.9219 Q960.5469,68.8125 960.7656,68.8125 Q961.1406,68.8125 961.375,69.0703 Q961.6094,69.3281 961.6094,69.9375 L961.6094,71.3906 Q961.6094,72 961.375,72.2656 Q961.1406,72.5313 960.7656,72.5313 Q960.4219,72.5313 960.2188,72.3281 Q960.0156,72.1406 959.9063,71.625 Q959.8594,71.2656 959.6719,71.0781 Q959.3438,70.7031 958.7344,70.4844 Q958.125,70.2656 957.5,70.2656 Q956.7344,70.2656 956.1016,70.5938 Q955.4688,70.9219 954.9766,71.6719 Q954.4844,72.4219 954.4844,73.4531 L954.4844,74.5469 Q954.4844,75.7813 955.375,76.6016 Q956.2656,77.4219 957.8594,77.4219 Q958.7969,77.4219 959.4531,77.1719 Q959.8438,77.0156 960.2656,76.5781 Q960.5313,76.3125 960.6797,76.2344 Q960.8281,76.1563 961.0313,76.1563 Q961.3594,76.1563 961.6172,76.4141 Q961.875,76.6719 961.875,77.0156 Q961.875,77.3594 961.5313,77.7656 Q961.0313,78.3438 960.2344,78.6719 Q959.1563,79.125 957.8594,79.125 Q956.3438,79.125 955.1406,78.5 Q954.1563,78 953.4688,76.9297 Q952.7813,75.8594 952.7813,74.5781 L952.7813,73.4219 Q952.7813,72.0938 953.3984,70.9453 Q954.0156,69.7969 955.1094,69.1797 Q956.2031,68.5625 957.4375,68.5625 Q958.1719,68.5625 958.8203,68.7266 Q959.4688,68.8906 960.0156,69.25 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="98" x="975.75" y="70.7383">&lt;&lt;tango device&gt;&gt;</text>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38" x="1005.75" y="85.832">XiaDxp</text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="909" x2="1108" y1="93.4688" y2="93.4688"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="909" x2="1108" y1="101.4688" y2="101.4688"/>
-        <ellipse cx="919" cy="113.8867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="175" x="928" y="116.8877">load_config(Tango::DevString alias);</text>
-        <ellipse cx="919" cy="127.7227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="928" y="130.7236">save_config();</text>
-        <ellipse cx="919" cy="141.5586" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="928" y="144.5596">start();</text>
-        <ellipse cx="919" cy="155.3945" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="928" y="158.3955">stop();</text>
-        <path d="M1344.5,153.7553 C1344.5,194.0422 1344.5,255.1192 1344.5,305.1833 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="1337.5,153.7143,1344.5,133.7143,1351.5,153.7143,1337.5,153.7143" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1408.6,495.5643 C1441.81,548.8163 1481.02,611.7043 1508.4,655.6063 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="1402.46,498.9573,1397.82,478.2833,1414.34,491.5493,1402.46,498.9573" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1278.57,495.3983 C1241.48,553.1153 1197.1,622.1933 1168.85,666.1543 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="1272.86,491.3253,1289.56,478.2833,1284.64,498.8933,1272.86,491.3253" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M661.805,459.0433 C700.3,505.1643 752.142,567.2773 794.648,618.2043 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="656.225,463.2813,648.783,443.4413,666.973,454.3103,656.225,463.2813" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M605.606,463.7703 C604.857,523.2183 603.806,606.6103 603.139,659.5393 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="598.61,463.3513,605.862,443.4413,612.609,463.5283,598.61,463.3513" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M347.619,463.8253 C348.64,528.6823 350.11,622.0043 350.916,673.1933 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="340.614,463.5493,347.298,443.4413,354.612,463.3283,340.614,463.5493" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M296.588,459.6463 C248.092,524.6143 176.224,620.8943 137.184,673.1933 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="291.111,455.2813,308.685,443.4413,302.33,463.6553,291.111,455.2813" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M1008.5,165.3642 C1008.5,195.8542 1008.5,234.9873 1008.5,272.0633 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="1008.5,277.5173,1012.5,268.5173,1008.5,272.5173,1004.5,268.5173,1008.5,277.5173" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="115" x="1009.5" y="209.7764">(load, start, stop,...)</text>
-        <path d="M1119.45,391.7813 C1167.12,391.7813 1221.74,391.7813 1265.23,391.7813 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="1270.48,391.7813,1261.48,387.7813,1265.48,391.7813,1261.48,395.7813,1270.48,391.7813" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="115" x="1137.25" y="385.2764">(load, start, stop,...)</text>
-        <path d="M1344.5,491.2953 C1344.5,533.9823 1344.5,583.4923 1344.5,624.6263 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="1344.5,478.2833,1340.5,484.2833,1344.5,490.2833,1348.5,484.2833,1344.5,478.2833" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="1345.5" y="584.7764">use</text>
-        <path d="M1418.64,391.7813 C1447.8,391.7813 1482.8,391.7813 1518.42,391.7813 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="1523.68,391.7813,1514.68,387.7813,1518.68,391.7813,1514.68,395.7813,1523.68,391.7813" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="69" x="1436.75" y="385.2764">store_data()</text>
-        <path d="M1523.97,243.9562 C1509.4,237.0082 1494.51,230.9863 1479.5,226.2813 C1382.96,196.0153 1347.85,209.4512 1252.5,243.2813 C1207.86,259.1203 1162.56,283.8133 1123.31,308.5493 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="1119.05,311.2523,1128.7911,309.7991,1123.2694,308.5696,1124.4989,303.048,1119.05,311.2523" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="100" x="1378.5" y="209.7764">update_data(this)</text>
-        <path d="M724.284,391.7813 C779.069,391.7813 843.87,391.7813 897.751,391.7813 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="719.014,391.7813,728.014,395.7813,724.014,391.7813,728.014,387.7813,719.014,391.7813" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="142" x="737.5" y="385.2764">update_data(DataStore*)</text>
-        <path d="M380.591,335.7153 C403.501,303.1773 436.735,264.5363 476.5,243.2813 C584.105,185.7642 633.416,191.9562 750.5,226.2813 C802.843,241.6263 854.631,271.2152 897.918,301.1813 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="377.568,340.0583,385.9917,334.9551,380.4237,335.954,379.4248,330.386,377.568,340.0583" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="142" x="607.5" y="209.7764">update_data(DataStore*)</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="310" x="972.5" y="18.6855">XiaDxp - Diagram Class - 2016/02/24</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1092.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1099.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1106.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1113.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1120.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1127.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1134.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1141.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7" x="1148.5" y="41.3262">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="7" x="1155.5" y="41.3262">*</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="104" x="1609.5" y="119.7813"/>
+        <ellipse cx="1624.5" cy="135.7813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1626.6875,137.5469 L1622.5469,137.5469 L1622.125,138.5781 L1622.5469,138.5781 Q1623.1563,138.5781 1623.4219,138.8125 Q1623.6875,139.0469 1623.6875,139.4375 Q1623.6875,139.8125 1623.4219,140.0469 Q1623.1563,140.2813 1622.5469,140.2813 L1620.25,140.2813 Q1619.6406,140.2813 1619.3828,140.0469 Q1619.125,139.8125 1619.125,139.4219 Q1619.125,139.0469 1619.3984,138.8047 Q1619.6719,138.5625 1620.2969,138.5781 L1622.9688,131.9219 L1621.8594,131.9219 Q1621.25,131.9219 1620.9844,131.6875 Q1620.7188,131.4531 1620.7188,131.0625 Q1620.7188,130.6875 1620.9844,130.4531 Q1621.25,130.2188 1621.8594,130.2188 L1625.5313,130.2188 L1628.9219,138.5781 Q1629.5156,138.5781 1629.7031,138.7188 Q1630.0938,138.9844 1630.0938,139.4375 Q1630.0938,139.8125 1629.8359,140.0469 Q1629.5781,140.2813 1628.9688,140.2813 L1626.6719,140.2813 Q1626.0625,140.2813 1625.7969,140.0469 Q1625.5313,139.8125 1625.5313,139.4219 Q1625.5313,139.0469 1625.7969,138.8125 Q1626.0625,138.5781 1626.6719,138.5781 L1627.0938,138.5781 L1626.6875,137.5469 Z M1625.9688,135.8438 L1624.6094,132.4688 L1623.2344,135.8438 L1625.9688,135.8438 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="72" x="1638.5" y="140.6914">DeviceTask1</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1610.5" x2="1712.5" y1="151.7813" y2="151.7813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1610.5" x2="1712.5" y1="159.7813" y2="159.7813"/>
+        <rect fill="#FEFECE" filter="url(#f1)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="104" x="1991.5" y="119.7813"/>
+        <ellipse cx="2006.5" cy="135.7813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M2008.6875,137.5469 L2004.5469,137.5469 L2004.125,138.5781 L2004.5469,138.5781 Q2005.1563,138.5781 2005.4219,138.8125 Q2005.6875,139.0469 2005.6875,139.4375 Q2005.6875,139.8125 2005.4219,140.0469 Q2005.1563,140.2813 2004.5469,140.2813 L2002.25,140.2813 Q2001.6406,140.2813 2001.3828,140.0469 Q2001.125,139.8125 2001.125,139.4219 Q2001.125,139.0469 2001.3984,138.8047 Q2001.6719,138.5625 2002.2969,138.5781 L2004.9688,131.9219 L2003.8594,131.9219 Q2003.25,131.9219 2002.9844,131.6875 Q2002.7188,131.4531 2002.7188,131.0625 Q2002.7188,130.6875 2002.9844,130.4531 Q2003.25,130.2188 2003.8594,130.2188 L2007.5313,130.2188 L2010.9219,138.5781 Q2011.5156,138.5781 2011.7031,138.7188 Q2012.0938,138.9844 2012.0938,139.4375 Q2012.0938,139.8125 2011.8359,140.0469 Q2011.5781,140.2813 2010.9688,140.2813 L2008.6719,140.2813 Q2008.0625,140.2813 2007.7969,140.0469 Q2007.5313,139.8125 2007.5313,139.4219 Q2007.5313,139.0469 2007.7969,138.8125 Q2008.0625,138.5781 2008.6719,138.5781 L2009.0938,138.5781 L2008.6875,137.5469 Z M2007.9688,135.8438 L2006.6094,132.4688 L2005.2344,135.8438 L2007.9688,135.8438 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="72" x="2020.5" y="140.6914">DeviceTask2</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1992.5" x2="2094.5" y1="151.7813" y2="151.7813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1992.5" x2="2094.5" y1="159.7813" y2="159.7813"/>
+        <rect fill="#FEFECE" filter="url(#f1)" height="172.5234" style="stroke: #A80036; stroke-width: 1.5;" width="166" x="1578.5" y="426.7813"/>
+        <ellipse cx="1627.25" cy="442.7813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1629.4375,444.5469 L1625.2969,444.5469 L1624.875,445.5781 L1625.2969,445.5781 Q1625.9063,445.5781 1626.1719,445.8125 Q1626.4375,446.0469 1626.4375,446.4375 Q1626.4375,446.8125 1626.1719,447.0469 Q1625.9063,447.2813 1625.2969,447.2813 L1623,447.2813 Q1622.3906,447.2813 1622.1328,447.0469 Q1621.875,446.8125 1621.875,446.4219 Q1621.875,446.0469 1622.1484,445.8047 Q1622.4219,445.5625 1623.0469,445.5781 L1625.7188,438.9219 L1624.6094,438.9219 Q1624,438.9219 1623.7344,438.6875 Q1623.4688,438.4531 1623.4688,438.0625 Q1623.4688,437.6875 1623.7344,437.4531 Q1624,437.2188 1624.6094,437.2188 L1628.2813,437.2188 L1631.6719,445.5781 Q1632.2656,445.5781 1632.4531,445.7188 Q1632.8438,445.9844 1632.8438,446.4375 Q1632.8438,446.8125 1632.5859,447.0469 Q1632.3281,447.2813 1631.7188,447.2813 L1629.4219,447.2813 Q1628.8125,447.2813 1628.5469,447.0469 Q1628.2813,446.8125 1628.2813,446.4219 Q1628.2813,446.0469 1628.5469,445.8125 Q1628.8125,445.5781 1629.4219,445.5781 L1629.8438,445.5781 L1629.4375,444.5469 Z M1628.7188,442.8438 L1627.3594,439.4688 L1625.9844,442.8438 L1628.7188,442.8438 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="60" x="1647.75" y="447.6914">Acquisition</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1579.5" x2="1743.5" y1="458.7813" y2="458.7813"/>
+        <ellipse cx="1589.5" cy="471.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="136" x="1598.5" y="474.2002">load_config(string&amp; file) = 0;</text>
+        <ellipse cx="1589.5" cy="485.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="140" x="1598.5" y="488.0361">save_config(string&amp; file) = 0;</text>
+        <ellipse cx="1589.5" cy="498.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="51" x="1598.5" y="501.8721">start() = 0;</text>
+        <ellipse cx="1589.5" cy="512.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="1598.5" y="515.708">stop() = 0;</text>
+        <ellipse cx="1589.5" cy="526.543" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="103" x="1598.5" y="529.5439">DevState get_state();</text>
+        <ellipse cx="1589.5" cy="540.3789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="104" x="1598.5" y="543.3799">int get_nb_modules();</text>
+        <ellipse cx="1589.5" cy="554.2148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="108" x="1598.5" y="557.2158">int get_nb_channels();</text>
+        <ellipse cx="1589.5" cy="568.0508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84" x="1598.5" y="571.0518">int get_nb_bins();</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1579.5" x2="1743.5" y1="577.4688" y2="577.4688"/>
+        <polygon fill="#FFFF44" points="1589.5,584.8867,1593.5,588.8867,1589.5,592.8867,1585.5,588.8867" style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="119" x="1598.5" y="592.8877">process_message() = 0;</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="139.0156" style="stroke: #A80036; stroke-width: 1.5;" width="148" x="1642.5" y="836.7813"/>
+        <ellipse cx="1672.8" cy="852.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1675.5656,848.6563 Q1675.7219,848.4375 1675.9094,848.3281 Q1676.0969,848.2188 1676.3156,848.2188 Q1676.6906,848.2188 1676.925,848.4766 Q1677.1594,848.7344 1677.1594,849.3438 L1677.1594,850.7969 Q1677.1594,851.4063 1676.925,851.6719 Q1676.6906,851.9375 1676.3156,851.9375 Q1675.9719,851.9375 1675.7688,851.7344 Q1675.5656,851.5469 1675.4563,851.0313 Q1675.4094,850.6719 1675.2219,850.4844 Q1674.8938,850.1094 1674.2844,849.8906 Q1673.675,849.6719 1673.05,849.6719 Q1672.2844,849.6719 1671.6516,850 Q1671.0188,850.3281 1670.5266,851.0781 Q1670.0344,851.8281 1670.0344,852.8594 L1670.0344,853.9531 Q1670.0344,855.1875 1670.925,856.0078 Q1671.8156,856.8281 1673.4094,856.8281 Q1674.3469,856.8281 1675.0031,856.5781 Q1675.3938,856.4219 1675.8156,855.9844 Q1676.0813,855.7188 1676.2297,855.6406 Q1676.3781,855.5625 1676.5813,855.5625 Q1676.9094,855.5625 1677.1672,855.8203 Q1677.425,856.0781 1677.425,856.4219 Q1677.425,856.7656 1677.0813,857.1719 Q1676.5813,857.75 1675.7844,858.0781 Q1674.7063,858.5313 1673.4094,858.5313 Q1671.8938,858.5313 1670.6906,857.9063 Q1669.7063,857.4063 1669.0188,856.3359 Q1668.3313,855.2656 1668.3313,853.9844 L1668.3313,852.8281 Q1668.3313,851.5 1668.9484,850.3516 Q1669.5656,849.2031 1670.6594,848.5859 Q1671.7531,847.9688 1672.9875,847.9688 Q1673.7219,847.9688 1674.3703,848.1328 Q1675.0188,848.2969 1675.5656,848.6563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="82" x="1690.2" y="857.6914">AcquisitionMca</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1643.5" x2="1789.5" y1="868.7813" y2="868.7813"/>
+        <ellipse cx="1653.5" cy="881.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="118" x="1662.5" y="884.2002">load_config(string&amp; file);</text>
+        <ellipse cx="1653.5" cy="895.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122" x="1662.5" y="898.0361">save_config(string&amp; file);</text>
+        <ellipse cx="1653.5" cy="908.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1662.5" y="911.8721">start();</text>
+        <ellipse cx="1653.5" cy="922.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1662.5" y="925.708">stop();</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1643.5" x2="1789.5" y1="932.125" y2="932.125"/>
+        <polygon fill="#FFFF44" points="1653.5,939.543,1657.5,943.543,1653.5,947.543,1649.5,943.543" style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="1662.5" y="947.5439">process_message();</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1643.5" x2="1789.5" y1="953.9609" y2="953.9609"/>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1650.5" y="963.3789"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="69" x="1662.5" y="969.3799">collect_data();</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="180.5234" style="stroke: #A80036; stroke-width: 1.5;" width="158" x="1825.5" y="815.7813"/>
+        <ellipse cx="1849.05" cy="831.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1851.8156,827.6563 Q1851.9719,827.4375 1852.1594,827.3281 Q1852.3469,827.2188 1852.5656,827.2188 Q1852.9406,827.2188 1853.175,827.4766 Q1853.4094,827.7344 1853.4094,828.3438 L1853.4094,829.7969 Q1853.4094,830.4063 1853.175,830.6719 Q1852.9406,830.9375 1852.5656,830.9375 Q1852.2219,830.9375 1852.0188,830.7344 Q1851.8156,830.5469 1851.7063,830.0313 Q1851.6594,829.6719 1851.4719,829.4844 Q1851.1438,829.1094 1850.5344,828.8906 Q1849.925,828.6719 1849.3,828.6719 Q1848.5344,828.6719 1847.9016,829 Q1847.2688,829.3281 1846.7766,830.0781 Q1846.2844,830.8281 1846.2844,831.8594 L1846.2844,832.9531 Q1846.2844,834.1875 1847.175,835.0078 Q1848.0656,835.8281 1849.6594,835.8281 Q1850.5969,835.8281 1851.2531,835.5781 Q1851.6438,835.4219 1852.0656,834.9844 Q1852.3313,834.7188 1852.4797,834.6406 Q1852.6281,834.5625 1852.8313,834.5625 Q1853.1594,834.5625 1853.4172,834.8203 Q1853.675,835.0781 1853.675,835.4219 Q1853.675,835.7656 1853.3313,836.1719 Q1852.8313,836.75 1852.0344,837.0781 Q1850.9563,837.5313 1849.6594,837.5313 Q1848.1438,837.5313 1846.9406,836.9063 Q1845.9563,836.4063 1845.2688,835.3359 Q1844.5813,834.2656 1844.5813,832.9844 L1844.5813,831.8281 Q1844.5813,830.5 1845.1984,829.3516 Q1845.8156,828.2031 1846.9094,827.5859 Q1848.0031,826.9688 1849.2375,826.9688 Q1849.9719,826.9688 1850.6203,827.1328 Q1851.2688,827.2969 1851.8156,827.6563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="107" x="1864.95" y="836.6914">AcquisitionMapping</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1826.5" x2="1982.5" y1="847.7813" y2="847.7813"/>
+        <ellipse cx="1836.5" cy="860.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="118" x="1845.5" y="863.2002">load_config(string&amp; file);</text>
+        <ellipse cx="1836.5" cy="874.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122" x="1845.5" y="877.0361">save_config(string&amp; file);</text>
+        <ellipse cx="1836.5" cy="887.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1845.5" y="890.8721">start();</text>
+        <ellipse cx="1836.5" cy="901.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1845.5" y="904.708">stop();</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1826.5" x2="1982.5" y1="911.125" y2="911.125"/>
+        <polygon fill="#FFFF44" points="1836.5,918.543,1840.5,922.543,1836.5,926.543,1832.5,922.543" style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="1845.5" y="926.5439">process_message();</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1826.5" x2="1982.5" y1="932.9609" y2="932.9609"/>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1833.5" y="942.3789"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="69" x="1845.5" y="948.3799">collect_data();</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1833.5" y="956.2148"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="124" x="1845.5" y="962.2158">check_buffer(int module);</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1833.5" y="970.0508"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="132" x="1845.5" y="976.0518">readout_buffer(int module);</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1833.5" y="983.8867"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="128" x="1845.5" y="989.8877">switch_buffer(int module);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="172.5234" style="stroke: #A80036; stroke-width: 1.5;" width="217" x="1390" y="819.7813"/>
+        <ellipse cx="1459.75" cy="835.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1462.5156,831.6563 Q1462.6719,831.4375 1462.8594,831.3281 Q1463.0469,831.2188 1463.2656,831.2188 Q1463.6406,831.2188 1463.875,831.4766 Q1464.1094,831.7344 1464.1094,832.3438 L1464.1094,833.7969 Q1464.1094,834.4063 1463.875,834.6719 Q1463.6406,834.9375 1463.2656,834.9375 Q1462.9219,834.9375 1462.7188,834.7344 Q1462.5156,834.5469 1462.4063,834.0313 Q1462.3594,833.6719 1462.1719,833.4844 Q1461.8438,833.1094 1461.2344,832.8906 Q1460.625,832.6719 1460,832.6719 Q1459.2344,832.6719 1458.6016,833 Q1457.9688,833.3281 1457.4766,834.0781 Q1456.9844,834.8281 1456.9844,835.8594 L1456.9844,836.9531 Q1456.9844,838.1875 1457.875,839.0078 Q1458.7656,839.8281 1460.3594,839.8281 Q1461.2969,839.8281 1461.9531,839.5781 Q1462.3438,839.4219 1462.7656,838.9844 Q1463.0313,838.7188 1463.1797,838.6406 Q1463.3281,838.5625 1463.5313,838.5625 Q1463.8594,838.5625 1464.1172,838.8203 Q1464.375,839.0781 1464.375,839.4219 Q1464.375,839.7656 1464.0313,840.1719 Q1463.5313,840.75 1462.7344,841.0781 Q1461.6563,841.5313 1460.3594,841.5313 Q1458.8438,841.5313 1457.6406,840.9063 Q1456.6563,840.4063 1455.9688,839.3359 Q1455.2813,838.2656 1455.2813,836.9844 L1455.2813,835.8281 Q1455.2813,834.5 1455.8984,833.3516 Q1456.5156,832.2031 1457.6094,831.5859 Q1458.7031,830.9688 1459.9375,830.9688 Q1460.6719,830.9688 1461.3203,831.1328 Q1461.9688,831.2969 1462.5156,831.6563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="69" x="1480.25" y="840.6914">DriverHelper</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1391" x2="1606" y1="851.7813" y2="851.7813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1391" x2="1606" y1="859.7813" y2="859.7813"/>
+        <ellipse cx="1401" cy="872.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="156" x="1410" y="875.2002">load_config_file(string&amp; file) = 0;</text>
+        <ellipse cx="1401" cy="886.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="160" x="1410" y="889.0361">save_config_file(string&amp; file) = 0;</text>
+        <ellipse cx="1401" cy="899.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="1410" y="902.8721">start_acquisition(short accumulate) = 0;</text>
+        <ellipse cx="1401" cy="913.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="107" x="1410" y="916.708">stop_acquisition() = 0;</text>
+        <ellipse cx="1401" cy="927.543" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122" x="1410" y="930.5439">int get_nb_modules() = 0;</text>
+        <ellipse cx="1401" cy="941.3789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="126" x="1410" y="944.3799">int get_nb_channels() = 0;</text>
+        <ellipse cx="1401" cy="955.2148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="102" x="1410" y="958.2158">int get_nb_bins() = 0;</text>
+        <ellipse cx="1401" cy="969.0508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="102" x="1410" y="972.0518">State get_state() = 0;</text>
+        <ellipse cx="1401" cy="982.8867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="79" x="1410" y="985.8877">is_running() = 0;</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="172.5234" style="stroke: #A80036; stroke-width: 1.5;" width="199" x="1282" y="1081.2813"/>
+        <ellipse cx="1338.75" cy="1097.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1341.5156,1093.1563 Q1341.6719,1092.9375 1341.8594,1092.8281 Q1342.0469,1092.7188 1342.2656,1092.7188 Q1342.6406,1092.7188 1342.875,1092.9766 Q1343.1094,1093.2344 1343.1094,1093.8438 L1343.1094,1095.2969 Q1343.1094,1095.9063 1342.875,1096.1719 Q1342.6406,1096.4375 1342.2656,1096.4375 Q1341.9219,1096.4375 1341.7188,1096.2344 Q1341.5156,1096.0469 1341.4063,1095.5313 Q1341.3594,1095.1719 1341.1719,1094.9844 Q1340.8438,1094.6094 1340.2344,1094.3906 Q1339.625,1094.1719 1339,1094.1719 Q1338.2344,1094.1719 1337.6016,1094.5 Q1336.9688,1094.8281 1336.4766,1095.5781 Q1335.9844,1096.3281 1335.9844,1097.3594 L1335.9844,1098.4531 Q1335.9844,1099.6875 1336.875,1100.5078 Q1337.7656,1101.3281 1339.3594,1101.3281 Q1340.2969,1101.3281 1340.9531,1101.0781 Q1341.3438,1100.9219 1341.7656,1100.4844 Q1342.0313,1100.2188 1342.1797,1100.1406 Q1342.3281,1100.0625 1342.5313,1100.0625 Q1342.8594,1100.0625 1343.1172,1100.3203 Q1343.375,1100.5781 1343.375,1100.9219 Q1343.375,1101.2656 1343.0313,1101.6719 Q1342.5313,1102.25 1341.7344,1102.5781 Q1340.6563,1103.0313 1339.3594,1103.0313 Q1337.8438,1103.0313 1336.6406,1102.4063 Q1335.6563,1101.9063 1334.9688,1100.8359 Q1334.2813,1099.7656 1334.2813,1098.4844 L1334.2813,1097.3281 Q1334.2813,1096 1334.8984,1094.8516 Q1335.5156,1093.7031 1336.6094,1093.0859 Q1337.7031,1092.4688 1338.9375,1092.4688 Q1339.6719,1092.4688 1340.3203,1092.6328 Q1340.9688,1092.7969 1341.5156,1093.1563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="77" x="1359.25" y="1102.1914">HandelHelper</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1283" x2="1480" y1="1113.2813" y2="1113.2813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1283" x2="1480" y1="1121.2813" y2="1121.2813"/>
+        <ellipse cx="1293" cy="1133.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="138" x="1302" y="1136.7002">load_config_file(string&amp; file);</text>
+        <ellipse cx="1293" cy="1147.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="142" x="1302" y="1150.5361">save_config_file(string&amp; file);</text>
+        <ellipse cx="1293" cy="1161.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="173" x="1302" y="1164.3721">start_acquisition(short accumulate);</text>
+        <ellipse cx="1293" cy="1175.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="1302" y="1178.208">stop_acquisition();</text>
+        <ellipse cx="1293" cy="1189.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="104" x="1302" y="1192.0439">int get_nb_modules();</text>
+        <ellipse cx="1293" cy="1202.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="108" x="1302" y="1205.8799">int get_nb_channels();</text>
+        <ellipse cx="1293" cy="1216.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84" x="1302" y="1219.7158">int get_nb_bins();</text>
+        <ellipse cx="1293" cy="1230.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84" x="1302" y="1233.5518">State get_state();</text>
+        <ellipse cx="1293" cy="1244.3867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="61" x="1302" y="1247.3877">is_running();</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="172.5234" style="stroke: #A80036; stroke-width: 1.5;" width="199" x="1516" y="1081.2813"/>
+        <ellipse cx="1566.25" cy="1097.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1569.0156,1093.1563 Q1569.1719,1092.9375 1569.3594,1092.8281 Q1569.5469,1092.7188 1569.7656,1092.7188 Q1570.1406,1092.7188 1570.375,1092.9766 Q1570.6094,1093.2344 1570.6094,1093.8438 L1570.6094,1095.2969 Q1570.6094,1095.9063 1570.375,1096.1719 Q1570.1406,1096.4375 1569.7656,1096.4375 Q1569.4219,1096.4375 1569.2188,1096.2344 Q1569.0156,1096.0469 1568.9063,1095.5313 Q1568.8594,1095.1719 1568.6719,1094.9844 Q1568.3438,1094.6094 1567.7344,1094.3906 Q1567.125,1094.1719 1566.5,1094.1719 Q1565.7344,1094.1719 1565.1016,1094.5 Q1564.4688,1094.8281 1563.9766,1095.5781 Q1563.4844,1096.3281 1563.4844,1097.3594 L1563.4844,1098.4531 Q1563.4844,1099.6875 1564.375,1100.5078 Q1565.2656,1101.3281 1566.8594,1101.3281 Q1567.7969,1101.3281 1568.4531,1101.0781 Q1568.8438,1100.9219 1569.2656,1100.4844 Q1569.5313,1100.2188 1569.6797,1100.1406 Q1569.8281,1100.0625 1570.0313,1100.0625 Q1570.3594,1100.0625 1570.6172,1100.3203 Q1570.875,1100.5781 1570.875,1100.9219 Q1570.875,1101.2656 1570.5313,1101.6719 Q1570.0313,1102.25 1569.2344,1102.5781 Q1568.1563,1103.0313 1566.8594,1103.0313 Q1565.3438,1103.0313 1564.1406,1102.4063 Q1563.1563,1101.9063 1562.4688,1100.8359 Q1561.7813,1099.7656 1561.7813,1098.4844 L1561.7813,1097.3281 Q1561.7813,1096 1562.3984,1094.8516 Q1563.0156,1093.7031 1564.1094,1093.0859 Q1565.2031,1092.4688 1566.4375,1092.4688 Q1567.1719,1092.4688 1567.8203,1092.6328 Q1568.4688,1092.7969 1569.0156,1093.1563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="90" x="1586.75" y="1102.1914">SimulatorHelper</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1517" x2="1714" y1="1113.2813" y2="1113.2813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1517" x2="1714" y1="1121.2813" y2="1121.2813"/>
+        <ellipse cx="1527" cy="1133.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="138" x="1536" y="1136.7002">load_config_file(string&amp; file);</text>
+        <ellipse cx="1527" cy="1147.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="142" x="1536" y="1150.5361">save_config_file(string&amp; file);</text>
+        <ellipse cx="1527" cy="1161.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="173" x="1536" y="1164.3721">start_acquisition(short accumulate);</text>
+        <ellipse cx="1527" cy="1175.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="1536" y="1178.208">stop_acquisition();</text>
+        <ellipse cx="1527" cy="1189.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="104" x="1536" y="1192.0439">int get_nb_modules();</text>
+        <ellipse cx="1527" cy="1202.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="108" x="1536" y="1205.8799">int get_nb_channels();</text>
+        <ellipse cx="1527" cy="1216.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84" x="1536" y="1219.7158">int get_nb_bins();</text>
+        <ellipse cx="1527" cy="1230.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84" x="1536" y="1233.5518">State get_state();</text>
+        <ellipse cx="1527" cy="1244.3867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="61" x="1536" y="1247.3877">is_running();</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="117.1797" style="stroke: #A80036; stroke-width: 1.5;" width="225" x="802" y="454.7813"/>
+        <ellipse cx="890.25" cy="470.7813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M892.4375,472.5469 L888.2969,472.5469 L887.875,473.5781 L888.2969,473.5781 Q888.9063,473.5781 889.1719,473.8125 Q889.4375,474.0469 889.4375,474.4375 Q889.4375,474.8125 889.1719,475.0469 Q888.9063,475.2813 888.2969,475.2813 L886,475.2813 Q885.3906,475.2813 885.1328,475.0469 Q884.875,474.8125 884.875,474.4219 Q884.875,474.0469 885.1484,473.8047 Q885.4219,473.5625 886.0469,473.5781 L888.7188,466.9219 L887.6094,466.9219 Q887,466.9219 886.7344,466.6875 Q886.4688,466.4531 886.4688,466.0625 Q886.4688,465.6875 886.7344,465.4531 Q887,465.2188 887.6094,465.2188 L891.2813,465.2188 L894.6719,473.5781 Q895.2656,473.5781 895.4531,473.7188 Q895.8438,473.9844 895.8438,474.4375 Q895.8438,474.8125 895.5859,475.0469 Q895.3281,475.2813 894.7188,475.2813 L892.4219,475.2813 Q891.8125,475.2813 891.5469,475.0469 Q891.2813,474.8125 891.2813,474.4219 Q891.2813,474.0469 891.5469,473.8125 Q891.8125,473.5781 892.4219,473.5781 L892.8438,473.5781 L892.4375,472.5469 Z M891.7188,470.8438 L890.3594,467.4688 L888.9844,470.8438 L891.7188,470.8438 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="40" x="910.75" y="475.6914">Stream</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="803" x2="1026" y1="486.7813" y2="486.7813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="803" x2="1026" y1="494.7813" y2="494.7813"/>
+        <ellipse cx="813" cy="507.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="822" y="510.2002">init(DataStore*) = 0;</text>
+        <ellipse cx="813" cy="521.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="53" x="822" y="524.0361">open() = 0;</text>
+        <ellipse cx="813" cy="534.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="822" y="537.8721">close() = 0;</text>
+        <ellipse cx="813" cy="548.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="54" x="822" y="551.708">abort() = 0;</text>
+        <ellipse cx="813" cy="562.543" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="199" x="822" y="565.5439">update_data(int channel, DataStore*) = 0;</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="117.1797" style="stroke: #A80036; stroke-width: 1.5;" width="207" x="906" y="847.7813"/>
+        <ellipse cx="977.25" cy="863.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M980.0156,859.6563 Q980.1719,859.4375 980.3594,859.3281 Q980.5469,859.2188 980.7656,859.2188 Q981.1406,859.2188 981.375,859.4766 Q981.6094,859.7344 981.6094,860.3438 L981.6094,861.7969 Q981.6094,862.4063 981.375,862.6719 Q981.1406,862.9375 980.7656,862.9375 Q980.4219,862.9375 980.2188,862.7344 Q980.0156,862.5469 979.9063,862.0313 Q979.8594,861.6719 979.6719,861.4844 Q979.3438,861.1094 978.7344,860.8906 Q978.125,860.6719 977.5,860.6719 Q976.7344,860.6719 976.1016,861 Q975.4688,861.3281 974.9766,862.0781 Q974.4844,862.8281 974.4844,863.8594 L974.4844,864.9531 Q974.4844,866.1875 975.375,867.0078 Q976.2656,867.8281 977.8594,867.8281 Q978.7969,867.8281 979.4531,867.5781 Q979.8438,867.4219 980.2656,866.9844 Q980.5313,866.7188 980.6797,866.6406 Q980.8281,866.5625 981.0313,866.5625 Q981.3594,866.5625 981.6172,866.8203 Q981.875,867.0781 981.875,867.4219 Q981.875,867.7656 981.5313,868.1719 Q981.0313,868.75 980.2344,869.0781 Q979.1563,869.5313 977.8594,869.5313 Q976.3438,869.5313 975.1406,868.9063 Q974.1563,868.4063 973.4688,867.3359 Q972.7813,866.2656 972.7813,864.9844 L972.7813,863.8281 Q972.7813,862.5 973.3984,861.3516 Q974.0156,860.2031 975.1094,859.5859 Q976.2031,858.9688 977.4375,858.9688 Q978.1719,858.9688 978.8203,859.1328 Q979.4688,859.2969 980.0156,859.6563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="56" x="997.75" y="868.6914">StreamNo</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="907" x2="1112" y1="879.7813" y2="879.7813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="907" x2="1112" y1="887.7813" y2="887.7813"/>
+        <ellipse cx="917" cy="900.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="926" y="903.2002">init(DataStore*);</text>
+        <ellipse cx="917" cy="914.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="35" x="926" y="917.0361">open();</text>
+        <ellipse cx="917" cy="927.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="37" x="926" y="930.8721">close();</text>
+        <ellipse cx="917" cy="941.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="36" x="926" y="944.708">abort();</text>
+        <ellipse cx="917" cy="955.543" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="926" y="958.5439">update_data(int channel, DataStore*);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="117.1797" style="stroke: #A80036; stroke-width: 1.5;" width="207" x="1148" y="847.7813"/>
+        <ellipse cx="1216.75" cy="863.7813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1219.5156,859.6563 Q1219.6719,859.4375 1219.8594,859.3281 Q1220.0469,859.2188 1220.2656,859.2188 Q1220.6406,859.2188 1220.875,859.4766 Q1221.1094,859.7344 1221.1094,860.3438 L1221.1094,861.7969 Q1221.1094,862.4063 1220.875,862.6719 Q1220.6406,862.9375 1220.2656,862.9375 Q1219.9219,862.9375 1219.7188,862.7344 Q1219.5156,862.5469 1219.4063,862.0313 Q1219.3594,861.6719 1219.1719,861.4844 Q1218.8438,861.1094 1218.2344,860.8906 Q1217.625,860.6719 1217,860.6719 Q1216.2344,860.6719 1215.6016,861 Q1214.9688,861.3281 1214.4766,862.0781 Q1213.9844,862.8281 1213.9844,863.8594 L1213.9844,864.9531 Q1213.9844,866.1875 1214.875,867.0078 Q1215.7656,867.8281 1217.3594,867.8281 Q1218.2969,867.8281 1218.9531,867.5781 Q1219.3438,867.4219 1219.7656,866.9844 Q1220.0313,866.7188 1220.1797,866.6406 Q1220.3281,866.5625 1220.5313,866.5625 Q1220.8594,866.5625 1221.1172,866.8203 Q1221.375,867.0781 1221.375,867.4219 Q1221.375,867.7656 1221.0313,868.1719 Q1220.5313,868.75 1219.7344,869.0781 Q1218.6563,869.5313 1217.3594,869.5313 Q1215.8438,869.5313 1214.6406,868.9063 Q1213.6563,868.4063 1212.9688,867.3359 Q1212.2813,866.2656 1212.2813,864.9844 L1212.2813,863.8281 Q1212.2813,862.5 1212.8984,861.3516 Q1213.5156,860.2031 1214.6094,859.5859 Q1215.7031,858.9688 1216.9375,858.9688 Q1217.6719,858.9688 1218.3203,859.1328 Q1218.9688,859.2969 1219.5156,859.6563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="61" x="1237.25" y="868.6914">StreamLog</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1149" x2="1354" y1="879.7813" y2="879.7813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1149" x2="1354" y1="887.7813" y2="887.7813"/>
+        <ellipse cx="1159" cy="900.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="1168" y="903.2002">init(DataStore*);</text>
+        <ellipse cx="1159" cy="914.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="35" x="1168" y="917.0361">open();</text>
+        <ellipse cx="1159" cy="927.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="37" x="1168" y="930.8721">close();</text>
+        <ellipse cx="1159" cy="941.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="36" x="1168" y="944.708">abort();</text>
+        <ellipse cx="1159" cy="955.543" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="1168" y="958.5439">update_data(int channel, DataStore*);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="227.8672" style="stroke: #A80036; stroke-width: 1.5;" width="381" x="490" y="792.2813"/>
+        <ellipse cx="638.75" cy="808.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M641.5156,804.1563 Q641.6719,803.9375 641.8594,803.8281 Q642.0469,803.7188 642.2656,803.7188 Q642.6406,803.7188 642.875,803.9766 Q643.1094,804.2344 643.1094,804.8438 L643.1094,806.2969 Q643.1094,806.9063 642.875,807.1719 Q642.6406,807.4375 642.2656,807.4375 Q641.9219,807.4375 641.7188,807.2344 Q641.5156,807.0469 641.4063,806.5313 Q641.3594,806.1719 641.1719,805.9844 Q640.8438,805.6094 640.2344,805.3906 Q639.625,805.1719 639,805.1719 Q638.2344,805.1719 637.6016,805.5 Q636.9688,805.8281 636.4766,806.5781 Q635.9844,807.3281 635.9844,808.3594 L635.9844,809.4531 Q635.9844,810.6875 636.875,811.5078 Q637.7656,812.3281 639.3594,812.3281 Q640.2969,812.3281 640.9531,812.0781 Q641.3438,811.9219 641.7656,811.4844 Q642.0313,811.2188 642.1797,811.1406 Q642.3281,811.0625 642.5313,811.0625 Q642.8594,811.0625 643.1172,811.3203 Q643.375,811.5781 643.375,811.9219 Q643.375,812.2656 643.0313,812.6719 Q642.5313,813.25 641.7344,813.5781 Q640.6563,814.0313 639.3594,814.0313 Q637.8438,814.0313 636.6406,813.4063 Q635.6563,812.9063 634.9688,811.8359 Q634.2813,810.7656 634.2813,809.4844 L634.2813,808.3281 Q634.2813,807 634.8984,805.8516 Q635.5156,804.7031 636.6094,804.0859 Q637.7031,803.4688 638.9375,803.4688 Q639.6719,803.4688 640.3203,803.6328 Q640.9688,803.7969 641.5156,804.1563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="659.25" y="813.1914">StreamNexus</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="491" x2="870" y1="824.2813" y2="824.2813"/>
+        <ellipse cx="501" cy="836.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="510" y="839.7002">init(DataStore*);</text>
+        <ellipse cx="501" cy="850.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="35" x="510" y="853.5361">open();</text>
+        <ellipse cx="501" cy="864.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="37" x="510" y="867.3721">close();</text>
+        <ellipse cx="501" cy="878.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="36" x="510" y="881.208">abort();</text>
+        <ellipse cx="501" cy="892.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="510" y="895.0439">update_data(int channel, DataStore*);</text>
+        <ellipse cx="501" cy="905.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="124" x="510" y="908.8799">nexus_reset_file_index();</text>
+        <ellipse cx="501" cy="919.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="209" x="510" y="922.7158">set_target_path(const string&amp; target_path);</text>
+        <ellipse cx="501" cy="933.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="510" y="936.5518">set_file_name(const string&amp; file_name);</text>
+        <ellipse cx="501" cy="947.3867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="213" x="510" y="950.3877">set_write_mode(const string&amp; write_mode);</text>
+        <ellipse cx="501" cy="961.2227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="169" x="510" y="964.2236">set_nb_data_per_acq(int nb_bins);</text>
+        <ellipse cx="501" cy="975.0586" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="202" x="510" y="978.0596">set_nb_acq_per_file(int nb_acq_per_file);</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="491" x2="870" y1="984.4766" y2="984.4766"/>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="498" y="993.8945"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="245" x="510" y="999.8955">store_statistics(int module, int channel, int pixel,...);</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="498" y="1007.7305"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="162" x="510" y="1013.7314">store_data(int module,int channel,</text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="187" x="678" y="1013.7314">int pixel, DataType* data,size_t length);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="103.3438" style="stroke: #A80036; stroke-width: 1.5;" width="225" x="391" y="461.7813"/>
+        <ellipse cx="477.25" cy="477.7813" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M479.4375,479.5469 L475.2969,479.5469 L474.875,480.5781 L475.2969,480.5781 Q475.9063,480.5781 476.1719,480.8125 Q476.4375,481.0469 476.4375,481.4375 Q476.4375,481.8125 476.1719,482.0469 Q475.9063,482.2813 475.2969,482.2813 L473,482.2813 Q472.3906,482.2813 472.1328,482.0469 Q471.875,481.8125 471.875,481.4219 Q471.875,481.0469 472.1484,480.8047 Q472.4219,480.5625 473.0469,480.5781 L475.7188,473.9219 L474.6094,473.9219 Q474,473.9219 473.7344,473.6875 Q473.4688,473.4531 473.4688,473.0625 Q473.4688,472.6875 473.7344,472.4531 Q474,472.2188 474.6094,472.2188 L478.2813,472.2188 L481.6719,480.5781 Q482.2656,480.5781 482.4531,480.7188 Q482.8438,480.9844 482.8438,481.4375 Q482.8438,481.8125 482.5859,482.0469 Q482.3281,482.2813 481.7188,482.2813 L479.4219,482.2813 Q478.8125,482.2813 478.5469,482.0469 Q478.2813,481.8125 478.2813,481.4219 Q478.2813,481.0469 478.5469,480.8125 Q478.8125,480.5781 479.4219,480.5781 L479.8438,480.5781 L479.4375,479.5469 Z M478.7188,477.8438 L477.3594,474.4688 L475.9844,477.8438 L478.7188,477.8438 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="497.75" y="482.6914">AttrView</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="392" x2="615" y1="493.7813" y2="493.7813"/>
+        <ellipse cx="402" cy="506.1992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="411" y="509.2002">init(DataStore*) = 0;</text>
+        <ellipse cx="402" cy="520.0352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="199" x="411" y="523.0361">update_data(int channel, DataStore*) = 0;</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="392" x2="615" y1="529.4531" y2="529.4531"/>
+        <polygon fill="#FFFF44" points="402,536.8711,406,540.8711,402,544.8711,398,540.8711" style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="173" x="411" y="544.8721">init_common_attributes(DataStore*);</text>
+        <polygon fill="#FFFF44" points="402,550.707,406,554.707,402,558.707,398,554.707" style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="193" x="411" y="558.708">update_common_attributes(DataStore*);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="75.6719" style="stroke: #A80036; stroke-width: 1.5;" width="207" x="6" y="868.2813"/>
+        <ellipse cx="72.75" cy="884.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M75.5156,880.1563 Q75.6719,879.9375 75.8594,879.8281 Q76.0469,879.7188 76.2656,879.7188 Q76.6406,879.7188 76.875,879.9766 Q77.1094,880.2344 77.1094,880.8438 L77.1094,882.2969 Q77.1094,882.9063 76.875,883.1719 Q76.6406,883.4375 76.2656,883.4375 Q75.9219,883.4375 75.7188,883.2344 Q75.5156,883.0469 75.4063,882.5313 Q75.3594,882.1719 75.1719,881.9844 Q74.8438,881.6094 74.2344,881.3906 Q73.625,881.1719 73,881.1719 Q72.2344,881.1719 71.6016,881.5 Q70.9688,881.8281 70.4766,882.5781 Q69.9844,883.3281 69.9844,884.3594 L69.9844,885.4531 Q69.9844,886.6875 70.875,887.5078 Q71.7656,888.3281 73.3594,888.3281 Q74.2969,888.3281 74.9531,888.0781 Q75.3438,887.9219 75.7656,887.4844 Q76.0313,887.2188 76.1797,887.1406 Q76.3281,887.0625 76.5313,887.0625 Q76.8594,887.0625 77.1172,887.3203 Q77.375,887.5781 77.375,887.9219 Q77.375,888.2656 77.0313,888.6719 Q76.5313,889.25 75.7344,889.5781 Q74.6563,890.0313 73.3594,890.0313 Q71.8438,890.0313 70.6406,889.4063 Q69.6563,888.9063 68.9688,887.8359 Q68.2813,886.7656 68.2813,885.4844 L68.2813,884.3281 Q68.2813,883 68.8984,881.8516 Q69.5156,880.7031 70.6094,880.0859 Q71.7031,879.4688 72.9375,879.4688 Q73.6719,879.4688 74.3203,879.6328 Q74.9688,879.7969 75.5156,880.1563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65" x="93.25" y="889.1914">AttrViewMca</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="212" y1="900.2813" y2="900.2813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="212" y1="908.2813" y2="908.2813"/>
+        <ellipse cx="17" cy="920.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="26" y="923.7002">init(DataStore*);</text>
+        <ellipse cx="17" cy="934.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="26" y="937.5361">update_data(int channel, DataStore*);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="75.6719" style="stroke: #A80036; stroke-width: 1.5;" width="207" x="248" y="868.2813"/>
+        <ellipse cx="302.25" cy="884.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M305.0156,880.1563 Q305.1719,879.9375 305.3594,879.8281 Q305.5469,879.7188 305.7656,879.7188 Q306.1406,879.7188 306.375,879.9766 Q306.6094,880.2344 306.6094,880.8438 L306.6094,882.2969 Q306.6094,882.9063 306.375,883.1719 Q306.1406,883.4375 305.7656,883.4375 Q305.4219,883.4375 305.2188,883.2344 Q305.0156,883.0469 304.9063,882.5313 Q304.8594,882.1719 304.6719,881.9844 Q304.3438,881.6094 303.7344,881.3906 Q303.125,881.1719 302.5,881.1719 Q301.7344,881.1719 301.1016,881.5 Q300.4688,881.8281 299.9766,882.5781 Q299.4844,883.3281 299.4844,884.3594 L299.4844,885.4531 Q299.4844,886.6875 300.375,887.5078 Q301.2656,888.3281 302.8594,888.3281 Q303.7969,888.3281 304.4531,888.0781 Q304.8438,887.9219 305.2656,887.4844 Q305.5313,887.2188 305.6797,887.1406 Q305.8281,887.0625 306.0313,887.0625 Q306.3594,887.0625 306.6172,887.3203 Q306.875,887.5781 306.875,887.9219 Q306.875,888.2656 306.5313,888.6719 Q306.0313,889.25 305.2344,889.5781 Q304.1563,890.0313 302.8594,890.0313 Q301.3438,890.0313 300.1406,889.4063 Q299.1563,888.9063 298.4688,887.8359 Q297.7813,886.7656 297.7813,885.4844 L297.7813,884.3281 Q297.7813,883 298.3984,881.8516 Q299.0156,880.7031 300.1094,880.0859 Q301.2031,879.4688 302.4375,879.4688 Q303.1719,879.4688 303.8203,879.6328 Q304.4688,879.7969 305.0156,880.1563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="90" x="322.75" y="889.1914">AttrViewMapping</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="249" x2="454" y1="900.2813" y2="900.2813"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="249" x2="454" y1="908.2813" y2="908.2813"/>
+        <ellipse cx="259" cy="920.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="76" x="268" y="923.7002">init(DataStore*);</text>
+        <ellipse cx="259" cy="934.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="268" y="937.5361">update_data(int channel, DataStore*);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="401.8984" style="stroke: #A80036; stroke-width: 1.5;" width="387" x="1850" y="312.2813"/>
+        <ellipse cx="2011.75" cy="328.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M2014.5156,324.1563 Q2014.6719,323.9375 2014.8594,323.8281 Q2015.0469,323.7188 2015.2656,323.7188 Q2015.6406,323.7188 2015.875,323.9766 Q2016.1094,324.2344 2016.1094,324.8438 L2016.1094,326.2969 Q2016.1094,326.9063 2015.875,327.1719 Q2015.6406,327.4375 2015.2656,327.4375 Q2014.9219,327.4375 2014.7188,327.2344 Q2014.5156,327.0469 2014.4063,326.5313 Q2014.3594,326.1719 2014.1719,325.9844 Q2013.8438,325.6094 2013.2344,325.3906 Q2012.625,325.1719 2012,325.1719 Q2011.2344,325.1719 2010.6016,325.5 Q2009.9688,325.8281 2009.4766,326.5781 Q2008.9844,327.3281 2008.9844,328.3594 L2008.9844,329.4531 Q2008.9844,330.6875 2009.875,331.5078 Q2010.7656,332.3281 2012.3594,332.3281 Q2013.2969,332.3281 2013.9531,332.0781 Q2014.3438,331.9219 2014.7656,331.4844 Q2015.0313,331.2188 2015.1797,331.1406 Q2015.3281,331.0625 2015.5313,331.0625 Q2015.8594,331.0625 2016.1172,331.3203 Q2016.375,331.5781 2016.375,331.9219 Q2016.375,332.2656 2016.0313,332.6719 Q2015.5313,333.25 2014.7344,333.5781 Q2013.6563,334.0313 2012.3594,334.0313 Q2010.8438,334.0313 2009.6406,333.4063 Q2008.6563,332.9063 2007.9688,331.8359 Q2007.2813,330.7656 2007.2813,329.4844 L2007.2813,328.3281 Q2007.2813,327 2007.8984,325.8516 Q2008.5156,324.7031 2009.6094,324.0859 Q2010.7031,323.4688 2011.9375,323.4688 Q2012.6719,323.4688 2013.3203,323.6328 Q2013.9688,323.7969 2014.5156,324.1563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="2032.25" y="333.1914">DataStore</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1851" x2="2236" y1="344.2813" y2="344.2813"/>
+        <ellipse cx="1861" cy="356.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="250" x="1870" y="359.7002">init(int nb_channels, int nb_pixels, double timebase);</text>
+        <ellipse cx="1861" cy="370.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1870" y="373.5361">start();</text>
+        <ellipse cx="1861" cy="384.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1870" y="387.3721">stop();</text>
+        <ellipse cx="1861" cy="398.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="240" x="1870" y="401.208">process_data(DataBufferContainer* map_buffer);</text>
+        <ellipse cx="1861" cy="412.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="64" x="1870" y="415.0439">close_data();</text>
+        <ellipse cx="1861" cy="425.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63" x="1870" y="428.8799">abort_data();</text>
+        <ellipse cx="1861" cy="439.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="109" x="1870" y="442.7158">subscribe(Controller*);</text>
+        <ellipse cx="1861" cy="453.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="361" x="1870" y="456.5518">store_statistics(int channel, int pixel, string&amp; acq_type, PixelData pix_data);</text>
+        <ellipse cx="1861" cy="467.3867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="304" x="1870" y="470.3877">store_data(int channel, int pixel, DataType* data, size_t length);</text>
+        <ellipse cx="1861" cy="481.2227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="161" x="1870" y="484.2236">void set_nb_pixels(int nb_pixels);</text>
+        <ellipse cx="1861" cy="495.0586" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="92" x="1870" y="498.0596">int get_nb_pixels();</text>
+        <ellipse cx="1861" cy="508.8945" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="241" x="1870" y="511.8955">vector&lt;DataType&gt; get_channel_data(int channel);</text>
+        <ellipse cx="1861" cy="522.7305" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="1870" y="525.7314">double get_trigger_livetime(int channel);</text>
+        <ellipse cx="1861" cy="536.5664" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="156" x="1870" y="539.5674">double get_realtime(int channel);</text>
+        <ellipse cx="1861" cy="550.4023" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="154" x="1870" y="553.4033">double get_livetime(int channel);</text>
+        <ellipse cx="1861" cy="564.2383" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="207" x="1870" y="567.2393">double get_output_count_rate(int channel);</text>
+        <ellipse cx="1861" cy="578.0742" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="200" x="1870" y="581.0752">double get_input_count_rate(int channel);</text>
+        <ellipse cx="1861" cy="591.9102" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="162" x="1870" y="594.9111">double get_deadtime(int channel);</text>
+        <ellipse cx="1861" cy="605.7461" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="1870" y="608.7471">unsigned long get_triggers(int channel);</text>
+        <ellipse cx="1861" cy="619.582" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="187" x="1870" y="622.583">unsigned long get_events(int channel);</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1851" x2="2236" y1="629" y2="629"/>
+        <polygon fill="#FFFF44" points="1861,636.418,1865,640.418,1861,644.418,1857,640.418" style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="1870" y="644.4189">process_message();</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1851" x2="2236" y1="650.8359" y2="650.8359"/>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1858" y="660.2539"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="102" x="1870" y="666.2549">notify(num_channel);</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1858" y="674.0898"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="1870" y="680.0908">on_close();</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1858" y="687.9258"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="54" x="1870" y="693.9268">on_abort();</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1858" y="701.7617"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="261" x="1870" y="707.7627">on_process_data(DataBufferContainer&amp; map_buffer);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="241.7031" style="stroke: #A80036; stroke-width: 1.5;" width="221" x="1206" y="392.2813"/>
+        <ellipse cx="1285.25" cy="408.2813" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1288.0156,404.1563 Q1288.1719,403.9375 1288.3594,403.8281 Q1288.5469,403.7188 1288.7656,403.7188 Q1289.1406,403.7188 1289.375,403.9766 Q1289.6094,404.2344 1289.6094,404.8438 L1289.6094,406.2969 Q1289.6094,406.9063 1289.375,407.1719 Q1289.1406,407.4375 1288.7656,407.4375 Q1288.4219,407.4375 1288.2188,407.2344 Q1288.0156,407.0469 1287.9063,406.5313 Q1287.8594,406.1719 1287.6719,405.9844 Q1287.3438,405.6094 1286.7344,405.3906 Q1286.125,405.1719 1285.5,405.1719 Q1284.7344,405.1719 1284.1016,405.5 Q1283.4688,405.8281 1282.9766,406.5781 Q1282.4844,407.3281 1282.4844,408.3594 L1282.4844,409.4531 Q1282.4844,410.6875 1283.375,411.5078 Q1284.2656,412.3281 1285.8594,412.3281 Q1286.7969,412.3281 1287.4531,412.0781 Q1287.8438,411.9219 1288.2656,411.4844 Q1288.5313,411.2188 1288.6797,411.1406 Q1288.8281,411.0625 1289.0313,411.0625 Q1289.3594,411.0625 1289.6172,411.3203 Q1289.875,411.5781 1289.875,411.9219 Q1289.875,412.2656 1289.5313,412.6719 Q1289.0313,413.25 1288.2344,413.5781 Q1287.1563,414.0313 1285.8594,414.0313 Q1284.3438,414.0313 1283.1406,413.4063 Q1282.1563,412.9063 1281.4688,411.8359 Q1280.7813,410.7656 1280.7813,409.4844 L1280.7813,408.3281 Q1280.7813,407 1281.3984,405.8516 Q1282.0156,404.7031 1283.1094,404.0859 Q1284.2031,403.4688 1285.4375,403.4688 Q1286.1719,403.4688 1286.8203,403.6328 Q1287.4688,403.7969 1288.0156,404.1563 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="54" x="1305.75" y="413.1914">Controller</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1207" x2="1426" y1="424.2813" y2="424.2813"/>
+        <ellipse cx="1217" cy="436.6992" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="187" x="1226" y="439.7002">load_config(string&amp; mode, string&amp; file);</text>
+        <ellipse cx="1217" cy="450.5352" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122" x="1226" y="453.5361">save_config(string&amp; file);</text>
+        <ellipse cx="1217" cy="464.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1226" y="467.3721">start();</text>
+        <ellipse cx="1217" cy="478.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1226" y="481.208">stop();</text>
+        <ellipse cx="1217" cy="492.043" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="36" x="1226" y="495.0439">abort();</text>
+        <ellipse cx="1217" cy="505.8789" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="56" x="1226" y="508.8799">get_state();</text>
+        <ellipse cx="1217" cy="519.7148" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="104" x="1226" y="522.7158">int get_nb_modules();</text>
+        <ellipse cx="1217" cy="533.5508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="108" x="1226" y="536.5518">int get_nb_channels();</text>
+        <ellipse cx="1217" cy="547.3867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84" x="1226" y="550.3877">int get_nb_bins();</text>
+        <ellipse cx="1217" cy="561.2227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="1226" y="564.2236">update_parameters(ConfigLoader conf);</text>
+        <ellipse cx="1217" cy="575.0586" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="1226" y="578.0596">update_data(int channel);</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1207" x2="1426" y1="584.4766" y2="584.4766"/>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1214" y="593.8945"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="150" x="1226" y="599.8955">on_abort(Tango::DevFailed df);</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1214" y="607.7305"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="151" x="1226" y="613.7314">on_alarm(Tango::DevFailed df);</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1214" y="621.5664"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="146" x="1226" y="627.5674">on_fault(Tango::DevFailed df);</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="180.7109" style="stroke: #A80036; stroke-width: 1.5;" width="232" x="1200.5" y="53.2813"/>
+        <ellipse cx="1265.25" cy="73.375" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1268.0156,69.25 Q1268.1719,69.0313 1268.3594,68.9219 Q1268.5469,68.8125 1268.7656,68.8125 Q1269.1406,68.8125 1269.375,69.0703 Q1269.6094,69.3281 1269.6094,69.9375 L1269.6094,71.3906 Q1269.6094,72 1269.375,72.2656 Q1269.1406,72.5313 1268.7656,72.5313 Q1268.4219,72.5313 1268.2188,72.3281 Q1268.0156,72.1406 1267.9063,71.625 Q1267.8594,71.2656 1267.6719,71.0781 Q1267.3438,70.7031 1266.7344,70.4844 Q1266.125,70.2656 1265.5,70.2656 Q1264.7344,70.2656 1264.1016,70.5938 Q1263.4688,70.9219 1262.9766,71.6719 Q1262.4844,72.4219 1262.4844,73.4531 L1262.4844,74.5469 Q1262.4844,75.7813 1263.375,76.6016 Q1264.2656,77.4219 1265.8594,77.4219 Q1266.7969,77.4219 1267.4531,77.1719 Q1267.8438,77.0156 1268.2656,76.5781 Q1268.5313,76.3125 1268.6797,76.2344 Q1268.8281,76.1563 1269.0313,76.1563 Q1269.3594,76.1563 1269.6172,76.4141 Q1269.875,76.6719 1269.875,77.0156 Q1269.875,77.3594 1269.5313,77.7656 Q1269.0313,78.3438 1268.2344,78.6719 Q1267.1563,79.125 1265.8594,79.125 Q1264.3438,79.125 1263.1406,78.5 Q1262.1563,78 1261.4688,76.9297 Q1260.7813,75.8594 1260.7813,74.5781 L1260.7813,73.4219 Q1260.7813,72.0938 1261.3984,70.9453 Q1262.0156,69.7969 1263.1094,69.1797 Q1264.2031,68.5625 1265.4375,68.5625 Q1266.1719,68.5625 1266.8203,68.7266 Q1267.4688,68.8906 1268.0156,69.25 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="98" x="1283.75" y="70.7383">&lt;&lt;tango device&gt;&gt;</text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38" x="1313.75" y="85.832">XiaDxp</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1201.5" x2="1431.5" y1="93.4688" y2="93.4688"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="1201.5" x2="1431.5" y1="101.4688" y2="101.4688"/>
+        <ellipse cx="1211.5" cy="113.8867" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="175" x="1220.5" y="116.8877">load_config(Tango::DevString alias);</text>
+        <ellipse cx="1211.5" cy="127.7227" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="1220.5" y="130.7236">save_config();</text>
+        <ellipse cx="1211.5" cy="141.5586" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="33" x="1220.5" y="144.5596">start();</text>
+        <ellipse cx="1211.5" cy="155.3945" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="1220.5" y="158.3955">stop();</text>
+        <ellipse cx="1211.5" cy="169.2305" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="206" x="1220.5" y="172.2314">set_rois_from_list(DevVarStringArray list);</text>
+        <ellipse cx="1211.5" cy="183.0664" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="162" x="1220.5" y="186.0674">set_rois_from_file(DevString file);</text>
+        <ellipse cx="1211.5" cy="196.9023" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="146" x="1220.5" y="199.9033">DevVarStringArray get_rois();</text>
+        <ellipse cx="1211.5" cy="210.7383" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="155" x="1220.5" y="213.7393">remove_rois(DevLong channel);</text>
+        <ellipse cx="1211.5" cy="224.5742" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="107" x="1220.5" y="227.5752">stream_reset_index();</text>
+        <path d="M1661.5,188.3512 C1661.5,246.8412 1661.5,352.0092 1661.5,426.6333 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1654.5,188.0512,1661.5,168.0512,1668.5,188.0512,1654.5,188.0512" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1676.42,620.3243 C1686.09,689.1273 1698.42,776.7742 1706.84,836.5803 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1669.42,620.8683,1673.57,600.0883,1683.29,618.9183,1669.42,620.8683" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1725.6,617.4253 C1763.89,679.0383 1812.06,756.5403 1848.77,815.6012 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1719.44,620.7693,1714.83,600.0883,1731.33,613.3793,1719.44,620.7693" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M2043.5,188.5013 C2043.5,220.1312 2043.5,265.3573 2043.5,312.0123 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="2036.5,188.0512,2043.5,168.0512,2050.5,188.0512,2036.5,188.0512" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M869.554,589.3833 C835.22,646.7533 787.33,726.7743 748.342,791.9213 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="863.695,585.5413,879.972,571.9743,875.708,592.7313,863.695,585.5413" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M977.522,587.4013 C1042.44,662.7253 1142.31,778.5922 1201.85,847.6703 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="971.98,591.6943,964.226,571.9743,982.585,582.5543,971.98,591.6943" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M933.31,591.6983 C951.623,667.0723 979.035,779.8923 995.502,847.6703 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="926.438,593.0623,928.518,571.9743,940.042,589.7563,926.438,593.0623" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M438.058,579.2253 C354.836,661.8133 213.925,801.6513 146.976,868.0903 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="433.268,574.1163,452.395,564.9973,443.13,584.0533,433.268,574.1163" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M476.538,583.6383 C444.243,666.7123 391.331,802.8213 365.958,868.0903 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="470.013,581.1013,483.784,564.9973,483.062,586.1743,470.013,581.1013" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1451.61,1011.2723 C1441.15,1034.4743 1430.18,1058.8213 1420.09,1081.1823 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1445.26,1008.3263,1459.87,992.9703,1458.03,1014.0803,1445.26,1008.3263" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1545.39,1011.2723 C1555.85,1034.4743 1566.82,1058.8213 1576.91,1081.1823 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1538.97,1014.0803,1537.13,992.9703,1551.74,1008.3263,1538.97,1014.0803" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M1316.5,234.6812 C1316.5,280.4953 1316.5,336.9473 1316.5,386.9562 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="1316.5,392.0853,1320.5,383.0853,1316.5,387.0853,1312.5,383.0853,1316.5,392.0853" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="115" x="1317.5" y="278.7764">(load, start, stop,...)</text>
+        <path d="M1427.08,513.2813 C1474.34,513.2813 1528.74,513.2813 1573.23,513.2813 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="1578.33,513.2813,1569.33,509.2813,1573.33,513.2813,1569.33,517.2813,1578.33,513.2813" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="115" x="1445.25" y="506.7764">(load, start, stop,...)</text>
+        <path d="M1620.69,612.1833 C1594.08,675.9993 1559.7,758.4762 1534.19,819.6753 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="1625.73,600.0883,1619.7296,604.0876,1621.1135,611.1647,1627.1139,607.1653,1625.73,600.0883" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="1566.5" y="758.7764">use</text>
+        <path d="M1744.86,513.2813 C1774.57,513.2813 1809.44,513.2813 1844.67,513.2813 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="1849.87,513.2813,1840.87,509.2813,1844.87,513.2813,1840.87,517.2813,1849.87,513.2813" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="69" x="1762.75" y="506.7764">store_data()</text>
+        <path d="M1849.88,354.0543 C1821.87,337.3463 1792.38,322.6922 1762.5,312.2813 C1740.03,304.4512 1528.44,291.1543 1499.5,304.2813 C1459.19,322.5633 1424.27,354.5952 1396.05,388.1693 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="1392.64,392.2713,1401.4701,387.9089,1395.837,388.4269,1395.3191,382.7938,1392.64,392.2713" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="100" x="1500.5" y="278.7764">update_data(this)</text>
+        <path d="M1032.28,513.2813 C1087.07,513.2813 1151.87,513.2813 1205.75,513.2813 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="1027.01,513.2813,1036.01,517.2813,1032.01,513.2813,1036.01,509.2813,1027.01,513.2813" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="142" x="1045.5" y="506.7764">update_data(DataStore*)</text>
+        <path d="M560.017,457.9793 C613.124,409.9053 697.287,343.2492 784.5,312.2813 C899.307,271.5163 943.662,263.6033 1058.5,304.2813 C1112.56,323.4322 1163.58,359.2682 1205.74,395.9272 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="556.248,461.4073,565.5979,458.3121,559.9474,458.0435,560.2159,452.3931,556.248,461.4073" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="142" x="915.5" y="278.7764">update_data(DataStore*)</text>
     </g>
 </svg>
