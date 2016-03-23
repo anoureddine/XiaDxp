@@ -13,7 +13,7 @@
     <name>XiaDxp</name>
     <description>XiaDxp device</description>
 	<properties>
-	<NEXUSCPP.version>2.3.0</NEXUSCPP.version> 
+	<NEXUSCPP.version>2.3.1</NEXUSCPP.version> 
 	<HANDEL.version>1.1.6</HANDEL.version> 
 	</properties>	
 	
