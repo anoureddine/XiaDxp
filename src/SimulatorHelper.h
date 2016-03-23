@@ -49,7 +49,7 @@ const unsigned long NUMERIC_EVENTS_IN_RUN = 6;
 const double NUMERIC_NUM_MAP_PIXELS = 1000;
 const double NUMERIC_NUM_MAP_PIXELS_PER_BUFFER = 100;
 const std::string NUMERIC_PIXEL_ADVANCE_MODE = "GATE";
-const double NUMERCI_MAPPING_CLOCK_MS = 2;//ms
+const double NUMERCI_MAPPING_CLOCK_MS = 10;//ms
 ////////////////////////////////////////////////////////
 
 namespace XiaDxp_ns
