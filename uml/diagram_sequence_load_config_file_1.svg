@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="686pt" style="width:1110px;height:686px;" version="1.1" viewBox="0 0 1110 686" width="1110pt">
+    <defs>
+        <filter height="300%" id="f1" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="374" x="367.25" y="24.5332">XiaDxp - Diagram Sequence  : LoadConfig - 2015/09/15</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="529.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="534.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="539.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="544.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="549.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="554.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="559.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="564.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="569.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="574.25" y="42.1426">*</text>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="411.2188" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="148.5" y="168.8281"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="380.8672" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="379.5" y="199.1797"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="162.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="570.5" y="403.9375"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="43.8789" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="732.5" y="434.2891"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="843.5" y="359.5859"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="843.5" y="537.6953"/>
+        <rect fill="#90EE90" height="632.4375" style="stroke: #A80036; stroke-width: 1.0;" width="69" x="119" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="34" x="136.5" y="66.7139">VIEW</text>
+        <rect fill="#FFA500" height="632.4375" style="stroke: #A80036; stroke-width: 1.0;" width="146" x="311.5" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="88" x="342.5" y="66.7139">CONTROLLER</text>
+        <rect fill="#ADD8E6" height="632.4375" style="stroke: #A80036; stroke-width: 1.0;" width="365" x="528.5" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="46" x="688" y="66.7139">MODEL</text>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="25" x2="25" y1="136.8281" y2="598.0469"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="153" x2="153" y1="136.8281" y2="598.0469"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="384.5" x2="384.5" y1="136.8281" y2="598.0469"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="575.5" x2="575.5" y1="136.8281" y2="598.0469"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="737" x2="737" y1="136.8281" y2="598.0469"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="848.5" x2="848.5" y1="136.8281" y2="598.0469"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="29" x="8" y="133.752">User</text>
+        <ellipse cx="25.5" cy="62.2188" fill="#FEFECE" filter="url(#f1)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <path d="M25.5,70.2188 L25.5,97.2188 M12.5,78.2188 L38.5,78.2188 M25.5,97.2188 L12.5,112.2188 M25.5,97.2188 L38.5,112.2188 " fill="#FEFECE" filter="url(#f1)" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="29" x="8" y="611.5801">User</text>
+        <ellipse cx="25.5" cy="624.6563" fill="#FEFECE" filter="url(#f1)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <path d="M25.5,632.6563 L25.5,659.6563 M12.5,640.6563 L38.5,640.6563 M25.5,659.6563 L12.5,674.6563 M25.5,659.6563 L38.5,674.6563 " fill="#FEFECE" filter="url(#f1)" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="57" x="123" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="130" y="121.752">Device</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="57" x="123" y="597.0469"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="130" y="618.5801">Device</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="76" x="344.5" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="351.5" y="121.752">Controller</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="76" x="344.5" y="597.0469"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="351.5" y="618.5801">Controller</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="82" x="532.5" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="539.5" y="121.752">Acquisition</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="82" x="532.5" y="597.0469"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="539.5" y="618.5801">Acquisition</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="686" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="693" y="121.752">HandelHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="686" y="597.0469"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="693" y="618.5801">HandelHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="807.5" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="814.5" y="121.752">DataStore</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="807.5" y="597.0469"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="814.5" y="618.5801">DataStore</text>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="411.2188" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="148.5" y="168.8281"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="380.8672" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="379.5" y="199.1797"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="162.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="570.5" y="403.9375"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="43.8789" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="732.5" y="434.2891"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="843.5" y="359.5859"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="843.5" y="537.6953"/>
+        <polygon fill="#A80036" points="136.5,164.8281,146.5,168.8281,136.5,172.8281,140.5,168.8281" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="25.5" x2="142.5" y1="168.8281" y2="168.8281"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="99" x="32.5" y="164.3232">LoadConfig(alias)</text>
+        <polygon fill="#A80036" points="367.5,195.1797,377.5,199.1797,367.5,203.1797,371.5,199.1797" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="158.5" x2="373.5" y1="199.1797" y2="199.1797"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="168" x="165.5" y="194.6748">load_config(mode, file_name)</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="389.5" x2="431.5" y1="229.8828" y2="229.8828"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="431.5" x2="431.5" y1="229.8828" y2="242.8828"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="390.5" x2="431.5" y1="242.8828" y2="242.8828"/>
+        <polygon fill="#A80036" points="400.5,238.8828,390.5,242.8828,400.5,246.8828,396.5,242.8828" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="94" x="396.5" y="225.0264">&lt;&lt;build Store&gt;&gt;</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="389.5" x2="431.5" y1="273.2344" y2="273.2344"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="431.5" x2="431.5" y1="273.2344" y2="286.2344"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="390.5" x2="431.5" y1="286.2344" y2="286.2344"/>
+        <polygon fill="#A80036" points="400.5,282.2344,390.5,286.2344,400.5,290.2344,396.5,286.2344" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="127" x="396.5" y="268.3779">&lt;&lt;build Acquisition&gt;&gt;</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="389.5" x2="431.5" y1="316.5859" y2="316.5859"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="431.5" x2="431.5" y1="316.5859" y2="329.5859"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="390.5" x2="431.5" y1="329.5859" y2="329.5859"/>
+        <polygon fill="#A80036" points="400.5,325.5859,390.5,329.5859,400.5,333.5859,396.5,329.5859" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="105" x="396.5" y="311.7295">&lt;&lt;build Stream&gt;&gt;</text>
+        <polygon fill="#A80036" points="831.5,355.5859,841.5,359.5859,831.5,363.5859,835.5,359.5859" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="389.5" x2="837.5" y1="359.5859" y2="359.5859"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="85" x="396.5" y="355.0811">subscribe(this)</text>
+        <polygon fill="#A80036" points="400.5,369.9375,390.5,373.9375,400.5,377.9375,396.5,373.9375" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="394.5" x2="847.5" y1="373.9375" y2="373.9375"/>
+        <polygon fill="#A80036" points="558.5,399.9375,568.5,403.9375,558.5,407.9375,562.5,403.9375" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="389.5" x2="564.5" y1="403.9375" y2="403.9375"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="128" x="396.5" y="399.4326">load_config(file_name)</text>
+        <polygon fill="#A80036" points="720.5,430.2891,730.5,434.2891,720.5,438.2891,724.5,434.2891" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="580.5" x2="726.5" y1="434.2891" y2="434.2891"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="128" x="587.5" y="429.7842">load_config(file_name)</text>
+        <polygon fill="#A80036" points="591.5,474.168,581.5,478.168,591.5,482.168,587.5,478.168" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="585.5" x2="736.5" y1="478.168" y2="478.168"/>
+        <polygon fill="#FBFB77" filter="url(#f1)" points="747,447.6406,747,506.6406,1101,506.6406,1101,457.6406,1091,447.6406,747,447.6406" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1091" x2="1091" y1="447.6406" y2="457.6406"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1101" x2="1091" y1="457.6406" y2="457.6406"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="333" x="753" y="466.1357">Handel library load the *.ini file in the xMap/FalconX board</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="301" x="753" y="482.4873">in order to configure acquisition (MCA/MAPPING/...)</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="189" x="753" y="498.8389">This operation takes &gt;3 seconds</text>
+        <polygon fill="#A80036" points="831.5,533.6953,841.5,537.6953,831.5,541.6953,835.5,537.6953" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="580.5" x2="837.5" y1="537.6953" y2="537.6953"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="239" x="587.5" y="533.1904">init(nb_modules, nb_channels, nb_pixels)</text>
+        <polygon fill="#A80036" points="591.5,548.0469,581.5,552.0469,591.5,556.0469,587.5,552.0469" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="585.5" x2="847.5" y1="552.0469" y2="552.0469"/>
+        <polygon fill="#A80036" points="400.5,562.0469,390.5,566.0469,400.5,570.0469,396.5,566.0469" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="394.5" x2="574.5" y1="566.0469" y2="566.0469"/>
+        <polygon fill="#A80036" points="164.5,576.0469,154.5,580.0469,164.5,584.0469,160.5,580.0469" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="158.5" x2="383.5" y1="580.0469" y2="580.0469"/>
+    </g>
+</svg>

@@ -1,0 +1,52 @@
+@startuml
+title <b>XiaDxp - Diagram Sequence  : SaveConfig - 2015/09/15</b>\n**********************************************
+actor User
+
+participant "Device" as Device
+box "VIEW" #LightGreen
+	participant Device
+end box
+
+participant "Controller" as Ctrl
+box "       CONTROLLER      " #Orange
+	participant Ctrl
+end box
+
+participant "Acquisition" as Acq
+participant "HandelHelper" as Handel
+box "MODEL" #LightBlue
+	participant Acq
+	participant Handel
+end box
+
+User -> Device: SaveConfig(alias)
+activate Device
+
+Device -> Ctrl: save_config(file_name)
+activate Ctrl
+
+
+Ctrl -> Acq : save_config(file_name)
+activate Acq
+
+Acq -> Handel : save_config(file_name)
+activate Handel
+
+Handel --> Acq
+deactivate Handel
+
+note right 
+        Handel library save all modified parameters in the the *.ini
+        Parameters can be modified by user through tango attributes
+        This operation takes <1 second
+end note
+
+Acq --> Ctrl : 
+deactivate Acq
+
+Ctrl --> Device : 
+deactivate Ctrl
+
+deactivate Device
+
+@enduml
