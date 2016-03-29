@@ -234,6 +234,7 @@ void XiaDxp::init_device()
         m_conf.stream_path = __MemorizedStreamTargetPath;
         m_conf.stream_file = __MemorizedStreamTargetFile;
         m_conf.stream_write_mode = __ExpertStreamWriteMode;
+		m_conf.stream_statistics_enabled = __ExpertStatisticsEnabled;		
         m_conf.stream_nb_data_per_acq = __MemorizedStreamNbDataPerAcq;
         m_conf.stream_nb_acq_per_file = __MemorizedStreamNbAcqPerFile;
         m_conf.is_device_initialized = is_device_initialized();
@@ -336,6 +337,7 @@ void XiaDxp::get_device_property()
 	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbDataPerAcq"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbAcqPerFile"));
 	dev_prop.push_back(Tango::DbDatum("__ExpertStreamWriteMode"));
+	dev_prop.push_back(Tango::DbDatum("__ExpertStatisticsEnabled"));
 
 	//	Call database and extract values
 	//--------------------------------------------
@@ -511,6 +513,17 @@ void XiaDxp::get_device_property()
 	//	And try to extract __ExpertStreamWriteMode value from database
 	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __ExpertStreamWriteMode;
 
+	//	Try to initialize __ExpertStatisticsEnabled from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __ExpertStatisticsEnabled;
+	else {
+		//	Try to initialize __ExpertStatisticsEnabled from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __ExpertStatisticsEnabled;
+	}
+	//	And try to extract __ExpertStatisticsEnabled value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __ExpertStatisticsEnabled;
+
 
 
     //	End of Automatic code generation
@@ -530,6 +543,8 @@ void XiaDxp::get_device_property()
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "2048", "__MemorizedStreamNbDataPerAcq");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "1", "__MemorizedStreamNbAcqPerFile");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "IMMEDIATE", "__ExpertStreamWriteMode");
+	yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "false", "__ExpertStatisticsEnabled");
+	
 
 }
 //+----------------------------------------------------------------------------

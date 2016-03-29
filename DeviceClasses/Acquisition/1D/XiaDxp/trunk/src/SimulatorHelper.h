@@ -35,7 +35,7 @@ const int NUMERIC_NB_MODULES = 2;
 const int NUMERIC_NB_CHANNELS = 8;
 const int NUMERIC_NB_BINS = 2048;
 const int NUMERIC_MCA_LENGTH = 2048;
-const int NUMERIC_BUFFER_LENGTH = BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 4*NUMERIC_NB_BINS;
+const int NUMERIC_BUFFER_LENGTH = BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 4 * NUMERIC_NB_BINS;
 const double NUMERIC_DYNAMIC_RANGE = 3.0;
 const double NUMERIC_PEAKING_TIME = 2.0;
 const double NUMERIC_PRESET_VALUE = 4.0; //in s
@@ -49,7 +49,7 @@ const unsigned long NUMERIC_EVENTS_IN_RUN = 6;
 const double NUMERIC_NUM_MAP_PIXELS = 1000;
 const double NUMERIC_NUM_MAP_PIXELS_PER_BUFFER = 100;
 const std::string NUMERIC_PIXEL_ADVANCE_MODE = "GATE";
-const double NUMERCI_MAPPING_CLOCK_MS = 10;//ms
+const unsigned long NUMERIC_MAPPING_CLOCK_MS = 10; //ms
 ////////////////////////////////////////////////////////
 
 namespace XiaDxp_ns
@@ -202,9 +202,9 @@ public:
     }
 
     ////////////////////////////////////////////////////////////////////////    
-    double get_num_map_pixels(int channel)
+    int get_num_map_pixels(int channel)
     {
-        return yat::StringUtil::to_num<double>(m_map_parameters["num_map_pixels"]);
+        return(int) (yat::StringUtil::to_num<double>(m_map_parameters["num_map_pixels"]));
     }
     ////////////////////////////////////////////////////////////////////////
     void set_num_map_pixels(int channel, double value)
@@ -213,9 +213,9 @@ public:
     }
 
     ////////////////////////////////////////////////////////////////////////
-    double get_num_map_pixels_per_buffer(int channel)
+    int get_num_map_pixels_per_buffer(int channel)
     {
-        return yat::StringUtil::to_num<double>(m_map_parameters["num_map_pixels_per_buffer"]);
+        return(int) (yat::StringUtil::to_num<double>(m_map_parameters["num_map_pixels_per_buffer"]));
     }
 
     ////////////////////////////////////////////////////////////////////////
@@ -262,13 +262,13 @@ public:
         {
             //simulate f(x)=ABS(sin(x)/x) for channel odd
             for(size_t i = 0; i < result.size(); i++)
-                result.at(i) = fabs(sin((double) i) / (i + 1))*100000;
+                result.at(i) = (Tango::DevULong)(fabs(sin((double) i) / (i + 1))*100000);
         }
         else
         {
             //simulate f(x)=ABS(sin(x)) for channel even
             for(size_t i = 0; i < result.size(); i++)
-                result.at(i) = fabs(sin((double) i))*100;
+                result.at(i) = (Tango::DevULong)(fabs(sin((double) i))*100);
         }
 
         /*if a preset_value (s) is expired, then change state to standby*/
@@ -465,29 +465,29 @@ public:
                     //channel0 data (simulate sqrt(j))
                 case BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 0:
                     for(int j = 0; j < NUMERIC_NB_BINS; j++)
-                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 0 * NUMERIC_NB_BINS + j] = sqrt((double) j);
+                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 0 * NUMERIC_NB_BINS + j] = (unsigned long) (sqrt((double) j));
                     break;
                     //channel1 data (simulate sqrt(2048)-sqrt(j))
                 case BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 1:
                     for(int j = 0; j < NUMERIC_NB_BINS; j++)
-                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 1 * NUMERIC_NB_BINS + j] = sqrt((double) NUMERIC_NB_BINS) - sqrt((double) j);
+                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 1 * NUMERIC_NB_BINS + j] = (unsigned long) (sqrt((double) NUMERIC_NB_BINS) - sqrt((double) j));
                     break;
                     //channel2 data (simulate sqrt(j))
                 case BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 2:
                     for(int j = 0; j < NUMERIC_NB_BINS; j++)
-                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 2 * NUMERIC_NB_BINS + j] = sqrt((double) j);
-                    break;                    
+                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 2 * NUMERIC_NB_BINS + j] = (unsigned long) (sqrt((double) j));
+                    break;
                     //channel3 data (simulate sqrt(2048)-sqrt(j))
                 case BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 3:
                     for(int j = 0; j < NUMERIC_NB_BINS; j++)
-                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 3 * NUMERIC_NB_BINS + j] = sqrt((double) NUMERIC_NB_BINS) - sqrt((double) j);
+                        buffer[BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 3 * NUMERIC_NB_BINS + j] = (unsigned long) (sqrt((double) NUMERIC_NB_BINS) - sqrt((double) j));
                     break;
                 default:
                     break;
             }
         }
         //in ms in order to simulate  a duration of acquisition
-        yat::Thread::sleep(NUMERCI_MAPPING_CLOCK_MS);
+        yat::Thread::sleep(NUMERIC_MAPPING_CLOCK_MS);
         return;
     }
 

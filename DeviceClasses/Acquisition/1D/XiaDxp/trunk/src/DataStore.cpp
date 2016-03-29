@@ -17,7 +17,7 @@
 #include <tango.h>
 #include "Controller.h"
 #include "DataStore.h"
-    
+
 
 namespace XiaDxp_ns
 {
@@ -34,9 +34,11 @@ DataStore::DataStore(Tango::DeviceImpl *dev)
     m_nb_modules = 0;
     m_nb_channels = 0;
     m_nb_pixels = 0;
+    m_nb_bins = 0;
     m_timebase = 1;
+    m_is_statistics_enabled = true;
     set_status("");
-    set_state(Tango::OFF);    
+    set_state(Tango::OFF);
     INFO_STREAM << "DataStore::DataStore() - [END]" << endl;
 }
 
@@ -52,13 +54,14 @@ DataStore::~DataStore()
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::init
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::init(int nb_modules, int nb_channels, int nb_active_channels, int nb_pixels, double timebase)
+void DataStore::init(int nb_modules, int nb_channels, int nb_active_channels, int nb_pixels, int nb_bins, double timebase)
 {
     INFO_STREAM << "DataStore::init() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
     m_nb_modules = nb_modules;
     m_nb_channels = nb_channels;
     m_nb_pixels = nb_pixels;
+    m_nb_bins = nb_bins;
     m_timebase = timebase;
     m_data.module_data.clear();
 
@@ -83,10 +86,10 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_active_channels, in
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.deadtime = 0.0;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.realtime = 0.0;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.livetime = 0.0;
-            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.data.resize(2048); //nbbins
+            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.data.resize(m_nb_bins);
         }
     }
-    set_state(Tango::STANDBY);   
+    set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::init() - [END]" << endl;
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -96,7 +99,7 @@ void DataStore::store_statistics(int module, int channel, int pixel, const std::
 {
     DEBUG_STREAM << "DataStore::store_statistics() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
-    set_state(Tango::RUNNING);       
+    set_state(Tango::RUNNING);
     double computed_realtime = 0.0;
     double computed_livetime = 0.0;
     double computed_icr = 0.0;
@@ -131,7 +134,7 @@ void DataStore::store_statistics(int module, int channel, int pixel, const std::
     m_data.module_data[module].channel_data[channel].pixel_data.output_count_rate = computed_ocr;
     m_data.module_data[module].channel_data[channel].pixel_data.deadtime = computed_deadtime;
     m_data.module_data[module].channel_data[channel].pixel_data.realtime = computed_realtime;
-    m_data.module_data[module].channel_data[channel].pixel_data.livetime = computed_livetime;    
+    m_data.module_data[module].channel_data[channel].pixel_data.livetime = computed_livetime;
     DEBUG_STREAM << "DataStore::store_statistics() - [END]" << endl;
 }
 
@@ -142,7 +145,7 @@ void DataStore::store_data(int module, int channel, int pixel, DataType* data, s
 {
     DEBUG_STREAM << "DataStore::store_data() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
-    set_state(Tango::RUNNING);       
+    set_state(Tango::RUNNING);
     m_data.module_data[module].channel_data[channel].pixel_data.pixel = pixel;
     m_data.module_data[module].channel_data[channel].pixel_data.data.resize(length);
     std::copy(data, data + length, &m_data.module_data[module].channel_data[channel].pixel_data.data[0]);
@@ -161,7 +164,7 @@ void DataStore::on_close()
     INFO_STREAM << "DataStore::on_close() - [BEGIN]" << endl;
     if(m_controller!=0)
         m_controller->close();
-    set_state(Tango::STANDBY);       
+    set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::on_close() - [END]" << endl;
 }
 
@@ -174,7 +177,7 @@ void DataStore::on_abort()
     INFO_STREAM << "DataStore::on_abort() - [BEGIN]" << endl;
     if(m_controller!=0)
         m_controller->abort();
-    set_state(Tango::STANDBY);       
+    set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::on_abort() - [END]" << endl;
 }
 
@@ -185,10 +188,10 @@ long   DataStore::get_current_pixel(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     long current_pixel;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
-    
+
     current_pixel = m_data.module_data[module].channel_data[channel_of_module].pixel_data.pixel;
     return current_pixel;
 }
@@ -214,7 +217,7 @@ double DataStore::get_trigger_livetime(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     double trigger_livetime;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -229,7 +232,7 @@ double DataStore::get_realtime(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     double realtime;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -244,7 +247,7 @@ double DataStore::get_livetime(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     double livetime;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -259,7 +262,7 @@ double DataStore::get_deadtime(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     double deadtime;
-    
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -274,7 +277,7 @@ double DataStore::get_output_count_rate(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     double count_rate;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -289,7 +292,7 @@ double DataStore::get_input_count_rate(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     double count_rate;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -319,7 +322,7 @@ unsigned long DataStore::get_triggers(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     unsigned long triggers;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -334,7 +337,7 @@ unsigned long DataStore::get_outputs(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
     unsigned long outputs;
-     
+
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
@@ -377,6 +380,32 @@ void DataStore::set_nb_pixels(int nb_pixels)
     yat::MutexLock scoped_lock(m_data_lock);
     m_nb_pixels = nb_pixels;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+//- DataStore::get_nb_bins
+//----------------------------------------------------------------------------------------------------------------------
+int DataStore::get_nb_bins()
+{
+    yat::MutexLock scoped_lock(m_data_lock);
+    return m_nb_bins;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//	
+//----------------------------------------------------------------------------------------------------------------------
+bool DataStore::get_statistics_enabled(void)
+{
+    return m_is_statistics_enabled;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//	
+//----------------------------------------------------------------------------------------------------------------------
+void DataStore::set_statistics_enabled(bool is_enabled)
+{
+    m_is_statistics_enabled = is_enabled;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::get_timebase
 //----------------------------------------------------------------------------------------------------------------------
@@ -460,7 +489,7 @@ double DataStore::compute_deadtime(unsigned long outputs, unsigned long triggers
 void DataStore::subscribe(Controller* observer)
 {
     INFO_STREAM << "DataStore::subscribe("<<observer<<")" <<endl;
-    yat::MutexLock scoped_lock(m_data_lock);    
+    yat::MutexLock scoped_lock(m_data_lock);
     m_controller = observer;
 }
 
@@ -479,28 +508,28 @@ void DataStore::notify(int ichannel)
 //----------------------------------------------------------------------------------------------------------------------
 void DataStore::close_data(void)
 {
-	DEBUG_STREAM<<"DataStore::close_data() - [BEGIN]"<<std::endl;
-	post(DATASTORE_CLOSE_DATA_MSG);
-	DEBUG_STREAM<<"DataStore::close_data() - [END]"<<std::endl;	
+    DEBUG_STREAM<<"DataStore::close_data() - [BEGIN]"<<std::endl;
+    post(DATASTORE_CLOSE_DATA_MSG);
+    DEBUG_STREAM<<"DataStore::close_data() - [END]"<<std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 void DataStore::abort_data(void)
 {
-	DEBUG_STREAM<<"DataStore::abort_data() - [BEGIN]"<<std::endl;
-	post(DATASTORE_ABORT_DATA_MSG);
-	DEBUG_STREAM<<"DataStore::abort_data() - [END]"<<std::endl;	
+    DEBUG_STREAM<<"DataStore::abort_data() - [BEGIN]"<<std::endl;
+    post(DATASTORE_ABORT_DATA_MSG);
+    DEBUG_STREAM<<"DataStore::abort_data() - [END]"<<std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 void DataStore::process_data(DataBufferContainer* map_buffer)
 {
-	DEBUG_STREAM<<"DataStore::process_data() - [BEGIN]"<<std::endl;
-    set_state(Tango::RUNNING);       
-	post(DATASTORE_PROCESS_DATA_MSG, map_buffer, true);
-	DEBUG_STREAM<<"DataStore::process_data() - [END]"<<std::endl;	
+    DEBUG_STREAM<<"DataStore::process_data() - [BEGIN]"<<std::endl;
+    set_state(Tango::RUNNING);
+    post(DATASTORE_PROCESS_DATA_MSG, map_buffer, true);
+    DEBUG_STREAM<<"DataStore::process_data() - [END]"<<std::endl;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
@@ -509,7 +538,7 @@ void DataStore::on_process_data(DataBufferContainer& map_buffer)
     //DEBUG_STREAM<<"DataStore::on_process_data() - [BEGIN]"<<std::endl;
 
     try
-    {    
+    {
         if ((map_buffer.base()[0] != TAG_HEAD0) || (map_buffer.base()[1]!=TAG_HEAD1))
         {
             std::stringstream ss_msg;
@@ -813,7 +842,7 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
         error_msg << "Origin\t: " << ex.errors[0].origin << endl;
         error_msg << "Desc\t: " << ex.errors[0].desc << endl;
         error_msg << "Reason\t: " << ex.errors[0].reason << endl;
-        set_state(Tango::FAULT);           
+        set_state(Tango::FAULT);
         ERROR_STREAM << "Exception from - DataStore::process_message() : " << error_msg.str()<<endl;
         throw;
     }

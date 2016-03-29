@@ -97,7 +97,7 @@ public:
     DataStore(Tango::DeviceImpl *dev);
     ///dtor
     virtual ~DataStore();
-    void init(int nb_modules, int nb_channels, int nb_active_channels, int nb_pixels, double timebase);
+    void init(int nb_modules, int nb_channels, int nb_active_channels, int nb_pixels, int nb_bins, double timebase);
     void store_statistics(int module, int channel, int pixel, const std::string& acquisition_type, PixelData pix_data);
     void store_data(int module, int channel, int pixel, DataType* data, size_t length);    
 	void process_data(DataBufferContainer* map_buffer);
@@ -105,11 +105,14 @@ public:
     void abort_data(void);        
     void subscribe(class Controller* observer);
     void set_nb_pixels(int nb_pixels);
+	bool get_statistics_enabled(void);
+	void set_statistics_enabled(bool is_enabled);
 	
     ///getters
     int get_nb_modules();
     int get_nb_channels();
     int get_nb_pixels();
+	int get_nb_bins();
 	
     double get_timebase();    
 	long   get_current_pixel(int channel);	
@@ -161,7 +164,9 @@ private:
     int m_nb_modules;
     int m_nb_channels;
     int m_nb_pixels;
+	int m_nb_bins;
     double m_timebase;
+	bool m_is_statistics_enabled;
     class Controller* m_controller;
 };
 

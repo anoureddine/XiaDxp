@@ -57,6 +57,9 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
     int nb_pixels = data_store->get_nb_pixels();
     INFO_STREAM<<"nb_pixels = "<<nb_pixels<<endl;
 
+	int nb_bins = data_store->get_nb_bins();
+    INFO_STREAM<<"nb_bins = "<<nb_bins<<endl;
+	
     m_dyn_realtime.resize(total_channels);
     m_dyn_livetime.resize(total_channels);
     m_dyn_deadtime.resize(total_channels);
@@ -186,7 +189,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ss.str("");
         name = "channel";
         ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
-        m_dyn_channel[i] = new ChannelUserData(ss.str(), nb_pixels);
+        m_dyn_channel[i] = new ChannelUserData(ss.str(), nb_bins);
         create_attribute(	ss.str(),
                          Tango::DEV_ULONG,
                          Tango::SPECTRUM,

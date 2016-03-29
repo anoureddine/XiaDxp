@@ -234,7 +234,7 @@ void Controller::update_parameters(ConfigLoader conf)
 {
     INFO_STREAM << "Controller::update_parameters() - [BEGIN]" << endl;
     INFO_STREAM<<"conf.is_device_initialized = "<<conf.is_device_initialized<<std::endl;
-    //@@TODO : manage a strategy to update stream only if it is necessary  !!
+    //@@TODO : manage a strategy to update stream but only if it is necessary  !!
     if(
        (
        conf.stream_type             	!= m_conf.stream_type              ||
@@ -249,7 +249,7 @@ void Controller::update_parameters(ConfigLoader conf)
     {
         m_conf = conf;
         m_stream.reset(build_stream(m_conf.stream_type, m_conf.acquisition_mode));
-        //always in order to instatiate a new writer
+        //always in order to instantiate a new writer
         if(conf.is_device_initialized)
             m_stream->init(m_store);
     }
@@ -363,7 +363,6 @@ int Controller::get_nb_bins()
 {
     return m_acquisition->get_nb_bins();
 }
-
 
 // ============================================================================
 // Controller::get_nb_rois
@@ -488,7 +487,6 @@ void Controller::set_pixel_advance_mode(const std::string& mode, double ticks_pe
     m_acquisition->set_pixel_advance_mode(mode, ticks_per_pixel);
 }
 
-
 // ============================================================================
 // Controller::set_pixel_advance_mode
 // ============================================================================
@@ -573,7 +571,7 @@ yat::SharedPtr<DataStore> Controller::build_store()
 // ============================================================================
 Stream* Controller::build_stream(const std::string& type, const std::string& mode)
 {
-    INFO_STREAM << "Controller::build_stream()" << endl;
+    INFO_STREAM << "Controller::build_stream() - [BEGIN]" << endl;
     //reinit previous acquisition ! 
     Stream* stream;
     try
@@ -626,6 +624,7 @@ Stream* Controller::build_stream(const std::string& type, const std::string& mod
         ERROR_STREAM << df << endl;
         on_abort(df);
     }
+    INFO_STREAM << "Controller::build_stream() - [END]" << endl;
     return stream;
 }
 
@@ -766,6 +765,8 @@ void Controller::process_message(yat::Message& msg) throw (Tango::DevFailed)
                     //conf = msg.get_data<ConfigLoader>();
                     //build  the data store
                     m_store = build_store();
+                    //enable/disable writing statistics (read from Device Property)
+                    m_store->set_statistics_enabled(m_conf.stream_statistics_enabled);
                     //build  the tango attributes (statistics+channels)
                     m_attr_view.reset(build_attributes(m_conf.acquisition_mode));
                     //build  the acquisition (MCA/MAPPING)                    

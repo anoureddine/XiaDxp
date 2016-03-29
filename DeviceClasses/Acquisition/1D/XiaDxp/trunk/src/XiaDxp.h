@@ -177,6 +177,10 @@ public:
  *	Available for StreamNexus Only !
  */
 	string	__ExpertStreamWriteMode;
+/**
+ *	Enable/Disable write data statistics (triggers/icr/ocr/...) in Nexus File
+ */
+	Tango::DevBoolean	__ExpertStatisticsEnabled;
 //@}
 
     /**
