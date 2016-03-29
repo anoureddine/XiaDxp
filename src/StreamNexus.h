@@ -67,6 +67,7 @@ private:
 	int m_nb_acq_per_file;
     int m_nb_bins;
 	int m_nb_pixels;    
+	bool m_is_statistics_enabled;
 	yat::UniquePtr<nxcpp::DataStreamer> m_writer;
     std::vector<string> m_channel_names;
     std::vector<string> m_triggers_names;

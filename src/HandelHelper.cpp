@@ -396,7 +396,7 @@ void HandelHelper::set_dynamic_range(int channel, double value)
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------    
-double HandelHelper::get_num_map_pixels(int channel)
+int HandelHelper::get_num_map_pixels(int channel)
 {
     double dvalue = 0.0;
     const int state = xiaGetAcquisitionValues(channel, "num_map_pixels", &dvalue);
@@ -408,7 +408,7 @@ double HandelHelper::get_num_map_pixels(int channel)
                 +std::string("num_map_pixels")
                 +std::string("')")
                 );
-    return dvalue;
+    return (int)dvalue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -428,7 +428,7 @@ void HandelHelper::set_num_map_pixels(int channel, double value)
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------    
-double HandelHelper::get_num_map_pixels_per_buffer(int channel)
+int HandelHelper::get_num_map_pixels_per_buffer(int channel)
 {
     double dvalue = 0.0;
     const int state = xiaGetAcquisitionValues(channel, "num_map_pixels_per_buffer", &dvalue);
@@ -440,7 +440,7 @@ double HandelHelper::get_num_map_pixels_per_buffer(int channel)
                 +std::string("num_map_pixels_per_buffer")
                 +std::string("')")
                 );
-    return dvalue;
+    return (int)dvalue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

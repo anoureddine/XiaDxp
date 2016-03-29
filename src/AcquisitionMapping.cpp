@@ -30,7 +30,7 @@ AcquisitionMapping::AcquisitionMapping(Tango::DeviceImpl *dev, const std::string
     enable_periodic_msg(false);
     set_periodic_msg_period(MAPPING_TASK_PERIODIC_MS);
     m_pixel_advance_task.reset(new PixelAdvanceTask(m_device, m_helper), yat4tango::DeviceTaskExiter());
-	//@@TODO : enable this task_pixel_advance_task->go();
+    //@@TODO : enable this task_pixel_advance_task->go();
     m_module_info_array.clear();
     m_module_info_array.resize(1);
     m_num_map_pixels = 0;
@@ -65,6 +65,7 @@ void AcquisitionMapping::load_config_file(const std::string& file_name)
                      get_nb_channels()/get_nb_modules(),
                      get_nb_channels()/get_nb_modules(), //active_channels == nb_channels !
                      m_num_map_pixels,	// num map pixels in mode MAPPING
+                     get_nb_bins(),
                      1	//no timestamp for now
                      );
 
@@ -129,9 +130,9 @@ void AcquisitionMapping::stop_acquisition()
 {
     INFO_STREAM << "AcquisitionMapping::stop_acquisition() - [BEGIN]" << endl;
     // stop the advance pixel task
-    m_pixel_advance_task->stop();	
+    m_pixel_advance_task->stop();
     // stop the mapping acquisition
-    m_helper->stop_acquisition();	
+    m_helper->stop_acquisition();
     //- Post MAPPING_STOP_MSG in order to stop pixeladvance/acquisition/store
     yat::Message* msg = yat::Message::allocate(MAPPING_STOP_MSG, DEFAULT_MSG_PRIORITY, true);
     post(msg);
@@ -209,7 +210,7 @@ void AcquisitionMapping::readout_buffer(int module)
 {
     //DEBUG_STREAM<<"AcquisitionMapping::readout_buffer() - module["<<module<<"] - [BEGIN]"<<std::endl;
     //prepare a DataBuffer intended to hold the buffer from the board
-	yat::Timer t1;	
+    yat::Timer t1;
     m_module_info_array[module].m_is_pixel_readout = true;
     DataBufferContainer* map_buffer = new DataBufferContainer(module, m_module_info_array[module].m_buffer_length);
 
@@ -228,13 +229,13 @@ void AcquisitionMapping::readout_buffer(int module)
     INFO_STREAM    << "\t- send Data Buffer of pixels [" << starting_pixel<< " : " << starting_pixel + nb_pixels - 1<< "] to Data Store."<< std::endl;
 
     //process the buffer    
-	m_store->process_data(map_buffer);
-    m_current_pixel = starting_pixel+nb_pixels; 
-    INFO_STREAM<<"\t- duration readout buffer : "<<t1.elapsed_msec()<<" (ms)"<<std::endl;	    
-    INFO_STREAM<<" "<<std::endl;	  
+    m_store->process_data(map_buffer);
+    m_current_pixel = starting_pixel+nb_pixels;
+    INFO_STREAM<<"\t- duration readout buffer : "<<t1.elapsed_msec()<<" (ms)"<<std::endl;
+    INFO_STREAM<<" "<<std::endl;
     //DEBUG_STREAM<<"AcquisitionMapping::readout_buffer() - module["<<module<<"] - [END]"<<std::endl;
 }
-   
+
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 void AcquisitionMapping::switch_buffer(int module)
@@ -291,7 +292,7 @@ void AcquisitionMapping::process_message(yat::Message& msg) throw (Tango::DevFai
             case yat::TASK_INIT:
             {
                 INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;                
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 INFO_STREAM << "-> AcquisitionMapping::TASK_INIT" << endl;
                 INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 set_state(Tango::STANDBY);
@@ -337,9 +338,9 @@ void AcquisitionMapping::process_message(yat::Message& msg) throw (Tango::DevFai
                 enable_periodic_msg(false);
                 //stop/abort  storage of data, i.e inform stream to close/abort its current buffer !
                 if((m_current_pixel >= m_num_map_pixels) && is_all_pixel_read_out())
-                    m_store->close_data();//close if all pixels are acqired
+                    m_store->close_data(); //close if all pixels are acqired
                 else
-                    m_store->abort_data();//abort the acqusition
+                    m_store->abort_data(); //abort the acqusition
             }
                 break;
                 //-----------------------------------------------------

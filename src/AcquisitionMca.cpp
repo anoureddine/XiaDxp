@@ -47,9 +47,10 @@ void AcquisitionMca::load_config_file(const std::string& file_name)
     m_helper->load_config_file(file_name);
     //init DataStore with new configurations    
     m_store->init	(get_nb_modules(), //number of modules
-                     get_nb_channels()/get_nb_modules(),//number of channels per module (always 4 for xmap))
+                     get_nb_channels()/get_nb_modules(), //number of channels per module (always 4 for xmap))
                      get_nb_channels()/get_nb_modules(), //active_channels == nb_channels !
                      1,	//always 1 pixel in mode MCA
+                     get_nb_bins(),
                      1	//no timestamp for now
                      );
     INFO_STREAM << "AcquisitionMca::load_config_file() - [END]" << endl;
@@ -73,7 +74,7 @@ void AcquisitionMca::start_acquisition(short accumulate)
 
     m_helper->start_acquisition(accumulate);
     enable_periodic_msg(true); //only when start is done    
-	INFO_STREAM<<"collecting in progress ..."<<endl;
+    INFO_STREAM<<"collecting in progress ..."<<endl;
     INFO_STREAM << "AcquisitionMca::start_acquisition() - [END]" << endl;
 }
 
@@ -221,7 +222,7 @@ void AcquisitionMca::process_message(yat::Message& msg) throw (Tango::DevFailed)
             {
                 INFO_STREAM<<" "<<std::endl;
                 INFO_STREAM<<"--------------------------------------------"<<std::endl;
-                INFO_STREAM << "-> AcquisitionMca::MCA_STOP_MSG" << endl;                
+                INFO_STREAM << "-> AcquisitionMca::MCA_STOP_MSG" << endl;
                 INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 // stop xia acquisition
                 m_helper->stop_acquisition();

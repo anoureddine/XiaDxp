@@ -86,9 +86,9 @@ public:
     virtual void set_peaking_time(int channel, double value) = 0;
     virtual double get_dynamic_range(int channel) = 0;
     virtual void set_dynamic_range(int channel, double value) = 0;
-    virtual double get_num_map_pixels(int channel) = 0;
+    virtual int get_num_map_pixels(int channel) = 0;
     virtual void set_num_map_pixels(int channel, double value) = 0;
-    virtual double get_num_map_pixels_per_buffer(int channel) = 0;
+    virtual int get_num_map_pixels_per_buffer(int channel) = 0;
     virtual void set_num_map_pixels_per_buffer(int channel, double value) = 0;
     virtual double get_number_of_scas(int channel) = 0;
     virtual void set_number_of_scas(int channel, double value) = 0;    

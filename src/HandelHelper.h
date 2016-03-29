@@ -112,9 +112,9 @@ public:
     void set_peaking_time(int channel, double value);
     double get_dynamic_range(int channel);
     void set_dynamic_range(int channel, double value);
-    double get_num_map_pixels(int channel);
+    int get_num_map_pixels(int channel);
     void set_num_map_pixels(int channel, double value);
-    double get_num_map_pixels_per_buffer(int channel);
+    int get_num_map_pixels_per_buffer(int channel);
     void set_num_map_pixels_per_buffer(int channel, double value);
     double get_number_of_scas(int channel);
     void set_number_of_scas(int channel, double value);
