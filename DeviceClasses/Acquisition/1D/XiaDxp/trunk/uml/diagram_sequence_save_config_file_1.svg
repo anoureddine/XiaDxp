@@ -27,8 +27,8 @@
         <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="34" x="136.5" y="66.7139">VIEW</text>
         <rect fill="#FFA500" height="413.6797" style="stroke: #A80036; stroke-width: 1.0;" width="146" x="273.5" y="53.2188"/>
         <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="88" x="304.5" y="66.7139">CONTROLLER</text>
-        <rect fill="#ADD8E6" height="413.6797" style="stroke: #A80036; stroke-width: 1.0;" width="266.5" x="492.5" y="53.2188"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="46" x="602.75" y="66.7139">MODEL</text>
+        <rect fill="#ADD8E6" height="413.6797" style="stroke: #A80036; stroke-width: 1.0;" width="263.5" x="492.5" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="46" x="601.25" y="66.7139">MODEL</text>
         <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="25" x2="25" y1="136.8281" y2="379.2891"/>
         <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="153" x2="153" y1="136.8281" y2="379.2891"/>
         <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="346.5" x2="346.5" y1="136.8281" y2="379.2891"/>
@@ -52,10 +52,10 @@
         <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="503.5" y="121.752">Acquisition</text>
         <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="82" x="496.5" y="378.2891"/>
         <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="503.5" y="399.8223">Acquisition</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="652" y="100.2188"/>
-        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="659" y="121.752">HandelHelper</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="652" y="378.2891"/>
-        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="659" y="399.8223">HandelHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="655" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="662" y="121.752">DriverHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="655" y="378.2891"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="662" y="399.8223">DriverHelper</text>
         <rect fill="#FFFFFF" filter="url(#f1)" height="192.4609" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="148.5" y="168.8281"/>
         <rect fill="#FFFFFF" filter="url(#f1)" height="162.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="341.5" y="199.1797"/>
         <rect fill="#FFFFFF" filter="url(#f1)" height="117.7578" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="534.5" y="229.5313"/>
@@ -77,7 +77,7 @@
         <polygon fill="#FBFB77" filter="url(#f1)" points="713,273.2344,713,332.2344,1084,332.2344,1084,283.2344,1074,273.2344,713,273.2344" style="stroke: #A80036; stroke-width: 1.0;"/>
         <line style="stroke: #A80036; stroke-width: 1.0;" x1="1074" x2="1074" y1="273.2344" y2="283.2344"/>
         <line style="stroke: #A80036; stroke-width: 1.0;" x1="1084" x2="1074" y1="283.2344" y2="283.2344"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="331" x="719" y="291.7295">Handel library save all modified parameters in the the *.ini</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="323" x="719" y="291.7295">Driver library save all modified parameters in the the *.ini</text>
         <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="350" x="719" y="308.0811">Parameters can be modified by user through tango attributes</text>
         <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="182" x="719" y="324.4326">This operation takes &lt;1 second</text>
         <polygon fill="#A80036" points="362.5,343.2891,352.5,347.2891,362.5,351.2891,358.5,347.2891" style="stroke: #A80036; stroke-width: 1.0;"/>

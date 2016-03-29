@@ -15,11 +15,11 @@ box "       CONTROLLER      " #Orange
 end box
 
 participant "Acquisition" as Acq
-participant "HandelHelper" as Handel
+participant "DriverHelper" as Driver
 participant "DataStore" as Store
 box "MODEL" #LightBlue
 	participant Acq
-    participant Handel
+    participant Driver
     participant Store
 end box
 
@@ -44,14 +44,14 @@ deactivate Store
 Ctrl -> Acq : load_config(file_name)
 activate Acq
 
-Acq -> Handel : load_config(file_name)
-activate Handel
+Acq -> Driver : load_config(file_name)
+activate Driver
 
-Handel --> Acq 
-deactivate Handel
+Driver --> Acq 
+deactivate Driver
 
 note right 
-        Handel library load the *.ini file in the xMap/FalconX board
+        Driver library load the *.ini file in the xMap/FalconX board
         in order to configure acquisition (MCA/MAPPING/...)
         This operation takes >3 seconds
 end note

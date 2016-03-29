@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="686pt" style="width:1110px;height:686px;" version="1.1" viewBox="0 0 1110 686" width="1110pt">
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="686pt" style="width:1102px;height:686px;" version="1.1" viewBox="0 0 1102 686" width="1102pt">
     <defs>
         <filter height="300%" id="f1" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
@@ -8,17 +8,17 @@
         </filter>
     </defs>
     <g>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="374" x="367.25" y="24.5332">XiaDxp - Diagram Sequence  : LoadConfig - 2015/09/15</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="529.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="534.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="539.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="544.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="549.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="554.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="559.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="564.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="569.25" y="42.1426">*</text>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="574.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="374" x="363.25" y="24.5332">XiaDxp - Diagram Sequence  : LoadConfig - 2015/09/15</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="525.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="530.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="535.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="540.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="545.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="550.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="555.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="560.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="565.25" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="570.25" y="42.1426">*</text>
         <rect fill="#FFFFFF" filter="url(#f1)" height="411.2188" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="148.5" y="168.8281"/>
         <rect fill="#FFFFFF" filter="url(#f1)" height="380.8672" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="379.5" y="199.1797"/>
         <rect fill="#FFFFFF" filter="url(#f1)" height="162.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="570.5" y="403.9375"/>
@@ -55,10 +55,10 @@
         <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="539.5" y="121.752">Acquisition</text>
         <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="82" x="532.5" y="597.0469"/>
         <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="539.5" y="618.5801">Acquisition</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="686" y="100.2188"/>
-        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="693" y="121.752">HandelHelper</text>
-        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="686" y="597.0469"/>
-        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="693" y="618.5801">HandelHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="689" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="696" y="121.752">DriverHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="689" y="597.0469"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="696" y="618.5801">DriverHelper</text>
         <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="807.5" y="100.2188"/>
         <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="814.5" y="121.752">DataStore</text>
         <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="807.5" y="597.0469"/>
@@ -103,10 +103,10 @@
         <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="128" x="587.5" y="429.7842">load_config(file_name)</text>
         <polygon fill="#A80036" points="591.5,474.168,581.5,478.168,591.5,482.168,587.5,478.168" style="stroke: #A80036; stroke-width: 1.0;"/>
         <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="585.5" x2="736.5" y1="478.168" y2="478.168"/>
-        <polygon fill="#FBFB77" filter="url(#f1)" points="747,447.6406,747,506.6406,1101,506.6406,1101,457.6406,1091,447.6406,747,447.6406" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1091" x2="1091" y1="447.6406" y2="457.6406"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1101" x2="1091" y1="457.6406" y2="457.6406"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="333" x="753" y="466.1357">Handel library load the *.ini file in the xMap/FalconX board</text>
+        <polygon fill="#FBFB77" filter="url(#f1)" points="747,447.6406,747,506.6406,1093,506.6406,1093,457.6406,1083,447.6406,747,447.6406" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1083" x2="1083" y1="447.6406" y2="457.6406"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1093" x2="1083" y1="457.6406" y2="457.6406"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="325" x="753" y="466.1357">Driver library load the *.ini file in the xMap/FalconX board</text>
         <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="301" x="753" y="482.4873">in order to configure acquisition (MCA/MAPPING/...)</text>
         <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="189" x="753" y="498.8389">This operation takes &gt;3 seconds</text>
         <polygon fill="#A80036" points="831.5,533.6953,841.5,537.6953,831.5,541.6953,835.5,537.6953" style="stroke: #A80036; stroke-width: 1.0;"/>
