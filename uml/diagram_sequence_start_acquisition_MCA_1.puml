@@ -20,11 +20,11 @@ box "       CONTROLLER      " #Orange
 end box
 
 participant "Acquisition" as Acq
-participant "HandelHelper" as Handel
+participant "DriverHelper" as Driver
 participant "DataStore" as Store
 box "MODEL" #LightBlue
 	participant Acq
-	participant Handel
+	participant Driver
     participant Store
 end box
 
@@ -38,11 +38,11 @@ activate Ctrl
 Ctrl -> Acq : start_acquisition()
 activate Acq
 
-Acq -> Handel : start_acquisition()
-activate Handel
+Acq -> Driver : start_acquisition()
+activate Driver
 
-Handel --> Acq 
-deactivate Handel
+Driver --> Acq 
+deactivate Driver
 
 Acq --> Ctrl
 deactivate Acq
@@ -58,21 +58,21 @@ end note
 activate Acq
 
 loop while  RUNNING & every 100 ms (PERIODIC Task message) & for each channel
-            Acq -> Handel : get_run_data(num_channel, statistics name)
-            activate Handel
+            Acq -> Driver : get_run_data(num_channel, statistics name)
+            activate Driver
 
-            Handel --> Acq :  realtime/livetime/icr/ocr/...
-            deactivate Handel
+            Driver --> Acq :  realtime/livetime/icr/ocr/...
+            deactivate Driver
 
             Acq -> Store: store_statistics(num_channel)
             activate Store
             deactivate Store
 
-            Acq -> Handel : get_mca_data(num_channel)
-            activate Handel
+            Acq -> Driver : get_mca_data(num_channel)
+            activate Driver
 
-            Handel --> Acq : array of channel data
-            deactivate Handel
+            Driver --> Acq : array of channel data
+            deactivate Driver
 
 
             Acq -> Store: store_data(num_channel)

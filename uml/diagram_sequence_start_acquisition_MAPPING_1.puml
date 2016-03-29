@@ -20,11 +20,11 @@ box "       CONTROLLER      " #Orange
 end box
 
 participant "Acquisition" as Acq
-participant "HandelHelper" as Handel
+participant "DriverHelper" as Driver
 participant "DataStore" as Store
 box "MODEL" #LightBlue
 	participant Acq
-	participant Handel
+	participant Driver
     participant Store
 end box
 
@@ -38,11 +38,11 @@ activate Ctrl
 Ctrl -> Acq : start_acquisition()
 activate Acq
 
-Acq -> Handel : start_acquisition()
-activate Handel
+Acq -> Driver : start_acquisition()
+activate Driver
 
-Handel --> Acq 
-deactivate Handel
+Driver --> Acq 
+deactivate Driver
 
 Acq --> Ctrl
 deactivate Acq
@@ -58,20 +58,20 @@ end note
 activate Acq
 
 loop while  current_pixel < nbPixels & every 5 ms (PERIODIC Task message) & for each module
-            Acq -> Handel : is_buffer_full(module, buffer_A or buffer_B)
-            activate Handel
-            Handel --> Acq : true
-            deactivate Handel
+            Acq -> Driver : is_buffer_full(module, buffer_A or buffer_B)
+            activate Driver
+            Driver --> Acq : true
+            deactivate Driver
 
-            Acq -> Handel : get_buffer(module, buffer_A or buffer_B, DataBufferContainer)
-            activate Handel
-            Handel --> Acq : raw data buffer (DataBufferContainer)
-            deactivate Handel
+            Acq -> Driver : get_buffer(module, buffer_A or buffer_B, DataBufferContainer)
+            activate Driver
+            Driver --> Acq : raw data buffer (DataBufferContainer)
+            deactivate Driver
 
-            Acq -> Handel : buffer_done(module, buffer_A or buffer_B)
-            activate Handel
-            Handel --> Acq
-            deactivate Handel
+            Acq -> Driver : buffer_done(module, buffer_A or buffer_B)
+            activate Driver
+            Driver --> Acq
+            deactivate Driver
 
             Acq -> Store: process_data(DataBufferContainer)
             activate Store

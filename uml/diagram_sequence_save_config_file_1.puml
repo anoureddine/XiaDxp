@@ -13,10 +13,10 @@ box "       CONTROLLER      " #Orange
 end box
 
 participant "Acquisition" as Acq
-participant "HandelHelper" as Handel
+participant "DriverHelper" as Driver
 box "MODEL" #LightBlue
 	participant Acq
-	participant Handel
+	participant Driver
 end box
 
 User -> Device: SaveConfig(alias)
@@ -29,14 +29,14 @@ activate Ctrl
 Ctrl -> Acq : save_config(file_name)
 activate Acq
 
-Acq -> Handel : save_config(file_name)
-activate Handel
+Acq -> Driver : save_config(file_name)
+activate Driver
 
-Handel --> Acq
-deactivate Handel
+Driver --> Acq
+deactivate Driver
 
 note right 
-        Handel library save all modified parameters in the the *.ini
+        Driver library save all modified parameters in the the *.ini
         Parameters can be modified by user through tango attributes
         This operation takes <1 second
 end note

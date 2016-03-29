@@ -6,6 +6,7 @@ skinparam state {
     StartColor Black
     EndColor Black
     BackgroundColor Peru
+    BackgroundColor<<Off>> White
     BackgroundColor<<Standby>> Yellow
     BackgroundColor<<Fault>> Red
     BackgroundColor<<Running>> Green
@@ -15,10 +16,10 @@ skinparam state {
 }
 
 
-[*] -> Init
-Init : do/Load_Config_File(memorizedAlias)
-Init --> Calibrating <<Calibrating>> : [Succeeded]
-Init --> Fault <<Fault>> : [Failed]
+[*] -> Off <<Off>>
+Off : do/Load_Config_File(memorizedAlias)
+Off --> Calibrating <<Calibrating>> : [Succeeded]
+Off --> Fault <<Fault>> : [Failed]
 
 Calibrating : do/xiaInit("file.ini")
 Calibrating : do/xiaStartSystem()

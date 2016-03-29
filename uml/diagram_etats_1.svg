@@ -20,9 +20,9 @@
         <text fill="#000000" font-family="sans-serif" font-size="20.2247" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="323.5955" y="46.4339">*</text>
         <text fill="#000000" font-family="sans-serif" font-size="20.2247" lengthAdjust="spacingAndGlyphs" textLength="7.8652" x="331.4607" y="46.4339">*</text>
         <ellipse cx="195.318" cy="88.5183" fill="#000000" filter="url(#f1)" rx="11.236" ry="11.236" style="stroke: none; stroke-width: 1.1235955056179776;"/>
-        <rect fill="#CD853F" filter="url(#f1)" height="57.5195" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="260.6742" x="285.2056" y="59.8666"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="57.5195" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="260.6742" x="285.2056" y="59.8666"/>
         <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="285.2056" x2="545.8798" y1="89.1909" y2="89.1909"/>
-        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="20.2247" x="405.4303" y="80.4967">Init</text>
+        <text fill="#000000" font-family="Arial" font-size="15.7303" lengthAdjust="spacingAndGlyphs" textLength="21.3483" x="404.8685" y="80.4967">Off</text>
         <text fill="#000000" font-family="sans-serif" font-size="13.4831" lengthAdjust="spacingAndGlyphs" textLength="238.2022" x="290.8236" y="108.8055">do/Load_Config_File(memorizedAlias)</text>
         <rect fill="#800080" filter="url(#f1)" height="74.4788" rx="14.0449" ry="14.0449" style="stroke: #808080; stroke-width: 1.6853932584269664;" width="141.573" x="180.7112" y="204.8104"/>
         <line style="stroke: #808080; stroke-width: 1.6853932584269664;" x1="180.7112" x2="322.2843" y1="234.1347" y2="234.1347"/>
