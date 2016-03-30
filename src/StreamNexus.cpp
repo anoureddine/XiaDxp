@@ -35,7 +35,6 @@ StreamNexus::~StreamNexus()
 {
     INFO_STREAM << "StreamNexus::~StreamNexus() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
-    m_writer.reset();
     INFO_STREAM << "StreamNexus::~StreamNexus() - [END]" << endl;
 }
 
