@@ -832,7 +832,7 @@ void XiaDxp::write_streamType(Tango::WAttribute &attr)
                                            "XiaDxp::write_streamType()");
         }
 
-        m_conf.stream_type = attr_streamType_write;
+        m_conf.stream_type = currentType;
         yat4tango::PropertyHelper::set_property(this, "__MemorizedStreamType", attr_streamType_write);
     }
     catch(Tango::DevFailed& df)

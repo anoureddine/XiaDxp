@@ -235,23 +235,50 @@ void Controller::update_parameters(ConfigLoader conf)
     INFO_STREAM << "Controller::update_parameters() - [BEGIN]" << endl;
     INFO_STREAM<<"conf.is_device_initialized = "<<conf.is_device_initialized<<std::endl;
     //@@TODO : manage a strategy to update stream but only if it is necessary  !!
-    if(
-       (
-       conf.stream_type             	!= m_conf.stream_type              ||
-       conf.stream_path             	!= m_conf.stream_path              ||
-       conf.stream_file             	!= m_conf.stream_file              ||
-       conf.stream_nb_data_per_acq  	!= m_conf.stream_nb_data_per_acq   ||
-       conf.stream_nb_acq_per_file  	!= m_conf.stream_nb_acq_per_file
-       )
-       ||
-       conf.is_device_initialized 	== true
-       )
+    if( conf.is_device_initialized 	== true)
     {
-        m_conf = conf;
-        m_stream.reset(build_stream(m_conf.stream_type, m_conf.acquisition_mode));
+        std::transform(conf.stream_type.begin(), conf.stream_type.end(), conf.stream_type.begin(), ::toupper);        
+        //need to build a new type of stream (NEXUS_STREAM/LOG_STREAM/NO_STREAM/...) 
+        if(conf.stream_type != m_conf.stream_type)
+        {
+            m_conf.stream_type = conf.stream_type;
+            m_stream.reset(build_stream(m_conf.stream_type, m_conf.acquisition_mode));
+        }
+
+        //need to "init" in order to refresh parameters within the nexus stream
+        if(conf.stream_path != m_conf.stream_path)
+        {
+            m_conf.stream_path = conf.stream_path;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_target_path(m_conf.stream_path);
+        }
+
+        //need to "init" in order to refresh parameters within the nexus stream
+        if(conf.stream_file != m_conf.stream_file)
+        {
+            m_conf.stream_file = conf.stream_file;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_file_name(m_conf.stream_file);
+        }
+
+        //need to "init" in order to refresh parameters within the nexus stream
+        if(conf.stream_nb_data_per_acq != m_conf.stream_nb_data_per_acq)
+        {
+            m_conf.stream_nb_data_per_acq = conf.stream_nb_data_per_acq;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_nb_data_per_acq(m_conf.stream_nb_data_per_acq);
+        }
+
+        //need to "init" in order to refresh parameters within the nexus stream
+        if(conf.stream_nb_acq_per_file != m_conf.stream_nb_acq_per_file)
+        {
+            m_conf.stream_nb_acq_per_file = conf.stream_nb_acq_per_file;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_nb_acq_per_file(m_conf.stream_nb_acq_per_file);
+        }
+
         //always in order to instantiate a new writer
-        if(conf.is_device_initialized)
-            m_stream->init(m_store);
+        m_stream->init(m_store);
     }
 
     INFO_STREAM << "Controller::update_parameters() - [END]" << endl;
@@ -576,11 +603,11 @@ Stream* Controller::build_stream(const std::string& type, const std::string& mod
     Stream* stream;
     try
     {
-        std::string type_stream = type;
-        std::transform(type_stream.begin(), type_stream.end(), type_stream.begin(), ::toupper);
+        std::string stream_type = type;
+        std::transform(stream_type.begin(), stream_type.end(), stream_type.begin(), ::toupper);
 
         //create the stream
-        if(type_stream == "NEXUS_STREAM")//NEXUS_STREAM
+        if(stream_type == "NEXUS_STREAM")//NEXUS_STREAM
         {
             if(mode == "MAPPING") //Nexus is available in MAPPING mode only
             {
@@ -596,11 +623,11 @@ Stream* Controller::build_stream(const std::string& type, const std::string& mod
                 stream = new StreamNo(m_device);
             }
         }
-        else if(type_stream == "LOG_STREAM")//LOG_STREAM
+        else if(stream_type == "LOG_STREAM")//LOG_STREAM
         {
             stream = new StreamLog(m_device);
         }
-        else if(type_stream == "NO_STREAM")//NO_STREAM
+        else if(stream_type == "NO_STREAM")//NO_STREAM
         {
             stream = new StreamNo(m_device);
         }
