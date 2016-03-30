@@ -48,7 +48,6 @@ void AcquisitionMca::load_config_file(const std::string& file_name)
     //init DataStore with new configurations    
     m_store->init	(get_nb_modules(), //number of modules
                      get_nb_channels()/get_nb_modules(), //number of channels per module (always 4 for xmap))
-                     get_nb_channels()/get_nb_modules(), //active_channels == nb_channels !
                      1,	//always 1 pixel in mode MCA
                      get_nb_bins(),
                      1	//no timestamp for now

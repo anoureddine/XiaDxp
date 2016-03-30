@@ -54,7 +54,7 @@ DataStore::~DataStore()
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::init
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::init(int nb_modules, int nb_channels, int nb_active_channels, int nb_pixels, int nb_bins, double timebase)
+void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, double timebase)
 {
     INFO_STREAM << "DataStore::init() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
