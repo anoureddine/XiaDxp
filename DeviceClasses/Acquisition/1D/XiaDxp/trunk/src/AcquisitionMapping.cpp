@@ -63,7 +63,6 @@ void AcquisitionMapping::load_config_file(const std::string& file_name)
     //init DataStore with new configurations
     m_store->init	(get_nb_modules(),
                      get_nb_channels()/get_nb_modules(),
-                     get_nb_channels()/get_nb_modules(), //active_channels == nb_channels !
                      m_num_map_pixels,	// num map pixels in mode MAPPING
                      get_nb_bins(),
                      1	//no timestamp for now

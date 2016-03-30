@@ -264,8 +264,7 @@ void StreamNexus::update_data(int ichannel, yat::SharedPtr<DataStore> data_store
     //DEBUG_STREAM<<"\t- Store statistics : channel "<<ichannel<<endl;
     yat::MutexLock scoped_lock(m_data_lock);
     if(m_is_statistics_enabled)
-    {
-        //@@TODO add trigger_livetime in Nexus file !!    
+    {        
         store_statistics(data_store->get_nb_modules(),
                          ichannel,
                          data_store->get_nb_pixels(),

@@ -97,7 +97,7 @@ public:
     DataStore(Tango::DeviceImpl *dev);
     ///dtor
     virtual ~DataStore();
-    void init(int nb_modules, int nb_channels, int nb_active_channels, int nb_pixels, int nb_bins, double timebase);
+    void init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, double timebase);
     void store_statistics(int module, int channel, int pixel, const std::string& acquisition_type, PixelData pix_data);
     void store_data(int module, int channel, int pixel, DataType* data, size_t length);    
 	void process_data(DataBufferContainer* map_buffer);
@@ -152,9 +152,6 @@ private:
     void set_state(Tango::DevState state);
     void set_status(const std::string& status);    
     ///
-//    inline int GET_CHANNEL_CLUSTER(int module, int channel)   {return (module*4+channel);}
-//    inline int GET_MODULE_FROM_CHANNEL_CLUSTER(int channel)   {return ((int)channel/(int)4);}
-//    inline int GET_CHANNEL_FROM_CHANNEL_CLUSTER(int channel)  {return ((int)channel%(int)4);}
 
     Tango::DevState m_state;
     std::stringstream m_status;
