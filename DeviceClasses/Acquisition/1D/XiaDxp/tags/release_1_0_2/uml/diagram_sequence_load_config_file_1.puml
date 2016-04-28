@@ -1,0 +1,74 @@
+@startuml
+
+title <b>XiaDxp - Diagram Sequence  : LoadConfig - 2015/09/15</b>\n**********************************************
+
+actor User
+
+participant "Device" as Device
+box "VIEW" #LightGreen
+	participant Device
+end box
+
+participant "Controller" as Ctrl
+box "       CONTROLLER      " #Orange
+	participant Ctrl
+end box
+
+participant "Acquisition" as Acq
+participant "DriverHelper" as Driver
+participant "DataStore" as Store
+box "MODEL" #LightBlue
+	participant Acq
+    participant Driver
+    participant Store
+end box
+
+User -> Device: LoadConfig(alias)
+activate Device
+
+Device -> Ctrl: load_config(mode, file_name)
+activate Ctrl
+
+Ctrl -> Ctrl: <<build Store>>
+Ctrl -> Ctrl: <<build Acquisition>>
+Ctrl -> Ctrl: <<build Stream>>
+
+
+
+Ctrl -> Store : subscribe(this)
+activate Store
+
+Store --> Ctrl : 
+deactivate Store
+
+Ctrl -> Acq : load_config(file_name)
+activate Acq
+
+Acq -> Driver : load_config(file_name)
+activate Driver
+
+Driver --> Acq 
+deactivate Driver
+
+note right 
+        Driver library load the *.ini file in the xMap/FalconX board
+        in order to configure acquisition (MCA/MAPPING/...)
+        This operation takes >3 seconds
+end note
+
+Acq -> Store : init(nb_modules, nb_channels, nb_pixels)
+activate Store
+
+Store --> Acq : 
+deactivate Store
+
+Acq --> Ctrl : 
+deactivate Acq
+
+
+Ctrl --> Device : 
+deactivate Ctrl
+
+deactivate Device
+
+@enduml

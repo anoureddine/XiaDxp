@@ -1,0 +1,231 @@
+@startuml
+
+title <b>XiaDxp - Diagram Class - 2016/02/24</b>\n**********************************************
+
+abstract class DeviceTask1 {
+}
+
+
+abstract class DeviceTask2 {
+}
+
+abstract class Acquisition{
+    +load_config(string& file) = 0;
+    +save_config(string& file) = 0;
+    +start() = 0;
+    +stop() = 0;
+    +DevState get_state();
+    +int get_nb_modules(); 
+    +int get_nb_channels();
+    +int get_nb_bins();
+    __
+    #process_message() = 0;
+}
+
+class AcquisitionMca {
+    +load_config(string& file);
+    +save_config(string& file);
+    +start();
+    +stop();
+    __
+    #process_message();
+    __
+    -collect_data();
+}
+
+class AcquisitionMapping {
+    +load_config(string& file);
+    +save_config(string& file);
+    +start();
+    +stop();
+    __
+    #process_message();
+    __
+    -collect_data();
+    -check_buffer(int module);
+    -readout_buffer(int module);
+    -switch_buffer(int module);
+}
+
+class DriverHelper {
+    +load_config_file(string& file) = 0;
+    +save_config_file(string& file) = 0;
+    +start_acquisition(short accumulate) = 0;
+    +stop_acquisition() = 0;
+    +int get_nb_modules() = 0;
+    +int get_nb_channels() = 0;   
+    +int get_nb_bins() = 0;
+    +State get_state() = 0;
+    +is_running() = 0;
+}
+
+class HandelHelper {
+    +load_config_file(string& file);
+    +save_config_file(string& file);
+    +start_acquisition(short accumulate);
+    +stop_acquisition();
+    +int get_nb_modules();
+    +int get_nb_channels();   
+    +int get_nb_bins();
+    +State get_state();
+    +is_running();
+}
+
+class SimulatorHelper {
+    +load_config_file(string& file);
+    +save_config_file(string& file);
+    +start_acquisition(short accumulate);
+    +stop_acquisition();
+    +int get_nb_modules();
+    +int get_nb_channels();   
+    +int get_nb_bins();
+    +State get_state();
+    +is_running();
+}
+    
+abstract class Stream {
+    +init(DataStore*) = 0;
+    +open() = 0;
+    +close() = 0;
+    +abort() = 0;
+    +update_data(int channel, DataStore*) = 0;
+}
+
+class StreamNo {
+    +init(DataStore*);
+    +open();
+    +close();
+    +abort();
+    +update_data(int channel, DataStore*);
+}
+
+class StreamLog {
+    +init(DataStore*);
+    +open();
+    +close();
+    +abort();
+    +update_data(int channel, DataStore*);
+}
+
+class StreamNexus {
+    +init(DataStore*);
+    +open();
+    +close();
+    +abort();
+    +update_data(int channel, DataStore*);
+    +nexus_reset_file_index();    
+    +set_target_path(const string& target_path);
+    +set_file_name(const string& file_name);
+    +set_write_mode(const string& write_mode);
+    +set_nb_data_per_acq(int nb_bins);
+    +set_nb_acq_per_file(int nb_acq_per_file);
+    __
+    -store_statistics(int module, int channel, int pixel,...);
+    -store_data(int module,int channel,	int pixel, DataType* data,size_t length);
+}
+
+abstract AttrView {
+    +init(DataStore*) = 0;
+    +update_data(int channel, DataStore*) = 0;
+    __
+    #init_common_attributes(DataStore*);
+    #update_common_attributes(DataStore*);
+}
+
+class AttrViewMca {
+    +init(DataStore*);
+    +update_data(int channel, DataStore*);
+}
+
+class AttrViewMapping {
+    +init(DataStore*);
+    +update_data(int channel, DataStore*);
+}
+
+class DataStore {
+    +init(int nb_channels, int nb_pixels, double timebase);
+    +start();
+    +stop();
+    +process_data(DataBufferContainer* map_buffer);    
+    +close_data();
+    +abort_data();
+    +subscribe(Controller*);
+    +store_statistics(int channel, int pixel, string& acq_type, PixelData pix_data);
+    +store_data(int channel, int pixel, DataType* data, size_t length);
+    +void set_nb_pixels(int nb_pixels);
+    +int get_nb_pixels();
+	+vector<DataType> get_channel_data(int channel);
+    +double get_trigger_livetime(int channel);
+	+double get_realtime(int channel);
+	+double get_livetime(int channel);
+	+double get_output_count_rate(int channel);
+	+double get_input_count_rate(int channel);
+	+double get_deadtime(int channel);
+    +unsigned long get_triggers(int channel);
+	+unsigned long get_events(int channel);
+    __
+    #process_message();
+    __
+    -notify(num_channel);
+    -on_close();
+    -on_abort();
+    -on_process_data(DataBufferContainer& map_buffer);
+}
+
+
+class Controller {
+    +load_config(string& mode, string& file);
+    +save_config(string& file);
+    +start();
+    +stop();
+    +abort();
+    +get_state();
+    +int get_nb_modules();    
+    +int get_nb_channels();    
+    +int get_nb_bins();
+    +update_parameters(ConfigLoader conf);
+    +update_data(int channel);
+    __
+    -on_abort(Tango::DevFailed df);
+    -on_alarm(Tango::DevFailed df);
+    -on_fault(Tango::DevFailed df);    
+}
+
+
+class XiaDxp <<tango device>> {
+    +load_config(Tango::DevString alias);
+    +save_config();
+    +start();
+    +stop();
+    +set_rois_from_list(DevVarStringArray list);  
+    +set_rois_from_file(DevString file);
+    +DevVarStringArray get_rois();
+    +remove_rois(DevLong channel);
+    +stream_reset_index();
+}
+
+DeviceTask1 <|-- Acquisition
+Acquisition <|-- AcquisitionMca
+Acquisition <|-- AcquisitionMapping
+
+DeviceTask2 <|-- DataStore
+
+Stream <|-- StreamNexus
+Stream <|-- StreamLog
+Stream <|-- StreamNo
+
+AttrView <|-- AttrViewMca
+AttrView <|-- AttrViewMapping
+
+DriverHelper <|-- HandelHelper
+DriverHelper <|-- SimulatorHelper
+
+XiaDxp -down-> Controller : (load, start, stop,...)
+Controller -> Acquisition : (load, start, stop,...)
+Acquisition *-- "DriverHelper" : use
+Acquisition -> DataStore : store_data()
+
+DataStore -> Controller : update_data(this)
+Controller -left-> Stream : update_data(DataStore*)
+Controller -left-> AttrView : update_data(DataStore*)
+@enduml
