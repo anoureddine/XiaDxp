@@ -8,7 +8,7 @@
     </parent>
     <groupId>fr.soleil.device</groupId>
     <artifactId>XiaDxp-${aol}-${mode}</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <packaging>nar</packaging>
     <name>XiaDxp</name>
     <description>XiaDxp device</description>
@@ -61,11 +61,11 @@
         </dependency>
            
     </dependencies>
-    <scm>
-        <connection>${scm.connection.cvs.soleil}:DeviceServer/Specific/Machine/Insertion/GMID2Energy</connection>
-        <developerConnection>${scm.developerConnection.cvs.soleil}:DeviceServer/Specific/Machine/Insertion/GMID2Energy</developerConnection>
-        <url>${scm.url.cvs.soleil}/DeviceServer/Specific/Machine/Insertion/GMID2Energy</url>
-    </scm>
+   <scm>
+       <connection>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</connection>
+       <developerConnection>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</developerConnection>
+       <url>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</url>
+   </scm>
     <developers>
         <developer>
             <id>noureddine</id>
