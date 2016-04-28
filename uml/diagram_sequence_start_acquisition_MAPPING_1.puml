@@ -5,7 +5,7 @@ title <b>XiaDxp - Diagram Sequence  : Start - 2016/03/23</b>\n******************
 actor User
 
 participant "DataStream" as Stream
-box "NEXUS VIEW" #LightGreen
+box "STREAM VIEW" #LightGreen
 	participant Stream
 end box
 
@@ -52,7 +52,7 @@ deactivate Ctrl
 deactivate Device
 
 note right 
-            State = RUNNING will activate the Task Periodic loop is enabled 
+            State = RUNNING will activate the Task Periodic loop
 end note
 
 activate Acq
@@ -60,12 +60,13 @@ activate Acq
 loop while  current_pixel < nbPixels & every 5 ms (PERIODIC Task message) & for each module
             Acq -> Driver : is_buffer_full(module, buffer_A or buffer_B)
             activate Driver
-            Driver --> Acq : true
+            Driver --> Acq
             deactivate Driver
+alt buffer is full
 
-            Acq -> Driver : get_buffer(module, buffer_A or buffer_B, DataBufferContainer)
+            Acq -> Driver : get_buffer(module, buffer_A or buffer_B)
             activate Driver
-            Driver --> Acq : raw data buffer (DataBufferContainer)
+            Driver --> Acq : raw data buffer (i.e DataBufferContainer)
             deactivate Driver
 
             Acq -> Driver : buffer_done(module, buffer_A or buffer_B)
@@ -80,7 +81,11 @@ loop while  current_pixel < nbPixels & every 5 ms (PERIODIC Task message) & for 
             deactivate Store
             deactivate Store
 
-
+            Acq -> Driver : switch_buffer(module)
+            activate Driver
+            Driver --> Acq
+            deactivate Driver
+end
             Store -> Store: on_process_data(DataBufferContainer)
             activate Store
 note left 

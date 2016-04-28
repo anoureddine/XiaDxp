@@ -76,7 +76,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         stringstream ss("");
         std::string name("");
         name = "triggerLiveTime";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_trigger_livetime[i] = new DoubleUserData(ss.str());
         create_attribute(	ss.str(),
                          Tango::DEV_DOUBLE,
@@ -92,7 +92,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ////////////////////////////////////////////////////////////////////////////////////////
         ss.str("");
         name = "realTime";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_realtime[i] = new DoubleUserData(ss.str());
         create_attribute(	ss.str(),
                          Tango::DEV_DOUBLE,
@@ -108,7 +108,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ////////////////////////////////////////////////////////////////////////////////////////
         ss.str("");
         name = "liveTime";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_livetime[i] = new DoubleUserData(ss.str());
         create_attribute(	ss.str(),
                          Tango::DEV_DOUBLE,
@@ -124,7 +124,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ////////////////////////////////////////////////////////////////////////////////////////
         ss.str("");
         name = "deadTime";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_deadtime[i] = new DoubleUserData(ss.str());
         create_attribute(	ss.str(),
                          Tango::DEV_DOUBLE,
@@ -140,7 +140,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ////////////////////////////////////////////////////////////////////////////////////////
         ss.str("");
         name = "inputCountRate";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_icr[i] = new DoubleUserData(ss.str());
         create_attribute(	ss.str(),
                          Tango::DEV_DOUBLE,
@@ -156,7 +156,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ////////////////////////////////////////////////////////////////////////////////////////
         ss.str("");
         name = "outputCountRate";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_ocr[i] = new DoubleUserData(ss.str());
         create_attribute(	ss.str(),
                          Tango::DEV_DOUBLE,
@@ -172,7 +172,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ////////////////////////////////////////////////////////////////////////////////////////
         ss.str("");
         name = "eventsInRun";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_events_in_run[i] = new ULongUserData(ss.str());
         create_attribute(	ss.str(),
                          Tango::DEV_ULONG,
@@ -188,7 +188,7 @@ void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
         ////////////////////////////////////////////////////////////////////////////////////////
         ss.str("");
         name = "channel";
-        ss<<name<<"_"<<std::setfill('0') << std::setw(2)<<i;
+        ss<<name<<std::setfill('0') << std::setw(2)<<i;
         m_dyn_channel[i] = new ChannelUserData(ss.str(), nb_bins);
         create_attribute(	ss.str(),
                          Tango::DEV_ULONG,

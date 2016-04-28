@@ -468,7 +468,7 @@ void AttrViewMca::read_roi_callback(yat4tango::DynamicAttributeReadCallbackData&
 			state == Tango::OFF	||
             state == Tango::DISABLE)
         {
-            std::string reason = "It's currently not allowed to read attribute presetValue";
+            std::string reason = "It's currently not allowed to read attribute roixx_yy";
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
                                            reason.c_str(),
                                            "AttrViewMca::read_roi_callback()");

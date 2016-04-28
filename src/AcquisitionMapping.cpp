@@ -214,7 +214,7 @@ void AcquisitionMapping::readout_buffer(int module)
     DataBufferContainer* map_buffer = new DataBufferContainer(module, m_module_info_array[module].m_buffer_length);
 
     // readout acquisition buffer from installed modules
-    INFO_STREAM << "\t- readout buffer from board."<< std::endl;
+    INFO_STREAM << "\t- readout buffer from board - "<<module<< std::endl;
     m_helper->get_buffer(module, m_module_info_array[module].m_current_buffer, map_buffer->base());
 
     // tell the hardware that the buffer is ready to be reused    

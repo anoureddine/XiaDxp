@@ -447,7 +447,7 @@ public:
 /**
  * Define Roi(s) for channel(s).<br>
  *	Argument must be in the format :<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
+ *	channel_num; roi_lowbound;roi_highbound; ....<br>
  *	@param	argin	
  *	@exception DevFailed
  */
@@ -456,7 +456,7 @@ public:
  * Define Roi(s) for channel(s).<br>
  *	File name & path is defined by user in the argument of this command.<br>.
  *	For each channel, add a line in the file with the format below in order to define rois<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
+ *	channel_num; roi_lowbound; roi_highbound; ....<br>
  *	@param	argin	
  *	@exception DevFailed
  */
@@ -464,8 +464,8 @@ public:
 /**
  * Return the list of rois for each channel<br>
  *	the format is :<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
+ *	channel_num; roi_lowbound;roi_highbound; ....<br>
+ *	channel_num; roi_lowbound;roi_highbound; ....<br>
  *	...<br>
  *	@return	
  *	@exception DevFailed

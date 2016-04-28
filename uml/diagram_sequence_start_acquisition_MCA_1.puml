@@ -5,7 +5,7 @@ title <b>XiaDxp - Diagram Sequence  : Start - 2015/09/15</b>\n******************
 actor User
 
 participant "DataStream" as Stream
-box "NEXUS VIEW" #LightGreen
+box "STREAM VIEW" #LightGreen
 	participant Stream
 end box
 
@@ -52,7 +52,7 @@ deactivate Ctrl
 deactivate Device
 
 note right 
-            State = RUNNING will activate the Task Periodic loop is enabled 
+            State = RUNNING will activate the Task Periodic loop
 end note
 
 activate Acq
@@ -85,7 +85,7 @@ loop while  RUNNING & every 100 ms (PERIODIC Task message) & for each channel
             Ctrl -> Stream : update_data(num_channel)
             activate Stream #AAEECC
 note left 
-            Push data into Nexus file
+            Push data into Stream (there is No Nexus stream in MCA mode)
 end note
             deactivate Stream
 

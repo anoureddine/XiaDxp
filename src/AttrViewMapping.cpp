@@ -189,7 +189,7 @@ void AttrViewMapping::read_nb_pixels_callback(yat4tango::DynamicAttributeReadCal
 			state == Tango::OFF	||
             state == Tango::DISABLE)
         {
-            std::string reason = "It's currently not allowed to read attribute mapPixelsNumber";
+            std::string reason = "It's currently not allowed to read attribute nbPixels";
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
                                            reason.c_str(),
                                            "AttrViewMapping::read_nb_pixels_callback()");
@@ -238,7 +238,7 @@ void AttrViewMapping::write_nb_pixels_callback(yat4tango::DynamicAttributeWriteC
 			state == Tango::OFF	||
             state == Tango::DISABLE && !is_write_at_init)
         {
-            std::string reason = "It's currently not allowed to write attribute mapPixelsNumber";
+            std::string reason = "It's currently not allowed to write attribute nbPixels";
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
                                            reason.c_str(),
                                            "AttrViewMapping::write_nb_pixels_callback()");
