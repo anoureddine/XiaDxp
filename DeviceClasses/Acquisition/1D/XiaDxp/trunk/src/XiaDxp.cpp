@@ -1046,9 +1046,13 @@ void XiaDxp::load_config_file(Tango::DevString argin)
 
         //refresh the config of parameters of the controller
         m_conf.is_device_initialized = is_device_initialized();
-		if(get_state()==Tango::OFF)//means that it is the 1st call of load_config_file(), so do not call m_stream->init() in controller, because m_store was not initialized yet!!
-			m_conf.is_device_initialized = false;
-        m_controller->update_parameters(m_conf);
+		if(get_state() != Tango::OFF)
+        {
+            //means that it is not the 1st call of load_config_file()
+            //because, we can't call m_stream->init() in controller in the 1st call of load_config_file
+            //otherwise m_store is not yet initialized!!
+            m_controller->update_parameters(m_conf);
+        }        
 
         //ask the controller to load the file on the board
         m_controller->load_config_file(m_conf.acquisition_mode, m_conf.acquisition_file); 
@@ -1099,7 +1103,6 @@ void XiaDxp::save_config_file()
                                           string(df.errors[0].desc).c_str(),
                                           "XiaDxp::save_config_file()");
     }
-
 }
 
 //+------------------------------------------------------------------
@@ -1119,7 +1122,6 @@ void XiaDxp::snap()
     try
     {
         //refresh the config of parameters of the controller
-        m_conf.is_device_initialized = is_device_initialized();
         m_controller->update_parameters(m_conf);
         m_controller->start();
     }
@@ -1170,7 +1172,7 @@ void XiaDxp::stop()
  *	description:	method to execute "SetRoisFromList"
  *	Define Roi(s) for channel(s).<br>
  *	Argument must be in the format :<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
+ *	channel_num; roi_lowbound;roi_highbound; ....<br>
  *
  * @param	argin	
  *
@@ -1190,7 +1192,6 @@ void XiaDxp::set_rois_from_list(const Tango::DevVarStringArray *argin)
         }
 
         //refresh the config of parameters of the controller
-        m_conf.is_device_initialized = is_device_initialized();
         m_controller->update_parameters(m_conf);
         //refresh the tango view
         m_controller->update_view();
@@ -1218,7 +1219,7 @@ void XiaDxp::set_rois_from_list(const Tango::DevVarStringArray *argin)
  *	Define Roi(s) for channel(s).<br>
  *	File name & path is defined by user in the argument of this command.<br>.
  *	For each channel, add a line in the file with the format below in order to define rois<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
+ *	channel_num; roi_lowbound; roi_highbound; ....<br>
  *
  * @param	argin	
  *
@@ -1263,7 +1264,6 @@ void XiaDxp::set_rois_from_file(Tango::DevString argin)
         }
 
         //refresh the config of parameters of the controller
-        m_conf.is_device_initialized = is_device_initialized();
         m_controller->update_parameters(m_conf);
         //refresh the tango view
         m_controller->update_view();
@@ -1314,7 +1314,6 @@ void XiaDxp::remove_rois(Tango::DevLong argin)
         //put 0 in "number_of_scas"
         m_controller->set_nb_rois(argin, 0);
         //refresh the config of parameters of the controller
-        m_conf.is_device_initialized = is_device_initialized();
         m_controller->update_parameters(m_conf);
         //refresh the tango view
         m_controller->update_view();
@@ -1340,8 +1339,8 @@ void XiaDxp::remove_rois(Tango::DevLong argin)
  *	description:	method to execute "GetRois"
  *	Return the list of rois for each channel<br>
  *	the format is :<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
- *	channel_num, roi_lowbound,roi_highbound, ....<br>
+ *	channel_num; roi_lowbound;roi_highbound; ....<br>
+ *	channel_num; roi_lowbound;roi_highbound; ....<br>
  *	...<br>
  *
  * @return	
@@ -1370,10 +1369,10 @@ Tango::DevVarStringArray *XiaDxp::get_rois()
         int nb_rois = m_controller->get_nb_rois(i);
         for (int j = 0; j < nb_rois; j++)
         {
-            ss<<",";
+            ss<<";";
             double low = 0, high = 0;
             m_controller->get_roi_bounds(i, j, low, high);
-            ss<<low<<","<<high;
+            ss<<low<<";"<<high;
         }
 
         (*argout)[i] = CORBA::string_dup(ss.str().c_str());
@@ -1391,13 +1390,13 @@ void XiaDxp::set_rois_from_string(const std::string& input)
     std::string user_input = input;
     INFO_STREAM<<"user_input = "<<user_input<<endl;
     std::vector<std::string> vec_rois;
-    yat::StringUtil::split(user_input, ',', &vec_rois, true);
+    yat::StringUtil::split(user_input, ';', &vec_rois, true);
 
-    //check user input : nb tokens must be ODD (1 channel_number , low, high, low, high, ....)
+    //check user input : nb tokens must be ODD (1 channel_number ; low; high; low; high; ....)
     if(vec_rois.size()%2 == 0)
     {
         stringstream ss;
-        ss<<"User input must be in the format : 'channel_num, roi0_low, roi0_high, roi1_low, roi1_high, ...'"<<endl;
+        ss<<"User input must be in the format : 'channel_num; roi0_low; roi0_high; roi1_low; roi1_high; ...'"<<endl;
         Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
                                        (ss.str()).c_str(),
                                        "XiaDxp::set_rois_from_string()");
@@ -1441,7 +1440,6 @@ void XiaDxp::stream_reset_index()
     try
     {
         //refresh the config of parameters of the controller
-        m_conf.is_device_initialized = is_device_initialized();
         m_controller->update_parameters(m_conf);
         //	Add your own code to control device here
         m_controller->stream_reset_index();
@@ -1498,6 +1496,7 @@ Tango::DevState XiaDxp::dev_state()
     set_status(status.str());
     return argout;
 }
+
 
 
 

@@ -166,6 +166,8 @@ void DataStore::on_close()
         m_controller->close();
     set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::on_close() - [END]" << endl;
+    INFO_STREAM<<"--------------------------------------------"<<std::endl;
+    INFO_STREAM<<" "<<std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -179,6 +181,8 @@ void DataStore::on_abort()
         m_controller->abort();
     set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::on_abort() - [END]" << endl;
+    INFO_STREAM<<"--------------------------------------------"<<std::endl;
+    INFO_STREAM<<" "<<std::endl;    
 }
 
 //----------------------------------------------------------------------------------------------------------------------

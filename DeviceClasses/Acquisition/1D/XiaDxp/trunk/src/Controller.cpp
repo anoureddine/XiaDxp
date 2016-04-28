@@ -228,63 +228,6 @@ void Controller::compute_state_status(void)
 }
 
 // ============================================================================
-// Controller::update_parameters
-// ============================================================================
-void Controller::update_parameters(ConfigLoader conf)
-{
-    INFO_STREAM << "Controller::update_parameters() - [BEGIN]" << endl;
-    INFO_STREAM<<"conf.is_device_initialized = "<<conf.is_device_initialized<<std::endl;
-    //@@TODO : manage a strategy to update stream but only if it is necessary  !!
-    if( conf.is_device_initialized 	== true)
-    {
-        std::transform(conf.stream_type.begin(), conf.stream_type.end(), conf.stream_type.begin(), ::toupper);        
-        //need to build a new type of stream (NEXUS_STREAM/LOG_STREAM/NO_STREAM/...) 
-        if(conf.stream_type != m_conf.stream_type)
-        {
-            m_conf.stream_type = conf.stream_type;
-            m_stream.reset(build_stream(m_conf.stream_type, m_conf.acquisition_mode));
-        }
-
-        //need to "init" in order to refresh parameters within the nexus stream
-        if(conf.stream_path != m_conf.stream_path)
-        {
-            m_conf.stream_path = conf.stream_path;
-            if(m_conf.stream_type == "NEXUS_STREAM")
-                static_cast<StreamNexus*>(m_stream.get())->set_target_path(m_conf.stream_path);
-        }
-
-        //need to "init" in order to refresh parameters within the nexus stream
-        if(conf.stream_file != m_conf.stream_file)
-        {
-            m_conf.stream_file = conf.stream_file;
-            if(m_conf.stream_type == "NEXUS_STREAM")
-                static_cast<StreamNexus*>(m_stream.get())->set_file_name(m_conf.stream_file);
-        }
-
-        //need to "init" in order to refresh parameters within the nexus stream
-        if(conf.stream_nb_data_per_acq != m_conf.stream_nb_data_per_acq)
-        {
-            m_conf.stream_nb_data_per_acq = conf.stream_nb_data_per_acq;
-            if(m_conf.stream_type == "NEXUS_STREAM")
-                static_cast<StreamNexus*>(m_stream.get())->set_nb_data_per_acq(m_conf.stream_nb_data_per_acq);
-        }
-
-        //need to "init" in order to refresh parameters within the nexus stream
-        if(conf.stream_nb_acq_per_file != m_conf.stream_nb_acq_per_file)
-        {
-            m_conf.stream_nb_acq_per_file = conf.stream_nb_acq_per_file;
-            if(m_conf.stream_type == "NEXUS_STREAM")
-                static_cast<StreamNexus*>(m_stream.get())->set_nb_acq_per_file(m_conf.stream_nb_acq_per_file);
-        }
-
-        //always in order to instantiate a new writer
-        m_stream->init(m_store);
-    }
-
-    INFO_STREAM << "Controller::update_parameters() - [END]" << endl;
-}
-
-// ============================================================================
 // Controller::load_config_file
 // ============================================================================
 void Controller::load_config_file(const std::string& mode, const std::string& file_name)
@@ -709,6 +652,63 @@ void Controller::update_view(void)
     m_attr_view->init(m_store);
     set_state(Tango::STANDBY);
     DEBUG_STREAM << "Controller::update_view() - [END]" << endl;
+}
+
+// ============================================================================
+// Controller::update_parameters
+// ============================================================================
+void Controller::update_parameters(ConfigLoader conf)
+{
+    INFO_STREAM << "Controller::update_parameters() - [BEGIN]" << endl;
+    INFO_STREAM<<"conf.is_device_initialized = "<<conf.is_device_initialized<<std::endl;
+    //only if tango device is already initialized!
+    if( conf.is_device_initialized 	== true)
+    {
+        std::transform(conf.stream_type.begin(), conf.stream_type.end(), conf.stream_type.begin(), ::toupper);        
+        //need to build a new type of stream (NEXUS_STREAM/LOG_STREAM/NO_STREAM/...) 
+        if(conf.stream_type != m_conf.stream_type)
+        {
+            m_conf.stream_type = conf.stream_type;
+            m_stream.reset(build_stream(m_conf.stream_type, m_conf.acquisition_mode));
+        }
+
+        //need to "update" in order to refresh parameters within the nexus stream
+        if(conf.stream_path != m_conf.stream_path)
+        {
+            m_conf.stream_path = conf.stream_path;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_target_path(m_conf.stream_path);
+        }
+
+        //need to "update" in order to refresh parameters within the nexus stream
+        if(conf.stream_file != m_conf.stream_file)
+        {
+            m_conf.stream_file = conf.stream_file;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_file_name(m_conf.stream_file);
+        }
+
+        //need to "update" in order to refresh parameters within the nexus stream
+        if(conf.stream_nb_data_per_acq != m_conf.stream_nb_data_per_acq)
+        {
+            m_conf.stream_nb_data_per_acq = conf.stream_nb_data_per_acq;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_nb_data_per_acq(m_conf.stream_nb_data_per_acq);
+        }
+
+        //need to "update" in order to refresh parameters within the nexus stream
+        if(conf.stream_nb_acq_per_file != m_conf.stream_nb_acq_per_file)
+        {
+            m_conf.stream_nb_acq_per_file = conf.stream_nb_acq_per_file;
+            if(m_conf.stream_type == "NEXUS_STREAM")
+                static_cast<StreamNexus*>(m_stream.get())->set_nb_acq_per_file(m_conf.stream_nb_acq_per_file);
+        }
+
+        //always in order to instantiate a new writer
+        m_stream->init(m_store);
+    }
+
+    INFO_STREAM << "Controller::update_parameters() - [END]" << endl;
 }
 
 // ============================================================================

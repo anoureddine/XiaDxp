@@ -50,13 +50,15 @@ class DriverHelper : public Tango::LogAdapter
 public:
 
     ////////////////////////////////////////////////////////////////////////
-    DriverHelper(Tango::DeviceImpl *dev, const std::string & board_type) : Tango::LogAdapter(dev)
+    DriverHelper(Tango::DeviceImpl *dev, const std::string & board_type) : 
+    Tango::LogAdapter(dev),
+    m_device(dev),
+    m_board_type(board_type),
+    m_status("WARNING !"),
+    m_state(INITIALIZATION_SUCCESSFUL)
     {
         INFO_STREAM << "DriverHelper::DriverHelper()- [BEGIN]" << endl;
-        m_device = dev;
-        m_board_type = board_type;
-        m_status = "WARNING !";
-        m_state = INITIALIZATION_SUCCESSFUL;
+
         INFO_STREAM << "DriverHelper::DriverHelper()- [END]" << endl;
     }
 
