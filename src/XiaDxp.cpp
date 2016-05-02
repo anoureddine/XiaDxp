@@ -228,6 +228,7 @@ void XiaDxp::init_device()
         INFO_STREAM<<"- Create the Controller Task"<<endl;
         std::transform(boardType.begin(), boardType.end(), boardType.begin(), ::toupper);
         m_conf.board_type = boardType;
+        m_conf.board_timebase = boardTimebase;
         m_conf.acquisition_mode = m_map_alias_configuration_files[__MemorizedConfigurationAlias].mode;
         m_conf.acquisition_file = m_map_alias_configuration_files[__MemorizedConfigurationAlias].file;
         m_conf.stream_type = __MemorizedStreamType;
@@ -323,6 +324,7 @@ void XiaDxp::get_device_property()
     //------------------------------------------------------------------
 	Tango::DbData	dev_prop;
 	dev_prop.push_back(Tango::DbDatum("BoardType"));
+	dev_prop.push_back(Tango::DbDatum("BoardTimebase"));
 	dev_prop.push_back(Tango::DbDatum("ConfigurationFiles"));
 	dev_prop.push_back(Tango::DbDatum("RoisFiles"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedConfigurationAlias"));
@@ -358,6 +360,17 @@ void XiaDxp::get_device_property()
 	}
 	//	And try to extract BoardType value from database
 	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  boardType;
+
+	//	Try to initialize BoardTimebase from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  boardTimebase;
+	else {
+		//	Try to initialize BoardTimebase from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  boardTimebase;
+	}
+	//	And try to extract BoardTimebase value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  boardTimebase;
 
 	//	Try to initialize ConfigurationFiles from class property
 	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
@@ -529,6 +542,7 @@ void XiaDxp::get_device_property()
     //	End of Automatic code generation
     //------------------------------------------------------------------
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "XMAP", "BoardType");
+    yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "0.000000320", "BoardTimebase");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "ALIAS;MODE;FILE_PATH_NAME", "ConfigurationFiles");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedConfigurationAlias");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "ALIAS;FILE_PATH_NAME", "RoisFiles");
@@ -1170,9 +1184,7 @@ void XiaDxp::stop()
  *	method:	XiaDxp::set_rois_from_list
  *
  *	description:	method to execute "SetRoisFromList"
- *	Define Roi(s) for channel(s).<br>
- *	Argument must be in the format :<br>
- *	channel_num; roi_lowbound;roi_highbound; ....<br>
+ *	....<br>
  *
  * @param	argin	
  *
@@ -1216,10 +1228,7 @@ void XiaDxp::set_rois_from_list(const Tango::DevVarStringArray *argin)
  *	method:	XiaDxp::set_rois_from_file
  *
  *	description:	method to execute "SetRoisFromFile"
- *	Define Roi(s) for channel(s).<br>
- *	File name & path is defined by user in the argument of this command.<br>.
- *	For each channel, add a line in the file with the format below in order to define rois<br>
- *	channel_num; roi_lowbound; roi_highbound; ....<br>
+ *	....<br>
  *
  * @param	argin	
  *
@@ -1337,10 +1346,7 @@ void XiaDxp::remove_rois(Tango::DevLong argin)
  *	method:	XiaDxp::get_rois
  *
  *	description:	method to execute "GetRois"
- *	Return the list of rois for each channel<br>
- *	the format is :<br>
- *	channel_num; roi_lowbound;roi_highbound; ....<br>
- *	channel_num; roi_lowbound;roi_highbound; ....<br>
+ *	....<br>
  *	...<br>
  *
  * @return	
@@ -1496,6 +1502,11 @@ Tango::DevState XiaDxp::dev_state()
     set_status(status.str());
     return argout;
 }
+
+
+
+
+
 
 
 

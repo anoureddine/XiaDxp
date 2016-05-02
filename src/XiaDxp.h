@@ -119,6 +119,10 @@ public:
  */
 	string	boardType;
 /**
+ *	Timebase factor of the board. [in seconds]
+ */
+	Tango::DevDouble	boardTimebase;
+/**
  *	Define the list of Configuration "*.INI" files and their associated alias & mode
  */
 	vector<string>	configurationFiles;
@@ -445,27 +449,19 @@ public:
  */
 	void	save_config_file();
 /**
- * Define Roi(s) for channel(s).<br>
- *	Argument must be in the format :<br>
- *	channel_num; roi_lowbound;roi_highbound; ....<br>
+ * ....<br>
  *	@param	argin	
  *	@exception DevFailed
  */
 	void	set_rois_from_list(const Tango::DevVarStringArray *);
 /**
- * Define Roi(s) for channel(s).<br>
- *	File name & path is defined by user in the argument of this command.<br>.
- *	For each channel, add a line in the file with the format below in order to define rois<br>
- *	channel_num; roi_lowbound; roi_highbound; ....<br>
+ * ....<br>
  *	@param	argin	
  *	@exception DevFailed
  */
 	void	set_rois_from_file(Tango::DevString);
 /**
- * Return the list of rois for each channel<br>
- *	the format is :<br>
- *	channel_num; roi_lowbound;roi_highbound; ....<br>
- *	channel_num; roi_lowbound;roi_highbound; ....<br>
+ * ....<br>
  *	...<br>
  *	@return	
  *	@exception DevFailed
