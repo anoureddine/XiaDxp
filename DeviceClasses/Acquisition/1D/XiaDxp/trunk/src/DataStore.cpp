@@ -54,7 +54,7 @@ DataStore::~DataStore()
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::init
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, double timebase)
+void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins)
 {
     INFO_STREAM << "DataStore::init() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
@@ -62,7 +62,6 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
     m_nb_channels = nb_channels;
     m_nb_pixels = nb_pixels;
     m_nb_bins = nb_bins;
-    m_timebase = timebase;
     m_data.module_data.clear();
 
     // setup mapping data structure
@@ -109,15 +108,15 @@ void DataStore::store_statistics(int module, int channel, int pixel, const std::
     if(acquisition_type == "MAPPING")
     {
         computed_deadtime = compute_deadtime(pix_data.outputs, pix_data.triggers, pix_data.livetime, pix_data.realtime); //100*(1 - outputs*livetime/(realtime*triggers))
-        computed_realtime = compute_realtime(pix_data.realtime, m_timebase);
-        computed_livetime = compute_livetime(pix_data.livetime, m_timebase);
+        computed_realtime = compute_realtime(pix_data.realtime);
+        computed_livetime = compute_livetime(pix_data.livetime);
         computed_icr = compute_input_count_rate(pix_data.triggers, computed_livetime);
         computed_ocr = compute_output_count_rate(pix_data.outputs, computed_realtime);
         computed_trigger_livetime = 0.0; //always =0.0
     }
     else if(acquisition_type == "MCA")
     {
-        computed_deadtime = compute_deadtime(pix_data.output_count_rate, pix_data.input_count_rate); // (icr - ocr)/icr
+        computed_deadtime = compute_deadtime(pix_data.output_count_rate, pix_data.input_count_rate); //100* (icr - ocr)/icr
         computed_realtime = pix_data.realtime;
         computed_livetime = pix_data.livetime;
         computed_icr = pix_data.input_count_rate;
@@ -419,20 +418,28 @@ double DataStore::get_timebase()
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+//- DataStore::set_timebase
+//----------------------------------------------------------------------------------------------------------------------
+void DataStore::set_timebase(double timebase)
+{
+    m_timebase = timebase;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //- DataStore::compute_realtime
 //----------------------------------------------------------------------------------------------------------------------
-double DataStore::compute_realtime(double realtime, double timebase)
+double DataStore::compute_realtime(double realtime)
 {
     //DEBUG_STREAM << "DataStore::compute_realtime()" << endl;
-    return realtime * timebase;
+    return realtime * m_timebase;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::compute_livetime
 //----------------------------------------------------------------------------------------------------------------------
-double DataStore::compute_livetime(double livetime, double timebase)
+double DataStore::compute_livetime(double livetime)
 {
     //DEBUG_STREAM << "DataStore::compute_livetime()" << endl;
-    return livetime * timebase;
+    return livetime * m_timebase;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::compute_input_count_rate
@@ -468,7 +475,7 @@ double DataStore::compute_deadtime(double ocr, double icr)
 
     if (icr != 0.0)
     {
-        return (icr - ocr) / icr;
+        return 100.0*((icr - ocr) / icr);
     }
     return 0.0;
 }
@@ -648,16 +655,16 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
     for (int channel = 0; channel < 4; channel++)
     {
         //each channels statistics contains 8 WORD, that is why channel*8
-        double realtime         = WORD_TO_LONG(pixel_data[32+channel*8], pixel_data[33+channel*8]);
-        double livetime         = WORD_TO_LONG(pixel_data[34+channel*8], pixel_data[35+channel*8]);
+        unsigned long realtime = WORD_TO_LONG(pixel_data[32+channel*8], pixel_data[33+channel*8]);
+        unsigned long livetime = WORD_TO_LONG(pixel_data[34+channel*8], pixel_data[35+channel*8]);        
         unsigned long triggers  = WORD_TO_LONG(pixel_data[36+channel*8], pixel_data[37+channel*8]);
         unsigned long outputs   = WORD_TO_LONG(pixel_data[38+channel*8], pixel_data[39+channel*8]);
 
         PixelData pix_data;
         pix_data.triggers = triggers;
         pix_data.outputs = outputs;
-        pix_data.realtime = realtime;
-        pix_data.livetime = livetime;
+        pix_data.realtime = static_cast<double>(realtime);
+        pix_data.livetime = static_cast<double>(livetime);
 
         //push statistics into DataStore
         store_statistics(module,               //nb module

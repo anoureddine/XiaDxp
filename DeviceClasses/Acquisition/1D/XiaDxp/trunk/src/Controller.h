@@ -47,6 +47,7 @@ class ConfigLoader
 public:
 	bool is_device_initialized;
     std::string board_type; 
+    double board_timebase;
     std::string acquisition_mode;
     std::string acquisition_file;
     std::string stream_type;

@@ -660,7 +660,6 @@ void Controller::update_view(void)
 void Controller::update_parameters(ConfigLoader conf)
 {
     INFO_STREAM << "Controller::update_parameters() - [BEGIN]" << endl;
-    INFO_STREAM<<"conf.is_device_initialized = "<<conf.is_device_initialized<<std::endl;
     //only if tango device is already initialized!
     if( conf.is_device_initialized 	== true)
     {
@@ -703,7 +702,7 @@ void Controller::update_parameters(ConfigLoader conf)
             if(m_conf.stream_type == "NEXUS_STREAM")
                 static_cast<StreamNexus*>(m_stream.get())->set_nb_acq_per_file(m_conf.stream_nb_acq_per_file);
         }
-
+        
         //always in order to instantiate a new writer
         m_stream->init(m_store);
     }
@@ -794,6 +793,8 @@ void Controller::process_message(yat::Message& msg) throw (Tango::DevFailed)
                     m_store = build_store();
                     //enable/disable writing statistics (read from Device Property)
                     m_store->set_statistics_enabled(m_conf.stream_statistics_enabled);
+                    //fix timebase (read from Device Property (default = 320 ns)
+                    m_store->set_timebase(m_conf.board_timebase);                    
                     //build  the tango attributes (statistics+channels)
                     m_attr_view.reset(build_attributes(m_conf.acquisition_mode));
                     //build  the acquisition (MCA/MAPPING)                    

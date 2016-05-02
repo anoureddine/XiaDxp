@@ -26,8 +26,10 @@ const size_t DATASTORE_CLOSE_DATA_MSG        = yat::FIRST_USER_MSG + 601;
 const size_t DATASTORE_ABORT_DATA_MSG        = yat::FIRST_USER_MSG + 602;
 
 
-inline int to_channel_cluster(int module, int channel)                     {return (module*4+channel);}
-inline std::pair<int, int> to_module_and_channel(int channel)              {return std::make_pair(((int)channel/(int)4), ((int)channel%(int)4));}
+///return the cluster channel number from module number and channel number
+inline int to_channel_cluster(int module, int channel)          {return (module*4+channel);}
+///return the std::pair<module number, channel number> from a cluster channel number
+inline std::pair<int, int> to_module_and_channel(int channel)   {return std::make_pair(((int)channel/(int)4), ((int)channel%(int)4));}
 
 namespace XiaDxp_ns
 {
@@ -97,7 +99,7 @@ public:
     DataStore(Tango::DeviceImpl *dev);
     ///dtor
     virtual ~DataStore();
-    void init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, double timebase);
+    void init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins);
     void store_statistics(int module, int channel, int pixel, const std::string& acquisition_type, PixelData pix_data);
     void store_data(int module, int channel, int pixel, DataType* data, size_t length);    
 	void process_data(DataBufferContainer* map_buffer);
@@ -107,14 +109,15 @@ public:
     void set_nb_pixels(int nb_pixels);
 	bool get_statistics_enabled(void);
 	void set_statistics_enabled(bool is_enabled);
-	
+    double get_timebase(void);  
+	void set_timebase(double timebase);  
+    
     ///getters
     int get_nb_modules();
     int get_nb_channels();
     int get_nb_pixels();
 	int get_nb_bins();
 	
-    double get_timebase();    
 	long   get_current_pixel(int channel);	
 	double get_trigger_livetime(int channel);	
     double get_realtime(int channel);
@@ -142,8 +145,8 @@ private:
     ///parse datas for each acquired pixel
     void parse_data(int module, int pixel, DataType* map_buffer);            
     ///compute statistics
-    double compute_realtime(double realtime, double timebase);
-    double compute_livetime(double livetime, double timebase);
+    double compute_realtime(double realtime);
+    double compute_livetime(double livetime);
 	double compute_deadtime(unsigned long outputs, unsigned long triggers, double livetime, double realtime);	
     double compute_deadtime(double ocr, double icr);	
     double compute_input_count_rate(unsigned long trigger_livetime, double livetime);

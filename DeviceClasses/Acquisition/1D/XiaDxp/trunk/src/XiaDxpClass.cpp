@@ -706,6 +706,21 @@ void XiaDxpClass::set_default_property()
 	else
 		add_wiz_dev_prop(prop_name, prop_desc);
 
+	prop_name = "BoardTimebase";
+	prop_desc = "Timebase factor of the board. [in seconds]";
+	prop_def  = "0.000000320";
+	vect_data.clear();
+	vect_data.push_back("0.000000320");
+	if (prop_def.length()>0)
+	{
+		Tango::DbDatum	data(prop_name);
+		data << vect_data ;
+		dev_def_prop.push_back(data);
+		add_wiz_dev_prop(prop_name, prop_desc,  prop_def);
+	}
+	else
+		add_wiz_dev_prop(prop_name, prop_desc);
+
 	prop_name = "ConfigurationFiles";
 	prop_desc = "Define the list of Configuration \"*.INI\" files and their associated alias & mode";
 	prop_def  = "ALIAS;MODE;FILE_PATH_NAME";
