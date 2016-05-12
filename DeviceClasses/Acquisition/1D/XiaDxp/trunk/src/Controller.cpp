@@ -574,14 +574,28 @@ Stream* Controller::build_stream(const std::string& type, const std::string& mod
         {
             stream = new StreamNo(m_device);
         }
+        else if(stream_type == "CSV_STREAM")//CSV_STREAM
+        {
+            if(mode == "MAPPING") //Nexus is available in MAPPING mode only
+            {
+                stream = new StreamCsv(m_device);
+                static_cast<StreamCsv*>(stream)->set_target_path(m_conf.stream_path);
+                static_cast<StreamCsv*>(stream)->set_file_name(m_conf.stream_file);
+            }
+            else
+            {
+                stream = new StreamNo(m_device);
+            }
+        }
         else
         {
-            //only NO_STREAM/LOG_STREAM/NEXUS_STREAM are available
+            //only NO_STREAM/LOG_STREAM/CSV_STREAM/NEXUS_STREAM are available
             std::ostringstream ossMsgErr;
             ossMsgErr   <<  "Wrong Stream Type:\n"
             "Possibles values are:\n"
             "NO_STREAM\n"
             "LOG_STREAM\n"
+            "CSV_STREAM\n"
             "NEXUS_STREAM"
             <<std::endl;
             Tango::Except::throw_exception("LOGIC_ERROR",
@@ -663,8 +677,8 @@ void Controller::update_parameters(ConfigLoader conf)
     //only if tango device is already initialized!
     if( conf.is_device_initialized 	== true)
     {
-        std::transform(conf.stream_type.begin(), conf.stream_type.end(), conf.stream_type.begin(), ::toupper);        
-        //need to build a new type of stream (NEXUS_STREAM/LOG_STREAM/NO_STREAM/...) 
+        std::transform(conf.stream_type.begin(), conf.stream_type.end(), conf.stream_type.begin(), ::toupper);
+        //need to build a new type of stream (NEXUS_STREAM/LOG_STREAM/NO_STREAM/CSV_STREAM/...) 
         if(conf.stream_type != m_conf.stream_type)
         {
             m_conf.stream_type = conf.stream_type;
@@ -677,6 +691,8 @@ void Controller::update_parameters(ConfigLoader conf)
             m_conf.stream_path = conf.stream_path;
             if(m_conf.stream_type == "NEXUS_STREAM")
                 static_cast<StreamNexus*>(m_stream.get())->set_target_path(m_conf.stream_path);
+            if(m_conf.stream_type == "CSV_STREAM")
+                static_cast<StreamCsv*>(m_stream.get())->set_target_path(m_conf.stream_path);
         }
 
         //need to "update" in order to refresh parameters within the nexus stream
@@ -685,6 +701,8 @@ void Controller::update_parameters(ConfigLoader conf)
             m_conf.stream_file = conf.stream_file;
             if(m_conf.stream_type == "NEXUS_STREAM")
                 static_cast<StreamNexus*>(m_stream.get())->set_file_name(m_conf.stream_file);
+            if(m_conf.stream_type == "CSV_STREAM")
+                static_cast<StreamCsv*>(m_stream.get())->set_file_name(m_conf.stream_file);
         }
 
         //need to "update" in order to refresh parameters within the nexus stream
@@ -702,7 +720,7 @@ void Controller::update_parameters(ConfigLoader conf)
             if(m_conf.stream_type == "NEXUS_STREAM")
                 static_cast<StreamNexus*>(m_stream.get())->set_nb_acq_per_file(m_conf.stream_nb_acq_per_file);
         }
-        
+
         //always in order to instantiate a new writer
         m_stream->init(m_store);
     }
@@ -794,12 +812,12 @@ void Controller::process_message(yat::Message& msg) throw (Tango::DevFailed)
                     //enable/disable writing statistics (read from Device Property)
                     m_store->set_statistics_enabled(m_conf.stream_statistics_enabled);
                     //fix timebase (read from Device Property (default = 320 ns)
-                    m_store->set_timebase(m_conf.board_timebase);                    
+                    m_store->set_timebase(m_conf.board_timebase);
                     //build  the tango attributes (statistics+channels)
                     m_attr_view.reset(build_attributes(m_conf.acquisition_mode));
                     //build  the acquisition (MCA/MAPPING)                    
                     m_acquisition.reset(build_acquisition(m_conf.board_type, m_conf.acquisition_mode));
-                    // build  the stream (LOG/NEXUS) and enable/disable it!
+                    // build  the stream (NO/LOG/NEXUS/CSV) and enable/disable it!
                     m_stream.reset(build_stream(m_conf.stream_type, m_conf.acquisition_mode));
                     //subscribe Controller to the data store in order to notify controller if data store is changed.
                     m_store->subscribe(this);

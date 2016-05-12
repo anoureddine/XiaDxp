@@ -21,6 +21,7 @@
 #include "DataStore.h"
 #include "Stream.h"
 #include "StreamLog.h"
+#include "StreamCsv.h"
 #include "StreamNexus.h"
 #include "StreamNo.h"
 #include "AttrView.h"

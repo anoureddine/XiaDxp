@@ -835,13 +835,14 @@ void XiaDxp::write_streamType(Tango::WAttribute &attr)
         std::string currentType = attr_streamType_write;
         std::transform(currentType.begin(), currentType.end(), currentType.begin(), ::toupper);
 
-        if ((currentType != "LOG_STREAM") && (currentType != "NEXUS_STREAM")&& (currentType != "NO_STREAM"))
+        if ((currentType != "NO_STREAM") && (currentType != "LOG_STREAM") && (currentType != "CSV_STREAM") && (currentType != "NEXUS_STREAM") )
         {
             Tango::Except::throw_exception("DEVICE_ERROR",
                                            "Wrong Stream Type:\n"
                                            "Possibles values are:\n"
                                            "NO_STREAM\n"
                                            "LOG_STREAM\n"
+                                           "CSV_STREAM\n"
                                            "NEXUS_STREAM",
                                            "XiaDxp::write_streamType()");
         }
