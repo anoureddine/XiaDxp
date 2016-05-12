@@ -157,7 +157,9 @@ public:
 /**
  *	Define the type of Stream.<BR>
  *	Available types are :<BR>
+ *	NO_STREAM<BR>
  *	LOG_STREAM<BR>
+ *	RAW_STREAM<BR>
  *	NEXUS_STREAM<BR>
  */
 	string	__MemorizedStreamType;
