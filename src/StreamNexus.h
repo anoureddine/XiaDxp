@@ -66,12 +66,11 @@ private:
     std::string m_write_mode;	
 	int m_nb_acq_per_file;
     int m_nb_bins;
-	int m_nb_pixels;    
-	bool m_is_statistics_enabled;
+	int m_nb_pixels;	
 	yat::UniquePtr<nxcpp::DataStreamer> m_writer;
     std::vector<string> m_channel_names;
     std::vector<string> m_triggers_names;
-    std::vector<string> m_output_names;
+    std::vector<string> m_outputs_names;
     std::vector<string> m_icr_names;
     std::vector<string> m_ocr_names;
     std::vector<string> m_realtime_names;

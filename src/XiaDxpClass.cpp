@@ -511,6 +511,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	nb_modules_prop.set_standard_unit(" ");
 	nb_modules_prop.set_display_unit(" ");
 	nb_modules_prop.set_format("%d");
+	nb_modules_prop.set_description("Number of Xia board");
 	nb_modules->set_default_properties(nb_modules_prop);
 	att_list.push_back(nb_modules);
 
@@ -531,7 +532,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	nb_bins_prop.set_unit(" ");
 	nb_bins_prop.set_standard_unit(" ");
 	nb_bins_prop.set_display_unit(" ");
-	nb_bins_prop.set_description("Number of Bins for each inputs.\naka: mca_length");
+	nb_bins_prop.set_description("Number of Bins for each inputs.<Br>\naka: mca_length");
 	nb_bins->set_default_properties(nb_bins_prop);
 	att_list.push_back(nb_bins);
 
@@ -542,6 +543,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	current_alias_prop.set_standard_unit(" ");
 	current_alias_prop.set_display_unit(" ");
 	current_alias_prop.set_format("%s");
+	current_alias_prop.set_description("Display the current Alias used to load the *.ini file");
 	current_alias->set_default_properties(current_alias_prop);
 	att_list.push_back(current_alias);
 
@@ -552,6 +554,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	current_mode_prop.set_standard_unit(" ");
 	current_mode_prop.set_display_unit(" ");
 	current_mode_prop.set_format("%s");
+	current_mode_prop.set_description("Display the current Mode (MCA or MAPPING).");
 	current_mode->set_default_properties(current_mode_prop);
 	att_list.push_back(current_mode);
 
@@ -562,6 +565,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	current_config_file_prop.set_standard_unit(" ");
 	current_config_file_prop.set_display_unit(" ");
 	current_config_file_prop.set_format("%s");
+	current_config_file_prop.set_description("Display the path+name of current loaded *.ini file ");
 	current_config_file->set_default_properties(current_config_file_prop);
 	att_list.push_back(current_config_file);
 
@@ -586,7 +590,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	//	Attribute : streamType
 	streamTypeAttrib	*stream_type = new streamTypeAttrib();
 	Tango::UserDefaultAttrProp	stream_type_prop;
-	stream_type_prop.set_description("Avalaible stream types :<br>\nLOG_STREAM	<br>\nNEXUS_STREAM<br>");
+	stream_type_prop.set_description("Avalaible stream types :<br>\nNO_STREAM<br>\nLOG_STREAM	<br>\nCSV_STREAM	<br>\nNEXUS_STREAM<br>\n");
 	stream_type->set_default_properties(stream_type_prop);
 	stream_type->set_disp_level(Tango::EXPERT);
 	att_list.push_back(stream_type);
@@ -598,7 +602,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	stream_target_path_prop.set_standard_unit(" ");
 	stream_target_path_prop.set_display_unit(" ");
 	stream_target_path_prop.set_format("%s");
-	stream_target_path_prop.set_description("Define the root path for generated Nexus files.");
+	stream_target_path_prop.set_description("Define the root path for generated Stream files.");
 	stream_target_path->set_default_properties(stream_target_path_prop);
 	stream_target_path->set_disp_level(Tango::EXPERT);
 	att_list.push_back(stream_target_path);
@@ -606,7 +610,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	//	Attribute : streamTargetFile
 	streamTargetFileAttrib	*stream_target_file = new streamTargetFileAttrib();
 	Tango::UserDefaultAttrProp	stream_target_file_prop;
-	stream_target_file_prop.set_description("Define the file name for generated Nexus files.");
+	stream_target_file_prop.set_description("Define the file name for generated Stream files.");
 	stream_target_file->set_default_properties(stream_target_file_prop);
 	stream_target_file->set_disp_level(Tango::EXPERT);
 	att_list.push_back(stream_target_file);
@@ -618,7 +622,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	stream_nb_data_per_acq_prop.set_standard_unit(" ");
 	stream_nb_data_per_acq_prop.set_display_unit(" ");
 	stream_nb_data_per_acq_prop.set_format("%d");
-	stream_nb_data_per_acq_prop.set_description("Define the number of data per acquisition for each Nexus file.");
+	stream_nb_data_per_acq_prop.set_description("Define the number of data per acquisition for each Stream file.");
 	stream_nb_data_per_acq->set_default_properties(stream_nb_data_per_acq_prop);
 	stream_nb_data_per_acq->set_disp_level(Tango::EXPERT);
 	att_list.push_back(stream_nb_data_per_acq);
@@ -630,7 +634,7 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	stream_nb_acq_per_file_prop.set_standard_unit(" ");
 	stream_nb_acq_per_file_prop.set_display_unit(" ");
 	stream_nb_acq_per_file_prop.set_format("%d");
-	stream_nb_acq_per_file_prop.set_description("Defione the number of acquisitioon for each Nexus file.");
+	stream_nb_acq_per_file_prop.set_description("Define the number of acquisition for each Stream file.");
 	stream_nb_acq_per_file->set_default_properties(stream_nb_acq_per_file_prop);
 	stream_nb_acq_per_file->set_disp_level(Tango::EXPERT);
 	att_list.push_back(stream_nb_acq_per_file);
@@ -722,7 +726,7 @@ void XiaDxpClass::set_default_property()
 		add_wiz_dev_prop(prop_name, prop_desc);
 
 	prop_name = "ConfigurationFiles";
-	prop_desc = "Define the list of Configuration \"*.INI\" files and their associated alias & mode";
+	prop_desc = "Define the list of Configuration \"*.INI\" files and their associated alias & mode.";
 	prop_def  = "ALIAS;MODE;FILE_PATH_NAME";
 	vect_data.clear();
 	vect_data.push_back("ALIAS;MODE;FILE_PATH_NAME");
@@ -737,10 +741,32 @@ void XiaDxpClass::set_default_property()
 		add_wiz_dev_prop(prop_name, prop_desc);
 
 	prop_name = "RoisFiles";
-	prop_desc = "Define the list of rois files \"*.txt\"  and their associated alias";
-	prop_def  = "1";
+	prop_desc = "Define the list of rois files \"*.txt\"  and their associated alias.";
+	prop_def  = "ALIAS;FILE_PATH_NAME";
 	vect_data.clear();
-	vect_data.push_back("1");
+	vect_data.push_back("ALIAS;FILE_PATH_NAME");
+	if (prop_def.length()>0)
+	{
+		Tango::DbDatum	data(prop_name);
+		data << vect_data ;
+		dev_def_prop.push_back(data);
+		add_wiz_dev_prop(prop_name, prop_desc,  prop_def);
+	}
+	else
+		add_wiz_dev_prop(prop_name, prop_desc);
+
+	prop_name = "StreamItems";
+	prop_desc = "Define the list of Items managed by the Streamer. (Nexus, CSV, ...)<BR>\nAvailables values are :<BR>\nTriggers<BR>\nOutputs<BR>\nIcr<BR>\nOcr<BR>\nRealTime<BR>\nLiveTime<BR>\nDeadTime<BR>\nChannel<BR>\n";
+	prop_def  = "Triggers\nOutputs\nIcr\nOcr\nRealTime\nLiveTime\nDeadTime\nChannel";
+	vect_data.clear();
+	vect_data.push_back("Triggers");
+	vect_data.push_back("Outputs");
+	vect_data.push_back("Icr");
+	vect_data.push_back("Ocr");
+	vect_data.push_back("RealTime");
+	vect_data.push_back("LiveTime");
+	vect_data.push_back("DeadTime");
+	vect_data.push_back("Channel");
 	if (prop_def.length()>0)
 	{
 		Tango::DbDatum	data(prop_name);
@@ -797,7 +823,7 @@ void XiaDxpClass::set_default_property()
 		add_wiz_dev_prop(prop_name, prop_desc);
 
 	prop_name = "__MemorizedPresetType";
-	prop_desc = "";
+	prop_desc = "Available for MCA Mode Only !";
 	prop_def  = "FIXED_REAL";
 	vect_data.clear();
 	vect_data.push_back("FIXED_REAL");
@@ -812,7 +838,7 @@ void XiaDxpClass::set_default_property()
 		add_wiz_dev_prop(prop_name, prop_desc);
 
 	prop_name = "__MemorizedPresetValue";
-	prop_desc = "";
+	prop_desc = "Available for MCA Mode Only !";
 	prop_def  = "1";
 	vect_data.clear();
 	vect_data.push_back("1");
@@ -827,7 +853,7 @@ void XiaDxpClass::set_default_property()
 		add_wiz_dev_prop(prop_name, prop_desc);
 
 	prop_name = "__MemorizedNbPixels";
-	prop_desc = "";
+	prop_desc = "Available for MAPPING Mode Only !";
 	prop_def  = "1";
 	vect_data.clear();
 	vect_data.push_back("1");
@@ -842,7 +868,7 @@ void XiaDxpClass::set_default_property()
 		add_wiz_dev_prop(prop_name, prop_desc);
 
 	prop_name = "__MemorizedStreamType";
-	prop_desc = "Define the type of Stream.<BR>\nAvailable types are :<BR>\nLOG_STREAM<BR>\nNEXUS_STREAM<BR>";
+	prop_desc = "Define the type of Stream.<BR>\nAvailable types are :<BR>\nNO_STREAM<BR>\nLOG_STREAM<BR>\nCSV_STREAM<BR>\nNEXUS_STREAM<BR>";
 	prop_def  = "LOG_STREAM";
 	vect_data.clear();
 	vect_data.push_back("LOG_STREAM");
@@ -917,25 +943,10 @@ void XiaDxpClass::set_default_property()
 		add_wiz_dev_prop(prop_name, prop_desc);
 
 	prop_name = "__ExpertStreamWriteMode";
-	prop_desc = "Available for StreamNexus Only !";
+	prop_desc = "Applicable for StreamNexus Only !<BR>\nAvailable Values :<BR>\n- IMMEDIATE<BR>\n- SYNCHRONOUS<BR>";
 	prop_def  = "IMMEDIATE";
 	vect_data.clear();
 	vect_data.push_back("IMMEDIATE");
-	if (prop_def.length()>0)
-	{
-		Tango::DbDatum	data(prop_name);
-		data << vect_data ;
-		dev_def_prop.push_back(data);
-		add_wiz_dev_prop(prop_name, prop_desc,  prop_def);
-	}
-	else
-		add_wiz_dev_prop(prop_name, prop_desc);
-
-	prop_name = "__ExpertStatisticsEnabled";
-	prop_desc = "Enable/Disable write data statistics (triggers/icr/ocr/...) in Nexus File";
-	prop_def  = "false";
-	vect_data.clear();
-	vect_data.push_back("false");
 	if (prop_def.length()>0)
 	{
 		Tango::DbDatum	data(prop_name);

@@ -55,7 +55,7 @@ public:
     std::string stream_path;
     std::string stream_file;
 	std::string stream_write_mode;
-	bool stream_statistics_enabled;	
+	std::vector<std::string> stream_items;	
     int stream_nb_data_per_acq;
     int stream_nb_acq_per_file;
 };

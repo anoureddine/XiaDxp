@@ -684,7 +684,7 @@ void Controller::update_parameters(ConfigLoader conf)
             m_conf.stream_type = conf.stream_type;
             m_stream.reset(build_stream(m_conf.stream_type, m_conf.acquisition_mode));
         }
-
+                    
         //need to "update" in order to refresh parameters within the nexus stream
         if(conf.stream_path != m_conf.stream_path)
         {
@@ -721,6 +721,9 @@ void Controller::update_parameters(ConfigLoader conf)
                 static_cast<StreamNexus*>(m_stream.get())->set_nb_acq_per_file(m_conf.stream_nb_acq_per_file);
         }
 
+        //enable/disable writing statistics (read from Device Property)
+        m_stream->set_stream_items(m_conf.stream_items);   
+        
         //always in order to instantiate a new writer
         m_stream->init(m_store);
     }
@@ -809,8 +812,6 @@ void Controller::process_message(yat::Message& msg) throw (Tango::DevFailed)
                     //conf = msg.get_data<ConfigLoader>();
                     //build  the data store
                     m_store = build_store();
-                    //enable/disable writing statistics (read from Device Property)
-                    m_store->set_statistics_enabled(m_conf.stream_statistics_enabled);
                     //fix timebase (read from Device Property (default = 320 ns)
                     m_store->set_timebase(m_conf.board_timebase);
                     //build  the tango attributes (statistics+channels)
@@ -825,6 +826,8 @@ void Controller::process_message(yat::Message& msg) throw (Tango::DevFailed)
                     m_acquisition->load_config_file(m_conf.acquisition_file);
                     //init the tango attributes according to the new configuration
                     m_attr_view->init(m_store);
+                    //enable/disable writing statistics (read from Device Property)
+                    m_stream->set_stream_items(m_conf.stream_items);                                        
                     //init the stream according to the new configuration
                     m_stream->init(m_store);
                     //everything is ok
