@@ -176,7 +176,7 @@ void XiaDxp::init_device()
         yat4tango::YatLogAdapter::initialize(this);
 
         INFO_STREAM << "- Create the InnerAppender in order to manage logs." << endl;
-        yat4tango::InnerAppender::initialize(this, 512);
+        yat4tango::InnerAppender::initialize(this, 1024);
 
         INFO_STREAM << "- Create the DeviceInfo in order to display dependencies versions." << endl;
         yat4tango::DeviceInfo::initialize(this, YAT_XSTR(PROJECT_NAME), YAT_XSTR(PROJECT_VERSION) );
@@ -222,7 +222,8 @@ void XiaDxp::init_device()
         m_map_alias_rois_files.insert(make_pair(alias, file_name));
         INFO_STREAM<<"  [alias : "<<alias<<"] = file : "<<file_name<<endl;
     }
-
+   
+        
     try
     {
         INFO_STREAM<<"- Create the Controller Task"<<endl;
@@ -235,7 +236,7 @@ void XiaDxp::init_device()
         m_conf.stream_path = __MemorizedStreamTargetPath;
         m_conf.stream_file = __MemorizedStreamTargetFile;
         m_conf.stream_write_mode = __ExpertStreamWriteMode;
-		m_conf.stream_statistics_enabled = __ExpertStatisticsEnabled;		
+		m_conf.stream_items = streamItems;		
         m_conf.stream_nb_data_per_acq = __MemorizedStreamNbDataPerAcq;
         m_conf.stream_nb_acq_per_file = __MemorizedStreamNbAcqPerFile;
         m_conf.is_device_initialized = is_device_initialized();
@@ -327,6 +328,7 @@ void XiaDxp::get_device_property()
 	dev_prop.push_back(Tango::DbDatum("BoardTimebase"));
 	dev_prop.push_back(Tango::DbDatum("ConfigurationFiles"));
 	dev_prop.push_back(Tango::DbDatum("RoisFiles"));
+	dev_prop.push_back(Tango::DbDatum("StreamItems"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedConfigurationAlias"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedRoisAlias"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedNumChannel"));
@@ -339,7 +341,6 @@ void XiaDxp::get_device_property()
 	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbDataPerAcq"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbAcqPerFile"));
 	dev_prop.push_back(Tango::DbDatum("__ExpertStreamWriteMode"));
-	dev_prop.push_back(Tango::DbDatum("__ExpertStatisticsEnabled"));
 
 	//	Call database and extract values
 	//--------------------------------------------
@@ -393,6 +394,17 @@ void XiaDxp::get_device_property()
 	}
 	//	And try to extract RoisFiles value from database
 	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  roisFiles;
+
+	//	Try to initialize StreamItems from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  streamItems;
+	else {
+		//	Try to initialize StreamItems from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  streamItems;
+	}
+	//	And try to extract StreamItems value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  streamItems;
 
 	//	Try to initialize __MemorizedConfigurationAlias from class property
 	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
@@ -526,17 +538,6 @@ void XiaDxp::get_device_property()
 	//	And try to extract __ExpertStreamWriteMode value from database
 	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __ExpertStreamWriteMode;
 
-	//	Try to initialize __ExpertStatisticsEnabled from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __ExpertStatisticsEnabled;
-	else {
-		//	Try to initialize __ExpertStatisticsEnabled from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __ExpertStatisticsEnabled;
-	}
-	//	And try to extract __ExpertStatisticsEnabled value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __ExpertStatisticsEnabled;
-
 
 
     //	End of Automatic code generation
@@ -546,6 +547,7 @@ void XiaDxp::get_device_property()
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "ALIAS;MODE;FILE_PATH_NAME", "ConfigurationFiles");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedConfigurationAlias");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "ALIAS;FILE_PATH_NAME", "RoisFiles");
+    yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "CHANNEL", "StreamItems");    
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedRoisAlias");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "-1", "__MemorizedNumChannel");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "FIXED_REAL", "__MemorizedPresetType");
@@ -557,8 +559,6 @@ void XiaDxp::get_device_property()
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "2048", "__MemorizedStreamNbDataPerAcq");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "1", "__MemorizedStreamNbAcqPerFile");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "IMMEDIATE", "__ExpertStreamWriteMode");
-	yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "false", "__ExpertStatisticsEnabled");
-	
 
 }
 //+----------------------------------------------------------------------------
@@ -1503,6 +1503,10 @@ Tango::DevState XiaDxp::dev_state()
     set_status(status.str());
     return argout;
 }
+
+
+
+
 
 
 

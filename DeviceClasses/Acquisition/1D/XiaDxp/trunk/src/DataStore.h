@@ -107,8 +107,6 @@ public:
     void abort_data(void);        
     void subscribe(class Controller* observer);
     void set_nb_pixels(int nb_pixels);
-	bool get_statistics_enabled(void);
-	void set_statistics_enabled(bool is_enabled);
     double get_timebase(void);  
 	void set_timebase(double timebase);  
     
@@ -166,7 +164,6 @@ private:
     int m_nb_pixels;
 	int m_nb_bins;
     double m_timebase;
-	bool m_is_statistics_enabled;
     class Controller* m_controller;
 };
 

@@ -115,20 +115,62 @@ void StreamCsv::update_data(int ichannel, yat::SharedPtr<DataStore> data_store)
     output_file.seekp(0, ios::end);
     if((long)0 == output_file.tellp())
     {
-        output_file<<"currentPixel;triggerLiveTime;realTime;liveTime;deadTime;inputCountRate;outputCountRate;eventsInRun;channel_spectrum;"<<std::endl;
+        output_file<<"currentPixel;triggerLiveTime;realTime;liveTime;deadTime;inputCountRate;outputCountRate;outputs;channel_spectrum;"<<std::endl;
     }
 
+    //- num pixel
     output_file<<data_store->get_current_pixel(ichannel)<<";";
-    output_file<<data_store->get_triggers(ichannel)<<";";
-    output_file<<data_store->get_realtime(ichannel)<<";";
-    output_file<<data_store->get_livetime(ichannel)<<";";
-    output_file<<data_store->get_deadtime(ichannel)<<";";
-    output_file<<data_store->get_input_count_rate(ichannel)<<";";
-    output_file<<data_store->get_output_count_rate(ichannel)<<";";
-    output_file<<data_store->get_events_in_run(ichannel)<<";";
-    std::ostream_iterator<DataType> output_iterator(output_file, ";");
-    vector<DataType> myVector = data_store->get_channel_data(ichannel);
-    std::copy(myVector.begin(), myVector.end(), output_iterator);
+
+    //- triggers
+    if ( m_is_triggers_enabled )
+    {
+        output_file<<data_store->get_triggers(ichannel)<<";";
+    }
+
+    //- realtime
+    if ( m_is_realtime_enabled )
+    {
+        output_file<<data_store->get_realtime(ichannel)<<";";
+    }
+
+    //- livetime
+    if ( m_is_livetime_enabled )
+    {
+        output_file<<data_store->get_livetime(ichannel)<<";";
+    }
+
+    //- dedatime
+    if ( m_is_deadtime_enabled )
+    {
+        output_file<<data_store->get_deadtime(ichannel)<<";";
+    }
+
+    //- icr
+    if ( m_is_icr_enabled )
+    {
+        output_file<<data_store->get_input_count_rate(ichannel)<<";";
+    }
+
+    //- ocr
+    if ( m_is_ocr_enabled )
+    {
+        output_file<<data_store->get_output_count_rate(ichannel)<<";";
+    }
+
+    //- outputs
+    if ( m_is_outputs_enabled )
+    {
+        output_file<<data_store->get_outputs(ichannel)<<";";
+    }
+
+    //- channel
+    if ( m_is_channel_enabled )
+    {
+        std::ostream_iterator<DataType> output_iterator(output_file, ";");
+        vector<DataType> myVector = data_store->get_channel_data(ichannel);
+        std::copy(myVector.begin(), myVector.end(), output_iterator);
+    }
+
     output_file<<std::endl;
     output_file.flush();
 

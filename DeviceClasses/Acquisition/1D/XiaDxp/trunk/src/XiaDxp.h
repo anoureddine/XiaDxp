@@ -123,13 +123,27 @@ public:
  */
 	Tango::DevDouble	boardTimebase;
 /**
- *	Define the list of Configuration "*.INI" files and their associated alias & mode
+ *	Define the list of Configuration "*.INI" files and their associated alias & mode.
  */
 	vector<string>	configurationFiles;
 /**
- *	Define the list of rois files "*.txt"  and their associated alias
+ *	Define the list of rois files "*.txt"  and their associated alias.
  */
 	vector<string>	roisFiles;
+/**
+ *	Define the list of Items managed by the Streamer. (Nexus, CSV, ...)<BR>
+ *	Availables values are :<BR>
+ *	Triggers<BR>
+ *	Outputs<BR>
+ *	Icr<BR>
+ *	Ocr<BR>
+ *	RealTime<BR>
+ *	LiveTime<BR>
+ *	DeadTime<BR>
+ *	Channel<BR>
+ *	
+ */
+	vector<string>	streamItems;
 /**
  *	
  */
@@ -143,15 +157,15 @@ public:
  */
 	Tango::DevLong	__MemorizedNumChannel;
 /**
- *	
+ *	Available for MCA Mode Only !
  */
 	string	__MemorizedPresetType;
 /**
- *	
+ *	Available for MCA Mode Only !
  */
 	Tango::DevDouble	__MemorizedPresetValue;
 /**
- *	
+ *	Available for MAPPING Mode Only !
  */
 	Tango::DevLong	__MemorizedNbPixels;
 /**
@@ -159,7 +173,7 @@ public:
  *	Available types are :<BR>
  *	NO_STREAM<BR>
  *	LOG_STREAM<BR>
- *	RAW_STREAM<BR>
+ *	CSV_STREAM<BR>
  *	NEXUS_STREAM<BR>
  */
 	string	__MemorizedStreamType;
@@ -180,13 +194,12 @@ public:
  */
 	Tango::DevLong	__MemorizedStreamNbAcqPerFile;
 /**
- *	Available for StreamNexus Only !
+ *	Applicable for StreamNexus Only !<BR>
+ *	Available Values :<BR>
+ *	- IMMEDIATE<BR>
+ *	- SYNCHRONOUS<BR>
  */
 	string	__ExpertStreamWriteMode;
-/**
- *	Enable/Disable write data statistics (triggers/icr/ocr/...) in Nexus File
- */
-	Tango::DevBoolean	__ExpertStatisticsEnabled;
 //@}
 
     /**

@@ -36,7 +36,6 @@ DataStore::DataStore(Tango::DeviceImpl *dev)
     m_nb_pixels = 0;
     m_nb_bins = 0;
     m_timebase = 1;
-    m_is_statistics_enabled = true;
     set_status("");
     set_state(Tango::OFF);
     INFO_STREAM << "DataStore::DataStore() - [END]" << endl;
@@ -62,7 +61,7 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
     m_nb_channels = nb_channels;
     m_nb_pixels = nb_pixels;
     m_nb_bins = nb_bins;
-    m_data.module_data.clear();
+    m_data.module_data.clear();    
 
     // setup mapping data structure
     m_data.module_data.resize(nb_modules);
@@ -181,7 +180,7 @@ void DataStore::on_abort()
     set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::on_abort() - [END]" << endl;
     INFO_STREAM<<"--------------------------------------------"<<std::endl;
-    INFO_STREAM<<" "<<std::endl;    
+    INFO_STREAM<<" "<<std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -391,22 +390,6 @@ int DataStore::get_nb_bins()
 {
     yat::MutexLock scoped_lock(m_data_lock);
     return m_nb_bins;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//	
-//----------------------------------------------------------------------------------------------------------------------
-bool DataStore::get_statistics_enabled(void)
-{
-    return m_is_statistics_enabled;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//	
-//----------------------------------------------------------------------------------------------------------------------
-void DataStore::set_statistics_enabled(bool is_enabled)
-{
-    m_is_statistics_enabled = is_enabled;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -656,7 +639,7 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
     {
         //each channels statistics contains 8 WORD, that is why channel*8
         unsigned long realtime = WORD_TO_LONG(pixel_data[32+channel*8], pixel_data[33+channel*8]);
-        unsigned long livetime = WORD_TO_LONG(pixel_data[34+channel*8], pixel_data[35+channel*8]);        
+        unsigned long livetime = WORD_TO_LONG(pixel_data[34+channel*8], pixel_data[35+channel*8]);
         unsigned long triggers  = WORD_TO_LONG(pixel_data[36+channel*8], pixel_data[37+channel*8]);
         unsigned long outputs   = WORD_TO_LONG(pixel_data[38+channel*8], pixel_data[39+channel*8]);
 
