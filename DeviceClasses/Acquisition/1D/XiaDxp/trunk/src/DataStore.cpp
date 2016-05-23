@@ -35,6 +35,7 @@ DataStore::DataStore(Tango::DeviceImpl *dev)
     m_nb_channels = 0;
     m_nb_pixels = 0;
     m_nb_bins = 0;
+    m_acquisition_type = "MCA";
     m_timebase = 1;
     set_status("");
     set_state(Tango::OFF);
@@ -53,7 +54,7 @@ DataStore::~DataStore()
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::init
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins)
+void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, const std::string& acquisition_type)
 {
     INFO_STREAM << "DataStore::init() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
@@ -61,6 +62,7 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
     m_nb_channels = nb_channels;
     m_nb_pixels = nb_pixels;
     m_nb_bins = nb_bins;
+    m_acquisition_type = acquisition_type;
     m_data.module_data.clear();    
 
     // setup mapping data structure
@@ -77,8 +79,9 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
             // only the last pixel is stored            
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.pixel = -1;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.trigger_livetime = 0.0;
-            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.triggers = 0;
-            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.outputs = 0;
+            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.triggers = 0;       //for MAPPING (identical to events_in_run : read from WORD(36,37) )
+            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.outputs = 0;        
+            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.events_in_run = 0;  //for MCA (identical to triggers : get_run_data("events_in_run")
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.input_count_rate = 0.0;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.output_count_rate = 0.0;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.deadtime = 0.0;
@@ -93,7 +96,7 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::store_statistics
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::store_statistics(int module, int channel, int pixel, const std::string& acquisition_type, PixelData pix_data)
+void DataStore::store_statistics(int module, int channel, int pixel, PixelData pix_data)
 {
     DEBUG_STREAM << "DataStore::store_statistics() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
@@ -104,7 +107,7 @@ void DataStore::store_statistics(int module, int channel, int pixel, const std::
     double computed_ocr = 0.0;
     double computed_deadtime = 0.0;
     double computed_trigger_livetime = 0.0;
-    if(acquisition_type == "MAPPING")
+    if(m_acquisition_type == "MAPPING")
     {
         computed_deadtime = compute_deadtime(pix_data.outputs, pix_data.triggers, pix_data.livetime, pix_data.realtime); //100*(1 - outputs*livetime/(realtime*triggers))
         computed_realtime = compute_realtime(pix_data.realtime);
@@ -113,7 +116,7 @@ void DataStore::store_statistics(int module, int channel, int pixel, const std::
         computed_ocr = compute_output_count_rate(pix_data.outputs, computed_realtime);
         computed_trigger_livetime = 0.0; //always =0.0
     }
-    else if(acquisition_type == "MCA")
+    else if(m_acquisition_type == "MCA")
     {
         computed_deadtime = compute_deadtime(pix_data.output_count_rate, pix_data.input_count_rate); //100* (icr - ocr)/icr
         computed_realtime = pix_data.realtime;
@@ -308,12 +311,16 @@ double DataStore::get_input_count_rate(int channel)
 unsigned long DataStore::get_events_in_run(int channel)
 {
     yat::MutexLock scoped_lock(m_data_lock);
-    unsigned long events_in_run;
+    unsigned long events_in_run = 0;
 
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
-    events_in_run = m_data.module_data[module].channel_data[channel_of_module].pixel_data.events_in_run;
+    if(m_acquisition_type == "MCA")    
+        events_in_run = m_data.module_data[module].channel_data[channel_of_module].pixel_data.events_in_run;
+    else if(m_acquisition_type == "MAPPING")    
+        events_in_run = m_data.module_data[module].channel_data[channel_of_module].pixel_data.triggers;
+    
     return events_in_run;
 }
 
@@ -653,7 +660,6 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
         store_statistics(module,               //nb module
                          channel,              //numero of channel
                          the_pixel,            //numero of pixel
-                         "MAPPING",
                          pix_data);
     }
 
