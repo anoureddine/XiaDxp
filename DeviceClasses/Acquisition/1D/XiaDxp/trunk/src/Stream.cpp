@@ -46,6 +46,7 @@ std::vector<std::string> Stream::get_stream_items(void)
 //----------------------------------------------------------------------------------------------------------------------
 void Stream::set_stream_items(std::vector<std::string> stream_items)
 {
+    INFO_STREAM << "Stream::set_stream_items( nb_items = " << stream_items.size()<<" )"<<endl;    
     //- clear previous one
     m_stream_items.clear();
 
@@ -56,7 +57,7 @@ void Stream::set_stream_items(std::vector<std::string> stream_items)
         std::transform(m_stream_items.at(i).begin(), m_stream_items.at(i).end(), m_stream_items.at(i).begin(), ::toupper);
     }
 
-    //- fix which data must be stored
+    //- store which data must be stored
     if ( std::find(m_stream_items.begin(), m_stream_items.end(), "CHANNEL") != m_stream_items.end() )
         m_is_channel_enabled = true;
     if ( std::find(m_stream_items.begin(), m_stream_items.end(), "TRIGGERS") != m_stream_items.end() )
