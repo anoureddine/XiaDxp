@@ -195,7 +195,7 @@ void StreamNexus::abort()
     INFO_STREAM << "StreamNexus::abort() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
     //delete m_writer;	
-    INFO_STREAM << "- abort()..."<<endl;
+    INFO_STREAM << "- Stop()..."<<endl;
     m_writer->Stop();
     INFO_STREAM << "StreamNexus::abort() - [END]" << endl;
 }
