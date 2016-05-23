@@ -115,7 +115,7 @@ void StreamCsv::update_data(int ichannel, yat::SharedPtr<DataStore> data_store)
     output_file.seekp(0, ios::end);
     if((long)0 == output_file.tellp())
     {
-        output_file<<"currentPixel;triggerLiveTime;realTime;liveTime;deadTime;inputCountRate;outputCountRate;outputs;channel_spectrum;"<<std::endl;
+        output_file<<"currentPixel;triggers;realTime;liveTime;deadTime;inputCountRate;outputCountRate;outputs;channel_spectrum;"<<std::endl;
     }
 
     //- num pixel

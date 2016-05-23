@@ -99,8 +99,8 @@ public:
     DataStore(Tango::DeviceImpl *dev);
     ///dtor
     virtual ~DataStore();
-    void init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins);
-    void store_statistics(int module, int channel, int pixel, const std::string& acquisition_type, PixelData pix_data);
+    void init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, const std::string& acquisition_type);
+    void store_statistics(int module, int channel, int pixel, PixelData pix_data);
     void store_data(int module, int channel, int pixel, DataType* data, size_t length);    
 	void process_data(DataBufferContainer* map_buffer);
 	void close_data(void);    
@@ -163,6 +163,7 @@ private:
     int m_nb_channels;
     int m_nb_pixels;
 	int m_nb_bins;
+    std::string m_acquisition_type;
     double m_timebase;
     class Controller* m_controller;
 };

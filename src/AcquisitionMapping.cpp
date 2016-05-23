@@ -64,7 +64,8 @@ void AcquisitionMapping::load_config_file(const std::string& file_name)
     m_store->init	(get_nb_modules(),
                      get_nb_channels()/get_nb_modules(),
                      m_num_map_pixels,	// num map pixels in mode MAPPING
-                     get_nb_bins()
+                     get_nb_bins(),
+                     "MAPPING"    
                      );
 
     INFO_STREAM << "AcquisitionMapping::load_config_file() - [END]" << endl;
