@@ -58,6 +58,7 @@ static const char *RcsId = "$Id:  $";
 //  GetRois           |  get_rois()
 //  RemoveRois        |  remove_rois()
 //  StreamResetIndex  |  stream_reset_index()
+//  GetDataStreams    |  get_data_streams()
 //
 //===================================================================
 
@@ -125,7 +126,7 @@ void XiaDxp::delete_device()
 
     //remove controller
     m_controller.reset();
-    
+
     m_map_alias_configuration_files.clear();
     m_map_alias_rois_files.clear();
 
@@ -195,8 +196,8 @@ void XiaDxp::init_device()
     //---------------------------------------------------------
     //- Prepare alias for each configuration file
     //---------------------------------------------------------
-    INFO_STREAM<<"- Prepare alias for each configuration file"<<endl;
-    for(size_t i = 0; i<configurationFiles.size(); i++)
+    INFO_STREAM << "- Prepare alias for each configuration file" << endl;
+    for (size_t i = 0; i < configurationFiles.size(); i++)
     {
         yat::StringTokenizer config_files(configurationFiles.at(i), ";");
         string alias                = config_files.next_token();
@@ -205,29 +206,34 @@ void XiaDxp::init_device()
         tModeAndFile mode_and_file  = {mode, file_name};
         std::transform(alias.begin(), alias.end(), alias.begin(), ::toupper);
         m_map_alias_configuration_files.insert(make_pair(alias, mode_and_file));
-        INFO_STREAM<<"  [alias : "<<alias<<"] = mode : "<<mode<<" , file : "<<file_name<<endl;
+        INFO_STREAM << "  [alias : " << alias << "] = mode : " << mode << " , file : " << file_name << endl;
     }
 
 
     //---------------------------------------------------------
     //- Prepare alias for each rois file
     //---------------------------------------------------------
-    INFO_STREAM<<"- Prepare alias for each rois file"<<endl;
-    for(size_t i = 0; i<roisFiles.size(); i++)
+    INFO_STREAM << "- Prepare alias for each rois file" << endl;
+    for (size_t i = 0; i < roisFiles.size(); i++)
     {
         yat::StringTokenizer rois_files(roisFiles.at(i), ";");
         string alias                = rois_files.next_token();
         string file_name            = rois_files.next_token();
         std::transform(alias.begin(), alias.end(), alias.begin(), ::toupper);
         m_map_alias_rois_files.insert(make_pair(alias, file_name));
-        INFO_STREAM<<"  [alias : "<<alias<<"] = file : "<<file_name<<endl;
+        INFO_STREAM << "  [alias : " << alias << "] = file : " << file_name << endl;
     }
-   
-        
+
+
     try
     {
-        INFO_STREAM<<"- Create the Controller Task"<<endl;
+        INFO_STREAM << "- Create the Controller Task" << endl;
         std::transform(boardType.begin(), boardType.end(), boardType.begin(), ::toupper);
+        for (int i = 0; i < streamItems.size(); i++)
+        {
+            std::transform(streamItems.at(i).begin(), streamItems.at(i).end(), streamItems.at(i).begin(), ::tolower);
+        }
+
         m_conf.board_type = boardType;
         m_conf.board_timebase = boardTimebase;
         m_conf.acquisition_mode = m_map_alias_configuration_files[__MemorizedConfigurationAlias].mode;
@@ -236,7 +242,7 @@ void XiaDxp::init_device()
         m_conf.stream_path = __MemorizedStreamTargetPath;
         m_conf.stream_file = __MemorizedStreamTargetFile;
         m_conf.stream_write_mode = __ExpertStreamWriteMode;
-		m_conf.stream_items = streamItems;		
+        m_conf.stream_items = streamItems;
         m_conf.stream_nb_data_per_acq = __MemorizedStreamNbDataPerAcq;
         m_conf.stream_nb_acq_per_file = __MemorizedStreamNbAcqPerFile;
         m_conf.is_device_initialized = is_device_initialized();
@@ -261,25 +267,25 @@ void XiaDxp::init_device()
     m_is_device_initialized = true;
 
     //write at init, only if device is correctly initialized
-    if(m_is_device_initialized)
+    if (m_is_device_initialized)
     {
         try
         {
             INFO_STREAM << "- Write tango hardware at Init - streamType" << endl;
             Tango::WAttribute &streamType = dev_attr->get_w_attr_by_name("streamType");
-            attr_streamType_write = const_cast<Tango::DevString>(__MemorizedStreamType.c_str());
+            attr_streamType_write = const_cast<Tango::DevString> (__MemorizedStreamType.c_str());
             streamType.set_write_value(attr_streamType_write);
             write_streamType(streamType);
 
             INFO_STREAM << "- Write tango hardware at Init - streamTargetPath" << endl;
             Tango::WAttribute &streamTargetPath = dev_attr->get_w_attr_by_name("streamTargetPath");
-            attr_streamTargetPath_write = const_cast<Tango::DevString>(__MemorizedStreamTargetPath.c_str());
+            attr_streamTargetPath_write = const_cast<Tango::DevString> (__MemorizedStreamTargetPath.c_str());
             streamTargetPath.set_write_value(attr_streamTargetPath_write);
             write_streamTargetPath(streamTargetPath);
 
             INFO_STREAM << "- Write tango hardware at Init - streamTargetFile" << endl;
             Tango::WAttribute &streamTargetFile = dev_attr->get_w_attr_by_name("streamTargetFile");
-            attr_streamTargetFile_write = const_cast<Tango::DevString>(__MemorizedStreamTargetFile.c_str());
+            attr_streamTargetFile_write = const_cast<Tango::DevString> (__MemorizedStreamTargetFile.c_str());
             streamTargetFile.set_write_value(attr_streamTargetFile_write);
             write_streamTargetFile(streamTargetFile);
 
@@ -323,220 +329,250 @@ void XiaDxp::get_device_property()
 
     //	Read device properties from database.(Automatic code generation)
     //------------------------------------------------------------------
-	Tango::DbData	dev_prop;
-	dev_prop.push_back(Tango::DbDatum("BoardType"));
-	dev_prop.push_back(Tango::DbDatum("BoardTimebase"));
-	dev_prop.push_back(Tango::DbDatum("ConfigurationFiles"));
-	dev_prop.push_back(Tango::DbDatum("RoisFiles"));
-	dev_prop.push_back(Tango::DbDatum("StreamItems"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedConfigurationAlias"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedRoisAlias"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedNumChannel"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedPresetType"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedPresetValue"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedNbPixels"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamType"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetPath"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetFile"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbDataPerAcq"));
-	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbAcqPerFile"));
-	dev_prop.push_back(Tango::DbDatum("__ExpertStreamWriteMode"));
+    Tango::DbData	dev_prop;
+    dev_prop.push_back(Tango::DbDatum("BoardType"));
+    dev_prop.push_back(Tango::DbDatum("BoardTimebase"));
+    dev_prop.push_back(Tango::DbDatum("ConfigurationFiles"));
+    dev_prop.push_back(Tango::DbDatum("RoisFiles"));
+    dev_prop.push_back(Tango::DbDatum("StreamItems"));
+    dev_prop.push_back(Tango::DbDatum("SpoolID"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedConfigurationAlias"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedRoisAlias"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedNumChannel"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedPresetType"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedPresetValue"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedNbPixels"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamType"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetPath"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetFile"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbDataPerAcq"));
+    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbAcqPerFile"));
+    dev_prop.push_back(Tango::DbDatum("__ExpertStreamWriteMode"));
 
-	//	Call database and extract values
-	//--------------------------------------------
-	if (Tango::Util::instance()->_UseDb==true)
-		get_db_device()->get_property(dev_prop);
-	Tango::DbDatum	def_prop, cl_prop;
-	XiaDxpClass	*ds_class =
-		(static_cast<XiaDxpClass *>(get_device_class()));
-	int	i = -1;
+    //	Call database and extract values
+    //--------------------------------------------
+    if (Tango::Util::instance()->_UseDb == true)
+        get_db_device()->get_property(dev_prop);
+    Tango::DbDatum	def_prop, cl_prop;
+    XiaDxpClass	*ds_class =
+     (static_cast<XiaDxpClass *> (get_device_class()));
+    int	i = -1;
 
-	//	Try to initialize BoardType from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  boardType;
-	else {
-		//	Try to initialize BoardType from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  boardType;
-	}
-	//	And try to extract BoardType value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  boardType;
+    //	Try to initialize BoardType from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  boardType;
+    else
+    {
+        //	Try to initialize BoardType from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  boardType;
+    }
+    //	And try to extract BoardType value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  boardType;
 
-	//	Try to initialize BoardTimebase from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  boardTimebase;
-	else {
-		//	Try to initialize BoardTimebase from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  boardTimebase;
-	}
-	//	And try to extract BoardTimebase value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  boardTimebase;
+    //	Try to initialize BoardTimebase from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  boardTimebase;
+    else
+    {
+        //	Try to initialize BoardTimebase from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  boardTimebase;
+    }
+    //	And try to extract BoardTimebase value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  boardTimebase;
 
-	//	Try to initialize ConfigurationFiles from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  configurationFiles;
-	else {
-		//	Try to initialize ConfigurationFiles from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  configurationFiles;
-	}
-	//	And try to extract ConfigurationFiles value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  configurationFiles;
+    //	Try to initialize ConfigurationFiles from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  configurationFiles;
+    else
+    {
+        //	Try to initialize ConfigurationFiles from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  configurationFiles;
+    }
+    //	And try to extract ConfigurationFiles value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  configurationFiles;
 
-	//	Try to initialize RoisFiles from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  roisFiles;
-	else {
-		//	Try to initialize RoisFiles from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  roisFiles;
-	}
-	//	And try to extract RoisFiles value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  roisFiles;
+    //	Try to initialize RoisFiles from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  roisFiles;
+    else
+    {
+        //	Try to initialize RoisFiles from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  roisFiles;
+    }
+    //	And try to extract RoisFiles value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  roisFiles;
 
-	//	Try to initialize StreamItems from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  streamItems;
-	else {
-		//	Try to initialize StreamItems from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  streamItems;
-	}
-	//	And try to extract StreamItems value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  streamItems;
+    //	Try to initialize StreamItems from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  streamItems;
+    else
+    {
+        //	Try to initialize StreamItems from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  streamItems;
+    }
+    //	And try to extract StreamItems value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  streamItems;
 
-	//	Try to initialize __MemorizedConfigurationAlias from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedConfigurationAlias;
-	else {
-		//	Try to initialize __MemorizedConfigurationAlias from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedConfigurationAlias;
-	}
-	//	And try to extract __MemorizedConfigurationAlias value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedConfigurationAlias;
+    //	Try to initialize SpoolID from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  spoolID;
+    else
+    {
+        //	Try to initialize SpoolID from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  spoolID;
+    }
+    //	And try to extract SpoolID value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  spoolID;
 
-	//	Try to initialize __MemorizedRoisAlias from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedRoisAlias;
-	else {
-		//	Try to initialize __MemorizedRoisAlias from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedRoisAlias;
-	}
-	//	And try to extract __MemorizedRoisAlias value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedRoisAlias;
+    //	Try to initialize __MemorizedConfigurationAlias from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedConfigurationAlias;
+    else
+    {
+        //	Try to initialize __MemorizedConfigurationAlias from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedConfigurationAlias;
+    }
+    //	And try to extract __MemorizedConfigurationAlias value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedConfigurationAlias;
 
-	//	Try to initialize __MemorizedNumChannel from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedNumChannel;
-	else {
-		//	Try to initialize __MemorizedNumChannel from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedNumChannel;
-	}
-	//	And try to extract __MemorizedNumChannel value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedNumChannel;
+    //	Try to initialize __MemorizedRoisAlias from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedRoisAlias;
+    else
+    {
+        //	Try to initialize __MemorizedRoisAlias from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedRoisAlias;
+    }
+    //	And try to extract __MemorizedRoisAlias value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedRoisAlias;
 
-	//	Try to initialize __MemorizedPresetType from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedPresetType;
-	else {
-		//	Try to initialize __MemorizedPresetType from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedPresetType;
-	}
-	//	And try to extract __MemorizedPresetType value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedPresetType;
+    //	Try to initialize __MemorizedNumChannel from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedNumChannel;
+    else
+    {
+        //	Try to initialize __MemorizedNumChannel from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedNumChannel;
+    }
+    //	And try to extract __MemorizedNumChannel value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedNumChannel;
 
-	//	Try to initialize __MemorizedPresetValue from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedPresetValue;
-	else {
-		//	Try to initialize __MemorizedPresetValue from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedPresetValue;
-	}
-	//	And try to extract __MemorizedPresetValue value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedPresetValue;
+    //	Try to initialize __MemorizedPresetType from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedPresetType;
+    else
+    {
+        //	Try to initialize __MemorizedPresetType from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedPresetType;
+    }
+    //	And try to extract __MemorizedPresetType value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedPresetType;
 
-	//	Try to initialize __MemorizedNbPixels from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedNbPixels;
-	else {
-		//	Try to initialize __MemorizedNbPixels from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedNbPixels;
-	}
-	//	And try to extract __MemorizedNbPixels value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedNbPixels;
+    //	Try to initialize __MemorizedPresetValue from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedPresetValue;
+    else
+    {
+        //	Try to initialize __MemorizedPresetValue from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedPresetValue;
+    }
+    //	And try to extract __MemorizedPresetValue value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedPresetValue;
 
-	//	Try to initialize __MemorizedStreamType from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamType;
-	else {
-		//	Try to initialize __MemorizedStreamType from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamType;
-	}
-	//	And try to extract __MemorizedStreamType value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamType;
+    //	Try to initialize __MemorizedNbPixels from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedNbPixels;
+    else
+    {
+        //	Try to initialize __MemorizedNbPixels from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedNbPixels;
+    }
+    //	And try to extract __MemorizedNbPixels value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedNbPixels;
 
-	//	Try to initialize __MemorizedStreamTargetPath from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamTargetPath;
-	else {
-		//	Try to initialize __MemorizedStreamTargetPath from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamTargetPath;
-	}
-	//	And try to extract __MemorizedStreamTargetPath value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamTargetPath;
+    //	Try to initialize __MemorizedStreamType from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamType;
+    else
+    {
+        //	Try to initialize __MemorizedStreamType from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamType;
+    }
+    //	And try to extract __MemorizedStreamType value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamType;
 
-	//	Try to initialize __MemorizedStreamTargetFile from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamTargetFile;
-	else {
-		//	Try to initialize __MemorizedStreamTargetFile from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamTargetFile;
-	}
-	//	And try to extract __MemorizedStreamTargetFile value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamTargetFile;
+    //	Try to initialize __MemorizedStreamTargetPath from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamTargetPath;
+    else
+    {
+        //	Try to initialize __MemorizedStreamTargetPath from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamTargetPath;
+    }
+    //	And try to extract __MemorizedStreamTargetPath value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamTargetPath;
 
-	//	Try to initialize __MemorizedStreamNbDataPerAcq from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamNbDataPerAcq;
-	else {
-		//	Try to initialize __MemorizedStreamNbDataPerAcq from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamNbDataPerAcq;
-	}
-	//	And try to extract __MemorizedStreamNbDataPerAcq value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamNbDataPerAcq;
+    //	Try to initialize __MemorizedStreamTargetFile from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamTargetFile;
+    else
+    {
+        //	Try to initialize __MemorizedStreamTargetFile from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamTargetFile;
+    }
+    //	And try to extract __MemorizedStreamTargetFile value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamTargetFile;
 
-	//	Try to initialize __MemorizedStreamNbAcqPerFile from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamNbAcqPerFile;
-	else {
-		//	Try to initialize __MemorizedStreamNbAcqPerFile from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamNbAcqPerFile;
-	}
-	//	And try to extract __MemorizedStreamNbAcqPerFile value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamNbAcqPerFile;
+    //	Try to initialize __MemorizedStreamNbDataPerAcq from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamNbDataPerAcq;
+    else
+    {
+        //	Try to initialize __MemorizedStreamNbDataPerAcq from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamNbDataPerAcq;
+    }
+    //	And try to extract __MemorizedStreamNbDataPerAcq value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamNbDataPerAcq;
 
-	//	Try to initialize __ExpertStreamWriteMode from class property
-	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-	if (cl_prop.is_empty()==false)	cl_prop  >>  __ExpertStreamWriteMode;
-	else {
-		//	Try to initialize __ExpertStreamWriteMode from default device value
-		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-		if (def_prop.is_empty()==false)	def_prop  >>  __ExpertStreamWriteMode;
-	}
-	//	And try to extract __ExpertStreamWriteMode value from database
-	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __ExpertStreamWriteMode;
+    //	Try to initialize __MemorizedStreamNbAcqPerFile from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamNbAcqPerFile;
+    else
+    {
+        //	Try to initialize __MemorizedStreamNbAcqPerFile from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamNbAcqPerFile;
+    }
+    //	And try to extract __MemorizedStreamNbAcqPerFile value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamNbAcqPerFile;
+
+    //	Try to initialize __ExpertStreamWriteMode from class property
+    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+    if (cl_prop.is_empty() == false)	cl_prop  >>  __ExpertStreamWriteMode;
+    else
+    {
+        //	Try to initialize __ExpertStreamWriteMode from default device value
+        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+        if (def_prop.is_empty() == false)	def_prop  >>  __ExpertStreamWriteMode;
+    }
+    //	And try to extract __ExpertStreamWriteMode value from database
+    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __ExpertStreamWriteMode;
 
 
 
@@ -547,7 +583,8 @@ void XiaDxp::get_device_property()
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "ALIAS;MODE;FILE_PATH_NAME", "ConfigurationFiles");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedConfigurationAlias");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "ALIAS;FILE_PATH_NAME", "RoisFiles");
-    yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "CHANNEL", "StreamItems");    
+    yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "CHANNEL", "StreamItems");
+    yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "SpoolID");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedRoisAlias");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "-1", "__MemorizedNumChannel");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "FIXED_REAL", "__MemorizedPresetType");
@@ -559,7 +596,6 @@ void XiaDxp::get_device_property()
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "2048", "__MemorizedStreamNbDataPerAcq");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "1", "__MemorizedStreamNbAcqPerFile");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "IMMEDIATE", "__ExpertStreamWriteMode");
-
 }
 //+----------------------------------------------------------------------------
 //
@@ -606,7 +642,7 @@ void XiaDxp::read_attr_hardware(vector<long> &attr_list)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_nbModules(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_nbModules(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_nbModules(Tango::Attribute &attr) entering... " << endl;
     try
     {
         *attr_nbModules_read = m_controller->get_nb_modules();
@@ -632,7 +668,7 @@ void XiaDxp::read_nbModules(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_nbChannels(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_nbChannels(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_nbChannels(Tango::Attribute &attr) entering... " << endl;
     try
     {
         *attr_nbChannels_read = m_controller->get_nb_channels();
@@ -658,7 +694,7 @@ void XiaDxp::read_nbChannels(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_nbBins(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_nbBins(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_nbBins(Tango::Attribute &attr) entering... " << endl;
     try
     {
         *attr_nbBins_read = m_controller->get_nb_bins();
@@ -685,7 +721,7 @@ void XiaDxp::read_nbBins(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_currentAlias(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_currentAlias(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_currentAlias(Tango::Attribute &attr) entering... " << endl;
     try
     {
         attr.set_value(attr_currentAlias_read);
@@ -710,7 +746,7 @@ void XiaDxp::read_currentAlias(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_currentMode(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_currentMode(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_currentMode(Tango::Attribute &attr) entering... " << endl;
     try
     {
         attr.set_value(attr_currentMode_read);
@@ -735,7 +771,7 @@ void XiaDxp::read_currentMode(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_currentConfigFile(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_currentConfigFile(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_currentConfigFile(Tango::Attribute &attr) entering... " << endl;
     try
     {
         attr.set_value(attr_currentConfigFile_read);
@@ -762,7 +798,7 @@ void XiaDxp::read_currentConfigFile(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_peakingTime(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_peakingTime(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_peakingTime(Tango::Attribute &attr) entering... " << endl;
     try
     {
         *attr_peakingTime_read = m_controller->get_peaking_time();
@@ -789,7 +825,7 @@ void XiaDxp::read_peakingTime(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_dynamicRange(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_dynamicRange(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_dynamicRange(Tango::Attribute &attr) entering... " << endl;
     try
     {
         *attr_dynamicRange_read = m_controller->get_dynamic_range();
@@ -816,7 +852,7 @@ void XiaDxp::read_dynamicRange(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_streamType(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_streamType(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_streamType(Tango::Attribute &attr) entering... " << endl;
 }
 
 //+----------------------------------------------------------------------------
@@ -828,7 +864,7 @@ void XiaDxp::read_streamType(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::write_streamType(Tango::WAttribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::write_streamType(Tango::WAttribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::write_streamType(Tango::WAttribute &attr) entering... " << endl;
     try
     {
         attr.get_write_value(attr_streamType_write);
@@ -850,7 +886,7 @@ void XiaDxp::write_streamType(Tango::WAttribute &attr)
         m_conf.stream_type = currentType;
         yat4tango::PropertyHelper::set_property(this, "__MemorizedStreamType", attr_streamType_write);
     }
-    catch(Tango::DevFailed& df)
+    catch (Tango::DevFailed& df)
     {
         ERROR_STREAM << df << endl;
         //- rethrow exception
@@ -870,7 +906,7 @@ void XiaDxp::write_streamType(Tango::WAttribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_streamTargetPath(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_streamTargetPath(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_streamTargetPath(Tango::Attribute &attr) entering... " << endl;
 }
 
 //+----------------------------------------------------------------------------
@@ -882,14 +918,14 @@ void XiaDxp::read_streamTargetPath(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::write_streamTargetPath(Tango::WAttribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::write_streamTargetPath(Tango::WAttribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::write_streamTargetPath(Tango::WAttribute &attr) entering... " << endl;
     try
     {
         attr.get_write_value(attr_streamTargetPath_write);
         m_conf.stream_path = attr_streamTargetPath_write;
         yat4tango::PropertyHelper::set_property(this, "__MemorizedStreamTargetPath", attr_streamTargetPath_write);
     }
-    catch(Tango::DevFailed& df)
+    catch (Tango::DevFailed& df)
     {
         ERROR_STREAM << df << endl;
         //- rethrow exception
@@ -909,7 +945,7 @@ void XiaDxp::write_streamTargetPath(Tango::WAttribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_streamTargetFile(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_streamTargetFile(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_streamTargetFile(Tango::Attribute &attr) entering... " << endl;
 }
 
 //+----------------------------------------------------------------------------
@@ -921,14 +957,14 @@ void XiaDxp::read_streamTargetFile(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::write_streamTargetFile(Tango::WAttribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::write_streamTargetFile(Tango::WAttribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::write_streamTargetFile(Tango::WAttribute &attr) entering... " << endl;
     try
     {
         attr.get_write_value(attr_streamTargetFile_write);
         m_conf.stream_file = attr_streamTargetFile_write;
         yat4tango::PropertyHelper::set_property(this, "__MemorizedStreamTargetFile", attr_streamTargetFile_write);
     }
-    catch(Tango::DevFailed& df)
+    catch (Tango::DevFailed& df)
     {
         ERROR_STREAM << df << endl;
         //- rethrow exception
@@ -948,7 +984,7 @@ void XiaDxp::write_streamTargetFile(Tango::WAttribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_streamNbDataPerAcq(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_streamNbDataPerAcq(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_streamNbDataPerAcq(Tango::Attribute &attr) entering... " << endl;
 }
 
 //+----------------------------------------------------------------------------
@@ -960,14 +996,14 @@ void XiaDxp::read_streamNbDataPerAcq(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::write_streamNbDataPerAcq(Tango::WAttribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::write_streamNbDataPerAcq(Tango::WAttribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::write_streamNbDataPerAcq(Tango::WAttribute &attr) entering... " << endl;
     try
     {
         attr.get_write_value(attr_streamNbDataPerAcq_write);
         m_conf.stream_nb_data_per_acq = attr_streamNbDataPerAcq_write;
         yat4tango::PropertyHelper::set_property(this, "__MemorizedStreamNbDataPerAcq", attr_streamNbDataPerAcq_write);
     }
-    catch(Tango::DevFailed& df)
+    catch (Tango::DevFailed& df)
     {
         ERROR_STREAM << df << endl;
         //- rethrow exception
@@ -987,7 +1023,7 @@ void XiaDxp::write_streamNbDataPerAcq(Tango::WAttribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::read_streamNbAcqPerFile(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::read_streamNbAcqPerFile(Tango::Attribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::read_streamNbAcqPerFile(Tango::Attribute &attr) entering... " << endl;
 }
 
 //+----------------------------------------------------------------------------
@@ -999,14 +1035,14 @@ void XiaDxp::read_streamNbAcqPerFile(Tango::Attribute &attr)
 //-----------------------------------------------------------------------------
 void XiaDxp::write_streamNbAcqPerFile(Tango::WAttribute &attr)
 {
-    DEBUG_STREAM << "XiaDxp::write_streamNbAcqPerFile(Tango::WAttribute &attr) entering... "<< endl;
+    DEBUG_STREAM << "XiaDxp::write_streamNbAcqPerFile(Tango::WAttribute &attr) entering... " << endl;
     try
     {
         attr.get_write_value(attr_streamNbAcqPerFile_write);
         m_conf.stream_nb_acq_per_file = attr_streamNbAcqPerFile_write;
         yat4tango::PropertyHelper::set_property(this, "__MemorizedStreamNbAcqPerFile", attr_streamNbAcqPerFile_write);
     }
-    catch(Tango::DevFailed& df)
+    catch (Tango::DevFailed& df)
     {
         ERROR_STREAM << df << endl;
         //- rethrow exception
@@ -1047,10 +1083,10 @@ void XiaDxp::load_config_file(Tango::DevString argin)
         std::transform(alias.begin(), alias.end(), alias.begin(), ::toupper);
         //check if alias exist !
         map<string, tModeAndFile>::const_iterator it = m_map_alias_configuration_files.find(alias);
-        if(it == m_map_alias_configuration_files.end())
+        if (it == m_map_alias_configuration_files.end())
         {
             stringstream ss;
-            ss<<"Unable to find the alias ["<<alias<<"]"<<endl;
+            ss << "Unable to find the alias [" << alias << "]" << endl;
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
                                            (ss.str()).c_str(),
                                            "XiaDxp::load_config_file()");
@@ -1061,21 +1097,21 @@ void XiaDxp::load_config_file(Tango::DevString argin)
 
         //refresh the config of parameters of the controller
         m_conf.is_device_initialized = is_device_initialized();
-		if(get_state() != Tango::OFF)
+        if (get_state() != Tango::OFF)
         {
             //means that it is not the 1st call of load_config_file()
             //because, we can't call m_stream->init() in controller in the 1st call of load_config_file
             //otherwise m_store is not yet initialized!!
             m_controller->update_parameters(m_conf);
-        }        
+        }
 
         //ask the controller to load the file on the board
-        m_controller->load_config_file(m_conf.acquisition_mode, m_conf.acquisition_file); 
-        
+        m_controller->load_config_file(m_conf.acquisition_mode, m_conf.acquisition_file);
+
         //update attributes related to config ini file
         strcpy(*attr_currentAlias_read, alias.c_str());
         strcpy(*attr_currentMode_read, (m_map_alias_configuration_files[alias].mode).c_str());
-        strcpy(*attr_currentConfigFile_read, (m_map_alias_configuration_files[alias].file).c_str());        
+        strcpy(*attr_currentConfigFile_read, (m_map_alias_configuration_files[alias].file).c_str());
         yat4tango::PropertyHelper::set_property(this, "__MemorizedConfigurationAlias", alias);
     }
     catch (Tango::DevFailed& df)
@@ -1247,10 +1283,10 @@ void XiaDxp::set_rois_from_file(Tango::DevString argin)
         std::transform(alias.begin(), alias.end(), alias.begin(), ::toupper);
         //check if alias exist !
         map<string, string>::const_iterator it = m_map_alias_rois_files.find(alias);
-        if(it == m_map_alias_rois_files.end())
+        if (it == m_map_alias_rois_files.end())
         {
             stringstream ss;
-            ss<<"Unable to find the alias ["<<alias<<"]"<<endl;
+            ss << "Unable to find the alias [" << alias << "]" << endl;
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
                                            (ss.str()).c_str(),
                                            "XiaDxp::set_rois_from_file()");
@@ -1258,17 +1294,17 @@ void XiaDxp::set_rois_from_file(Tango::DevString argin)
 
         //alias is found, so take the file name
         std::string file_name = m_map_alias_rois_files[alias];
-        INFO_STREAM<<"file_name = "<<file_name<<endl;
+        INFO_STREAM << "file_name = " << file_name << endl;
         yat::File rois_file(file_name);
         std::string file_data;
-        rois_file.load((std::string*)&file_data);
-        INFO_STREAM<<"file_data :"<<endl;
-        INFO_STREAM<<file_data<<endl;
+        rois_file.load((std::string*) & file_data);
+        INFO_STREAM << "file_data :" << endl;
+        INFO_STREAM << file_data << endl;
         std::vector<std::string> vec_lines;
         yat::StringUtil::split(file_data, '\n', &vec_lines, true);
         for (size_t i = 0; i < vec_lines.size(); i++)
         {
-            INFO_STREAM<<"line["<<i<<"] = "<<vec_lines.at(i)<<endl;
+            INFO_STREAM << "line[" << i << "] = " << vec_lines.at(i) << endl;
             std::string user_input = vec_lines.at(i);
             set_rois_from_string(user_input);
         }
@@ -1372,18 +1408,18 @@ Tango::DevVarStringArray *XiaDxp::get_rois()
     {
         std::stringstream ss;
         ss.str("");
-        ss<<i;
+        ss << i;
         int nb_rois = m_controller->get_nb_rois(i);
         for (int j = 0; j < nb_rois; j++)
         {
-            ss<<";";
+            ss << ";";
             double low = 0, high = 0;
             m_controller->get_roi_bounds(i, j, low, high);
-            ss<<low<<";"<<high;
+            ss << low << ";" << high;
         }
 
         (*argout)[i] = CORBA::string_dup(ss.str().c_str());
-        DEBUG_STREAM<<ss.str().c_str();
+        DEBUG_STREAM << ss.str().c_str();
     }
 
     return argout;
@@ -1395,15 +1431,15 @@ Tango::DevVarStringArray *XiaDxp::get_rois()
 void XiaDxp::set_rois_from_string(const std::string& input)
 {
     std::string user_input = input;
-    INFO_STREAM<<"user_input = "<<user_input<<endl;
+    INFO_STREAM << "user_input = " << user_input << endl;
     std::vector<std::string> vec_rois;
     yat::StringUtil::split(user_input, ';', &vec_rois, true);
 
     //check user input : nb tokens must be ODD (1 channel_number ; low; high; low; high; ....)
-    if(vec_rois.size()%2 == 0)
+    if (vec_rois.size() % 2 == 0)
     {
         stringstream ss;
-        ss<<"User input must be in the format : 'channel_num; roi0_low; roi0_high; roi1_low; roi1_high; ...'"<<endl;
+        ss << "User input must be in the format : 'channel_num; roi0_low; roi0_high; roi1_low; roi1_high; ...'" << endl;
         Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
                                        (ss.str()).c_str(),
                                        "XiaDxp::set_rois_from_string()");
@@ -1411,9 +1447,9 @@ void XiaDxp::set_rois_from_string(const std::string& input)
 
     //fix nb rois
     int channel_num = yat::StringUtil::to_num<int>(vec_rois.at(0));
-    DEBUG_STREAM<<"channel_num = "<<channel_num<<endl;
-    int roi_count = (int)((vec_rois.size()-1)/2); //vector size minus channel_num divided by 2 is the roi count		
-    DEBUG_STREAM<<"roi_count = "<<roi_count<<endl;
+    DEBUG_STREAM << "channel_num = " << channel_num << endl;
+    int roi_count = (int) ((vec_rois.size() - 1) / 2); //vector size minus channel_num divided by 2 is the roi count		
+    DEBUG_STREAM << "roi_count = " << roi_count << endl;
     //put roi_count in "number_of_scas"
     m_controller->set_nb_rois(channel_num, roi_count);
 
@@ -1422,11 +1458,11 @@ void XiaDxp::set_rois_from_string(const std::string& input)
     {
         m_controller->set_roi_bounds(channel_num,                                                   //channel
                                      roi_num,                                                       //roi_num
-                                     yat::StringUtil::to_num<double>(vec_rois.at(1+2*roi_num)),     //low
-                                     yat::StringUtil::to_num<double>(vec_rois.at(1+2*roi_num+1)));  //high
+                                     yat::StringUtil::to_num<double>(vec_rois.at(1 + 2 * roi_num)),     //low
+                                     yat::StringUtil::to_num<double>(vec_rois.at(1 + 2 * roi_num + 1)));  //high
     }
 
-    INFO_STREAM<<" "<<endl;
+    INFO_STREAM << " " << endl;
 }
 
 //+------------------------------------------------------------------
@@ -1460,6 +1496,57 @@ void XiaDxp::stream_reset_index()
                                           string(df.errors[0].desc).c_str(),
                                           "XiaDxp::stream_reset_buffer_index()");
     }
+}
+
+
+//+------------------------------------------------------------------
+/**
+ *	method:	XiaDxp::get_data_streams
+ *
+ *	description:	method to execute "GetDataStreams"
+ *	Returns the flyscan data streams associated with this device.
+ *
+ * @return	
+ *
+ */
+//+------------------------------------------------------------------
+Tango::DevString XiaDxp::get_data_streams()
+{
+    //	POGO has generated a method core with argout allocation.
+    //	If you would like to use a static reference without copying,
+    //	See "TANGO Device Server Programmer's Manual"
+    //		(chapter : Writing a TANGO DS / Exchanging data)
+    //------------------------------------------------------------
+    Tango::DevString	argout  = new char[1024];
+    DEBUG_STREAM << "XiaDxp::get_data_streams(): entering... !" << endl;
+
+    //	Add your own code to control device here
+    try
+    {
+        std::string data_items;
+        for (int ichan = 0; ichan < m_controller->get_nb_channels(); ichan++)
+        {
+            for (int i = 0; i < streamItems.size(); i++)
+            {
+                std::string format = streamItems.at(i) + "%02d,";
+                data_items += yat::String::str_format(format.c_str(), ichan);
+            }
+        }
+
+        std::string data_streams = m_conf.stream_file + ":" + data_items + "@" + spoolID;
+        INFO_STREAM << "data_streams = " << data_streams << endl;
+        strcpy(argout, data_streams.c_str());
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        //- rethrow exception
+        Tango::Except::re_throw_exception(df,
+                                          "TANGO_DEVICE_ERROR",
+                                          string(df.errors[0].desc).c_str(),
+                                          "XiaDxp::get_data_streams()");
+    }
+    return argout;
 }
 
 //-------------------------------------------------------------------
@@ -1503,20 +1590,5 @@ Tango::DevState XiaDxp::dev_state()
     set_status(status.str());
     return argout;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }	//	namespace

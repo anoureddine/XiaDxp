@@ -214,6 +214,30 @@ public:
 //=========================================
 //	Define classes for commands
 //=========================================
+class GetDataStreamsCmd : public Tango::Command
+{
+public:
+	GetDataStreamsCmd(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
+
+	GetDataStreamsCmd(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~GetDataStreamsCmd() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<XiaDxp *>(dev))->is_GetDataStreams_allowed(any);}
+};
+
+
+
 class StreamResetIndexCmd : public Tango::Command
 {
 public:

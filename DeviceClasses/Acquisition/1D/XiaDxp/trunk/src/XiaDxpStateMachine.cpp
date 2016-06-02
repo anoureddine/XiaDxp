@@ -591,5 +591,29 @@ bool XiaDxp::is_StreamResetIndex_allowed(const CORBA::Any &any)
 	}
 	return true;
 }
+//+----------------------------------------------------------------------------
+//
+// method : 		XiaDxp::is_GetDataStreams_allowed
+// 
+// description : 	Execution allowed for GetDataStreams command.
+//
+//-----------------------------------------------------------------------------
+bool XiaDxp::is_GetDataStreams_allowed(const CORBA::Any &any)
+{
+	if (get_state() == Tango::FAULT	||
+		get_state() == Tango::INIT	||
+		get_state() == Tango::RUNNING	||
+		get_state() == Tango::OFF)
+	{
+		//	End of Generated Code
+		if ( get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
+		//	Re-Start of Generated Code
+		return false;
+	}
+	return true;
+}
 
 }	// namespace XiaDxp_ns

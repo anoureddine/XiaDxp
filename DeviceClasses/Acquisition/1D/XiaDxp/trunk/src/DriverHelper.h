@@ -54,7 +54,7 @@ public:
     Tango::LogAdapter(dev),
     m_device(dev),
     m_board_type(board_type),
-    m_status("WARNING !"),
+    m_status("INITIALIZATION UNKNOWN !"),
     m_state(INITIALIZATION_SUCCESSFUL)
     {
         INFO_STREAM << "DriverHelper::DriverHelper()- [BEGIN]" << endl;

@@ -22,10 +22,7 @@ namespace XiaDxp_ns
 HandelHelper::HandelHelper(Tango::DeviceImpl *dev, const std::string & board_type)
 : DriverHelper(dev, board_type),
 m_nb_modules(0),
-m_nb_channels(0),
-m_board_type(board_type),
-m_state(INITIALIZATION_UNKNOWN),
-m_status("INITIALIZATION UNKNOWN")
+m_nb_channels(0)
 {
     INFO_STREAM << "HandelHelper::HandelHelper()- [BEGIN]" << endl;
     INFO_STREAM << "HandelHelper::HandelHelper()- [END]" << endl;

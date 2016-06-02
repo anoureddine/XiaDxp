@@ -155,10 +155,6 @@ private:
 
     int m_nb_modules;
     int m_nb_channels;
-    std::string m_board_type;
-
-    State m_state;
-    std::string m_status;
 
     yat::Mutex m_lock;
     yat::Mutex m_status_lock;
