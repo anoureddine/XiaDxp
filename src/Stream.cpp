@@ -47,32 +47,25 @@ std::vector<std::string> Stream::get_stream_items(void)
 void Stream::set_stream_items(std::vector<std::string> stream_items)
 {
     INFO_STREAM << "Stream::set_stream_items( nb_items = " << stream_items.size()<<" )"<<endl;    
-    //- clear previous one
-    m_stream_items.clear();
-
-    //- store it in upper case
-    for (int i = 0; i < stream_items.size(); i++)
-    {
-        m_stream_items.push_back(stream_items.at(i));
-        std::transform(m_stream_items.at(i).begin(), m_stream_items.at(i).end(), m_stream_items.at(i).begin(), ::toupper);
-    }
+    //- update m_stream_items
+	m_stream_items = stream_items;
 
     //- store which data must be stored
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "CHANNEL") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "channel") != m_stream_items.end() )
         m_is_channel_enabled = true;
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "TRIGGERS") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "triggers") != m_stream_items.end() )
         m_is_triggers_enabled = true;
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "OUTPUTS") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "outputs") != m_stream_items.end() )
         m_is_outputs_enabled = true;
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "ICR") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "icr") != m_stream_items.end() )
         m_is_icr_enabled = true;
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "OCR") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "ocr") != m_stream_items.end() )
         m_is_ocr_enabled = true;
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "REALTIME") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "realtime") != m_stream_items.end() )
         m_is_realtime_enabled = true;
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "LIVETIME") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "livetime") != m_stream_items.end() )
         m_is_livetime_enabled = true;
-    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "DEADTIME") != m_stream_items.end() )
+    if ( std::find(m_stream_items.begin(), m_stream_items.end(), "deadtime") != m_stream_items.end() )
         m_is_deadtime_enabled = true;
 
 }

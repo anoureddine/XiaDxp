@@ -61,6 +61,27 @@ namespace XiaDxp_ns
 {
 //+----------------------------------------------------------------------------
 //
+// method : 		GetDataStreamsCmd::execute()
+// 
+// description : 	method to trigger the execution of the command.
+//                PLEASE DO NOT MODIFY this method core without pogo   
+//
+// in : - device : The device on which the command must be executed
+//		- in_any : The command input data
+//
+// returns : The command output data (packed in the Any object)
+//
+//-----------------------------------------------------------------------------
+CORBA::Any *GetDataStreamsCmd::execute(Tango::DeviceImpl *device,const CORBA::Any &in_any)
+{
+
+	cout2 << "GetDataStreamsCmd::execute(): arrived" << endl;
+
+	return insert((static_cast<XiaDxp *>(device))->get_data_streams());
+}
+
+//+----------------------------------------------------------------------------
+//
 // method : 		StreamResetIndexCmd::execute()
 // 
 // description : 	method to trigger the execution of the command.
@@ -409,6 +430,11 @@ void XiaDxpClass::command_factory()
 		"",
 		"",
 		Tango::EXPERT));
+	command_list.push_back(new GetDataStreamsCmd("GetDataStreams",
+		Tango::DEV_VOID, Tango::DEV_STRING,
+		"",
+		"",
+		Tango::OPERATOR));
 
 	//	add polling if any
 	for (unsigned int i=0 ; i<command_list.size(); i++)
@@ -767,6 +793,21 @@ void XiaDxpClass::set_default_property()
 	vect_data.push_back("LiveTime");
 	vect_data.push_back("DeadTime");
 	vect_data.push_back("Channel");
+	if (prop_def.length()>0)
+	{
+		Tango::DbDatum	data(prop_name);
+		data << vect_data ;
+		dev_def_prop.push_back(data);
+		add_wiz_dev_prop(prop_name, prop_desc,  prop_def);
+	}
+	else
+		add_wiz_dev_prop(prop_name, prop_desc);
+
+	prop_name = "SpoolID";
+	prop_desc = "";
+	prop_def  = "TO_BE_DEFINED";
+	vect_data.clear();
+	vect_data.push_back("TO_BE_DEFINED");
 	if (prop_def.length()>0)
 	{
 		Tango::DbDatum	data(prop_name);

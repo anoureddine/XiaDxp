@@ -187,7 +187,7 @@ void AcquisitionMapping::check_buffer(int module)
         ss_msg<<"BUFFER OVERRUN ! - module[" << module << "]"<<std::endl;
         ERROR_STREAM << "AcquisitionMapping::check_buffer() - "<<ss_msg.str()<< std::endl;
         stop_acquisition();
-        on_alarm(ss_msg.str());
+        on_fault(ss_msg.str());
         Tango::Except::throw_exception("XIA_ERROR",
                                        "Buffer overrun !",
                                        "AcquisitionMapping::check_buffer()");
@@ -355,7 +355,7 @@ void AcquisitionMapping::process_message(yat::Message& msg) throw (Tango::DevFai
         error_msg << "Reason\t: " << ex.errors[0].reason << endl;
         ERROR_STREAM << "Exception from - AcquisitionMapping::process_message() : " << error_msg.str()<<endl;
         stop_acquisition();
-        on_alarm(error_msg.str());
+        on_fault(error_msg.str());
         throw;
     }
 }

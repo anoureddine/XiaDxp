@@ -147,6 +147,10 @@ public:
 /**
  *	
  */
+	string	spoolID;
+/**
+ *	
+ */
 	string	__MemorizedConfigurationAlias;
 /**
  *	
@@ -436,6 +440,10 @@ public:
  */
 	virtual bool is_StreamResetIndex_allowed(const CORBA::Any &any);
 /**
+ *	Execution allowed for GetDataStreams command.
+ */
+	virtual bool is_GetDataStreams_allowed(const CORBA::Any &any);
+/**
  * This command gets the device state (stored in its <i>device_state</i> data member) and returns it to the caller.
  *	@return	State Code
  *	@exception DevFailed
@@ -493,6 +501,12 @@ public:
  *	@exception DevFailed
  */
 	void	stream_reset_index();
+/**
+ * Returns the flyscan data streams associated with this device.
+ *	@return	
+ *	@exception DevFailed
+ */
+	Tango::DevString	get_data_streams();
 
 /**
  *	Read the device properties from database
