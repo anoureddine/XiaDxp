@@ -19,6 +19,7 @@
 #include <yat4tango/DeviceTask.h>
 #include <yat/any/Any.h>
 #include <vector>
+#include <nexuscpp/nexuscpp.h>
 
 const size_t DATASTORE_TASK_PERIODIC_MS      = 100;//ms
 const size_t DATASTORE_PROCESS_DATA_MSG      = yat::FIRST_USER_MSG + 600;
@@ -104,7 +105,7 @@ public:
     void store_data(int module, int channel, int pixel, DataType* data, size_t length);    
 	void process_data(DataBufferContainer* map_buffer);
 	void close_data(void);    
-    void abort_data(void);        
+    void abort_data(void);           
     void subscribe(class Controller* observer);
     void set_nb_pixels(int nb_pixels);
     double get_timebase(void);  
@@ -115,7 +116,6 @@ public:
     int get_nb_channels();
     int get_nb_pixels();
 	int get_nb_bins();
-	
 	long   get_current_pixel(int channel);	
 	double get_trigger_livetime(int channel);	
     double get_realtime(int channel);
@@ -132,12 +132,12 @@ public:
 protected:
     void process_message(yat::Message& msg) throw (Tango::DevFailed);      
 private:
-    ///notify controller (observer) about new datas
-    void notify(int ichannel);
-    ///notify controller (observer) at the end of datas
-	void on_close();
-    ///notify controller (observer) at the abort of datas
-	void on_abort();    
+    ///notify_data controller (observer) about new datas
+    void notify_data(int ichannel);
+    ///notify_data controller (observer) at the end of datas
+	void on_close_data();
+    ///notify_data controller (observer) at the abort of datas
+	void on_abort_data();    
     ///process the data's buffer in order to get statistics & datas from the acquired buffer
     void on_process_data(DataBufferContainer& map_buffer);	
     ///parse datas for each acquired pixel

@@ -893,21 +893,6 @@ void XiaDxpClass::set_default_property()
 	else
 		add_wiz_dev_prop(prop_name, prop_desc);
 
-	prop_name = "__MemorizedNbPixels";
-	prop_desc = "Available for MAPPING Mode Only !";
-	prop_def  = "1";
-	vect_data.clear();
-	vect_data.push_back("1");
-	if (prop_def.length()>0)
-	{
-		Tango::DbDatum	data(prop_name);
-		data << vect_data ;
-		dev_def_prop.push_back(data);
-		add_wiz_dev_prop(prop_name, prop_desc,  prop_def);
-	}
-	else
-		add_wiz_dev_prop(prop_name, prop_desc);
-
 	prop_name = "__MemorizedStreamType";
 	prop_desc = "Define the type of Stream.<BR>\nAvailable types are :<BR>\nNO_STREAM<BR>\nLOG_STREAM<BR>\nCSV_STREAM<BR>\nNEXUS_STREAM<BR>";
 	prop_def  = "LOG_STREAM";

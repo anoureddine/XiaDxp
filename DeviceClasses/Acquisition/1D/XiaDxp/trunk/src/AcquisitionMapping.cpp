@@ -337,9 +337,9 @@ void AcquisitionMapping::process_message(yat::Message& msg) throw (Tango::DevFai
                 enable_periodic_msg(false);
                 //stop/abort  storage of data, i.e inform stream to close/abort its current buffer !
                 if((m_current_pixel >= m_num_map_pixels) && is_all_pixel_read_out())
-                    m_store->close_data(); //close if all pixels are acqired
+                    m_store->close_data(); //close storage if all pixels are acquired
                 else
-                    m_store->abort_data(); //abort the acqusition
+                    m_store->abort_data(); //abort the storage 
             }
                 break;
                 //-----------------------------------------------------

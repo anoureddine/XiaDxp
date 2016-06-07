@@ -152,36 +152,36 @@ void DataStore::store_data(int module, int channel, int pixel, DataType* data, s
     std::copy(data, data + length, &m_data.module_data[module].channel_data[channel].pixel_data.data[0]);
     //inform observers that data is changed
     int channel_cluster = to_channel_cluster(module, channel);
-    notify(channel_cluster); //data+view    
+    notify_data(channel_cluster); //data+view    
     DEBUG_STREAM << "DataStore::store_data() - [END]" << endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//- DataStore::on_close
+//- DataStore::on_close_data
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::on_close()
+void DataStore::on_close_data()
 {
     yat::MutexLock scoped_lock(m_data_lock);
-    INFO_STREAM << "DataStore::on_close() - [BEGIN]" << endl;
+    INFO_STREAM << "DataStore::on_close_data() - [BEGIN]" << endl;
     if(m_controller!=0)
-        m_controller->close();
+        m_controller->close_stream();
     set_state(Tango::STANDBY);
-    INFO_STREAM << "DataStore::on_close() - [END]" << endl;
+    INFO_STREAM << "DataStore::on_close_data() - [END]" << endl;
     INFO_STREAM<<"--------------------------------------------"<<std::endl;
     INFO_STREAM<<" "<<std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//- DataStore::on_abort
+//- DataStore::on_abort_data
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::on_abort()
+void DataStore::on_abort_data()
 {
     yat::MutexLock scoped_lock(m_data_lock);
-    INFO_STREAM << "DataStore::on_abort() - [BEGIN]" << endl;
+    INFO_STREAM << "DataStore::on_abort_data() - [BEGIN]" << endl;
     if(m_controller!=0)
-        m_controller->abort();
+        m_controller->abort_stream();
     set_state(Tango::STANDBY);
-    INFO_STREAM << "DataStore::on_abort() - [END]" << endl;
+    INFO_STREAM << "DataStore::on_abort_data() - [END]" << endl;
     INFO_STREAM<<"--------------------------------------------"<<std::endl;
     INFO_STREAM<<" "<<std::endl;
 }
@@ -495,11 +495,11 @@ void DataStore::subscribe(Controller* observer)
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//- DataStore::notify
+//- DataStore::notify_data
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::notify(int ichannel)
+void DataStore::notify_data(int ichannel)
 {
-    DEBUG_STREAM << "DataStore::notify()" << endl;
+    DEBUG_STREAM << "DataStore::notify_data()" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
     if(m_controller!=0)
         m_controller->update_data(ichannel);
@@ -803,7 +803,7 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    on_close();
+                    on_close_data();
                 }
                 catch (Tango::DevFailed &df)
                 {
@@ -822,7 +822,7 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    on_abort();
+                    on_abort_data();
                 }
                 catch (Tango::DevFailed &df)
                 {

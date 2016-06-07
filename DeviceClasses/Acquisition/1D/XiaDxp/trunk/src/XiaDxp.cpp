@@ -329,250 +329,220 @@ void XiaDxp::get_device_property()
 
     //	Read device properties from database.(Automatic code generation)
     //------------------------------------------------------------------
-    Tango::DbData	dev_prop;
-    dev_prop.push_back(Tango::DbDatum("BoardType"));
-    dev_prop.push_back(Tango::DbDatum("BoardTimebase"));
-    dev_prop.push_back(Tango::DbDatum("ConfigurationFiles"));
-    dev_prop.push_back(Tango::DbDatum("RoisFiles"));
-    dev_prop.push_back(Tango::DbDatum("StreamItems"));
-    dev_prop.push_back(Tango::DbDatum("SpoolID"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedConfigurationAlias"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedRoisAlias"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedNumChannel"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedPresetType"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedPresetValue"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedNbPixels"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamType"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetPath"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetFile"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbDataPerAcq"));
-    dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbAcqPerFile"));
-    dev_prop.push_back(Tango::DbDatum("__ExpertStreamWriteMode"));
+	Tango::DbData	dev_prop;
+	dev_prop.push_back(Tango::DbDatum("BoardType"));
+	dev_prop.push_back(Tango::DbDatum("BoardTimebase"));
+	dev_prop.push_back(Tango::DbDatum("ConfigurationFiles"));
+	dev_prop.push_back(Tango::DbDatum("RoisFiles"));
+	dev_prop.push_back(Tango::DbDatum("StreamItems"));
+	dev_prop.push_back(Tango::DbDatum("SpoolID"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedConfigurationAlias"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedRoisAlias"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedNumChannel"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedPresetType"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedPresetValue"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamType"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetPath"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetFile"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbDataPerAcq"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamNbAcqPerFile"));
+	dev_prop.push_back(Tango::DbDatum("__ExpertStreamWriteMode"));
 
-    //	Call database and extract values
-    //--------------------------------------------
-    if (Tango::Util::instance()->_UseDb == true)
-        get_db_device()->get_property(dev_prop);
-    Tango::DbDatum	def_prop, cl_prop;
-    XiaDxpClass	*ds_class =
-     (static_cast<XiaDxpClass *> (get_device_class()));
-    int	i = -1;
+	//	Call database and extract values
+	//--------------------------------------------
+	if (Tango::Util::instance()->_UseDb==true)
+		get_db_device()->get_property(dev_prop);
+	Tango::DbDatum	def_prop, cl_prop;
+	XiaDxpClass	*ds_class =
+		(static_cast<XiaDxpClass *>(get_device_class()));
+	int	i = -1;
 
-    //	Try to initialize BoardType from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  boardType;
-    else
-    {
-        //	Try to initialize BoardType from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  boardType;
-    }
-    //	And try to extract BoardType value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  boardType;
+	//	Try to initialize BoardType from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  boardType;
+	else {
+		//	Try to initialize BoardType from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  boardType;
+	}
+	//	And try to extract BoardType value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  boardType;
 
-    //	Try to initialize BoardTimebase from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  boardTimebase;
-    else
-    {
-        //	Try to initialize BoardTimebase from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  boardTimebase;
-    }
-    //	And try to extract BoardTimebase value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  boardTimebase;
+	//	Try to initialize BoardTimebase from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  boardTimebase;
+	else {
+		//	Try to initialize BoardTimebase from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  boardTimebase;
+	}
+	//	And try to extract BoardTimebase value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  boardTimebase;
 
-    //	Try to initialize ConfigurationFiles from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  configurationFiles;
-    else
-    {
-        //	Try to initialize ConfigurationFiles from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  configurationFiles;
-    }
-    //	And try to extract ConfigurationFiles value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  configurationFiles;
+	//	Try to initialize ConfigurationFiles from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  configurationFiles;
+	else {
+		//	Try to initialize ConfigurationFiles from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  configurationFiles;
+	}
+	//	And try to extract ConfigurationFiles value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  configurationFiles;
 
-    //	Try to initialize RoisFiles from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  roisFiles;
-    else
-    {
-        //	Try to initialize RoisFiles from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  roisFiles;
-    }
-    //	And try to extract RoisFiles value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  roisFiles;
+	//	Try to initialize RoisFiles from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  roisFiles;
+	else {
+		//	Try to initialize RoisFiles from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  roisFiles;
+	}
+	//	And try to extract RoisFiles value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  roisFiles;
 
-    //	Try to initialize StreamItems from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  streamItems;
-    else
-    {
-        //	Try to initialize StreamItems from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  streamItems;
-    }
-    //	And try to extract StreamItems value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  streamItems;
+	//	Try to initialize StreamItems from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  streamItems;
+	else {
+		//	Try to initialize StreamItems from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  streamItems;
+	}
+	//	And try to extract StreamItems value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  streamItems;
 
-    //	Try to initialize SpoolID from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  spoolID;
-    else
-    {
-        //	Try to initialize SpoolID from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  spoolID;
-    }
-    //	And try to extract SpoolID value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  spoolID;
+	//	Try to initialize SpoolID from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  spoolID;
+	else {
+		//	Try to initialize SpoolID from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  spoolID;
+	}
+	//	And try to extract SpoolID value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  spoolID;
 
-    //	Try to initialize __MemorizedConfigurationAlias from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedConfigurationAlias;
-    else
-    {
-        //	Try to initialize __MemorizedConfigurationAlias from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedConfigurationAlias;
-    }
-    //	And try to extract __MemorizedConfigurationAlias value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedConfigurationAlias;
+	//	Try to initialize __MemorizedConfigurationAlias from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedConfigurationAlias;
+	else {
+		//	Try to initialize __MemorizedConfigurationAlias from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedConfigurationAlias;
+	}
+	//	And try to extract __MemorizedConfigurationAlias value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedConfigurationAlias;
 
-    //	Try to initialize __MemorizedRoisAlias from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedRoisAlias;
-    else
-    {
-        //	Try to initialize __MemorizedRoisAlias from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedRoisAlias;
-    }
-    //	And try to extract __MemorizedRoisAlias value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedRoisAlias;
+	//	Try to initialize __MemorizedRoisAlias from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedRoisAlias;
+	else {
+		//	Try to initialize __MemorizedRoisAlias from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedRoisAlias;
+	}
+	//	And try to extract __MemorizedRoisAlias value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedRoisAlias;
 
-    //	Try to initialize __MemorizedNumChannel from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedNumChannel;
-    else
-    {
-        //	Try to initialize __MemorizedNumChannel from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedNumChannel;
-    }
-    //	And try to extract __MemorizedNumChannel value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedNumChannel;
+	//	Try to initialize __MemorizedNumChannel from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedNumChannel;
+	else {
+		//	Try to initialize __MemorizedNumChannel from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedNumChannel;
+	}
+	//	And try to extract __MemorizedNumChannel value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedNumChannel;
 
-    //	Try to initialize __MemorizedPresetType from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedPresetType;
-    else
-    {
-        //	Try to initialize __MemorizedPresetType from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedPresetType;
-    }
-    //	And try to extract __MemorizedPresetType value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedPresetType;
+	//	Try to initialize __MemorizedPresetType from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedPresetType;
+	else {
+		//	Try to initialize __MemorizedPresetType from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedPresetType;
+	}
+	//	And try to extract __MemorizedPresetType value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedPresetType;
 
-    //	Try to initialize __MemorizedPresetValue from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedPresetValue;
-    else
-    {
-        //	Try to initialize __MemorizedPresetValue from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedPresetValue;
-    }
-    //	And try to extract __MemorizedPresetValue value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedPresetValue;
+	//	Try to initialize __MemorizedPresetValue from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedPresetValue;
+	else {
+		//	Try to initialize __MemorizedPresetValue from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedPresetValue;
+	}
+	//	And try to extract __MemorizedPresetValue value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedPresetValue;
 
-    //	Try to initialize __MemorizedNbPixels from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedNbPixels;
-    else
-    {
-        //	Try to initialize __MemorizedNbPixels from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedNbPixels;
-    }
-    //	And try to extract __MemorizedNbPixels value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedNbPixels;
+	//	Try to initialize __MemorizedStreamType from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamType;
+	else {
+		//	Try to initialize __MemorizedStreamType from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamType;
+	}
+	//	And try to extract __MemorizedStreamType value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamType;
 
-    //	Try to initialize __MemorizedStreamType from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamType;
-    else
-    {
-        //	Try to initialize __MemorizedStreamType from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamType;
-    }
-    //	And try to extract __MemorizedStreamType value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamType;
+	//	Try to initialize __MemorizedStreamTargetPath from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamTargetPath;
+	else {
+		//	Try to initialize __MemorizedStreamTargetPath from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamTargetPath;
+	}
+	//	And try to extract __MemorizedStreamTargetPath value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamTargetPath;
 
-    //	Try to initialize __MemorizedStreamTargetPath from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamTargetPath;
-    else
-    {
-        //	Try to initialize __MemorizedStreamTargetPath from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamTargetPath;
-    }
-    //	And try to extract __MemorizedStreamTargetPath value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamTargetPath;
+	//	Try to initialize __MemorizedStreamTargetFile from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamTargetFile;
+	else {
+		//	Try to initialize __MemorizedStreamTargetFile from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamTargetFile;
+	}
+	//	And try to extract __MemorizedStreamTargetFile value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamTargetFile;
 
-    //	Try to initialize __MemorizedStreamTargetFile from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamTargetFile;
-    else
-    {
-        //	Try to initialize __MemorizedStreamTargetFile from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamTargetFile;
-    }
-    //	And try to extract __MemorizedStreamTargetFile value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamTargetFile;
+	//	Try to initialize __MemorizedStreamNbDataPerAcq from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamNbDataPerAcq;
+	else {
+		//	Try to initialize __MemorizedStreamNbDataPerAcq from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamNbDataPerAcq;
+	}
+	//	And try to extract __MemorizedStreamNbDataPerAcq value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamNbDataPerAcq;
 
-    //	Try to initialize __MemorizedStreamNbDataPerAcq from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamNbDataPerAcq;
-    else
-    {
-        //	Try to initialize __MemorizedStreamNbDataPerAcq from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamNbDataPerAcq;
-    }
-    //	And try to extract __MemorizedStreamNbDataPerAcq value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamNbDataPerAcq;
+	//	Try to initialize __MemorizedStreamNbAcqPerFile from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedStreamNbAcqPerFile;
+	else {
+		//	Try to initialize __MemorizedStreamNbAcqPerFile from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedStreamNbAcqPerFile;
+	}
+	//	And try to extract __MemorizedStreamNbAcqPerFile value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedStreamNbAcqPerFile;
 
-    //	Try to initialize __MemorizedStreamNbAcqPerFile from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __MemorizedStreamNbAcqPerFile;
-    else
-    {
-        //	Try to initialize __MemorizedStreamNbAcqPerFile from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __MemorizedStreamNbAcqPerFile;
-    }
-    //	And try to extract __MemorizedStreamNbAcqPerFile value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __MemorizedStreamNbAcqPerFile;
-
-    //	Try to initialize __ExpertStreamWriteMode from class property
-    cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-    if (cl_prop.is_empty() == false)	cl_prop  >>  __ExpertStreamWriteMode;
-    else
-    {
-        //	Try to initialize __ExpertStreamWriteMode from default device value
-        def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-        if (def_prop.is_empty() == false)	def_prop  >>  __ExpertStreamWriteMode;
-    }
-    //	And try to extract __ExpertStreamWriteMode value from database
-    if (dev_prop[i].is_empty() == false)	dev_prop[i]  >>  __ExpertStreamWriteMode;
+	//	Try to initialize __ExpertStreamWriteMode from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __ExpertStreamWriteMode;
+	else {
+		//	Try to initialize __ExpertStreamWriteMode from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __ExpertStreamWriteMode;
+	}
+	//	And try to extract __ExpertStreamWriteMode value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __ExpertStreamWriteMode;
 
 
 
@@ -589,7 +559,6 @@ void XiaDxp::get_device_property()
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "-1", "__MemorizedNumChannel");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "FIXED_REAL", "__MemorizedPresetType");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "1", "__MemorizedPresetValue");
-    yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "1", "__MemorizedNbPixels");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "LOG_STREAM", "StreamType");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedStreamTargetPath");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedStreamTargetFile");
@@ -1174,7 +1143,7 @@ void XiaDxp::snap()
     {
         //refresh the config of parameters of the controller
         m_controller->update_parameters(m_conf);
-        m_controller->start();
+        m_controller->start_acquisition();
     }
     catch (Tango::DevFailed& df)
     {
@@ -1203,7 +1172,7 @@ void XiaDxp::stop()
     //	Add your own code to control device here
     try
     {
-        m_controller->stop();
+        m_controller->stop_acquisition();
     }
     catch (Tango::DevFailed& df)
     {
@@ -1485,7 +1454,7 @@ void XiaDxp::stream_reset_index()
         //refresh the config of parameters of the controller
         m_controller->update_parameters(m_conf);
         //	Add your own code to control device here
-        m_controller->stream_reset_index();
+        m_controller->reset_index_stream();
     }
     catch (Tango::DevFailed& df)
     {
@@ -1590,5 +1559,6 @@ Tango::DevState XiaDxp::dev_state()
     set_status(status.str());
     return argout;
 }
+
 
 }	//	namespace

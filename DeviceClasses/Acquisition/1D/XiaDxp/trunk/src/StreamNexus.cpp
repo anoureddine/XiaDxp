@@ -17,7 +17,7 @@ bool StreamNexus::nxs_DataStreamerFinalizerStarted = false;
 //	
 //----------------------------------------------------------------------------------------------------------------------
 StreamNexus::StreamNexus(Tango::DeviceImpl *dev)
-: Stream(dev),
+: Stream(dev),IExceptionHandler(),
 m_target_path("TO_BE_DEFINED"),
 m_file_name("TO_BE_DEFINED"),
 m_write_mode("TO_BE_DEFINED"),
@@ -27,7 +27,7 @@ m_nb_pixels(0),
 m_writer(0)
 {
     INFO_STREAM << "StreamNexus::StreamNexus() - [BEGIN]" << endl;
-    yat::MutexLock scoped_lock(m_data_lock);
+    yat::MutexLock scoped_lock(m_data_lock);    
 #if defined(USE_NX_FINALIZER)
     if ( ! StreamNexus::nxs_DataStreamerFinalizerStarted )
     {
@@ -60,6 +60,7 @@ void StreamNexus::init(yat::SharedPtr<DataStore> data_store)
 {
     INFO_STREAM << "StreamNexus::init() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
+    m_store = data_store;
     m_channel_names.clear();
     m_triggers_names.clear();
     m_outputs_names.clear();
@@ -91,6 +92,9 @@ void StreamNexus::init(yat::SharedPtr<DataStore> data_store)
     INFO_STREAM << "- Initialize()" << endl;
     m_writer->Initialize(m_target_path);
 
+    INFO_STREAM << "- SetExceptionHnadler()" << endl;
+    m_writer->SetExceptionHandler(this);
+    
     INFO_STREAM << "- Prepare Data Items :" << endl;
     for (int ichan = 0; ichan < total_channels; ichan++)
     {
@@ -214,6 +218,7 @@ void StreamNexus::close()
         m_writer = 0;
 #endif 
     }
+
     INFO_STREAM << "StreamNexus::close() - [END]" << endl;
 }
 
@@ -237,7 +242,7 @@ void StreamNexus::abort()
 //----------------------------------------------------------------------------------------------------------------------
 //	
 //----------------------------------------------------------------------------------------------------------------------
-void StreamNexus::set_target_path(const std::string& target_path)
+void StreamNexus::set_target_path(const std::string & target_path)
 {
     INFO_STREAM << "StreamNexus::set_target_path(" << target_path << ")" << endl;
     m_target_path = target_path;
@@ -246,7 +251,7 @@ void StreamNexus::set_target_path(const std::string& target_path)
 //----------------------------------------------------------------------------------------------------------------------
 //	
 //----------------------------------------------------------------------------------------------------------------------
-void StreamNexus::set_file_name(const std::string& file_name)
+void StreamNexus::set_file_name(const std::string & file_name)
 {
     INFO_STREAM << "StreamNexus::set_file_name(" << file_name << ")" << endl;
     m_file_name = file_name;
@@ -255,7 +260,7 @@ void StreamNexus::set_file_name(const std::string& file_name)
 //----------------------------------------------------------------------------------------------------------------------
 //	
 //----------------------------------------------------------------------------------------------------------------------
-void StreamNexus::set_write_mode(const std::string& write_mode)
+void StreamNexus::set_write_mode(const std::string & write_mode)
 {
     INFO_STREAM << "StreamNexus::set_write_mode(" << write_mode << ")" << endl;
     m_write_mode = write_mode;

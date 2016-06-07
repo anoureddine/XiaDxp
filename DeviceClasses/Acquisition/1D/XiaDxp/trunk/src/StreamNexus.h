@@ -17,7 +17,6 @@
 #include <nexuscpp/nexuscpp.h>
 
 
-
 namespace XiaDxp_ns
 {
 
@@ -25,7 +24,8 @@ namespace XiaDxp_ns
  *	class:	StreamNexus
  *	description:	specialisation class for the Nexus storage
  /------------------------------------------------------------------*/
-class StreamNexus : public Stream
+
+class StreamNexus : public Stream, public nxcpp::IExceptionHandler
 {
 public:
     StreamNexus(Tango::DeviceImpl *dev);
@@ -41,6 +41,18 @@ public:
     void set_write_mode(const std::string& write_mode);
     void set_nb_data_per_acq(int nb_bins);
     void set_nb_acq_per_file(int nb_acq_per_file);
+    void OnNexusException(const nxcpp::NexusException &ex)
+    {
+        ostringstream ossMsgErr;
+        ossMsgErr << endl;
+        ossMsgErr << "==============================================="<<endl;
+        ossMsgErr << "Origin\t: " << ex.errors[0].origin << endl;
+        ossMsgErr << "Desc\t: " << ex.errors[0].desc << endl;
+        ossMsgErr << "Reason\t: " << ex.errors[0].reason << endl;        
+        ossMsgErr << "==============================================="<<endl;
+        ERROR_STREAM<<ossMsgErr.str()<<endl;        
+        //@@TODO : inform m_store !!!!
+    };    
 private:
     void store_statistics(int module,
             int channel,
@@ -57,7 +69,7 @@ private:
             int channel,
             int pixel,
             DataType* data,
-            size_t length);
+            size_t length);    
 private:
     yat::Mutex m_data_lock;
     //- Nexus stuff	
@@ -65,7 +77,7 @@ private:
     static nxcpp::NexusDataStreamerFinalizer nxs_DataStreamerFinalizer;
     static bool nxs_DataStreamerFinalizerStarted;
 #endif
-
+    yat::SharedPtr<DataStore> m_store;
     std::string m_target_path;
     std::string m_file_name;
     std::string m_write_mode;

@@ -30,11 +30,17 @@ public:
 
 protected:	
 
-	/// callback methods for  tango dyn attributes - mapPixelsNumber
+	/// callback methods for  tango dyn attributes - nbPixels
     void read_nb_pixels_callback(yat4tango::DynamicAttributeReadCallbackData& cbd);	
 	
-	/// callback methods for  tango dyn attributes - mapPixelsNumber
+	/// callback methods for  tango dyn attributes - nbPixels
     void write_nb_pixels_callback(yat4tango::DynamicAttributeWriteCallbackData& cbd);	
+
+	/// callback methods for  tango dyn attributes - nbPixelsPerBuffer
+    void read_nb_pixels_per_buffer_callback(yat4tango::DynamicAttributeReadCallbackData& cbd);	
+	
+	/// callback methods for  tango dyn attributes - nbPixelsPerBuffer
+    void write_nb_pixels_per_buffer_callback(yat4tango::DynamicAttributeWriteCallbackData& cbd);	
 	
 	/// callback methods for  tango dyn attributes - currentPixel
     void read_current_pixel_callback(yat4tango::DynamicAttributeReadCallbackData& cbd);		
@@ -44,9 +50,10 @@ protected:
 	
 	///user data attached to the dynamic attributes
 	LongUserData* m_dyn_nb_pixels;	
+    LongUserData* m_dyn_nb_pixels_per_buffer;	
     LongUserData* m_dyn_current_pixel;			
 	StringUserData* m_dyn_pixel_advance_mode;			
-	bool is_write_at_init;	
+	bool m_is_write_at_init;	
 };
 
 } // namespace 

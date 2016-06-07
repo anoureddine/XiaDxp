@@ -81,10 +81,10 @@ public:
     void update_parameters(ConfigLoader conf);
 
     /// start acquisition through Acquisition object
-    void start(void);
+    void start_acquisition(void);
 
     /// stop acquisition through Acquisition object
-    void stop(void);
+    void stop_acquisition(void);
 
     /// get number of total modules
     int get_nb_modules();
@@ -136,16 +136,22 @@ public:
 
 	/// set num_map_pixels
 	void set_num_map_pixels(long num_map_pixels);
-	
+
+	/// get num_map_pixels
+	long get_num_map_pixels();
+
+    /// set num_map_pixels_per_buffer
+	void set_num_map_pixels_per_buffer(long num_map_pixels_per_buffer);
+
+	/// get num_map_pixels_per_buffer
+	long get_num_map_pixels_per_buffer();
+    
     /// set pixel_advance_mode
     void set_pixel_advance_mode(const std::string& mode, double ticks_per_pixel = 0.0);
 
     /// get pixel_advance_mode
     std::string get_pixel_advance_mode();
-    
-    /// reset buffer index (Nexus))
-    void stream_reset_index();
-    
+      
     /// get the last state of the task
     Tango::DevState get_state(void);
 
@@ -164,11 +170,14 @@ public:
     /// notification from controller::update_data() or directly from device (rois management). this will refresh tango view.
     void update_view(void);
     
+    /// reset buffer index (Nexus))
+    void reset_index_stream();
+    
     /// close the streamer. generally done at end of acquisition
-    void close();    
+    void close_stream();    
     
     /// abort the streamer. generally done when user abort the acquisition
-    void abort();    
+    void abort_stream();    
     
 protected:
 
