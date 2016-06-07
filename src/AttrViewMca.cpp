@@ -190,7 +190,7 @@ void AttrViewMca::init(yat::SharedPtr<DataStore> data_store)
 
 
 
-    is_write_at_init = true;
+    m_is_write_at_init = true;
     //@@TODO: doesn't work . Why ?
     //    INFO_STREAM << "Write tango hardware at Init - presetType." << endl;
     //    Tango::WAttribute &presetType = m_device->get_device_attr()->get_w_attr_by_name("presetType");
@@ -211,7 +211,7 @@ void AttrViewMca::init(yat::SharedPtr<DataStore> data_store)
     //    yat4tango::DynamicAttributeWriteCallbackData wcd_preset_value;
     //    wcd_preset_value.tga = &presetValue;
     //    write_preset_value_callback(wcd_preset_value);
-    //    is_write_at_init = false;
+    //    m_is_write_at_init = false;
     INFO_STREAM << "AttrViewMca::init() - [END]" << endl;
 }
 
@@ -298,7 +298,7 @@ void AttrViewMca::write_preset_value_callback(yat4tango::DynamicAttributeWriteCa
             state == Tango::RUNNING	||
 			state == Tango::OFF	||
             state == Tango::DISABLE &&
-            !is_write_at_init)
+            !m_is_write_at_init)
         {
             std::string reason = "It's currently not allowed to write attribute presetValue";
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
@@ -412,7 +412,7 @@ void AttrViewMca::write_preset_type_callback(yat4tango::DynamicAttributeWriteCal
             state == Tango::RUNNING	||
 			state == Tango::OFF	||			
             state == Tango::DISABLE &&
-            !is_write_at_init)
+            !m_is_write_at_init)
         {
             std::string reason = "It's currently not allowed to write attribute presetType";
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",

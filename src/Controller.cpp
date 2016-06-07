@@ -207,11 +207,16 @@ void Controller::compute_state_status(void)
         {
             if(m_state != Tango::DISABLE && m_state != Tango::OFF && m_acquisition && m_store)
             {
-                if(m_acquisition->get_state()==Tango::RUNNING || m_store->get_state()==Tango::RUNNING)
+                if (m_store->get_state() == Tango::FAULT)
+                {
+                    set_state(Tango::FAULT);
+                    set_status(m_store->get_status());
+                }
+                else if (m_acquisition->get_state() == Tango::RUNNING)
                 {
                     set_state(Tango::RUNNING);
                     set_status("Acquisition is in progress ...");
-                }
+                }                
                 else
                 {
                     set_state(m_acquisition->get_state());
@@ -271,12 +276,12 @@ void Controller::save_config_file(const std::string& file_name)
 }
 
 // ============================================================================
-// Controller::start
+// Controller::start_acquisition
 // ============================================================================
-void Controller::start(void)
+void Controller::start_acquisition(void)
 {
     INFO_STREAM<<" "<<std::endl;
-    INFO_STREAM << "Controller::start() - [BEGIN]" << endl;
+    INFO_STREAM << "Controller::start_acquisition() - [BEGIN]" << endl;
     try
     {
         yat::MutexLock scoped_lock(m_state_lock);
@@ -287,16 +292,16 @@ void Controller::start(void)
         ERROR_STREAM << df << endl;
         on_abort(df);
     }
-    INFO_STREAM << "Controller::start() - [END]" << endl;
+    INFO_STREAM << "Controller::start_acquisition() - [END]" << endl;
 }
 
 // ============================================================================
-// Controller::stop
+// Controller::stop_acquisition
 // ============================================================================
-void Controller::stop(void)
+void Controller::stop_acquisition(void)
 {
     INFO_STREAM<<" "<<std::endl;
-    INFO_STREAM << "Controller::stop() - [BEGIN]" << endl;
+    INFO_STREAM << "Controller::stop_acquisition() - [BEGIN]" << endl;
     try
     {
         yat::MutexLock scoped_lock(m_state_lock);
@@ -307,7 +312,7 @@ void Controller::stop(void)
         ERROR_STREAM << df << endl;
         on_abort(df);
     }
-    INFO_STREAM << "Controller::stop() - [END]" << endl;
+    INFO_STREAM << "Controller::stop_acquisition() - [END]" << endl;
 }
 
 // ============================================================================
@@ -447,6 +452,29 @@ void Controller::set_num_map_pixels(long num_map_pixels)
     m_store->set_nb_pixels(num_map_pixels);
 }
 
+// ============================================================================
+// Controller::get_num_map_pixels
+// ============================================================================
+long Controller::get_num_map_pixels()
+{
+    return m_acquisition->get_num_map_pixels();
+}
+
+// ============================================================================
+// Controller::set_num_map_pixels_per_buffer
+// ============================================================================
+void Controller::set_num_map_pixels_per_buffer(long num_map_pixels_per_buffer)
+{
+    m_acquisition->set_num_map_pixels_per_buffer(num_map_pixels_per_buffer);
+}
+
+// ============================================================================
+// Controller::get_num_map_pixels_per_buffer
+// ============================================================================
+long Controller::get_num_map_pixels_per_buffer()
+{
+    return m_acquisition->get_num_map_pixels_per_buffer();
+}
 
 // ============================================================================
 // Controller::set_pixel_advance_mode
@@ -466,9 +494,9 @@ std::string Controller::get_pixel_advance_mode()
 }
 
 // ============================================================================
-// Controller::stream_reset_index()
+// Controller::reset_index_stream()
 // ============================================================================
-void Controller::stream_reset_index()
+void Controller::reset_index_stream()
 {
     try
     {
@@ -732,25 +760,25 @@ void Controller::update_parameters(ConfigLoader conf)
 }
 
 // ============================================================================
-// Controller::close()
+// Controller::close_stream()
 // ============================================================================
-void Controller::close()
+void Controller::close_stream()
 {
-    INFO_STREAM << "Controller::close() - [BEGIN]" << endl;
+    INFO_STREAM << "Controller::close_stream() - [BEGIN]" << endl;
     //close stream & go out
     m_stream->close();
-    INFO_STREAM << "Controller::close() - [END]" << endl;
+    INFO_STREAM << "Controller::close_stream() - [END]" << endl;
 }
 
 // ============================================================================
-// Controller::abort()
+// Controller::abort_stream()
 // ============================================================================
-void Controller::abort()
+void Controller::abort_stream()
 {
-    INFO_STREAM << "Controller::abort() - [BEGIN]" << endl;
+    INFO_STREAM << "Controller::abort_stream() - [BEGIN]" << endl;
     //abort stream & go out
     m_stream->abort();
-    INFO_STREAM << "Controller::abort() - [END]" << endl;
+    INFO_STREAM << "Controller::abort_stream() - [END]" << endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

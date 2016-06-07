@@ -169,10 +169,6 @@ public:
  */
 	Tango::DevDouble	__MemorizedPresetValue;
 /**
- *	Available for MAPPING Mode Only !
- */
-	Tango::DevLong	__MemorizedNbPixels;
-/**
  *	Define the type of Stream.<BR>
  *	Available types are :<BR>
  *	NO_STREAM<BR>

@@ -48,7 +48,7 @@ protected:
 	///user data attached to the dynamic attributes
 	DoubleUserData* m_dyn_preset_value;	    
 	StringUserData* m_dyn_preset_type;	     
-	bool is_write_at_init;
+	bool m_is_write_at_init;
 };
 
 } // namespace 

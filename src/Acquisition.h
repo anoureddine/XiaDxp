@@ -93,9 +93,15 @@ public:
 
     /// set preset type
     void set_preset_type(const std::string& str_preset_type);
+
+    /// get "num_map_pixels" parameter
+	long get_num_map_pixels();
     
     /// set "num_map_pixels" parameter
 	void set_num_map_pixels(long num_map_pixels);
+
+    /// get "num_map_pixels_per_buffer" parameter
+    long get_num_map_pixels_per_buffer();    
     
     /// set "num_map_pixels_per_buffer" parameter
     void set_num_map_pixels_per_buffer(long num_map_pixels_per_buffer);    
