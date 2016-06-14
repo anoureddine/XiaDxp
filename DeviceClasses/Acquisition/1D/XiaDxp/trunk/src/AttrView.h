@@ -22,6 +22,7 @@
 
 namespace XiaDxp_ns
 {
+
 /*------------------------------------------------------------------
  *	class:	AttrView
  *	description: base class for the data storage

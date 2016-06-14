@@ -72,8 +72,8 @@ void StreamNexus::init(yat::SharedPtr<DataStore> data_store)
     int total_channels = data_store->get_nb_modules() * data_store->get_nb_channels();
     m_nb_pixels = data_store->get_nb_pixels();
 
-    INFO_STREAM << "- Create DataStreamer :"	<< endl;
-    INFO_STREAM << "\t- target path = " 		<< m_target_path << endl;
+    INFO_STREAM << "- Create DataStreamer :"<< endl;
+    INFO_STREAM << "\t- target path = " 	<< m_target_path << endl;
     INFO_STREAM << "\t- file name = "		<< m_file_name << endl;
     INFO_STREAM << "\t- write mode = " 		<< m_write_mode << endl;
     INFO_STREAM << "\t- nb map pixels = "	<< m_nb_pixels << endl;
@@ -299,6 +299,7 @@ void StreamNexus::store_statistics(int module,
                                    double deadtime)
 {
     //DEBUG_STREAM << "StreamNexus::store_statistics()" << endl;
+    yat::MutexLock scoped_lock(m_data_lock);    
     if (m_writer)
     {
         //- triggers
@@ -351,6 +352,7 @@ void StreamNexus::store_statistics(int module,
 void StreamNexus::store_data(int module, int channel, int pixel, DataType* data, size_t length)
 {
     //DEBUG_STREAM << "StreamNexus::store_data()" << endl;
+    yat::MutexLock scoped_lock(m_data_lock);    
     if (m_writer)
     {
         //- channel
@@ -366,7 +368,7 @@ void StreamNexus::store_data(int module, int channel, int pixel, DataType* data,
 //----------------------------------------------------------------------------------------------------------------------
 void StreamNexus::update_data(int ichannel, yat::SharedPtr<DataStore> data_store)
 {
-    //DEBUG_STREAM << "StreamNexus::update_data() - [pixel = "<<data_store->get_current_pixel(ichannel)<<"]" << endl;
+    DEBUG_STREAM << "StreamNexus::update_data() - [pixel = "<<data_store->get_current_pixel(ichannel)<<"]" << endl;
 
     //DEBUG_STREAM<<"\t- Store statistics : channel "<<ichannel<<endl;
     yat::MutexLock scoped_lock(m_data_lock);
@@ -401,6 +403,7 @@ void StreamNexus::reset_index()
 {
     INFO_STREAM << "StreamNexus::reset_index() - [BEGIN]" << endl;
     INFO_STREAM << "- ResetBufferIndex()" << endl;
+    yat::MutexLock scoped_lock(m_data_lock);
     nxcpp::DataStreamer::ResetBufferIndex();
     INFO_STREAM << "StreamNexus::reset_index() - [END]" << endl;
 }

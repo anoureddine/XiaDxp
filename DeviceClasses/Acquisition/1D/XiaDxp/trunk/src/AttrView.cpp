@@ -31,7 +31,6 @@ m_device(dev),
 m_dim(dev)
 {
     INFO_STREAM << "AttrView::AttrView() - [BEGIN]" << endl;
-
     INFO_STREAM << "AttrView::AttrView() - [END]" << endl;
 }
 
@@ -49,8 +48,7 @@ AttrView::~AttrView()
 //----------------------------------------------------------------------------------------------------------------------
 void AttrView::init_common_attributes(yat::SharedPtr<DataStore> data_store)
 {
-    INFO_STREAM << "AttrView::init_common_attributes() - [BEGIN]" << endl;
-
+    INFO_STREAM << "AttrView::init_common_attributes() - [BEGIN]" << endl;    
     int total_channels = data_store->get_nb_modules()*data_store->get_nb_channels();
     INFO_STREAM<<"total_channels = "<<total_channels<<endl;
 

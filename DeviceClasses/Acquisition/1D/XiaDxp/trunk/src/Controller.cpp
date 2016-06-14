@@ -49,11 +49,18 @@ m_conf(conf)
 Controller::~Controller()
 {
     INFO_STREAM << "Controller::~Controller() - [BEGIN]" << endl;
-    /* not necessary with SharedPtr
+    //@@TODO otherwise a crash at init_device() if device is RUNNING
+    //- stop_acquisition
+    //       - stop_acquisition on Xia board
+    //       - abort_data on DataStream
+    //       - abort_stream on Nexus
+    //- reset all SharedPtr/UniquePtr/...
+    if (get_state() != Tango::OFF)
+        stop_acquisition();
     m_store.reset();
     m_stream.reset();
     m_acquisition.reset();
-     */
+
     INFO_STREAM << "Controller::~Controller() - [END]" << endl;
 }
 

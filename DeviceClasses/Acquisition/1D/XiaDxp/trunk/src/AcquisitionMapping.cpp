@@ -134,7 +134,8 @@ void AcquisitionMapping::stop_acquisition()
     m_helper->stop_acquisition();
     //- Post MAPPING_STOP_MSG in order to stop pixeladvance/acquisition/store
     yat::Message* msg = yat::Message::allocate(MAPPING_STOP_MSG, DEFAULT_MSG_PRIORITY, true);
-    post(msg);
+//    post(msg);
+    wait_msg_handled(msg, 5000); //to ensure that stop is done
     INFO_STREAM << "AcquisitionMapping::stop_acquisition() - [END]" << endl;
 }
 

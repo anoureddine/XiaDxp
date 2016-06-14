@@ -271,6 +271,8 @@ void XiaDxp::init_device()
     {
         try
         {
+            m_is_device_initialized = false;
+            
             INFO_STREAM << "- Write tango hardware at Init - streamType" << endl;
             Tango::WAttribute &streamType = dev_attr->get_w_attr_by_name("streamType");
             attr_streamType_write = const_cast<Tango::DevString> (__MemorizedStreamType.c_str());
@@ -310,6 +312,8 @@ void XiaDxp::init_device()
             return;
         }
     }
+    
+    m_is_device_initialized = true;
     set_state(Tango::OFF);
     dev_state();
 }
