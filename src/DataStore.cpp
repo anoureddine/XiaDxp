@@ -518,7 +518,7 @@ void DataStore::close_data(void)
 //----------------------------------------------------------------------------------------------------------------------
 void DataStore::abort_data(void)
 {
-    DEBUG_STREAM<<"DataStore::abort_data() - [BEGIN]"<<std::endl;
+    DEBUG_STREAM<<"DataStore::abort_data() - [BEGIN]"<<std::endl;    
     post(DATASTORE_ABORT_DATA_MSG);
     DEBUG_STREAM<<"DataStore::abort_data() - [END]"<<std::endl;
 }
@@ -647,8 +647,8 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
         //each channels statistics contains 8 WORD, that is why channel*8
         unsigned long realtime = WORD_TO_LONG(pixel_data[32+channel*8], pixel_data[33+channel*8]);
         unsigned long livetime = WORD_TO_LONG(pixel_data[34+channel*8], pixel_data[35+channel*8]);
-        unsigned long triggers  = WORD_TO_LONG(pixel_data[36+channel*8], pixel_data[37+channel*8]);
-        unsigned long outputs   = WORD_TO_LONG(pixel_data[38+channel*8], pixel_data[39+channel*8]);
+        unsigned long triggers = WORD_TO_LONG(pixel_data[36+channel*8], pixel_data[37+channel*8]);
+        unsigned long outputs  = WORD_TO_LONG(pixel_data[38+channel*8], pixel_data[39+channel*8]);
 
         PixelData pix_data;
         pix_data.triggers = triggers;

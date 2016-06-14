@@ -44,8 +44,10 @@ AttrViewMca::~AttrViewMca()
 void AttrViewMca::init(yat::SharedPtr<DataStore> data_store)
 {
     INFO_STREAM << "AttrViewMca::init() - [BEGIN]" << endl;
+    
     //- remove all previous dyn attributes
     m_dim.dynamic_attributes_manager().remove_attributes();
+    
     //- create common attributes (stats + channels)
     AttrView::init_common_attributes(data_store);
     
@@ -191,27 +193,7 @@ void AttrViewMca::init(yat::SharedPtr<DataStore> data_store)
 
 
     m_is_write_at_init = true;
-    //@@TODO: doesn't work . Why ?
-    //    INFO_STREAM << "Write tango hardware at Init - presetType." << endl;
-    //    Tango::WAttribute &presetType = m_device->get_device_attr()->get_w_attr_by_name("presetType");
-    //    string mem_preset_type = yat4tango::PropertyHelper::get_property<string > (dynamic_cast<XiaDxp*>(m_device), "__MemorizedPresetType");
-    //    m_dyn_preset_type->set_value(mem_preset_type)	;
-    //    presetType.set_write_value(mem_preset_type);
-    //    yat4tango::DynamicAttributeWriteCallbackData wcd_preset_type;
-    //    wcd_preset_type.tga = &presetType;
-    //    write_preset_type_callback(wcd_preset_type);
 
-
-    //@@TODO: doesn't work . Why ?
-    //    INFO_STREAM << "Write tango hardware at Init - presetValue." << endl;
-    //    Tango::WAttribute &presetValue = m_device->get_device_attr()->get_w_attr_by_name("presetValue");
-    //    Tango::DevDouble mem_preset_value = yat4tango::PropertyHelper::get_property<Tango::DevDouble> (dynamic_cast<XiaDxp*>(m_device), "__MemorizedPresetValue");
-    //    m_dyn_preset_value->set_value(mem_preset_value)	;
-    //    presetValue.set_write_value(mem_preset_value);
-    //    yat4tango::DynamicAttributeWriteCallbackData wcd_preset_value;
-    //    wcd_preset_value.tga = &presetValue;
-    //    write_preset_value_callback(wcd_preset_value);
-    //    m_is_write_at_init = false;
     INFO_STREAM << "AttrViewMca::init() - [END]" << endl;
 }
 

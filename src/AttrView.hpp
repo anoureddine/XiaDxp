@@ -31,7 +31,7 @@ void AttrView::create_attribute(std::string name,
 {
     DEBUG_STREAM << "AttrView::create_attribute() - [BEGIN]" << endl;
     INFO_STREAM << "\t- Create dynamic attribute [" << name << "]" << endl;
-    ////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////    
     yat4tango::DynamicAttributeInfo dai;
     dai.dev = m_device;
     //- specify the dyn. attr.  name

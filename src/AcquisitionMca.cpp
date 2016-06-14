@@ -84,7 +84,8 @@ void AcquisitionMca::stop_acquisition()
     INFO_STREAM << "AcquisitionMca::stop_acquisition() - [BEGIN]" << endl;
     //- Post MCA_STOP_MSG in order to stop XIA acquisition
     yat::Message* msg = yat::Message::allocate(MCA_STOP_MSG, DEFAULT_MSG_PRIORITY, true);
-    post(msg);
+//    post(msg);
+    wait_msg_handled(msg, 5000); //to ensure that stop is done
     INFO_STREAM << "AcquisitionMca::stop_acquisition() - [END]" << endl;
 }
 
