@@ -32,7 +32,7 @@ public:
     Acquisition(Tango::DeviceImpl *dev, const std::string & board_type, yat::SharedPtr<DataStore> store);
 
     /// dtor
-    virtual ~Acquisition(void);
+    virtual ~Acquisition();
 
     /// load config ini file
     virtual void load_config_file(const std::string& file_name) = 0;
@@ -44,7 +44,7 @@ public:
     virtual void start_acquisition(short accumulate = false) = 0;
 
     /// stop acquisition
-    virtual void stop_acquisition() = 0;
+    virtual void stop_acquisition(bool sync = false) = 0;
 
     /// get number of total modules
     int get_nb_modules();

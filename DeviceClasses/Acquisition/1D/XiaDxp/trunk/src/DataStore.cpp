@@ -37,6 +37,7 @@ DataStore::DataStore(Tango::DeviceImpl *dev)
     m_nb_bins = 0;
     m_acquisition_type = "MCA";
     m_timebase = 1;
+    m_is_exception_occured_stream = false;
     set_status("");
     set_state(Tango::OFF);
     INFO_STREAM << "DataStore::DataStore() - [END]" << endl;
@@ -62,8 +63,9 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
     m_nb_channels = nb_channels;
     m_nb_pixels = nb_pixels;
     m_nb_bins = nb_bins;
+    m_is_exception_occured_stream = false;
     m_acquisition_type = acquisition_type;
-    m_data.module_data.clear();    
+    m_data.module_data.clear();
 
     // setup mapping data structure
     m_data.module_data.resize(nb_modules);
@@ -80,7 +82,7 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.pixel = -1;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.trigger_livetime = 0.0;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.triggers = 0;       //for MAPPING (identical to events_in_run : read from WORD(36,37) )
-            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.outputs = 0;        
+            m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.outputs = 0;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.events_in_run = 0;  //for MCA (identical to triggers : get_run_data("events_in_run")
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.input_count_rate = 0.0;
             m_data.module_data[idx_mod].channel_data[idx_ch].pixel_data.output_count_rate = 0.0;
@@ -93,6 +95,19 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
     set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::init() - [END]" << endl;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+//- DataStore::reinit
+//----------------------------------------------------------------------------------------------------------------------
+void DataStore::reinit()
+{
+    INFO_STREAM << "DataStore::reinit() - [BEGIN]" << endl;    
+    yat::MutexLock scoped_lock(m_data_lock);
+    m_is_exception_occured_stream = false;
+    set_state(Tango::STANDBY);
+    INFO_STREAM << "DataStore::reinit() - [END]" << endl;    
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 //- DataStore::store_statistics
 //----------------------------------------------------------------------------------------------------------------------
@@ -154,36 +169,6 @@ void DataStore::store_data(int module, int channel, int pixel, DataType* data, s
     int channel_cluster = to_channel_cluster(module, channel);
     notify_data(channel_cluster); //data+view    
     DEBUG_STREAM << "DataStore::store_data() - [END]" << endl;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//- DataStore::on_close_data
-//----------------------------------------------------------------------------------------------------------------------
-void DataStore::on_close_data()
-{
-    yat::MutexLock scoped_lock(m_data_lock);
-    INFO_STREAM << "DataStore::on_close_data() - [BEGIN]" << endl;
-    if(m_controller!=0)
-        m_controller->close_stream();
-    set_state(Tango::STANDBY);
-    INFO_STREAM << "DataStore::on_close_data() - [END]" << endl;
-    INFO_STREAM<<"--------------------------------------------"<<std::endl;
-    INFO_STREAM<<" "<<std::endl;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//- DataStore::on_abort_data
-//----------------------------------------------------------------------------------------------------------------------
-void DataStore::on_abort_data()
-{
-    yat::MutexLock scoped_lock(m_data_lock);
-    INFO_STREAM << "DataStore::on_abort_data() - [BEGIN]" << endl;
-    if(m_controller!=0)
-        m_controller->abort_stream();
-    set_state(Tango::STANDBY);
-    INFO_STREAM << "DataStore::on_abort_data() - [END]" << endl;
-    INFO_STREAM<<"--------------------------------------------"<<std::endl;
-    INFO_STREAM<<" "<<std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -316,11 +301,11 @@ unsigned long DataStore::get_events_in_run(int channel)
     int module = to_module_and_channel(channel).first;
     int channel_of_module = to_module_and_channel(channel).second;
 
-    if(m_acquisition_type == "MCA")    
+    if(m_acquisition_type == "MCA")
         events_in_run = m_data.module_data[module].channel_data[channel_of_module].pixel_data.events_in_run;
-    else if(m_acquisition_type == "MAPPING")    
+    else if(m_acquisition_type == "MAPPING")
         events_in_run = m_data.module_data[module].channel_data[channel_of_module].pixel_data.triggers;
-    
+
     return events_in_run;
 }
 
@@ -465,7 +450,7 @@ double DataStore::compute_deadtime(double ocr, double icr)
 
     if (icr != 0.0)
     {
-        return 100.0*((icr - ocr) / icr);
+        return 100.0 * ((icr - ocr) / icr);
     }
     return 0.0;
 }
@@ -489,7 +474,7 @@ double DataStore::compute_deadtime(unsigned long outputs, unsigned long triggers
 //----------------------------------------------------------------------------------------------------------------------
 void DataStore::subscribe(Controller* observer)
 {
-    INFO_STREAM << "DataStore::subscribe("<<observer<<")" <<endl;
+    INFO_STREAM << "DataStore::subscribe(" << observer << ")" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
     m_controller = observer;
 }
@@ -501,50 +486,109 @@ void DataStore::notify_data(int ichannel)
 {
     DEBUG_STREAM << "DataStore::notify_data()" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
-    if(m_controller!=0)
+    if(m_controller != 0)
         m_controller->update_data(ichannel);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::close_data(void)
+void DataStore::close_data()
 {
-    DEBUG_STREAM<<"DataStore::close_data() - [BEGIN]"<<std::endl;
-    post(DATASTORE_CLOSE_DATA_MSG);
-    DEBUG_STREAM<<"DataStore::close_data() - [END]"<<std::endl;
+    INFO_STREAM << "DataStore::close_data() - [BEGIN]" << std::endl;
+    post(DATASTORE_CLOSE_DATA_MSG);    
+    INFO_STREAM << "DataStore::close_data() - [END]" << std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-void DataStore::abort_data(void)
+void DataStore::abort_data()
 {
-    DEBUG_STREAM<<"DataStore::abort_data() - [BEGIN]"<<std::endl;    
-    post(DATASTORE_ABORT_DATA_MSG);
-    DEBUG_STREAM<<"DataStore::abort_data() - [END]"<<std::endl;
+    INFO_STREAM << "DataStore::abort_data() - [BEGIN]" << std::endl;
+    post(DATASTORE_ABORT_DATA_MSG);     
+    INFO_STREAM << "DataStore::abort_data() - [END]" << std::endl;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+void DataStore::abort(std::string status)
+{
+    INFO_STREAM << "DataStore::abort() - [BEGIN]" << std::endl;    
+    yat::Message* msg = yat::Message::allocate(DATASTORE_ABORT_MSG, DEFAULT_MSG_PRIORITY, true);
+    msg->attach_data(status);
+    post(msg);
+    INFO_STREAM << "DataStore::abort() - [END]" << std::endl;
+}
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 void DataStore::process_data(DataBufferContainer* map_buffer)
 {
-    DEBUG_STREAM<<"DataStore::process_data() - [BEGIN]"<<std::endl;
-    set_state(Tango::RUNNING);
+    DEBUG_STREAM << "DataStore::process_data() - [BEGIN]" << std::endl;
     post(DATASTORE_PROCESS_DATA_MSG, map_buffer, true);
-    DEBUG_STREAM<<"DataStore::process_data() - [END]"<<std::endl;
+    DEBUG_STREAM << "DataStore::process_data() - [END]" << std::endl;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+//- DataStore::on_close_data
+//----------------------------------------------------------------------------------------------------------------------
+void DataStore::on_close_data()
+{
+    yat::MutexLock scoped_lock(m_data_lock);
+    INFO_STREAM << "DataStore::on_close_data() - [BEGIN]" << endl;
+
+    if(m_controller != 0)
+        m_controller->close_stream();
+
+    set_state(Tango::STANDBY);
+    INFO_STREAM << "DataStore::on_close_data() - [END]" << endl;
+    INFO_STREAM << "--------------------------------------------" << std::endl;
+    INFO_STREAM << " " << std::endl;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//- DataStore::on_abort_data
+//----------------------------------------------------------------------------------------------------------------------
+void DataStore::on_abort_data()
+{
+    yat::MutexLock scoped_lock(m_data_lock);
+    INFO_STREAM << "DataStore::on_abort_data() - [BEGIN]" << endl;
+    if(m_controller != 0)
+        m_controller->abort_stream();
+    set_state(Tango::STANDBY);
+    INFO_STREAM << "DataStore::on_abort_data() - [END]" << endl;
+    INFO_STREAM << "--------------------------------------------" << std::endl;
+    INFO_STREAM << " " << std::endl;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//- DataStore::on_abort
+//----------------------------------------------------------------------------------------------------------------------
+void DataStore::on_abort(std::string status)
+{
+    yat::MutexLock scoped_lock(m_data_lock);
+    INFO_STREAM << "DataStore::on_abort() - [BEGIN]" << endl;
+    set_state(Tango::FAULT);
+    set_status(status);
+    m_is_exception_occured_stream = true;
+    if(m_controller != 0)
+        m_controller->stop_acquisition();
+    INFO_STREAM << "DataStore::on_abort() - [END]" << endl;
+    INFO_STREAM << "--------------------------------------------" << std::endl;
+    INFO_STREAM << " " << std::endl;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 void DataStore::on_process_data(DataBufferContainer& map_buffer)
 {
-    //DEBUG_STREAM<<"DataStore::on_process_data() - [BEGIN]"<<std::endl;
-
+    //DEBUG_STREAM << "DataStore::on_process_data() - [BEGIN]" << std::endl;
+    set_state(Tango::RUNNING);
     try
     {
-        if ((map_buffer.base()[0] != TAG_HEAD0) || (map_buffer.base()[1]!=TAG_HEAD1))
+        if ((map_buffer.base()[0] != TAG_HEAD0) || (map_buffer.base()[1] != TAG_HEAD1))
         {
             std::stringstream ss_msg;
-            ss_msg<<"Missing TAG HEAD in buffer !"<<std::endl;
-            ERROR_STREAM << "DataStore::on_process_data() - "<<ss_msg.str()<< std::endl;
+            ss_msg << "Missing TAG HEAD in buffer !" << std::endl;
+            ERROR_STREAM << "DataStore::on_process_data() - " << ss_msg.str() << std::endl;
             //stop_acquisition();//@@TODO 
             //on_alarm(ss_msg.str());
             set_state(Tango::FAULT);
@@ -556,8 +600,8 @@ void DataStore::on_process_data(DataBufferContainer& map_buffer)
         if (map_buffer.base()[31] != 0x0000)
         {
             std::stringstream ss_msg;
-            ss_msg<<"Expected 0 in word 31 of mapping buffer !"<<std::endl;
-            ERROR_STREAM << "DataStore::on_process_data() - "<<ss_msg.str()<< std::endl;
+            ss_msg << "Expected 0 in word 31 of mapping buffer !" << std::endl;
+            ERROR_STREAM << "DataStore::on_process_data() - " << ss_msg.str() << std::endl;
             //stop_acquisition();//@@TODO 
             //on_alarm(ss_msg.str());
             set_state(Tango::FAULT);
@@ -567,15 +611,15 @@ void DataStore::on_process_data(DataBufferContainer& map_buffer)
         }
 
         // parse pixels
-        const int startingPixel = WORD_TO_LONG((int)map_buffer.base()[9], (int)map_buffer.base()[10]);
-        const int nbPixels = (int)map_buffer.base()[8];
+        const int startingPixel = WORD_TO_LONG((int) map_buffer.base()[9], (int) map_buffer.base()[10]);
+        const int nbPixels = (int) map_buffer.base()[8];
         //INFO_STREAM << "\t- pixels to process : " << nbPixels <<std::endl;
 
         for (int pixel = 0; pixel < nbPixels; ++pixel)
         {
             //DEBUG_STREAM<<"------------------------------------"<<std::endl;
             //DEBUG_STREAM<<"---------- pixel = "<<pixel<<std::endl;
-            //DEBUG_STREAM<<"------------------------------------"<<std::endl;            
+            //DEBUG_STREAM<<"------------------------------------"<<std::endl;      
             parse_data(map_buffer.module(), pixel, map_buffer.base());
         }
 
@@ -592,7 +636,7 @@ void DataStore::on_process_data(DataBufferContainer& map_buffer)
                                        "DataStore::on_process_data()");
     }
 
-    //DEBUG_STREAM<<"DataStore::process_data() - [END]"<<std::endl;
+    //DEBUG_STREAM << "DataStore::process_data() - [END]" << std::endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -611,11 +655,11 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
     }
 
     // check pixel buffer
-    if ((pixel_data[0]!=TAG_DATA0) && (pixel_data[1]!=TAG_DATA1))
+    if ((pixel_data[0] != TAG_DATA0) && (pixel_data[1] != TAG_DATA1))
     {
         std::stringstream ss_msg;
-        ss_msg<<"Missing TAG DATA in buffer for pixel : "<<pixel<<std::endl;
-        ERROR_STREAM << "DataStore::parse_data() - "<<ss_msg.str()<< endl;
+        ss_msg << "Missing TAG DATA in buffer for pixel : " << pixel << std::endl;
+        ERROR_STREAM << "DataStore::parse_data() - " << ss_msg.str() << endl;
         //stop_acquisition();//@@TODO 
         //on_alarm(ss_msg.str());
         set_state(Tango::FAULT);
@@ -634,7 +678,7 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
     unsigned long size[4];
     for (int channel = 0; channel < 4; channel++)
     {
-        size[channel] = pixel_data[8+channel];
+        size[channel] = pixel_data[8 + channel];
         //DEBUG_STREAM<<"\t- size channel["<<channel<<"] = "<<size[channel]<<std::endl;
     }
 
@@ -642,19 +686,20 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
 
     // statistics for current pixel
     //DEBUG_STREAM << "\t- push statistics for the pixel ["<<the_pixel<<"] into DataStore" <<std::endl;
+
     for (int channel = 0; channel < 4; channel++)
     {
         //each channels statistics contains 8 WORD, that is why channel*8
-        unsigned long realtime = WORD_TO_LONG(pixel_data[32+channel*8], pixel_data[33+channel*8]);
-        unsigned long livetime = WORD_TO_LONG(pixel_data[34+channel*8], pixel_data[35+channel*8]);
-        unsigned long triggers = WORD_TO_LONG(pixel_data[36+channel*8], pixel_data[37+channel*8]);
-        unsigned long outputs  = WORD_TO_LONG(pixel_data[38+channel*8], pixel_data[39+channel*8]);
+        unsigned long realtime = WORD_TO_LONG(pixel_data[32 + channel * 8], pixel_data[33 + channel * 8]);
+        unsigned long livetime = WORD_TO_LONG(pixel_data[34 + channel * 8], pixel_data[35 + channel * 8]);
+        unsigned long triggers = WORD_TO_LONG(pixel_data[36 + channel * 8], pixel_data[37 + channel * 8]);
+        unsigned long outputs  = WORD_TO_LONG(pixel_data[38 + channel * 8], pixel_data[39 + channel * 8]);
 
         PixelData pix_data;
         pix_data.triggers = triggers;
         pix_data.outputs = outputs;
-        pix_data.realtime = static_cast<double>(realtime);
-        pix_data.livetime = static_cast<double>(livetime);
+        pix_data.realtime = static_cast<double> (realtime);
+        pix_data.livetime = static_cast<double> (livetime);
 
         //push statistics into DataStore
         store_statistics(module,               //nb module
@@ -666,16 +711,17 @@ void DataStore::parse_data(int module, int pixel, DataType* map_buffer)
     //datas for current pixel
     //DEBUG_STREAM << "\t- push buffer data for the pixel ["<<the_pixel<<"] into DataStore "<<endl;
     unsigned long* spectrum_data = pixel_data + PIXEL_HEADER_SIZE;
-    for (int channel = 0; channel <4; ++channel)
+    for (int channel = 0; channel < 4; ++channel)
     {
         store_data(module,                   //nb module
                    channel,                  //numero of channel
-                   the_pixel,                    //numero of pixel
-                   (DataType*)spectrum_data,
+                   the_pixel,                //numero of pixel
+                   (DataType*) spectrum_data,
                    size[channel]
                    );
         spectrum_data += size[channel];
     }
+
     //m_current_pixel = the_pixel; 
     ////DEBUG_STREAM << "\t- The pixel ["<<m_current_pixel<<"] is parsed & stored." <<std::endl;
     //DEBUG_STREAM<<"DataStore::parse_data() - [END]"<<std::endl;
@@ -694,7 +740,7 @@ void DataStore::set_state(Tango::DevState state)
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-Tango::DevState DataStore::get_state(void)
+Tango::DevState DataStore::get_state()
 {
     {
         //- AutoLock the following
@@ -717,7 +763,7 @@ void DataStore::set_status(const std::string& status)
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-std::string DataStore::get_status(void)
+std::string DataStore::get_status()
 {
     {
         //- AutoLock the following
@@ -739,52 +785,55 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------
             case yat::TASK_INIT:
             {
-                INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << " " << std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
                 INFO_STREAM << "-> DataStore::TASK_INIT" << endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
             }
                 break;
                 //-----------------------------------------------------
             case yat::TASK_EXIT:
             {
-                INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
-                INFO_STREAM <<"-> DataStore::TASK_EXIT" << endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << " " << std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
+                INFO_STREAM << "-> DataStore::TASK_EXIT" << endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
             }
                 break;
                 //-----------------------------------------------------
             case yat::TASK_TIMEOUT:
             {
-                INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
-                INFO_STREAM <<"-> DataStore::TASK_TIMEOUT" << endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << " " << std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
+                INFO_STREAM << "-> DataStore::TASK_TIMEOUT" << endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
             }
                 break;
                 //-----------------------------------------------------------------------------------------------
 
             case yat::TASK_PERIODIC:
             {
-                DEBUG_STREAM<<" "<<std::endl;
-                DEBUG_STREAM<<"--------------------------------------------"<<std::endl;
-                DEBUG_STREAM<<"-> DataStore::TASK_PERIODIC" << endl;
-                DEBUG_STREAM<<" "<<std::endl;
-                DEBUG_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM << " " << std::endl;
+//                INFO_STREAM << "--------------------------------------------" << std::endl;
+//                INFO_STREAM << "-> DataStore::TASK_PERIODIC" << endl;
+//                INFO_STREAM << " " << std::endl;
+//                INFO_STREAM << "--------------------------------------------" << std::endl;
             }
                 break;
                 //-----------------------------------------------------
             case DATASTORE_PROCESS_DATA_MSG:
             {
-                //INFO_STREAM<<" "<<std::endl;
-                //INFO_STREAM<<"--------------------------------------------"<<std::endl;
-                //INFO_STREAM <<"-> DataStore::DATASTORE_PROCESS_DATA_MSG" << endl;
-                //INFO_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM<<" "<<std::endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM <<"-> DataStore::DATASTORE_PROCESS_DATA_MSG" << endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    on_process_data(msg.get_data<DataBufferContainer>());
+                    if(!m_is_exception_occured_stream)
+                    {
+                        on_process_data(msg.get_data<DataBufferContainer>());
+                    }
                 }
                 catch (Tango::DevFailed &df)
                 {
@@ -796,14 +845,17 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------
             case DATASTORE_CLOSE_DATA_MSG:
             {
-                //INFO_STREAM<<" "<<std::endl;
-                //INFO_STREAM<<"--------------------------------------------"<<std::endl;
-                //INFO_STREAM <<"-> DataStore::DATASTORE_CLOSE_DATA_MSG" << endl;
-                //INFO_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM<<" "<<std::endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM <<"-> DataStore::DATASTORE_CLOSE_DATA_MSG" << endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    on_close_data();
+                    if(!m_is_exception_occured_stream)
+                    {
+                        on_close_data();
+                    }
                 }
                 catch (Tango::DevFailed &df)
                 {
@@ -815,14 +867,40 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------			
             case DATASTORE_ABORT_DATA_MSG:
             {
-                //INFO_STREAM<<" "<<std::endl;
-                //INFO_STREAM<<"--------------------------------------------"<<std::endl;
-                //INFO_STREAM <<"-> DataStore::DATASTORE_ABORT_DATA_MSG" << endl;
-                //INFO_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM<<" "<<std::endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM <<"-> DataStore::DATASTORE_ABORT_DATA_MSG" << endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    on_abort_data();
+                    if(!m_is_exception_occured_stream)
+                    {
+                        on_abort_data();
+                    }
+                }
+                catch (Tango::DevFailed &df)
+                {
+                    ERROR_STREAM << df << endl;
+                    set_state(Tango::FAULT);
+                }
+            }
+                break;
+                //-----------------------------------------------------			
+            case DATASTORE_ABORT_MSG:
+            {
+//                INFO_STREAM<<" "<<std::endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+//                INFO_STREAM <<"-> DataStore::DATASTORE_ABORT_MSG" << endl;
+//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                try
+                {
+                    yat::MutexLock scoped_lock(m_data_lock);
+                    if(!m_is_exception_occured_stream)
+                    {
+                        std::string status  = msg.get_data<std::string>();
+                        on_abort(status);
+                    }
                 }
                 catch (Tango::DevFailed &df)
                 {
@@ -843,7 +921,7 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
         error_msg << "Desc\t: " << ex.errors[0].desc << endl;
         error_msg << "Reason\t: " << ex.errors[0].reason << endl;
         set_state(Tango::FAULT);
-        ERROR_STREAM << "Exception from - DataStore::process_message() : " << error_msg.str()<<endl;
+        ERROR_STREAM << "Exception from - DataStore::process_message() : " << error_msg.str() << endl;
         throw;
     }
 }

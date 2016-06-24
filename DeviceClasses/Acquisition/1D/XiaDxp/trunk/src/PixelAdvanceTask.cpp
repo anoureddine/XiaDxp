@@ -38,7 +38,7 @@ m_helper(handel)
 //----------------------------------------------------------------------------------------------------------------------
 //- PixelAdvanceTask Dtor
 //----------------------------------------------------------------------------------------------------------------------
-PixelAdvanceTask::~PixelAdvanceTask(void)
+PixelAdvanceTask::~PixelAdvanceTask()
 {
     INFO_STREAM << "PixelAdvanceTask::~PixelAdvanceTask() - [BEGIN]" << endl;
     INFO_STREAM << "PixelAdvanceTask::~PixelAdvanceTask() - [END]" << endl;

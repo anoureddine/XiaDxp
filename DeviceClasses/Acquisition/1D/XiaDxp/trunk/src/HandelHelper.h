@@ -79,7 +79,7 @@ public:
     HandelHelper(Tango::DeviceImpl *dev, const std::string & board_type);
 
     /// dtor
-    virtual ~HandelHelper(void);
+    virtual ~HandelHelper();
 
     /// load config ini file
     void load_config_file(const std::string& config_file);

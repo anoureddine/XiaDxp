@@ -59,7 +59,7 @@ public:
     AcquisitionMapping(Tango::DeviceImpl *dev, const std::string & board_type, yat::SharedPtr<DataStore> store);
 
     /// dtor
-    virtual ~AcquisitionMapping(void);
+    virtual ~AcquisitionMapping();
 
     /// load config file
     void load_config_file(const std::string& file_name);
@@ -71,7 +71,7 @@ public:
     void start_acquisition(short accumulate = false);
 
     /// stop acquisition
-    void stop_acquisition();
+    void stop_acquisition(bool sync = false);
 
     /// collect data from buffer (process for each module is : check_buffer -> readout_buffer -> switch_buffer)
     void collect_data();
@@ -87,7 +87,7 @@ private:
     ///
     void switch_buffer(int module);
     ///
-    bool is_all_pixel_read_out(void);
+    bool is_all_pixel_read_out();
 
     /// Acquisition object
     yat::SharedPtr<PixelAdvanceTask> m_pixel_advance_task;

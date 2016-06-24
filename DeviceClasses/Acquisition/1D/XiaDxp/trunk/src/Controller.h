@@ -81,10 +81,10 @@ public:
     void update_parameters(ConfigLoader conf);
 
     /// start acquisition through Acquisition object
-    void start_acquisition(void);
+    void start_acquisition();
 
     /// stop acquisition through Acquisition object
-    void stop_acquisition(void);
+    void stop_acquisition();
 
     /// get number of total modules
     int get_nb_modules();
@@ -153,10 +153,10 @@ public:
     std::string get_pixel_advance_mode();
       
     /// get the last state of the task
-    Tango::DevState get_state(void);
+    Tango::DevState get_state();
 
     /// get the last status of the task
-    std::string get_status(void);
+    std::string get_status();
 
     /// fix the state in a scoped_lock
     void set_state(Tango::DevState state);
@@ -168,7 +168,7 @@ public:
     void update_data(int ichannel);
     
     /// notification from controller::update_data() or directly from device (rois management). this will refresh tango view.
-    void update_view(void);
+    void update_view();
     
     /// reset buffer index (Nexus))
     void reset_index_stream();
@@ -185,7 +185,7 @@ protected:
     virtual void process_message(yat::Message& msg) throw(Tango::DevFailed);
 
     /// compute internal state/status of task
-    void compute_state_status(void);
+    void compute_state_status();
 
     /// useful to manage behaviour in catch block : stop_moving(), status = "xxx "...
     void on_abort(Tango::DevFailed df);

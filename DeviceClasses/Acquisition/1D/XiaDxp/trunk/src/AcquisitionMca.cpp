@@ -32,7 +32,7 @@ AcquisitionMca::AcquisitionMca(Tango::DeviceImpl *dev, const std::string & board
 //----------------------------------------------------------------------------------------------------------------------
 //- AcquisitionMca Dtor
 //----------------------------------------------------------------------------------------------------------------------
-AcquisitionMca::~AcquisitionMca(void)
+AcquisitionMca::~AcquisitionMca()
 {
     INFO_STREAM << "Acquisition::~AcquisitionMca() - [BEGIN]" << endl;
     INFO_STREAM << "Acquisition::~AcquisitionMca() - [END]" << endl;
@@ -44,14 +44,22 @@ AcquisitionMca::~AcquisitionMca(void)
 void AcquisitionMca::load_config_file(const std::string& file_name)
 {
     INFO_STREAM << "AcquisitionMca::load_config_file() - [BEGIN]" << endl;
-    m_helper->load_config_file(file_name);
-    //init DataStore with new configurations    
-    m_store->init	(get_nb_modules(), //number of modules
-                     get_nb_channels()/get_nb_modules(), //number of channels per module (always 4 for xmap))
-                     1,	//always 1 pixel in mode MCA
-                     get_nb_bins(),
-                     "MCA" 
-                     );
+    try
+    {
+        m_helper->load_config_file(file_name);
+        //init DataStore with new configurations    
+        m_store->init	(get_nb_modules(), //number of modules
+                         get_nb_channels() / get_nb_modules(), //number of channels per module (always 4 for xmap))
+                         1,	//always 1 pixel in mode MCA
+                         get_nb_bins(),
+                         "MCA"
+                         );
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        on_fault(df);
+    }
     INFO_STREAM << "AcquisitionMca::load_config_file() - [END]" << endl;
 }
 
@@ -60,7 +68,15 @@ void AcquisitionMca::load_config_file(const std::string& file_name)
 void AcquisitionMca::save_config_file(const std::string& file_name)
 {
     INFO_STREAM << "AcquisitionMca::save_config_file() - [BEGIN]" << endl;
-    m_helper->save_config_file(file_name);
+    try
+    {
+        m_helper->save_config_file(file_name);
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        on_fault(df);
+    }
     INFO_STREAM << "AcquisitionMca::save_config_file() - [END]" << endl;
 }
 
@@ -69,42 +85,60 @@ void AcquisitionMca::save_config_file(const std::string& file_name)
 void AcquisitionMca::start_acquisition(short accumulate)
 {
     INFO_STREAM << "AcquisitionMca::start_acquisition() - [BEGIN]" << endl;
-    m_helper->stop_acquisition(); //@TODO : check why 
+    try
+    {
+        m_helper->stop_acquisition(); //@TODO : check why 
 
-    m_helper->start_acquisition(accumulate);
-    enable_periodic_msg(true); //only when start is done    
-    INFO_STREAM<<"collecting in progress ..."<<endl;
+        m_helper->start_acquisition(accumulate);
+        enable_periodic_msg(true); //only when start is done    
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        on_fault(df);
+    }
+    INFO_STREAM << "collecting in progress ..." << endl;
     INFO_STREAM << "AcquisitionMca::start_acquisition() - [END]" << endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-void AcquisitionMca::stop_acquisition()
+void AcquisitionMca::stop_acquisition(bool sync)
 {
     INFO_STREAM << "AcquisitionMca::stop_acquisition() - [BEGIN]" << endl;
-    //- Post MCA_STOP_MSG in order to stop XIA acquisition
-    yat::Message* msg = yat::Message::allocate(MCA_STOP_MSG, DEFAULT_MSG_PRIORITY, true);
-//    post(msg);
-    wait_msg_handled(msg, 5000); //to ensure that stop is done
+    try
+    {
+        //- Post MCA_STOP_MSG in order to stop XIA acquisition
+        yat::Message* msg = yat::Message::allocate(MCA_STOP_MSG, DEFAULT_MSG_PRIORITY, true);
+        if(!sync)
+            post(msg);
+        else
+            wait_msg_handled(msg, 5000); //to ensure that stop is done
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        on_fault(df);
+    }
     INFO_STREAM << "AcquisitionMca::stop_acquisition() - [END]" << endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //- collect_data
 //----------------------------------------------------------------------------------------------------------------------
-void AcquisitionMca::collect_data(void)
+void AcquisitionMca::collect_data()
 {
     INFO_STREAM << "AcquisitionMca::collect_data() - [BEGIN]" << endl;
     //for each module
     for (int imodule = 0; imodule < get_nb_modules(); imodule++)
     {
-        for(int ichannel = 0; ichannel < get_nb_channels()/get_nb_modules(); ichannel++)
+        for(int ichannel = 0; ichannel < get_nb_channels() / get_nb_modules(); ichannel++)
         {
             //get statistics values from board via handle library
-            INFO_STREAM << ""<< endl;
-            INFO_STREAM << "-------------------------------------------"<< endl;
-            INFO_STREAM << "channel_" <<to_channel_cluster(imodule, ichannel)<<endl;
-            INFO_STREAM << "-------------------------------------------"<< endl;
+            INFO_STREAM << "" << endl;
+            INFO_STREAM << "-------------------------------------------" << endl;
+            INFO_STREAM << "channel_" << to_channel_cluster(imodule, ichannel) << endl;
+            INFO_STREAM << "-------------------------------------------" << endl;
 
             INFO_STREAM << "-- get statistics from board" << endl;
             PixelData pix_data;
@@ -135,14 +169,14 @@ void AcquisitionMca::collect_data(void)
             m_store->store_data(imodule,                   //numero of module
                                 ichannel,                  //numero of channel
                                 0,                         //always 0 in MCA , @@TODO nbFrames later
-                                (DataType*)&spectrum[0],
+                                (DataType*) & spectrum[0],
                                 spectrum.size()
                                 );
         }
     }
 
-    INFO_STREAM << "AcquisitionMca::collect_data() - [END]" << endl<<endl;
-    INFO_STREAM <<" "<< endl;
+    INFO_STREAM << "AcquisitionMca::collect_data() - [END]" << endl << endl;
+    INFO_STREAM << " " << endl;
 }
 
 //---------------------------
@@ -157,39 +191,39 @@ void AcquisitionMca::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------
             case yat::TASK_INIT:
             {
-                INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << " " << std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
                 INFO_STREAM << "-> AcquisitionMca::TASK_INIT" << endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
                 set_state(Tango::STANDBY);
             }
                 break;
                 //-----------------------------------------------------
             case yat::TASK_EXIT:
             {
-                INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << " " << std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
                 INFO_STREAM << "-> AcquisitionMca::TASK_EXIT" << endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
             }
                 break;
                 //-----------------------------------------------------
             case yat::TASK_TIMEOUT:
             {
-                INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << " " << std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
                 INFO_STREAM << "-> AcquisitionMca::TASK_TIMEOUT" << endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
             }
                 break;
                 //-----------------------------------------------------
 
             case yat::TASK_PERIODIC:
             {
-                DEBUG_STREAM<<" "<<std::endl;
-                DEBUG_STREAM<<"--------------------------------------------"<<std::endl;
+                DEBUG_STREAM << " " << std::endl;
+                DEBUG_STREAM << "--------------------------------------------" << std::endl;
                 DEBUG_STREAM << "-> AcquisitionMca::TASK_PERIODIC" << endl;
-                DEBUG_STREAM<<"--------------------------------------------"<<std::endl;
+                DEBUG_STREAM << "--------------------------------------------" << std::endl;
                 ///
                 if(is_running())
                 {
@@ -198,7 +232,7 @@ void AcquisitionMca::process_message(yat::Message& msg) throw (Tango::DevFailed)
 
                     if(!is_need_collecting_last_data()) // do it once
                     {
-                        DEBUG_STREAM<<"enable collecting the final data at the end of acquisition"<<endl;
+                        DEBUG_STREAM << "enable collecting the final data at the end of acquisition" << endl;
                         enable_collecting_last_data();
                     }
                 }
@@ -206,7 +240,7 @@ void AcquisitionMca::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 {
                     if(is_need_collecting_last_data()) //do it once                    
                     {
-                        INFO_STREAM<<"collecting the final data ..."<<endl;
+                        INFO_STREAM << "collecting the final data ..." << endl;
                         collect_data();
                         m_store->close_data();
                         disable_collecting_last_data();
@@ -219,10 +253,10 @@ void AcquisitionMca::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------                
             case MCA_STOP_MSG:
             {
-                INFO_STREAM<<" "<<std::endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << " " << std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
                 INFO_STREAM << "-> AcquisitionMca::MCA_STOP_MSG" << endl;
-                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM << "--------------------------------------------" << std::endl;
                 // stop xia acquisition
                 m_helper->stop_acquisition();
             }
@@ -237,7 +271,7 @@ void AcquisitionMca::process_message(yat::Message& msg) throw (Tango::DevFailed)
         error_msg << "Origin\t: " << ex.errors[0].origin << endl;
         error_msg << "Desc\t: " << ex.errors[0].desc << endl;
         error_msg << "Reason\t: " << ex.errors[0].reason << endl;
-        ERROR_STREAM << "Exception from - AcquisitionMca::process_message() : " << error_msg.str()<<endl;
+        ERROR_STREAM << "Exception from - AcquisitionMca::process_message() : " << error_msg.str() << endl;
         on_abort(error_msg.str());
         throw;
     }

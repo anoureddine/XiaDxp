@@ -95,7 +95,7 @@ public:
     }
 
     ////////////////////////////////////////////////////////////////////////
-    virtual ~SimulatorHelper(void)
+    virtual ~SimulatorHelper()
     {
         INFO_STREAM << "SimulatorHelper::SimulatorHelper()- [BEGIN]" << endl;
         INFO_STREAM << "SimulatorHelper::SimulatorHelper()- [END]" << endl;

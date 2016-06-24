@@ -43,7 +43,7 @@ m_is_need_collecting_last_data(false)
 //----------------------------------------------------------------------------------------------------------------------
 //- Acquisition Dtor
 //----------------------------------------------------------------------------------------------------------------------
-Acquisition::~Acquisition(void)
+Acquisition::~Acquisition()
 {
     INFO_STREAM << "Acquisition::~Acquisition() - [BEGIN]" << endl;
     m_helper.reset();
@@ -52,7 +52,7 @@ Acquisition::~Acquisition(void)
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-Tango::DevState Acquisition::get_state(void)
+Tango::DevState Acquisition::get_state()
 {
     {
         //- AutoLock the following
@@ -118,7 +118,7 @@ void Acquisition::set_status(const std::string& status)
 
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-std::string Acquisition::get_status(void)
+std::string Acquisition::get_status()
 {
     {
         //- AutoLock the following

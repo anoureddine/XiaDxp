@@ -9,15 +9,15 @@
 namespace XiaDxp_ns
 {
 #if defined(USE_NX_FINALIZER)
-nxcpp::NexusDataStreamerFinalizer StreamNexus::nxs_DataStreamerFinalizer;
-bool StreamNexus::nxs_DataStreamerFinalizerStarted = false;
+nxcpp::NexusDataStreamerFinalizer StreamNexus::m_data_streamer_finalizer;
+bool StreamNexus::m_is_data_streamer_finalizer_started = false;
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
 //	
 //----------------------------------------------------------------------------------------------------------------------
 StreamNexus::StreamNexus(Tango::DeviceImpl *dev)
-: Stream(dev),IExceptionHandler(),
+: Stream(dev), IExceptionHandler(),
 m_target_path("TO_BE_DEFINED"),
 m_file_name("TO_BE_DEFINED"),
 m_write_mode("TO_BE_DEFINED"),
@@ -27,14 +27,14 @@ m_nb_pixels(0),
 m_writer(0)
 {
     INFO_STREAM << "StreamNexus::StreamNexus() - [BEGIN]" << endl;
-    yat::MutexLock scoped_lock(m_data_lock);    
+    yat::MutexLock scoped_lock(m_data_lock);
 #if defined(USE_NX_FINALIZER)
-    if ( ! StreamNexus::nxs_DataStreamerFinalizerStarted )
+    if ( ! StreamNexus::m_is_data_streamer_finalizer_started )
     {
-        INFO_STREAM << "starting the underlying NexusDataStreamerFinalizer..." << std::endl;
-        StreamNexus::nxs_DataStreamerFinalizer.start();
-        StreamNexus::nxs_DataStreamerFinalizerStarted = true;
-        INFO_STREAM << "NexusDataStreamerFinalizer successfully started" << std::endl;
+        INFO_STREAM << "starting the underlying NexusDataStreamerFinalizer - [BEGIN]" << std::endl;
+        StreamNexus::m_data_streamer_finalizer.start();
+        StreamNexus::m_is_data_streamer_finalizer_started = true;
+        INFO_STREAM << "starting the underlying NexusDataStreamerFinalizer - [END]" << std::endl;
     }
 #endif
     INFO_STREAM << "StreamNexus::StreamNexus() - [END]" << endl;
@@ -47,9 +47,12 @@ StreamNexus::~StreamNexus()
 {
     INFO_STREAM << "StreamNexus::~StreamNexus() - [BEGIN]" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
-    //- this might be required, in case we could not pass the writer to the finalizer	 
-    delete m_writer;
-    m_writer = 0;
+    if (m_writer)
+    {
+        //- this might be required, in case we could not pass the writer to the finalizer	 
+        delete m_writer;
+        m_writer = 0;
+    }
     INFO_STREAM << "StreamNexus::~StreamNexus() - [END]" << endl;
 }
 
@@ -72,7 +75,7 @@ void StreamNexus::init(yat::SharedPtr<DataStore> data_store)
     int total_channels = data_store->get_nb_modules() * data_store->get_nb_channels();
     m_nb_pixels = data_store->get_nb_pixels();
 
-    INFO_STREAM << "- Create DataStreamer :"<< endl;
+    INFO_STREAM << "- Create DataStreamer :" << endl;
     INFO_STREAM << "\t- target path = " 	<< m_target_path << endl;
     INFO_STREAM << "\t- file name = "		<< m_file_name << endl;
     INFO_STREAM << "\t- write mode = " 		<< m_write_mode << endl;
@@ -86,100 +89,108 @@ void StreamNexus::init(yat::SharedPtr<DataStore> data_store)
         INFO_STREAM << "\t\t. " << m_stream_items.at(i) << endl;
     }
     INFO_STREAM << endl;
-
-    m_writer = new nxcpp::DataStreamer(m_file_name, m_nb_pixels, m_nb_acq_per_file);
-
-    INFO_STREAM << "- Initialize()" << endl;
-    m_writer->Initialize(m_target_path);
-
-    INFO_STREAM << "- SetExceptionHnadler()" << endl;
-    m_writer->SetExceptionHandler(this);
-    
-    INFO_STREAM << "- Prepare Data Items :" << endl;
-    for (int ichan = 0; ichan < total_channels; ichan++)
+    try
     {
-        //- Channels        
-        if ( m_is_channel_enabled )
+        m_writer = new nxcpp::DataStreamer(m_file_name, m_nb_pixels, m_nb_acq_per_file);
+
+        INFO_STREAM << "- Initialize()" << endl;
+        m_writer->Initialize(m_target_path);
+
+        INFO_STREAM << "- SetExceptionHnadler()" << endl;
+        m_writer->SetExceptionHandler(this);
+
+        INFO_STREAM << "- Prepare Data Items :" << endl;
+        for (int ichan = 0; ichan < total_channels; ichan++)
         {
-            m_channel_names.push_back(yat::String::str_format("channel%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem1D(" << m_channel_names[ichan] << "," << m_nb_bins << ")" << endl;
-            m_writer->AddDataItem1D(m_channel_names[ichan], m_nb_bins);
+            //- Channels        
+            if ( m_is_channel_enabled )
+            {
+                m_channel_names.push_back(yat::String::str_format("channel%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem1D(" << m_channel_names[ichan] << "," << m_nb_bins << ")" << endl;
+                m_writer->AddDataItem1D(m_channel_names[ichan], m_nb_bins);
+            }
+
+            //- Triggers
+            if ( m_is_triggers_enabled )
+            {
+                m_triggers_names.push_back(yat::String::str_format("triggers%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem0D(" << m_triggers_names[ichan] << ")" << endl;
+                m_writer->AddDataItem0D(m_triggers_names[ichan]);
+            }
+
+            //- events in run
+            if ( m_is_outputs_enabled )
+            {
+                m_outputs_names.push_back(yat::String::str_format("outputs%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem0D(" << m_outputs_names[ichan] << ")" << endl;
+                m_writer->AddDataItem0D(m_outputs_names[ichan]);
+            }
+
+            //- ICRs
+            if ( m_is_icr_enabled )
+            {
+                m_icr_names.push_back(yat::String::str_format("icr%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem0D(" << m_icr_names[ichan] << ")" << endl;
+                m_writer->AddDataItem0D(m_icr_names[ichan]);
+            }
+
+            //- OCRs
+            if ( m_is_ocr_enabled )
+            {
+                m_ocr_names.push_back(yat::String::str_format("ocr%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem0D(" << m_ocr_names[ichan] << ")" << endl;
+                m_writer->AddDataItem0D(m_ocr_names[ichan]);
+            }
+
+            //- Realtimes
+            if ( m_is_realtime_enabled )
+            {
+                m_realtime_names.push_back(yat::String::str_format("realtime%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem0D(" << m_realtime_names[ichan] << ")" << endl;
+                m_writer->AddDataItem0D(m_realtime_names[ichan]);
+            }
+
+            //- Livetimes
+            if ( m_is_livetime_enabled )
+            {
+                m_livetime_names.push_back(yat::String::str_format("livetime%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem0D(" << m_livetime_names[ichan] << ")" << endl;
+                m_writer->AddDataItem0D(m_livetime_names[ichan]);
+            }
+
+            //- Deadtimes
+            if ( m_is_deadtime_enabled )
+            {
+                m_deadtime_names.push_back(yat::String::str_format("deadtime%02d", ichan));
+                INFO_STREAM << "\t- AddDataItem0D(" << m_deadtime_names[ichan] << ")" << endl;
+                m_writer->AddDataItem0D(m_deadtime_names[ichan]);
+            }
         }
 
-        //- Triggers
-        if ( m_is_triggers_enabled )
+        // configure the Writer mode 
+        INFO_STREAM << "- Configure the Writer mode :" << endl;
+        //by default is IMMEDIATE			
+        if (m_write_mode == "SYNCHRONOUS" )
         {
-            m_triggers_names.push_back(yat::String::str_format("triggers%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem0D(" << m_triggers_names[ichan] << ")" << endl;
-            m_writer->AddDataItem0D(m_triggers_names[ichan]);
+            INFO_STREAM << "\t- SYNCHRONOUS" << endl;
+            m_writer->SetWriteMode(nxcpp::NexusFileWriter::SYNCHRONOUS);
         }
-
-        //- events in run
-        if ( m_is_outputs_enabled )
+        else if (m_write_mode == "DELAYED" )
         {
-            m_outputs_names.push_back(yat::String::str_format("outputs%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem0D(" << m_outputs_names[ichan] << ")" << endl;
-            m_writer->AddDataItem0D(m_outputs_names[ichan]);
+            INFO_STREAM << "\t- DELAYED" << endl;
+            m_writer->SetWriteMode(nxcpp::NexusFileWriter::DELAYED);
         }
-
-        //- ICRs
-        if ( m_is_icr_enabled )
+        else
         {
-            m_icr_names.push_back(yat::String::str_format("icr%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem0D(" << m_icr_names[ichan] << ")" << endl;
-            m_writer->AddDataItem0D(m_icr_names[ichan]);
-        }
-
-        //- OCRs
-        if ( m_is_ocr_enabled )
-        {
-            m_ocr_names.push_back(yat::String::str_format("ocr%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem0D(" << m_ocr_names[ichan] << ")" << endl;
-            m_writer->AddDataItem0D(m_ocr_names[ichan]);
-        }
-
-        //- Realtimes
-        if ( m_is_realtime_enabled )
-        {
-            m_realtime_names.push_back(yat::String::str_format("realtime%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem0D(" << m_realtime_names[ichan] << ")" << endl;
-            m_writer->AddDataItem0D(m_realtime_names[ichan]);
-        }
-
-        //- Livetimes
-        if ( m_is_livetime_enabled )
-        {
-            m_livetime_names.push_back(yat::String::str_format("livetime%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem0D(" << m_livetime_names[ichan] << ")" << endl;
-            m_writer->AddDataItem0D(m_livetime_names[ichan]);
-        }
-
-        //- Deadtimes
-        if ( m_is_deadtime_enabled )
-        {
-            m_deadtime_names.push_back(yat::String::str_format("deadtime%02d", ichan));
-            INFO_STREAM << "\t- AddDataItem0D(" << m_deadtime_names[ichan] << ")" << endl;
-            m_writer->AddDataItem0D(m_deadtime_names[ichan]);
+            INFO_STREAM << "\t- IMMEDIATE" << endl;
+            m_writer->SetWriteMode(nxcpp::NexusFileWriter::IMMEDIATE);
         }
     }
-
-    // configure the Writer mode 
-    INFO_STREAM << "- Configure the Writer mode :" << endl;
-    //by default is IMMEDIATE			
-    if (m_write_mode == "SYNCHRONOUS" )
+    catch(const nxcpp::NexusException &ex)
     {
-        INFO_STREAM << "\t- SYNCHRONOUS" << endl;
-        m_writer->SetWriteMode(nxcpp::NexusFileWriter::SYNCHRONOUS);
-    }
-    else if (m_write_mode == "DELAYED" )
-    {
-        INFO_STREAM << "\t- DELAYED" << endl;
-        m_writer->SetWriteMode(nxcpp::NexusFileWriter::DELAYED);
-    }
-    else
-    {
-        INFO_STREAM << "\t- IMMEDIATE" << endl;
-        m_writer->SetWriteMode(nxcpp::NexusFileWriter::IMMEDIATE);
+        Tango::Except::throw_exception((ex.errors[0].reason).c_str(),
+                                       (ex.errors[0].desc).c_str(),
+                                       (ex.errors[0].origin).c_str());
     }
 
     INFO_STREAM << "StreamNexus::init() - [END]" << endl;
@@ -200,22 +211,23 @@ void StreamNexus::open()
 void StreamNexus::close()
 {
     INFO_STREAM << "StreamNexus::close() - [BEGIN]" << endl;
-    yat::MutexLock scoped_lock(m_data_lock);
+    yat::MutexLock scoped_lock(m_data_lock);            
     if (m_writer)
-    {
+    {        
 #if defined (USE_NX_FINALIZER) 
         //- Use NexusFinalizer to optimize the finalize which was extremly long !!!
-        INFO_STREAM << "passing DataStreamer to the NexusDataStreamerFinalizer" << std::endl;
+        INFO_STREAM << "passing DataStreamer to the NexusDataStreamerFinalizer - [BEGIN]" << std::endl;
         nxcpp::NexusDataStreamerFinalizer::Entry *e = new nxcpp::NexusDataStreamerFinalizer::Entry();
         e->data_streamer = m_writer;
         m_writer = 0;
-        StreamNexus::nxs_DataStreamerFinalizer.push(e);
-        INFO_STREAM << "DataStreamer successfully passed to the NexusDataStreamerFinalizer" << std::endl;
+        StreamNexus::m_data_streamer_finalizer.push(e);
+        INFO_STREAM << "passing DataStreamer to the NexusDataStreamerFinalizer - [END]" << std::endl;
 #else  
-        INFO_STREAM << "- Finalize()..." << endl;
+        INFO_STREAM << "- Finalize() - [BEGIN]" << endl;
         m_writer->Finalize();
         delete m_writer;
         m_writer = 0;
+        INFO_STREAM << "- Finalize() - [END]" << endl;
 #endif 
     }
 
@@ -228,13 +240,14 @@ void StreamNexus::close()
 void StreamNexus::abort()
 {
     INFO_STREAM << "StreamNexus::abort() - [BEGIN]" << endl;
-    yat::MutexLock scoped_lock(m_data_lock);
+    yat::MutexLock scoped_lock(m_data_lock);    
     if (m_writer)
-    {
-        INFO_STREAM << "- Stop()..." << endl;
+    {        
+        INFO_STREAM << "- Stop() - [BEGIN]" << endl;
         m_writer->Stop();
         delete m_writer;
         m_writer = 0;
+        INFO_STREAM << "- Stop() - [END]" << endl;
     }
     INFO_STREAM << "StreamNexus::abort() - [END]" << endl;
 }
@@ -299,7 +312,7 @@ void StreamNexus::store_statistics(int module,
                                    double deadtime)
 {
     //DEBUG_STREAM << "StreamNexus::store_statistics()" << endl;
-    yat::MutexLock scoped_lock(m_data_lock);    
+    yat::MutexLock scoped_lock(m_data_lock);
     if (m_writer)
     {
         //- triggers
@@ -352,7 +365,7 @@ void StreamNexus::store_statistics(int module,
 void StreamNexus::store_data(int module, int channel, int pixel, DataType* data, size_t length)
 {
     //DEBUG_STREAM << "StreamNexus::store_data()" << endl;
-    yat::MutexLock scoped_lock(m_data_lock);    
+    yat::MutexLock scoped_lock(m_data_lock);
     if (m_writer)
     {
         //- channel
@@ -368,7 +381,7 @@ void StreamNexus::store_data(int module, int channel, int pixel, DataType* data,
 //----------------------------------------------------------------------------------------------------------------------
 void StreamNexus::update_data(int ichannel, yat::SharedPtr<DataStore> data_store)
 {
-    DEBUG_STREAM << "StreamNexus::update_data() - [pixel = "<<data_store->get_current_pixel(ichannel)<<"]" << endl;
+//    DEBUG_STREAM << "StreamNexus::update_data() - [pixel = " << data_store->get_current_pixel(ichannel) << "]" << endl;
 
     //DEBUG_STREAM<<"\t- Store statistics : channel "<<ichannel<<endl;
     yat::MutexLock scoped_lock(m_data_lock);
@@ -393,7 +406,7 @@ void StreamNexus::update_data(int ichannel, yat::SharedPtr<DataStore> data_store
                data_store->get_channel_data(ichannel).size()
                );
     //INFO_STREAM<<" "<<endl;    
-    DEBUG_STREAM << "StreamNexus::update_data() - [END]" << endl;
+//    DEBUG_STREAM << "StreamNexus::update_data() - [END]" << endl;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -401,11 +414,11 @@ void StreamNexus::update_data(int ichannel, yat::SharedPtr<DataStore> data_store
 //----------------------------------------------------------------------------------------------------------------------
 void StreamNexus::reset_index()
 {
-    INFO_STREAM << "StreamNexus::reset_index() - [BEGIN]" << endl;
+    DEBUG_STREAM << "StreamNexus::reset_index() - [BEGIN]" << endl;
     INFO_STREAM << "- ResetBufferIndex()" << endl;
     yat::MutexLock scoped_lock(m_data_lock);
     nxcpp::DataStreamer::ResetBufferIndex();
-    INFO_STREAM << "StreamNexus::reset_index() - [END]" << endl;
+    DEBUG_STREAM << "StreamNexus::reset_index() - [END]" << endl;
 }
 
 }// namespace

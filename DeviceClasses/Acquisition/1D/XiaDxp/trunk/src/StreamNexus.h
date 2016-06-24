@@ -43,16 +43,25 @@ public:
     void set_nb_acq_per_file(int nb_acq_per_file);
     void OnNexusException(const nxcpp::NexusException &ex)
     {
+        DEBUG_STREAM << "StreamNexus::OnNexusException() - [BEGIN]" << endl;
         ostringstream ossMsgErr;
         ossMsgErr << endl;
-        ossMsgErr << "==============================================="<<endl;
+        ossMsgErr << "===============================================" << endl;
         ossMsgErr << "Origin\t: " << ex.errors[0].origin << endl;
         ossMsgErr << "Desc\t: " << ex.errors[0].desc << endl;
-        ossMsgErr << "Reason\t: " << ex.errors[0].reason << endl;        
-        ossMsgErr << "==============================================="<<endl;
-        ERROR_STREAM<<ossMsgErr.str()<<endl;        
-        //@@TODO : inform m_store !!!!
-    };    
+        ossMsgErr << "Reason\t: " << ex.errors[0].reason << endl;
+        ossMsgErr << "===============================================" << endl;
+        ERROR_STREAM << ossMsgErr.str() << endl;
+        yat::MutexLock scoped_lock(m_data_lock);        
+        //1 - finalize the DataStreamer , this will set m_writer = 0 in order to avoid any new push data
+        if (m_writer)
+        {   
+            close();
+        }
+        //2 -  inform m_store in order to stop acquisition & to set its state to FAULT
+        m_store->abort(ex.errors[0].desc);
+        DEBUG_STREAM << "StreamNexus::OnNexusException() - [END]" << endl;        
+    };
 private:
     void store_statistics(int module,
             int channel,
@@ -69,13 +78,13 @@ private:
             int channel,
             int pixel,
             DataType* data,
-            size_t length);    
+            size_t length);
 private:
     yat::Mutex m_data_lock;
     //- Nexus stuff	
 #if defined(USE_NX_FINALIZER)
-    static nxcpp::NexusDataStreamerFinalizer nxs_DataStreamerFinalizer;
-    static bool nxs_DataStreamerFinalizerStarted;
+    static nxcpp::NexusDataStreamerFinalizer m_data_streamer_finalizer;
+    static bool m_is_data_streamer_finalizer_started;
 #endif
     yat::SharedPtr<DataStore> m_store;
     std::string m_target_path;
