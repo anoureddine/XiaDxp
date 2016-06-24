@@ -18,6 +18,7 @@
 #include <yat/memory/DataBuffer.h>
 #include <yat4tango/DeviceTask.h>
 #include <yat/any/Any.h>
+#include <yat/time/Timer.h>
 #include <vector>
 #include <nexuscpp/nexuscpp.h>
 
@@ -25,6 +26,7 @@ const size_t DATASTORE_TASK_PERIODIC_MS      = 100;//ms
 const size_t DATASTORE_PROCESS_DATA_MSG      = yat::FIRST_USER_MSG + 600;
 const size_t DATASTORE_CLOSE_DATA_MSG        = yat::FIRST_USER_MSG + 601;
 const size_t DATASTORE_ABORT_DATA_MSG        = yat::FIRST_USER_MSG + 602;
+const size_t DATASTORE_ABORT_MSG             = yat::FIRST_USER_MSG + 603;
 
 
 ///return the cluster channel number from module number and channel number
@@ -101,14 +103,16 @@ public:
     ///dtor
     virtual ~DataStore();
     void init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, const std::string& acquisition_type);
+    void reinit();
     void store_statistics(int module, int channel, int pixel, PixelData pix_data);
     void store_data(int module, int channel, int pixel, DataType* data, size_t length);    
 	void process_data(DataBufferContainer* map_buffer);
-	void close_data(void);    
-    void abort_data(void);           
+	void close_data();    
+    void abort_data();   
+    void abort(std::string status);   
     void subscribe(class Controller* observer);
     void set_nb_pixels(int nb_pixels);
-    double get_timebase(void);  
+    double get_timebase();  
 	void set_timebase(double timebase);  
     
     ///getters
@@ -127,17 +131,19 @@ public:
     unsigned long get_outputs(int channel);
     unsigned long get_events_in_run(int channel);
     std::vector<DataType> get_channel_data(int channel);        
-    Tango::DevState get_state(void);
-    std::string get_status(void);
+    Tango::DevState get_state();
+    std::string get_status();
 protected:
     void process_message(yat::Message& msg) throw (Tango::DevFailed);      
 private:
-    ///notify_data controller (observer) about new datas
+    ///inform controller (observer) about new datas . it has to update_data on (stream & view)
     void notify_data(int ichannel);
-    ///notify_data controller (observer) at the end of datas
+    ///inform controller (observer) about end of datas . it has to close the stream
 	void on_close_data();
-    ///notify_data controller (observer) at the abort of datas
+    ///inform controller (observer) about anormal end of datas . it has to abort the stream
 	void on_abort_data();    
+    ///inform controller (observer) about exception occured. it has to stop acquisition & abort the stream
+    void on_abort(std::string status);
     ///process the data's buffer in order to get statistics & datas from the acquired buffer
     void on_process_data(DataBufferContainer& map_buffer);	
     ///parse datas for each acquired pixel
@@ -166,6 +172,7 @@ private:
     std::string m_acquisition_type;
     double m_timebase;
     class Controller* m_controller;
+    bool m_is_exception_occured_stream;
 };
 
 } 

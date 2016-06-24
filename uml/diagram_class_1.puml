@@ -1,9 +1,10 @@
 @startuml
 
-title <b>XiaDxp - Diagram Class - 2016/02/24</b>\n**********************************************
+title <b>XiaDxp - Diagram Class - 2016/06/15</b>\n**********************************************
 
 abstract class DeviceTask1 {
 }
+
 
 
 abstract class DeviceTask2 {
@@ -13,11 +14,11 @@ abstract class Acquisition{
     +load_config(string& file) = 0;
     +save_config(string& file) = 0;
     +start() = 0;
-    +stop() = 0;
-    +DevState get_state();
+    +stop() = 0;    
     +int get_nb_modules(); 
     +int get_nb_channels();
     +int get_nb_bins();
+    +DevState get_state();
     __
     #process_message() = 0;
 }
@@ -47,7 +48,7 @@ class AcquisitionMapping {
     -switch_buffer(int module);
 }
 
-class DriverHelper {
+abstract class DriverHelper {
     +load_config_file(string& file) = 0;
     +save_config_file(string& file) = 0;
     +start_acquisition(short accumulate) = 0;
@@ -89,6 +90,7 @@ abstract class Stream {
     +close() = 0;
     +abort() = 0;
     +update_data(int channel, DataStore*) = 0;
+    +set_stream_items(vector<string> stream_items);
 }
 
 class StreamNo {
@@ -105,6 +107,20 @@ class StreamLog {
     +close();
     +abort();
     +update_data(int channel, DataStore*);
+    +reset_index();    
+}
+
+class StreamCsv {
+    +init(DataStore*);
+    +open();
+    +close();
+    +abort();
+    +update_data(int channel, DataStore*);
+    +reset_index();    
+    +set_target_path(const string& target_path);
+    +set_file_name(const string& file_name);
+    __
+
 }
 
 class StreamNexus {
@@ -113,7 +129,7 @@ class StreamNexus {
     +close();
     +abort();
     +update_data(int channel, DataStore*);
-    +nexus_reset_file_index();    
+    +reset_index();    
     +set_target_path(const string& target_path);
     +set_file_name(const string& file_name);
     +set_write_mode(const string& write_mode);
@@ -163,6 +179,7 @@ class DataStore {
 	+double get_deadtime(int channel);
     +unsigned long get_triggers(int channel);
 	+unsigned long get_events(int channel);
+    +get_state();
     __
     #process_message();
     __
@@ -178,13 +195,13 @@ class Controller {
     +save_config(string& file);
     +start();
     +stop();
-    +abort();
-    +get_state();
+    +abort();    
     +int get_nb_modules();    
     +int get_nb_channels();    
     +int get_nb_bins();
     +update_parameters(ConfigLoader conf);
     +update_data(int channel);
+    +get_state();
     __
     -on_abort(Tango::DevFailed df);
     -on_alarm(Tango::DevFailed df);
@@ -211,6 +228,7 @@ Acquisition <|-- AcquisitionMapping
 DeviceTask2 <|-- DataStore
 
 Stream <|-- StreamNexus
+Stream <|-- StreamCsv
 Stream <|-- StreamLog
 Stream <|-- StreamNo
 

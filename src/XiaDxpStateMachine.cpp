@@ -69,16 +69,16 @@ bool XiaDxp::is_nbModules_allowed(Tango::AttReqType type)
 		get_state() == Tango::OFF)
 	{
 		//	End of Generated Code
-		if ((get_state()==Tango::RUNNING)&& type==Tango::READ_REQ )
+		if (get_state()==Tango::RUNNING)
 		{
            return true;
 		}
              
         
-//		if ( (get_state()==Tango::FAULT && is_device_initialized())&& type==Tango::READ_REQ )
-//		{	
-//           return true;
-//		}
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
         
 		//	Re-Start of Generated Code
 		return false;
@@ -100,16 +100,16 @@ bool XiaDxp::is_nbChannels_allowed(Tango::AttReqType type)
 		get_state() == Tango::OFF)
 	{
 		//	End of Generated Code
-		if ((get_state()==Tango::RUNNING)&& type==Tango::READ_REQ )
+		if (get_state()==Tango::RUNNING)
 		{
            return true;
 		}
              
         
-//		if ( (get_state()==Tango::FAULT && is_device_initialized())&& type==Tango::READ_REQ )
-//		{	
-//           return true;
-//		}
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
         
 		//	Re-Start of Generated Code
 		return false;
@@ -131,7 +131,17 @@ bool XiaDxp::is_currentConfigFile_allowed(Tango::AttReqType type)
 		get_state() == Tango::OFF)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::RUNNING)
+		{
+           return true;
+		}
+             
+        
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
+        
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -152,7 +162,17 @@ bool XiaDxp::is_currentMode_allowed(Tango::AttReqType type)
 		get_state() == Tango::OFF)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::RUNNING)
+		{
+           return true;
+		}
+             
+        
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
+        
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -173,7 +193,17 @@ bool XiaDxp::is_currentAlias_allowed(Tango::AttReqType type)
 		get_state() == Tango::OFF)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::RUNNING)
+		{
+           return true;
+		}
+             
+        
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
+        
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -194,16 +224,16 @@ bool XiaDxp::is_nbBins_allowed(Tango::AttReqType type)
 		get_state() == Tango::OFF)
 	{
 		//	End of Generated Code
-		if ((get_state()==Tango::RUNNING)&& type==Tango::READ_REQ )
+		if (get_state()==Tango::RUNNING)
 		{
            return true;
 		}
              
         
-//		if ( (get_state()==Tango::FAULT && is_device_initialized())&& type==Tango::READ_REQ )
-//		{	
-//           return true;
-//		}
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
         
 		//	Re-Start of Generated Code
 		return false;
@@ -227,7 +257,10 @@ bool XiaDxp::is_streamTargetPath_allowed(Tango::AttReqType type)
 		get_state() == Tango::DISABLE)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -248,7 +281,10 @@ bool XiaDxp::is_streamType_allowed(Tango::AttReqType type)
 		get_state() == Tango::DISABLE)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -269,7 +305,10 @@ bool XiaDxp::is_streamTargetFile_allowed(Tango::AttReqType type)
 		get_state() == Tango::DISABLE)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -290,7 +329,10 @@ bool XiaDxp::is_streamNbDataPerAcq_allowed(Tango::AttReqType type)
 		get_state() == Tango::DISABLE)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -311,7 +353,10 @@ bool XiaDxp::is_streamNbAcqPerFile_allowed(Tango::AttReqType type)
 		get_state() == Tango::DISABLE)
 	{
 		//	End of Generated Code
-
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
 		//	Re-Start of Generated Code
 		return false;
 	}
@@ -338,10 +383,10 @@ bool XiaDxp::is_peakingTime_allowed(Tango::AttReqType type)
 		}
              
         
-//		if ( (get_state()==Tango::FAULT && is_device_initialized())&& type==Tango::READ_REQ )
-//		{	
-//           return true;
-//		}
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
         
 		//	Re-Start of Generated Code
 		return false;
@@ -369,10 +414,10 @@ bool XiaDxp::is_dynamicRange_allowed(Tango::AttReqType type)
 		}
              
         
-//		if ( (get_state()==Tango::FAULT && is_device_initialized())&& type==Tango::READ_REQ )
-//		{	
-//           return true;
-//		}
+		if (get_state()==Tango::FAULT && is_device_initialized())
+		{	
+           return true;
+		}
         
 		//	Re-Start of Generated Code
 		return false;

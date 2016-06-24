@@ -35,7 +35,7 @@ public:
     PixelAdvanceTask(Tango::DeviceImpl *dev, yat::SharedPtr<DriverHelper> handel);
     
     /// dtor
-    virtual ~PixelAdvanceTask(void);
+    virtual ~PixelAdvanceTask();
 
     /// start advancing manual pixel
     void start();

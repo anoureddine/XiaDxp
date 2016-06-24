@@ -52,6 +52,7 @@ void StreamCsv::init(yat::SharedPtr<DataStore> data_store)
 void StreamCsv::open()
 {
     INFO_STREAM << "StreamCsv::open() - [BEGIN]" << endl;
+    yat::MutexLock scoped_lock(m_data_lock);
     INFO_STREAM << "StreamCsv::open() - [END]" << endl;
 }
 

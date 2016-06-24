@@ -31,7 +31,7 @@ m_nb_channels(0)
 //----------------------------------------------------------------------------------------------------------------------
 //- HandelHelper Dtor
 //----------------------------------------------------------------------------------------------------------------------
-HandelHelper::~HandelHelper(void)
+HandelHelper::~HandelHelper()
 {
     INFO_STREAM << "HandelHelper::~HandelHelper()- [BEGIN]" << endl;
     int state = xiaExit();
@@ -65,7 +65,7 @@ void HandelHelper::load_config_file(const std::string& config_file)
                                        "HandelHelper::load_config_file()");
     }
 
-    DEBUG_STREAM << "starting System ..." << endl;
+    INFO_STREAM << "starting System ..." << endl;
     state = xiaStartSystem();
     if (state != STATE_OK)
     {
@@ -79,6 +79,7 @@ void HandelHelper::load_config_file(const std::string& config_file)
 
     init_modules_channels();
     set_state(INITIALIZATION_SUCCESSFUL);
+    set_status("SUCCESSFUL");
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -88,7 +89,7 @@ void HandelHelper::save_config_file(const std::string& config_file)
     INFO_STREAM << "=========================================================" << endl;
     INFO_STREAM << "Save config file '" << config_file << "' ..." << endl;
     const int state = xiaSaveSystem("handel_ini", (char*)config_file.c_str());
-    CHECK_STATE(state, "HandelHelper::save_ini_file");
+    CHECK_STATE(state, "HandelHelper::save_config_file");
 }
 
 
@@ -242,7 +243,7 @@ int HandelHelper::get_nb_bins(int channel)
                 +std::string("number_mca_channels")
                 +std::string("')")
                 );
-    return (int)dvalue;
+    return dvalue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -405,7 +406,7 @@ int HandelHelper::get_num_map_pixels(int channel)
                 +std::string("num_map_pixels")
                 +std::string("')")
                 );
-    return (int)dvalue;
+    return dvalue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -437,7 +438,7 @@ int HandelHelper::get_num_map_pixels_per_buffer(int channel)
                 +std::string("num_map_pixels_per_buffer")
                 +std::string("')")
                 );
-    return (int)dvalue;
+    return dvalue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -557,7 +558,7 @@ void HandelHelper::get_mca_data(int channel, int number_of_bins, std::vector<Tan
 int HandelHelper::get_nb_rois(int channel)
 {
     double num_scas = get_number_of_scas(channel);
-    return (int)num_scas;
+    return num_scas;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -571,7 +572,7 @@ void HandelHelper::set_nb_rois(int channel, int nb_rois)
 //----------------------------------------------------------------------------------------------------------------------
 void HandelHelper::get_roi_bounds(int channel, int roi_num, double& low, double& high)
 {
-    int num_scas = (int)get_number_of_scas(channel);
+    int num_scas = get_number_of_scas(channel);
     if(roi_num>=num_scas)
     {
         Tango::Except::throw_exception ("LOGIC_ERROR",

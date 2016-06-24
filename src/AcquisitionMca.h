@@ -33,7 +33,7 @@ public:
     AcquisitionMca(Tango::DeviceImpl *dev, const std::string & board_type, yat::SharedPtr<DataStore> store);
 
     /// dtor
-    virtual ~AcquisitionMca(void);
+    virtual ~AcquisitionMca();
 
     /// load config file
     void load_config_file(const std::string& file_name);
@@ -45,13 +45,13 @@ public:
     void start_acquisition(short accumulate = false);
 
     /// stop acquisition
-    void stop_acquisition();
+    void stop_acquisition(bool sync = false);
 protected:
     /// [yat4tango::DeviceTask implementation]
     void process_message(yat::Message& msg) throw(Tango::DevFailed);
 
 private:
-    void collect_data(void);
+    void collect_data();
 };
 
 //-------------------------------------------------------------

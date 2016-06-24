@@ -79,7 +79,7 @@ void Controller::set_state(Tango::DevState state)
 // ============================================================================
 // Controller::get_state
 // ============================================================================
-Tango::DevState Controller::get_state(void)
+Tango::DevState Controller::get_state()
 {
     {
         //- AutoLock the following
@@ -105,7 +105,7 @@ void Controller::set_status(const std::string& status)
 // ============================================================================
 // Controller::get_status
 // ============================================================================
-std::string Controller::get_status(void)
+std::string Controller::get_status()
 {
     {
         //- AutoLock the following
@@ -124,6 +124,7 @@ void Controller::on_abort(Tango::DevFailed df)
     status.str("");
     status << "Origin\t: " << df.errors[0].origin << endl;
     status << "Desc\t: " << df.errors[0].desc << endl;
+    status << "Reason\t: " << df.errors[0].reason << endl;
     set_status(status.str());
 
     //- rethrow exception
@@ -160,6 +161,7 @@ void Controller::on_fault(Tango::DevFailed df)
     status.str("");
     status << "Origin\t: " << df.errors[0].origin << endl;
     status << "Desc\t: " << df.errors[0].desc << endl;
+    status << "Reason\t: " << df.errors[0].reason << endl;
     set_status(status.str());
 }
 
@@ -186,6 +188,7 @@ void Controller::on_alarm(Tango::DevFailed df)
     status.str("");
     status << "Origin\t: " << df.errors[0].origin << endl;
     status << "Desc\t: " << df.errors[0].desc << endl;
+    status << "Reason\t: " << df.errors[0].reason << endl;    
     set_status(status.str());
 }
 
@@ -204,13 +207,13 @@ void Controller::on_alarm(const std::string& st)
 // ============================================================================
 // Controller::compute_state_status
 // ============================================================================
-void Controller::compute_state_status(void)
+void Controller::compute_state_status()
 {
     //DEBUG_STREAM << "Controller::compute_state_status() - [BEGIN]" << endl;        	
     {
         //- AutoLock the following
         yat::MutexLock scoped_lock(m_state_lock);
-        if(m_state != Tango::FAULT)
+        //if(m_state != Tango::FAULT)
         {
             if(m_state != Tango::DISABLE && m_state != Tango::OFF && m_acquisition && m_store)
             {
@@ -224,6 +227,11 @@ void Controller::compute_state_status(void)
                     set_state(Tango::RUNNING);
                     set_status("Acquisition is in progress ...");
                 }                
+                else if(m_store->get_state() == Tango::RUNNING)
+                {
+                    set_state(Tango::RUNNING);
+                    set_status("Storage is in progress ...");
+                }
                 else
                 {
                     set_state(m_acquisition->get_state());
@@ -285,7 +293,7 @@ void Controller::save_config_file(const std::string& file_name)
 // ============================================================================
 // Controller::start_acquisition
 // ============================================================================
-void Controller::start_acquisition(void)
+void Controller::start_acquisition()
 {
     INFO_STREAM<<" "<<std::endl;
     INFO_STREAM << "Controller::start_acquisition() - [BEGIN]" << endl;
@@ -305,14 +313,14 @@ void Controller::start_acquisition(void)
 // ============================================================================
 // Controller::stop_acquisition
 // ============================================================================
-void Controller::stop_acquisition(void)
+void Controller::stop_acquisition()
 {
     INFO_STREAM<<" "<<std::endl;
     INFO_STREAM << "Controller::stop_acquisition() - [BEGIN]" << endl;
     try
     {
         yat::MutexLock scoped_lock(m_state_lock);
-        m_acquisition->stop_acquisition();
+        m_acquisition->stop_acquisition(true);
     }
     catch (Tango::DevFailed& df)
     {
@@ -692,7 +700,7 @@ void Controller::update_data(int ichannel)
 // ============================================================================
 // Controller::update_view()
 // ============================================================================
-void Controller::update_view(void)
+void Controller::update_view()
 {
     DEBUG_STREAM << "Controller::update_view() - [BEGIN]" << endl;
     set_state(Tango::DISABLE);
@@ -756,6 +764,9 @@ void Controller::update_parameters(ConfigLoader conf)
                 static_cast<StreamNexus*>(m_stream.get())->set_nb_acq_per_file(m_conf.stream_nb_acq_per_file);
         }
 
+        //always in order to start a new store (set STANDBY, reset m_is_exception_occured_stream)
+        m_store->reinit();
+        
         //enable/disable writing statistics (read from Device Property)
         m_stream->set_stream_items(m_conf.stream_items);   
         
@@ -841,7 +852,10 @@ void Controller::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------
             case CONTROLLER_LOAD_MSG:
             {
+                INFO_STREAM<<" "<<std::endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 INFO_STREAM<<"-> Controller::CONTROLLER_LOAD_MSG" << endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;                
                 try
                 {
                     //conf = msg.get_data<ConfigLoader>();
