@@ -103,13 +103,15 @@ public:
     ///dtor
     virtual ~DataStore();
     void init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins, const std::string& acquisition_type);
+    //a light init when acquisition_type is not changed :  used to reset state & exception flag only
     void reinit();
     void store_statistics(int module, int channel, int pixel, PixelData pix_data);
     void store_data(int module, int channel, int pixel, DataType* data, size_t length);    
 	void process_data(DataBufferContainer* map_buffer);
-	void close_data();    
-    void abort_data();   
-    void abort(std::string status);   
+	void close_data();
+    void abort_data();
+    //stop_acquisition & abort_data
+    void abort(std::string status);
     void subscribe(class Controller* observer);
     void set_nb_pixels(int nb_pixels);
     double get_timebase();  
@@ -172,7 +174,7 @@ private:
     std::string m_acquisition_type;
     double m_timebase;
     class Controller* m_controller;
-    bool m_is_exception_occured_stream;
+    bool m_is_exception_stream_occured;
 };
 
 } 

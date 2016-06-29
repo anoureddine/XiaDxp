@@ -105,7 +105,7 @@ void StreamCsv::update_data(int ichannel, yat::SharedPtr<DataStore> data_store)
     yat::MutexLock scoped_lock(m_data_lock);
     int module = to_module_and_channel(ichannel).first;
     int channel_of_module = to_module_and_channel(ichannel).second;
-    int currentPixel = data_store->get_current_pixel(ichannel);
+    int current_pixel = data_store->get_current_pixel(ichannel);
     ///GENERATE 1 CSV FILE per MODULE & per CHANNEL
 
     char filename[255];
@@ -168,8 +168,8 @@ void StreamCsv::update_data(int ichannel, yat::SharedPtr<DataStore> data_store)
     if ( m_is_channel_enabled )
     {
         std::ostream_iterator<DataType> output_iterator(output_file, ";");
-        vector<DataType> myVector = data_store->get_channel_data(ichannel);
-        std::copy(myVector.begin(), myVector.end(), output_iterator);
+        vector<DataType> data_array = data_store->get_channel_data(ichannel);
+        std::copy(data_array.begin(), data_array.end(), output_iterator);
     }
 
     output_file<<std::endl;

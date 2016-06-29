@@ -260,7 +260,7 @@ void AttrViewMapping::write_nb_pixels_callback(yat4tango::DynamicAttributeWriteC
             state == Tango::INIT	||
             state == Tango::RUNNING	||
 			state == Tango::OFF	||
-            state == Tango::DISABLE && !m_is_write_at_init)
+            state == Tango::DISABLE)
         {
             std::string reason = "It's currently not allowed to write attribute nbPixels";
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
@@ -365,7 +365,7 @@ void AttrViewMapping::write_nb_pixels_per_buffer_callback(yat4tango::DynamicAttr
             state == Tango::INIT	||
             state == Tango::RUNNING	||
 			state == Tango::OFF	||
-            state == Tango::DISABLE && !m_is_write_at_init)
+            state == Tango::DISABLE)
         {
             std::string reason = "It's currently not allowed to write attribute nbPixelsPerBuffer";
             Tango::Except::throw_exception("TANGO_DEVICE_ERROR",

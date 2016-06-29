@@ -53,7 +53,6 @@ protected:
     LongUserData* m_dyn_nb_pixels_per_buffer;	
     LongUserData* m_dyn_current_pixel;			
 	StringUserData* m_dyn_pixel_advance_mode;			
-	bool m_is_write_at_init;	
 };
 
 } // namespace 
