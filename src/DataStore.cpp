@@ -37,7 +37,7 @@ DataStore::DataStore(Tango::DeviceImpl *dev)
     m_nb_bins = 0;
     m_acquisition_type = "MCA";
     m_timebase = 1;
-    m_is_exception_occured_stream = false;
+    m_is_exception_stream_occured = false;
     set_status("");
     set_state(Tango::OFF);
     INFO_STREAM << "DataStore::DataStore() - [END]" << endl;
@@ -63,7 +63,7 @@ void DataStore::init(int nb_modules, int nb_channels, int nb_pixels, int nb_bins
     m_nb_channels = nb_channels;
     m_nb_pixels = nb_pixels;
     m_nb_bins = nb_bins;
-    m_is_exception_occured_stream = false;
+    m_is_exception_stream_occured = false;
     m_acquisition_type = acquisition_type;
     m_data.module_data.clear();
 
@@ -103,7 +103,7 @@ void DataStore::reinit()
 {
     INFO_STREAM << "DataStore::reinit() - [BEGIN]" << endl;    
     yat::MutexLock scoped_lock(m_data_lock);
-    m_is_exception_occured_stream = false;
+    m_is_exception_stream_occured = false;
     set_state(Tango::STANDBY);
     INFO_STREAM << "DataStore::reinit() - [END]" << endl;    
 }
@@ -568,7 +568,7 @@ void DataStore::on_abort(std::string status)
     INFO_STREAM << "DataStore::on_abort() - [BEGIN]" << endl;
     set_state(Tango::FAULT);
     set_status(status);
-    m_is_exception_occured_stream = true;
+    m_is_exception_stream_occured = true;
     if(m_controller != 0)
         m_controller->stop_acquisition();
     INFO_STREAM << "DataStore::on_abort() - [END]" << endl;
@@ -830,7 +830,7 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    if(!m_is_exception_occured_stream)
+                    if(!m_is_exception_stream_occured)
                     {
                         on_process_data(msg.get_data<DataBufferContainer>());
                     }
@@ -845,14 +845,14 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------
             case DATASTORE_CLOSE_DATA_MSG:
             {
-//                INFO_STREAM<<" "<<std::endl;
-//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
-//                INFO_STREAM <<"-> DataStore::DATASTORE_CLOSE_DATA_MSG" << endl;
-//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM<<" "<<std::endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM <<"-> DataStore::DATASTORE_CLOSE_DATA_MSG" << endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    if(!m_is_exception_occured_stream)
+                    if(!m_is_exception_stream_occured)
                     {
                         on_close_data();
                     }
@@ -867,14 +867,14 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------			
             case DATASTORE_ABORT_DATA_MSG:
             {
-//                INFO_STREAM<<" "<<std::endl;
-//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
-//                INFO_STREAM <<"-> DataStore::DATASTORE_ABORT_DATA_MSG" << endl;
-//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM<<" "<<std::endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM <<"-> DataStore::DATASTORE_ABORT_DATA_MSG" << endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    if(!m_is_exception_occured_stream)
+                    if(!m_is_exception_stream_occured)
                     {
                         on_abort_data();
                     }
@@ -889,14 +889,14 @@ void DataStore::process_message(yat::Message& msg) throw (Tango::DevFailed)
                 //-----------------------------------------------------			
             case DATASTORE_ABORT_MSG:
             {
-//                INFO_STREAM<<" "<<std::endl;
-//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
-//                INFO_STREAM <<"-> DataStore::DATASTORE_ABORT_MSG" << endl;
-//                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM<<" "<<std::endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
+                INFO_STREAM <<"-> DataStore::DATASTORE_ABORT_MSG" << endl;
+                INFO_STREAM<<"--------------------------------------------"<<std::endl;
                 try
                 {
                     yat::MutexLock scoped_lock(m_data_lock);
-                    if(!m_is_exception_occured_stream)
+                    if(!m_is_exception_stream_occured)
                     {
                         std::string status  = msg.get_data<std::string>();
                         on_abort(status);
