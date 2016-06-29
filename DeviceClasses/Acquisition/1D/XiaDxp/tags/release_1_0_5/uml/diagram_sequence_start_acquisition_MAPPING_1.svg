@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="1231pt" style="width:1346px;height:1231px;" version="1.1" viewBox="0 0 1346 1231" width="1346pt">
+    <defs>
+        <filter height="300%" id="f1" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="327" x="511.5" y="24.5332">XiaDxp - Diagram Sequence  : Start - 2016/03/23</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="650" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="655" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="660" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="665" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="670" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="675" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="680" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="685" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="690" y="42.1426">*</text>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="5" x="695" y="42.1426">*</text>
+        <rect fill="#AAEECC" filter="url(#f1)" height="30" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="218.5" y="1012.2109"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="154.4063" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="333" y="168.8281"/>
+        <rect fill="#AAEECC" filter="url(#f1)" height="30" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="333" y="1082.5625"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="124.0547" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="555" y="199.1797"/>
+        <rect fill="#AAEECC" filter="url(#f1)" height="135.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="555" y="976.8594"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="58.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="721" y="229.5313"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="789.3281" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="721" y="323.2344"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="259.8828"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="383.9375"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="30.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="453.6406"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="514.3438"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="662.3984"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="66.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1096.5" y="558.6953"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="28" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="597.0469"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="397.3125" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1096.5" y="736.6016"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="28" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="794.8047"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="28" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="868.1563"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="171.0547" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="941.5078"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="782.3281" style="stroke: #000000; stroke-width: 2.0;" width="1324" x="13" y="343.5859"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="271.4609" style="stroke: #000000; stroke-width: 2.0;" width="595.5" x="673" y="413.2891"/>
+        <rect fill="#90EE90" height="1177.3047" style="stroke: #A80036; stroke-width: 1.0;" width="101" x="173" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="92" x="177.5" y="66.7139">STREAM VIEW</text>
+        <rect fill="#90EE90" height="1177.3047" style="stroke: #A80036; stroke-width: 1.0;" width="124" x="276" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="84" x="296" y="66.7139">TANGO VIEW</text>
+        <rect fill="#FFA500" height="1177.3047" style="stroke: #A80036; stroke-width: 1.0;" width="146" x="487" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="88" x="518" y="66.7139">CONTROLLER</text>
+        <rect fill="#ADD8E6" height="1177.3047" style="stroke: #A80036; stroke-width: 1.0;" width="467.5" x="679" y="53.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="46" x="889.75" y="66.7139">MODEL</text>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="149" x2="149" y1="136.8281" y2="1142.9141"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="223" x2="223" y1="136.8281" y2="1142.9141"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="338" x2="338" y1="136.8281" y2="1142.9141"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="560" x2="560" y1="136.8281" y2="1142.9141"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="726" x2="726" y1="136.8281" y2="1142.9141"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="1001.5" x2="1001.5" y1="136.8281" y2="1142.9141"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="1101.5" x2="1101.5" y1="136.8281" y2="1142.9141"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="29" x="132" y="133.752">User</text>
+        <ellipse cx="149.5" cy="62.2188" fill="#FEFECE" filter="url(#f1)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <path d="M149.5,70.2188 L149.5,97.2188 M136.5,78.2188 L162.5,78.2188 M149.5,97.2188 L136.5,112.2188 M149.5,97.2188 L162.5,112.2188 " fill="#FEFECE" filter="url(#f1)" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="29" x="132" y="1156.4473">User</text>
+        <ellipse cx="149.5" cy="1169.5234" fill="#FEFECE" filter="url(#f1)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <path d="M149.5,1177.5234 L149.5,1204.5234 M136.5,1185.5234 L162.5,1185.5234 M149.5,1204.5234 L136.5,1219.5234 M149.5,1204.5234 L162.5,1219.5234 " fill="#FEFECE" filter="url(#f1)" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="89" x="177" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="75" x="184" y="121.752">DataStream</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="89" x="177" y="1141.9141"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="75" x="184" y="1163.4473">DataStream</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="112" x="280" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="98" x="287" y="121.752">Device/AttrView</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="112" x="280" y="1141.9141"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="98" x="287" y="1163.4473">Device/AttrView</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="76" x="520" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="527" y="121.752">Controller</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="76" x="520" y="1141.9141"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="527" y="1163.4473">Controller</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="82" x="683" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="690" y="121.752">Acquisition</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="82" x="683" y="1141.9141"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="690" y="1163.4473">Acquisition</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="953.5" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="960.5" y="121.752">DriverHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="953.5" y="1141.9141"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="960.5" y="1163.4473">DriverHelper</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="1060.5" y="100.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="1067.5" y="121.752">DataStore</text>
+        <rect fill="#FEFECE" filter="url(#f1)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="78" x="1060.5" y="1141.9141"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="1067.5" y="1163.4473">DataStore</text>
+        <rect fill="#AAEECC" filter="url(#f1)" height="30" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="218.5" y="1012.2109"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="154.4063" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="333" y="168.8281"/>
+        <rect fill="#AAEECC" filter="url(#f1)" height="30" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="333" y="1082.5625"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="124.0547" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="555" y="199.1797"/>
+        <rect fill="#AAEECC" filter="url(#f1)" height="135.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="555" y="976.8594"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="58.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="721" y="229.5313"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="789.3281" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="721" y="323.2344"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="259.8828"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="383.9375"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="30.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="453.6406"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="514.3438"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="14.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="997" y="662.3984"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="66.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1096.5" y="558.6953"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="28" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="597.0469"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="397.3125" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1096.5" y="736.6016"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="28" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="794.8047"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="28" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="868.1563"/>
+        <rect fill="#FFFFFF" filter="url(#f1)" height="171.0547" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="1101.5" y="941.5078"/>
+        <polygon fill="#A80036" points="321,164.8281,331,168.8281,321,172.8281,325,168.8281" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="149.5" x2="327" y1="168.8281" y2="168.8281"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="36" x="156.5" y="164.3232">Start()</text>
+        <polygon fill="#A80036" points="543,195.1797,553,199.1797,543,203.1797,547,199.1797" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="343" x2="549" y1="199.1797" y2="199.1797"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="34" x="350" y="194.6748">start()</text>
+        <polygon fill="#A80036" points="709,225.5313,719,229.5313,709,233.5313,713,229.5313" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="565" x2="715" y1="229.5313" y2="229.5313"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="103" x="572" y="225.0264">start_acquisition()</text>
+        <polygon fill="#A80036" points="985,255.8828,995,259.8828,985,263.8828,989,259.8828" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="731" x2="991" y1="259.8828" y2="259.8828"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="103" x="738" y="255.3779">start_acquisition()</text>
+        <polygon fill="#A80036" points="742,270.2344,732,274.2344,742,278.2344,738,274.2344" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="736" x2="1001" y1="274.2344" y2="274.2344"/>
+        <polygon fill="#A80036" points="576,284.2344,566,288.2344,576,292.2344,572,288.2344" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="570" x2="725" y1="288.2344" y2="288.2344"/>
+        <polygon fill="#A80036" points="349,319.2344,339,323.2344,349,327.2344,345,323.2344" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="343" x2="559" y1="323.2344" y2="323.2344"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="159" x="355" y="318.7295">state (RUNNING/FAULT/...)</text>
+        <polygon fill="#FBFB77" filter="url(#f1)" points="570,301.2344,570,327.2344,899,327.2344,899,311.2344,889,301.2344,570,301.2344" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="889" x2="889" y1="301.2344" y2="311.2344"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="899" x2="889" y1="311.2344" y2="311.2344"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="308" x="576" y="319.7295">State = RUNNING will activate the Task Periodic loop</text>
+        <rect fill="none" height="782.3281" style="stroke: #000000; stroke-width: 2.0;" width="1324" x="13" y="343.5859"/>
+        <polygon fill="#EEEEEE" points="13,343.5859,86,343.5859,86,351.5859,76,361.5859,13,361.5859,13,343.5859" style="stroke: #000000; stroke-width: 2.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="28" x="28" y="358.0811">loop</text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="500" x="101" y="357.0049">[while  current_pixel &lt; nbPixels &amp; every 5 ms (PERIODIC Task message) &amp; for each module]</text>
+        <polygon fill="#A80036" points="985,379.9375,995,383.9375,985,387.9375,989,383.9375" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="731" x2="991" y1="383.9375" y2="383.9375"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="242" x="738" y="379.4326">is_buffer_full(module, buffer_A or buffer_B)</text>
+        <polygon fill="#A80036" points="742,394.2891,732,398.2891,742,402.2891,738,398.2891" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="736" x2="1001" y1="398.2891" y2="398.2891"/>
+        <rect fill="none" height="271.4609" style="stroke: #000000; stroke-width: 2.0;" width="595.5" x="673" y="413.2891"/>
+        <polygon fill="#EEEEEE" points="673,413.2891,734,413.2891,734,421.2891,724,431.2891,673,431.2891,673,413.2891" style="stroke: #000000; stroke-width: 2.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="16" x="688" y="427.7842">alt</text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="75" x="749" y="426.708">[buffer is full]</text>
+        <polygon fill="#A80036" points="985,449.6406,995,453.6406,985,457.6406,989,453.6406" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="731" x2="991" y1="453.6406" y2="453.6406"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="227" x="738" y="449.1357">get_buffer(module, buffer_A or buffer_B)</text>
+        <polygon fill="#A80036" points="742,479.9922,732,483.9922,742,487.9922,738,483.9922" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="736" x2="1001" y1="483.9922" y2="483.9922"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="229" x="748" y="479.4873">raw data buffer (i.e DataBufferContainer)</text>
+        <polygon fill="#A80036" points="985,510.3438,995,514.3438,985,518.3438,989,514.3438" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="731" x2="991" y1="514.3438" y2="514.3438"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="237" x="738" y="509.8389">buffer_done(module, buffer_A or buffer_B)</text>
+        <polygon fill="#A80036" points="742,524.6953,732,528.6953,742,532.6953,738,528.6953" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="736" x2="1001" y1="528.6953" y2="528.6953"/>
+        <polygon fill="#A80036" points="1084.5,554.6953,1094.5,558.6953,1084.5,562.6953,1088.5,558.6953" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="731" x2="1090.5" y1="558.6953" y2="558.6953"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="201" x="738" y="554.1904">process_data(DataBufferContainer)</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1111.5" x2="1153.5" y1="589.3984" y2="589.3984"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1153.5" x2="1153.5" y1="589.3984" y2="602.3984"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1112.5" x2="1153.5" y1="602.3984" y2="602.3984"/>
+        <polygon fill="#A80036" points="1122.5,598.3984,1112.5,602.3984,1122.5,606.3984,1118.5,602.3984" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="138" x="1118.5" y="584.542">post a MSG in the Task</text>
+        <polygon fill="#A80036" points="985,658.3984,995,662.3984,985,666.3984,989,662.3984" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="731" x2="991" y1="662.3984" y2="662.3984"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="125" x="738" y="657.8936">switch_buffer(module)</text>
+        <polygon fill="#A80036" points="742,672.75,732,676.75,742,680.75,738,676.75" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="736" x2="1001" y1="676.75" y2="676.75"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1101.5" x2="1148.5" y1="723.9531" y2="723.9531"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1148.5" x2="1148.5" y1="723.9531" y2="736.9531"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1107.5" x2="1148.5" y1="736.9531" y2="736.9531"/>
+        <polygon fill="#A80036" points="1117.5,732.9531,1107.5,736.9531,1117.5,740.9531,1113.5,736.9531" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="222" x="1113.5" y="719.0967">on_process_data(DataBufferContainer)</text>
+        <polygon fill="#FBFB77" filter="url(#f1)" points="731,696.75,731,755.75,1087,755.75,1087,706.75,1077,696.75,731,696.75" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1077" x2="1077" y1="696.75" y2="706.75"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1087" x2="1077" y1="706.75" y2="706.75"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="276" x="737" y="715.2451">At each Pull of a DeviceTask MSG of DataStore</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="255" x="737" y="731.5967">Each pixel of  DataBufferContainer is parsed</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="335" x="737" y="747.9482">Data statistics &amp; Data bins are extracted for each channel</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1111.5" x2="1153.5" y1="787.1563" y2="787.1563"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1153.5" x2="1153.5" y1="787.1563" y2="800.1563"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1112.5" x2="1153.5" y1="800.1563" y2="800.1563"/>
+        <polygon fill="#A80036" points="1122.5,796.1563,1112.5,800.1563,1122.5,804.1563,1118.5,800.1563" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="174" x="1118.5" y="782.2998">store_statistics(num_channel)</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1111.5" x2="1153.5" y1="860.5078" y2="860.5078"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1153.5" x2="1153.5" y1="860.5078" y2="873.5078"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1112.5" x2="1153.5" y1="873.5078" y2="873.5078"/>
+        <polygon fill="#A80036" points="1122.5,869.5078,1112.5,873.5078,1122.5,877.5078,1118.5,873.5078" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="146" x="1118.5" y="855.6514">store_data(num_channel)</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1106.5" x2="1153.5" y1="928.8594" y2="928.8594"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1153.5" x2="1153.5" y1="928.8594" y2="941.8594"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="1112.5" x2="1153.5" y1="941.8594" y2="941.8594"/>
+        <polygon fill="#A80036" points="1122.5,937.8594,1112.5,941.8594,1122.5,945.8594,1118.5,941.8594" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="116" x="1118.5" y="924.0029">notify(num_channel)</text>
+        <polygon fill="#A80036" points="576,972.8594,566,976.8594,576,980.8594,572,976.8594" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="570" x2="1100.5" y1="976.8594" y2="976.8594"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="156" x="582" y="972.3545">update_data(num_channel)</text>
+        <polygon fill="#A80036" points="239.5,1008.2109,229.5,1012.2109,239.5,1016.2109,235.5,1012.2109" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="233.5" x2="554" y1="1012.2109" y2="1012.2109"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="156" x="245.5" y="1007.7061">update_data(num_channel)</text>
+        <polygon fill="#FBFB77" filter="url(#f1)" points="43,990.2109,43,1016.2109,209,1016.2109,209,1000.2109,199,990.2109,43,990.2109" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="199" x2="199" y1="990.2109" y2="1000.2109"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="209" x2="199" y1="1000.2109" y2="1000.2109"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="145" x="49" y="1008.7061">Push data into Nexus file</text>
+        <polygon fill="#A80036" points="354,1078.5625,344,1082.5625,354,1086.5625,350,1082.5625" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="348" x2="554" y1="1082.5625" y2="1082.5625"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="156" x="360" y="1078.0576">update_data(num_channel)</text>
+        <polygon fill="#FBFB77" filter="url(#f1)" points="23,1060.5625,23,1086.5625,324,1086.5625,324,1070.5625,314,1060.5625,23,1060.5625" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="314" x2="314" y1="1060.5625" y2="1070.5625"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="324" x2="314" y1="1070.5625" y2="1070.5625"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="280" x="29" y="1079.0576">Update Tango stats/channels dynamic attributes</text>
+    </g>
+</svg>
