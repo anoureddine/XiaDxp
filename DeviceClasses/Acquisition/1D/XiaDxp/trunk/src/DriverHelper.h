@@ -65,8 +65,8 @@ public:
     ////////////////////////////////////////////////////////////////////////
     virtual ~DriverHelper()
     {
-        INFO_STREAM << "DriverHelper::DriverHelper()- [BEGIN]" << endl;
-        INFO_STREAM << "DriverHelper::DriverHelper()- [END]" << endl;
+        INFO_STREAM << "DriverHelper::~DriverHelper()- [BEGIN]" << endl;
+        INFO_STREAM << "DriverHelper::~DriverHelper()- [END]" << endl;
     }
     ////////////////////////////////////////////////////////////////////////
     

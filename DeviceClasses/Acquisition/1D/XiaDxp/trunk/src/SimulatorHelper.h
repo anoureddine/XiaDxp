@@ -97,8 +97,8 @@ public:
     ////////////////////////////////////////////////////////////////////////
     virtual ~SimulatorHelper()
     {
-        INFO_STREAM << "SimulatorHelper::SimulatorHelper()- [BEGIN]" << endl;
-        INFO_STREAM << "SimulatorHelper::SimulatorHelper()- [END]" << endl;
+        INFO_STREAM << "SimulatorHelper::~SimulatorHelper()- [BEGIN]" << endl;
+        INFO_STREAM << "SimulatorHelper::~SimulatorHelper()- [END]" << endl;
     }
 
     ////////////////////////////////////////////////////////////////////////

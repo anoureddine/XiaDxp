@@ -54,12 +54,13 @@ Controller::~Controller()
     //       - stop_acquisition on Xia board
     //       - abort_data on DataStream
     //       - abort_stream on Nexus
-    //- reset all SharedPtr/UniquePtr/...
+    //- reset all SharedPtr/UniquePtr/... (implicite delete because SharedPtr)
     if (get_state() != Tango::OFF)
         stop_acquisition();
-    m_store.reset();
-    m_stream.reset();
-    m_acquisition.reset();
+    
+    //m_store.reset();
+    //m_stream.reset();
+    //m_acquisition.reset();
 
     INFO_STREAM << "Controller::~Controller() - [END]" << endl;
 }
