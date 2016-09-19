@@ -31,8 +31,25 @@ const unsigned long PIXEL_HEADER_SIZE = 256;
 ////////////////////////////////////////////////////////
 // ACQUISITION values
 ////////////////////////////////////////////////////////
+
+//fix nb modules (defined in pom.xml)
+#ifdef SIMULATOR_NB_MODULES_2
 const int NUMERIC_NB_MODULES = 2;
 const int NUMERIC_NB_CHANNELS = 8;
+#elif SIMULATOR_NB_MODULES_3
+const int NUMERIC_NB_MODULES = 3;
+const int NUMERIC_NB_CHANNELS = 12;
+#elif SIMULATOR_NB_MODULES_4
+const int NUMERIC_NB_MODULES = 4;
+const int NUMERIC_NB_CHANNELS = 16;
+#elif SIMULATOR_NB_MODULES_5
+const int NUMERIC_NB_MODULES = 5;
+const int NUMERIC_NB_CHANNELS = 20;
+#else
+const int NUMERIC_NB_MODULES = 1;
+const int NUMERIC_NB_CHANNELS = 4;
+#endif
+
 const int NUMERIC_NB_BINS = 2048;
 const int NUMERIC_MCA_LENGTH = 2048;
 const int NUMERIC_BUFFER_LENGTH = BUFFER_HEADER_SIZE + PIXEL_HEADER_SIZE + 4 * NUMERIC_NB_BINS;
@@ -49,7 +66,15 @@ const unsigned long NUMERIC_EVENTS_IN_RUN = 6;
 const double NUMERIC_NUM_MAP_PIXELS = 1000;
 const double NUMERIC_NUM_MAP_PIXELS_PER_BUFFER = 100;
 const std::string NUMERIC_PIXEL_ADVANCE_MODE = "GATE";
+
+//fix clock (defined in pom.xml)
+#ifdef SIMULATOR_CLOCK_100_MS
+const unsigned long NUMERIC_MAPPING_CLOCK_MS = 100; //ms
+#elif SIMULATOR_CLOCK_1000_MS
+const unsigned long NUMERIC_MAPPING_CLOCK_MS = 1000; //ms
+#else
 const unsigned long NUMERIC_MAPPING_CLOCK_MS = 10; //ms
+#endif
 ////////////////////////////////////////////////////////
 
 namespace XiaDxp_ns
@@ -65,8 +90,11 @@ public:
         m_status = "Board Type : " + board_type;
         m_state = INITIALIZATION_SUCCESSFUL;
         m_is_running = false;
-        m_numero_pixel[0] = 0;
-        m_numero_pixel[1] = 0;
+        for (int i = 0; i < NUMERIC_NB_MODULES; ++i)
+        {
+            m_numero_pixel[i] = 0;
+        }
+
         m_map_rois.clear();
         //prepare boards parameters values
         m_map_parameters.clear();
@@ -117,8 +145,10 @@ public:
     void start_acquisition(short accumulate)
     {
         m_is_running = true;
-        m_numero_pixel[0] = 0;
-        m_numero_pixel[1] = 0;
+        for (int i = 0; i < NUMERIC_NB_MODULES; ++i)
+        {
+            m_numero_pixel[i] = 0;
+        }
         m_timeout.restart();
         return;
     }
@@ -410,7 +440,7 @@ public:
     ////////////////////////////////////////////////////////////////////////
     unsigned long get_current_pixel()
     {
-        return m_numero_pixel[1];
+        return m_numero_pixel[NUMERIC_NB_MODULES-1];
     }
 
     ////////////////////////////////////////////////////////////////////////

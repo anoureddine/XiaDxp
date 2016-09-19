@@ -40,6 +40,8 @@
 							<define>HDF5_VERSION=${HDF5.version}</define>
 							<define>HANDEL_VERSION=${HANDEL.version}</define>
                             <define>SIMULATOR_MODE</define>
+                            <define>SIMULATOR_NB_MODULES_5</define>
+                            <define>SIMULATOR_CLOCK_10_MS</define>
                             <define>USE_NX_FINALIZER</define>                            
                         </defines>
                     </cpp>
@@ -92,13 +94,13 @@
         </dependency>
            
     </dependencies>
-    <!--
+
    <scm>
        <connection>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</connection>
        <developerConnection>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</developerConnection>
        <url>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</url>
    </scm>
-   -->
+
     <developers>
         <developer>
             <id>noureddine</id>
