@@ -1490,10 +1490,12 @@ Tango::DevString XiaDxp::get_data_streams()
     //	See "TANGO Device Server Programmer's Manual"
     //		(chapter : Writing a TANGO DS / Exchanging data)
     //------------------------------------------------------------
-    Tango::DevString	argout  = new char[1024];
     DEBUG_STREAM << "XiaDxp::get_data_streams(): entering... !" << endl;
 
     //	Add your own code to control device here
+    int nb_modules  = m_controller->get_nb_modules();
+    int length = (nb_modules)?512*nb_modules:512;
+    Tango::DevString	argout  = new char[length];
     try
     {
         std::string data_items;

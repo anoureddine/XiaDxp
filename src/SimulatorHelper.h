@@ -32,8 +32,11 @@ const unsigned long PIXEL_HEADER_SIZE = 256;
 // ACQUISITION values
 ////////////////////////////////////////////////////////
 
-//fix nb modules (defined in pom.xml)
-#ifdef SIMULATOR_NB_MODULES_2
+//fix nb modules of the simulator (defined in pom.xml)
+#ifdef SIMULATOR_NB_MODULES_1
+const int NUMERIC_NB_MODULES = 1;
+const int NUMERIC_NB_CHANNELS = 4;
+#elif SIMULATOR_NB_MODULES_2
 const int NUMERIC_NB_MODULES = 2;
 const int NUMERIC_NB_CHANNELS = 8;
 #elif SIMULATOR_NB_MODULES_3
@@ -67,13 +70,17 @@ const double NUMERIC_NUM_MAP_PIXELS = 1000;
 const double NUMERIC_NUM_MAP_PIXELS_PER_BUFFER = 100;
 const std::string NUMERIC_PIXEL_ADVANCE_MODE = "GATE";
 
-//fix clock (defined in pom.xml)
-#ifdef SIMULATOR_CLOCK_100_MS
+//fix acquisition clock of the simulator (defined in pom.xml)
+#ifdef SIMULATOR_CLOCK_1_MS
+const unsigned long NUMERIC_MAPPING_CLOCK_MS = 1; //ms
+#elif SIMULATOR_CLOCK_10_MS
+const unsigned long NUMERIC_MAPPING_CLOCK_MS = 10; //ms
+#elif SIMULATOR_CLOCK_100_MS
 const unsigned long NUMERIC_MAPPING_CLOCK_MS = 100; //ms
 #elif SIMULATOR_CLOCK_1000_MS
 const unsigned long NUMERIC_MAPPING_CLOCK_MS = 1000; //ms
 #else
-const unsigned long NUMERIC_MAPPING_CLOCK_MS = 10; //ms
+const unsigned long NUMERIC_MAPPING_CLOCK_MS = 1; //ms
 #endif
 ////////////////////////////////////////////////////////
 
@@ -87,6 +94,12 @@ public:
     SimulatorHelper(Tango::DeviceImpl *dev, const std::string & board_type) : DriverHelper(dev, board_type)
     {
         INFO_STREAM << "SimulatorHelper::SimulatorHelper()- [BEGIN]" << endl;
+        INFO_STREAM << "\t- Nb. Module  : " << NUMERIC_NB_MODULES <<endl;
+        INFO_STREAM << "\t- Nb. Channels  : " << NUMERIC_NB_CHANNELS <<endl;
+        INFO_STREAM << "\t- Nb. Bins  : " << NUMERIC_NB_BINS <<endl;
+        INFO_STREAM << "\t- Mapping clock : " << NUMERIC_MAPPING_CLOCK_MS <<" (ms)"<<endl;
+
+
         m_status = "Board Type : " + board_type;
         m_state = INITIALIZATION_SUCCESSFUL;
         m_is_running = false;
@@ -132,12 +145,13 @@ public:
     ////////////////////////////////////////////////////////////////////////
     void load_config_file(const std::string& config_file)
     {
-        return;
+        INFO_STREAM << "Load config file '" << config_file << "' ..." << endl;
     }
 
     ////////////////////////////////////////////////////////////////////////
     void save_config_file(const std::string& config_file)
     {
+        INFO_STREAM << "Save config file '" << config_file << "' ..." << endl;
         return;
     }
 
@@ -311,7 +325,6 @@ public:
     ////////////////////////////////////////////////////////////////////////
     void get_run_data(int channel, const char* name, void* value)
     {
-
         if(std::string(name) == "realtime")
             *(static_cast<double*> (value)) = yat::StringUtil::to_num<double>(m_map_parameters["realtime"]);
         else if(std::string(name) == "livetime")
@@ -516,6 +529,7 @@ public:
                     break;
             }
         }
+
         //in ms in order to simulate  a duration of acquisition
         yat::Thread::sleep(NUMERIC_MAPPING_CLOCK_MS);
         return;
