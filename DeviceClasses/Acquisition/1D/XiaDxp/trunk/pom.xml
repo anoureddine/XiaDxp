@@ -27,8 +27,8 @@
                         <defines>
                             <define>PROJECT_NAME=${project.name}</define>
                             <define>PROJECT_VERSION=${project.version}</define>
-							<define>NEXUSCPP_VERSION=${NEXUSCPP.version}</define> 
-							<define>HANDEL_VERSION=${HANDEL.version}</define> 
+                            <define>NEXUSCPP_VERSION=${NEXUSCPP.version}</define>
+                            <define>HANDEL_VERSION=${HANDEL.version}</define>
                             <define>USE_NX_FINALIZER</define>                            
                         </defines>
                     </cpp>

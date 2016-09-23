@@ -120,7 +120,6 @@ public:
         m_map_parameters["peaking_time"] = yat::StringUtil::to_string<double>(NUMERIC_PEAKING_TIME);
         m_map_parameters["preset_value"] = yat::StringUtil::to_string<double>(NUMERIC_PRESET_VALUE);
         m_map_parameters["preset_type"] = yat::StringUtil::to_string<double>(XIA_PRESET_FIXED_REAL);
-        m_map_parameters["preset_value"] = yat::StringUtil::to_string<double>(NUMERIC_PRESET_VALUE);
         m_map_parameters["num_map_pixels"] = yat::StringUtil::to_string<double>(NUMERIC_NUM_MAP_PIXELS);
         m_map_parameters["num_map_pixels_per_buffer"] = yat::StringUtil::to_string<double>(NUMERIC_NUM_MAP_PIXELS_PER_BUFFER);
         m_map_parameters["pixel_advance_mode"] = std::string(NUMERIC_PIXEL_ADVANCE_MODE);
