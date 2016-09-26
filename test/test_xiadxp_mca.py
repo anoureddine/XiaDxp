@@ -2,7 +2,7 @@
 #########################################################
 #Author  : Arafat NOUREDDINE
 #Date    : 2016/08/28
-#Purpose : Test XiaDxp (scan energy & check state)
+#Purpose : Test XiaDxp (Mode MCA)
 #########################################################
 import os
 import sys
@@ -23,7 +23,7 @@ class BuildError(Exception):
 #------------------------------------------------------------------------------
 def usage():
   print '\n',
-  print "Usage: [python] test_xiadxp.py <my/device/proxy> <configAlias> <presetValue>"
+  print "Usage: [python] test_xiadxp_mca.py <my/device/proxy> <configAlias> <presetValue>"
   print '\n',
   sys.exit(1)
 
@@ -31,7 +31,7 @@ def usage():
 #------------------------------------------------------------------------------
 # run
 #------------------------------------------------------------------------------
-def run(proxy_name = 'arafat/gmid2energy/gmid2energy.1', config_alias='1', preset_value=5):
+def run(proxy_name = 'arafat/xia/xiadxp', config_alias='1', preset_value=5):
     # print arguments
     print '==================================================\n',
     print 'program inputs :'
@@ -51,7 +51,6 @@ def run(proxy_name = 'arafat/gmid2energy/gmid2energy.1', config_alias='1', prese
     print '\n'
 
     try:
-
         print '==================================================\n',
         #Display time when state is STANDBY (just before load config)
         timeBegin = datetime.datetime.now()
@@ -119,12 +118,14 @@ def run(proxy_name = 'arafat/gmid2energy/gmid2energy.1', config_alias='1', prese
             raise Exception('state : (%s)\nstatus : (%s)' %(state , status))
         print '\n',
 
+        #check duration of acquisition
         duration = (timeEnd-timeBegin).total_seconds()
+        #allow +10%
         if(duration>(float(preset_value)+0.1*float(preset_value))):
             raise Exception('timing too long : (%s) > (%s)' %(duration , preset_value))
-
+        #allow -10%
         if(duration<(float(preset_value)-0.1*float(preset_value))):
-            raise Exception('timing too short : (%s) > (%s)' %(duration , preset_value))
+            raise Exception('timing too short : (%s) < (%s)' %(duration , preset_value))
 
 
         print '==================================================\n',

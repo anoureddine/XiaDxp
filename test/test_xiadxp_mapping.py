@@ -2,7 +2,7 @@
 #########################################################
 #Author  : Arafat NOUREDDINE
 #Date    : 2016/08/28
-#Purpose : Test XiaDxp (scan energy & check state)
+#Purpose : Test XiaDxp (Mode MAPPING)
 #########################################################
 import os
 import sys
@@ -23,7 +23,7 @@ class BuildError(Exception):
 #------------------------------------------------------------------------------
 def usage():
   print '\n',
-  print "Usage: [python] test_xiadxp.py <my/device/proxy> <configAlias> <nbPixels> <streamType> <streamPath> <streamFile>"
+  print "Usage: [python] test_xiadxp_mapping.py <my/device/proxy> <configAlias> <nbPixels> <streamType> <streamPath> <streamFile>"
   print '\n',
   sys.exit(1)
 
@@ -31,7 +31,7 @@ def usage():
 #------------------------------------------------------------------------------
 # run
 #------------------------------------------------------------------------------
-def run(proxy_name = 'arafat/gmid2energy/gmid2energy.1', config_alias='2', nb_pixels=500, stream_type='nexus_stream', stream_path='c:/arafat/nxs/xiadxp', stream_file='toto_'):
+def run(proxy_name = 'arafat/xia/xiadxp', config_alias='2', nb_pixels=500, stream_type='nexus_stream', stream_path="c:\\arafat\\nxs\\xiadxp", stream_file='test_'):
     # print arguments
     print '==================================================\n',
     print 'program inputs :'
