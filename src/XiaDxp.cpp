@@ -1479,23 +1479,22 @@ void XiaDxp::stream_reset_index()
  *	description:	method to execute "GetDataStreams"
  *	Returns the flyscan data streams associated with this device.
  *
- * @return	
+ * @return
  *
  */
 //+------------------------------------------------------------------
-Tango::DevString XiaDxp::get_data_streams()
+Tango::DevVarStringArray *XiaDxp::get_data_streams()
 {
     //	POGO has generated a method core with argout allocation.
     //	If you would like to use a static reference without copying,
     //	See "TANGO Device Server Programmer's Manual"
     //		(chapter : Writing a TANGO DS / Exchanging data)
     //------------------------------------------------------------
-    DEBUG_STREAM << "XiaDxp::get_data_streams(): entering... !" << endl;
+    Tango::DevVarStringArray	*argout  = new Tango::DevVarStringArray();
+    argout->length(1);
 
     //	Add your own code to control device here
-    int nb_modules  = m_controller->get_nb_modules();
-    int length = (nb_modules)?512*nb_modules:512;
-    Tango::DevString	argout  = new char[length];
+    DEBUG_STREAM << "XiaDxp::get_data_streams(): entering... !" << endl;
     try
     {
         std::string data_items;
@@ -1510,7 +1509,7 @@ Tango::DevString XiaDxp::get_data_streams()
 
         std::string data_streams = m_conf.stream_file + ":" + data_items + "@" + spoolID;
         INFO_STREAM << "data_streams = " << data_streams << endl;
-        strcpy(argout, data_streams.c_str());
+        (*argout)[0] = CORBA::string_dup(data_streams.c_str());
     }
     catch (Tango::DevFailed& df)
     {
@@ -1565,6 +1564,5 @@ Tango::DevState XiaDxp::dev_state()
     set_status(status.str());
     return argout;
 }
-
 
 }	//	namespace

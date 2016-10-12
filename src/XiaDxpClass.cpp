@@ -431,7 +431,7 @@ void XiaDxpClass::command_factory()
 		"",
 		Tango::EXPERT));
 	command_list.push_back(new GetDataStreamsCmd("GetDataStreams",
-		Tango::DEV_VOID, Tango::DEV_STRING,
+		Tango::DEV_VOID, Tango::DEVVAR_STRINGARRAY,
 		"",
 		"",
 		Tango::OPERATOR));
