@@ -1501,9 +1501,9 @@ Tango::DevString XiaDxp::get_data_streams()
         std::string data_items;
         for (int ichan = 0; ichan < m_controller->get_nb_channels(); ichan++)
         {
-            for (int i = 0; i < streamItems.size(); i++)
+            for (int i = 0; i < m_conf.stream_items.size(); i++)
             {
-                std::string format = streamItems.at(i) + "%02d,";
+                std::string format = m_conf.stream_items.at(i) + "%02d,";
                 data_items += yat::String::str_format(format.c_str(), ichan);
             }
         }
