@@ -88,6 +88,12 @@
         </dependency>        
                 
         <dependency>
+          <groupId>org.zeromq</groupId>
+          <artifactId>zeromq-${aol}-shared-release</artifactId>
+          <version>3.2.4</version>
+        </dependency>
+
+        <dependency>
             <groupId>fr.soleil.lib</groupId>
             <artifactId>YAT4Tango-${aol}-${library}-${mode}</artifactId>
             <version>${YAT4TANGO.version}</version>

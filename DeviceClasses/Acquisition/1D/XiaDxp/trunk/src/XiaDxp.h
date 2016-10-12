@@ -502,7 +502,7 @@ public:
  *	@return	
  *	@exception DevFailed
  */
-	Tango::DevString	get_data_streams();
+	Tango::DevVarStringArray	*get_data_streams();
 
 /**
  *	Read the device properties from database
