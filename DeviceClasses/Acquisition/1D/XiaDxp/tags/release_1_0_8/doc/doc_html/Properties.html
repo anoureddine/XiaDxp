@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<Title> Tango Device Server User's Guide </Title>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#7F00FF" ALINK="#FF0000">
+
+<P><!-------TITLE------></P>
+
+<TABLE BORDER="0" WIDTH="100%">
+    <TR>
+        <TD ALIGN="left">
+			<A HREF="http://www.esrf.fr/" TARGET=new>
+			<IMG SRC="http://www.esrf.fr/gifs/logo/80.gif" BORDER=0 Height="60"></A>
+		</Td>
+        <TD ALIGN="center">
+			<A HREF="http://www.elettra.trieste.it/" TARGET=new>
+			<IMG SRC="http://www.esrf.fr/computing/cs/tango/elettra_logo.gif" BORDER=0 Height="60"></A>
+
+		</Td>
+        <TD ALIGN="center">
+			<A HREF="http://www.synchrotron-soleil.fr/" TARGET=new>
+			<IMG SRC="http://www.esrf.fr/computing/cs/tango/soleil_logo.gif" BORDER=0 Height="60"></A>
+		</Td>
+        <TD ALIGN="right">
+			<A HREF="http://www.cells.es/" TARGET=new>
+			<IMG SRC="http://www.esrf.fr/computing/cs/tango/alba.jpg" BORDER=0 Height="54"></A>
+		</Td>
+        <TD ALIGN="right">
+			<A HREF="http://www.desy.de/html/home/index_eng.html" TARGET=new>
+			<IMG SRC="http://www.esrf.fr/computing/cs/tango/desy.gif" BORDER=0 Height="60"></A>
+		</Td>
+    	 <Td>
+			<H2><FONT COLOR="#7F00FF">
+			<Center><A HREF="http://www.tango-controls.org/" TARGET="_top">
+					 TANGO </a> <Br> Device Server
+			</Center></FONT>
+		</Td>
+    </TR>
+</TABLE>
+
+<HR WIDTH="100%"></H5>
+<Br>
+<center>
+<h1>
+		<Br>
+Properties Description 		<Br> <Br>
+XiaDxp Class	<Br>
+</h1>
+<b>
+Revision:  - Author: 
+</b>
+</center>
+
+
+<Center>
+<Br> <Br> <Br> 
+<Table Border=2 Cellpadding=3 CELLSPACING=0 WIDTH="100%">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<Td COLSPAN=3> <Font Size=+2><Center><b>Device Properties</b></td></Font></Center>
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<Td><Center><b>Property name</b></td></Center>
+<Td><Center><b>Property type</b></td></Center>
+<Td><Center><b>Description</b></td></Center>
+<Tr><Td><b><a href=#Dev_DefaultValues>BoardType </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_STRING</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>BoardTimebase </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_DOUBLE</Font></Td>
+<Td><Font Size=-1>Timebase factor of the board. [in seconds]</Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>ConfigurationFiles </a></b></Td>
+<Td><Font Size=-1>Array of string</Font></Td>
+<Td><Font Size=-1>Define the list of Configuration "*.INI" files and their associated alias & mode.</Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>RoisFiles </a></b></Td>
+<Td><Font Size=-1>Array of string</Font></Td>
+<Td><Font Size=-1>Define the list of rois files "*.txt"  and their associated alias.</Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>StreamItems </a></b></Td>
+<Td><Font Size=-1>Array of string</Font></Td>
+<Td><Font Size=-1>Define the list of Items managed by the Streamer. (Nexus, CSV, ...)<BR>
+Availables values are :<BR>
+Triggers<BR>
+Outputs<BR>
+Icr<BR>
+Ocr<BR>
+RealTime<BR>
+LiveTime<BR>
+DeadTime<BR>
+Channel<BR>
+</Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedConfigurationAlias </a></b></Td>
+<Td><Font Size=-1>string</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedRoisAlias </a></b></Td>
+<Td><Font Size=-1>string</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedNumChannel </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_LONG</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedPresetType </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_STRING</Font></Td>
+<Td><Font Size=-1>Available for MCA Mode Only !</Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedPresetValue </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_DOUBLE</Font></Td>
+<Td><Font Size=-1>Available for MCA Mode Only !</Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedNbPixels </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_LONG</Font></Td>
+<Td><Font Size=-1>Available for MAPPING Mode Only !</Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedStreamType </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_STRING</Font></Td>
+<Td><Font Size=-1>Define the type of Stream.<BR>
+Available types are :<BR>
+NO_STREAM<BR>
+LOG_STREAM<BR>
+CSV_STREAM<BR>
+NEXUS_STREAM<BR></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedStreamTargetPath </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_STRING</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedStreamTargetFile </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_STRING</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedStreamNbDataPerAcq </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_LONG</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__MemorizedStreamNbAcqPerFile </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_LONG</Font></Td>
+<Td><Font Size=-1></Font></Td></Tr>
+
+<Tr><Td><b><a href=#Dev_DefaultValues>__ExpertStreamWriteMode </a></b></Td>
+<Td><Font Size=-1>Tango::DEV_STRING</Font></Td>
+<Td><Font Size=-1>Applicable for StreamNexus Only !<BR>
+Available Values :<BR>
+- IMMEDIATE<BR>
+- SYNCHRONOUS<BR></Font></Td></Tr>
+
+</Table>
+
+</Center>
+<Br><Br><Br>
+<Br><Br><Br>
+
+<A name=Dev_DefaultValues><!---  ---></a>
+<Font Size=+1>Device Properties Default Values:</Font><Br>
+<Table Border=2 Cellpadding=2 CELLSPACING=2>
+    <tr BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+        <Td><b>Property Name</b></td>
+        <td><b>Default Values</b></td>
+    </Tr>
+    <Tr>
+        <Td>BoardType</Td>
+        <td>XMAP</td>
+    </Tr>
+    <Tr>
+        <Td>BoardTimebase</Td>
+        <td>0.000000320</td>
+    </Tr>
+    <Tr>
+        <Td>ConfigurationFiles</Td>
+        <td>	ALIAS;MODE;FILE_PATH_NAME</td>
+    </Tr>
+    <Tr>
+        <Td>RoisFiles</Td>
+        <td>	ALIAS;FILE_PATH_NAME</td>
+    </Tr>
+    <Tr>
+        <Td>StreamItems</Td>
+        <td>	Triggers<Br>
+	Outputs<Br>
+	Icr<Br>
+	Ocr<Br>
+	RealTime<Br>
+	LiveTime<Br>
+	DeadTime<Br>
+	Channel</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedConfigurationAlias</Td>
+        <td>TO_BE_DEFINED</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedRoisAlias</Td>
+        <td>TO_BE_DEFINED</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedNumChannel</Td>
+        <td>-1</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedPresetType</Td>
+        <td>FIXED_REAL</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedPresetValue</Td>
+        <td>1</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedNbPixels</Td>
+        <td>1</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedStreamType</Td>
+        <td>LOG_STREAM</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedStreamTargetPath</Td>
+        <td>TO_BE_DEFINED</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedStreamTargetFile</Td>
+        <td>TO_BE_DEFINED</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedStreamNbDataPerAcq</Td>
+        <td>2048</td>
+    </Tr>
+    <Tr>
+        <Td>__MemorizedStreamNbAcqPerFile</Td>
+        <td>1</td>
+    </Tr>
+    <Tr>
+        <Td>__ExpertStreamWriteMode</Td>
+        <td>IMMEDIATE</td>
+    </Tr>
+</Table>
+
+<Br><Br><Br>
+<Center><b>
+There is no Class properties.<Br><Br>
+</Center></b>
+<Br> <Br> <Br> 
+
+<!--- html Footer --->
+
+<Center>
+<Font size=-1>
+<br>
+<br>
+<TABLE BORDER="1" WIDTH="100%">
+    <Tr>
+		<!--- Hosted by Sourceforge --->
+        <Td Align="Center">
+			<Font size=-1>
+			<b>TANGO</b> is an open source project hosted by :<br>
+			<A href="http://sourceforge.net" Target="new">
+					<IMG title="Sourceforge logo"
+						alt="Sourceforge logo small"
+						src="http://www.esrf.fr/computing/cs/tango/sourceforge.gif"
+						border=0> </a>
+			</Font>
+		</Td>
+		<!--- 2 Sourceforge Repositories --->
+		<Td Align="Center">
+			<Font size=-1>
+			Core and Tools :
+			<a href="http://tango-cs.cvs.sourceforge.net/tango-cs/" Target="new">
+			CVS repository</a> on
+			<a href="https://sourceforge.net/projects/tango-cs" Target=new>
+			tango-cs project</a>
+
+			<br>
+
+			Device Servers :
+			<a href="http://tango-ds.cvs.sourceforge.net/tango-ds/" Target="new">
+					CVS repository</a> on
+			<a href="https://sourceforge.net/projects/tango-ds" Target=new>
+					tango-ds project</a>
+			</Font>
+		</Td>
+    </Tr>
+</Table>
+</Font>
+</Center>
+</body>
+</html>
