@@ -116,11 +116,11 @@ void AttrViewMca::init(yat::SharedPtr<DataStore> data_store)
         dai.tai.unit = " ";
         dai.tai.format = "%s";
         dai.tai.description =   "Sets the preset run type:<br>\n"
-        "NONE<br>\n"
-        "FIXED_REAL<br>\n"
-        "FIXED_LIVE<br>\n"
-        "FIXED_EVENTS<br>\n"
-        "FIXED_TRIGGERS<br>";
+        "NONE\n"
+        "FIXED_REAL\n"
+        "FIXED_LIVE\n"
+        "FIXED_EVENTS\n"
+        "FIXED_TRIGGERS";
         // - cleanup tango db option: cleanup tango db when removing this dyn. attr. (i.e. erase its properties fom db)
         //dai.cdb = true;
 
@@ -140,6 +140,48 @@ void AttrViewMca::init(yat::SharedPtr<DataStore> data_store)
         ERROR_STREAM << df << std::endl;
         return;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+    try
+    {
+        std::string name = "accumulate";
+        INFO_STREAM << "\t- Create Mca dynamic attribute [" << name << "]" << endl;
+        yat4tango::DynamicAttributeInfo dai;
+        dai.dev = m_device;
+
+        //- specify the dyn. attr.  name
+        dai.tai.name = name;
+        //- associate the dyn. attr. with its data
+        m_dyn_accumulate = new BooleanUserData(name);
+        dai.set_user_data(m_dyn_accumulate);
+        //- describe the dyn. attr.
+        dai.tai.data_type = Tango::DEV_BOOLEAN;
+        dai.tai.data_format = Tango::SCALAR;
+        dai.tai.writable = Tango::READ_WRITE;
+        dai.tai.disp_level = Tango::OPERATOR;
+        dai.tai.unit = " ";
+        dai.tai.format = "%1d";
+        dai.tai.description =   "Flag saying if the Xmap will accumulate data between 2 Start\n";
+        // - cleanup tango db option: cleanup tango db when removing this dyn. attr. (i.e. erase its properties fom db)
+        //dai.cdb = true;
+
+        //- instanciate the write callback (called when the dyn. attr. is writen)
+        dai.wcb = yat4tango::DynamicAttributeWriteCallback::instanciate(*this, &AttrViewMca::write_accumulate_callback);
+
+        //- instanciate the read callback (called when the dyn. attr. is read)
+        dai.rcb = yat4tango::DynamicAttributeReadCallback::instanciate(*this, &AttrViewMca::read_accumulate_callback);
+
+        //- add the dyn. attr. to the device
+        m_dim.dynamic_attributes_manager().add_attribute(dai);
+    }
+    catch (Tango::DevFailed& df)
+    {
+        std::string err("failed to instanciate dynamic attributes  - Tango exception caught - see log attribute for details");
+        ERROR_STREAM << err << std::endl;
+        ERROR_STREAM << df << std::endl;
+        return;
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////////////////        
     for (int i = 0; i < nb_total_channels; i++)
@@ -211,7 +253,7 @@ void AttrViewMca::update_data(int ichannel, yat::SharedPtr<DataStore> data_store
 //
 // method :         AttrViewMca::read_preset_value_callback()
 //
-// description : Write gap attribute values to hardware.
+// description : Write presetValue attribute values to hardware.
 //
 //-----------------------------------------------------------------------------
 void AttrViewMca::read_preset_value_callback(yat4tango::DynamicAttributeReadCallbackData& cbd)
@@ -262,7 +304,7 @@ void AttrViewMca::read_preset_value_callback(yat4tango::DynamicAttributeReadCall
 //
 // method :         AttrViewMca::write_preset_value_callback()
 //
-// description : Write gap attribute values to hardware.
+// description : Write presetValue attribute values to hardware.
 //
 //-----------------------------------------------------------------------------
 void AttrViewMca::write_preset_value_callback(yat4tango::DynamicAttributeWriteCallbackData& cbd)
@@ -317,7 +359,7 @@ void AttrViewMca::write_preset_value_callback(yat4tango::DynamicAttributeWriteCa
 //
 // method :         AttrViewMca::read_preset_type_callback()
 //
-// description : Write gap attribute values to hardware.
+// description : Write presetType attribute values to hardware.
 //
 //-----------------------------------------------------------------------------
 void AttrViewMca::read_preset_type_callback(yat4tango::DynamicAttributeReadCallbackData& cbd)
@@ -375,7 +417,7 @@ void AttrViewMca::read_preset_type_callback(yat4tango::DynamicAttributeReadCallb
 //
 // method :         AttrViewMca::write_preset_type_callback()
 //
-// description : Write gap attribute values to hardware.
+// description : Write presetType attribute values to hardware.
 //
 //-----------------------------------------------------------------------------
 void AttrViewMca::write_preset_type_callback(yat4tango::DynamicAttributeWriteCallbackData& cbd)
@@ -427,6 +469,110 @@ void AttrViewMca::write_preset_type_callback(yat4tango::DynamicAttributeWriteCal
     }
 }
 
+//+----------------------------------------------------------------------------
+//
+// method :         AttrViewMca::read_accumulate_callback()
+//
+// description : Write accumulate attribute values to hardware.
+//
+//-----------------------------------------------------------------------------
+void AttrViewMca::read_accumulate_callback(yat4tango::DynamicAttributeReadCallbackData& cbd)
+{
+    DEBUG_STREAM << "AttrViewMca::read_accumulate_callback()" << endl; //  << cbd.dya->get_name() << endl;
+
+    try
+    {
+        Tango::DevState state = dynamic_cast<XiaDxp*>(m_device)->get_ctrl()->get_state();
+        bool is_device_initialized = dynamic_cast<XiaDxp*>(m_device)->is_device_initialized();
+        if ((state == Tango::FAULT && is_device_initialized) ||
+            state == Tango::INIT	||
+            state == Tango::OFF	||
+            state == Tango::DISABLE)
+        {
+            std::string reason = "It's currently not allowed to read attribute accumulate";
+            Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
+                                           reason.c_str(),
+                                           "AttrViewMca::read_accumulate_callback()");
+        }
+
+        //- be sure the pointer to the dyn. attr. is valid
+        if(!cbd.dya)
+        {
+            THROW_DEVFAILED("INTERNAL_ERROR",
+                            "unexpected NULL pointer to dynamic attribute",
+                            "AttrViewMca::read_accumulate_callback");
+        }
+
+        BooleanUserData* user_data = cbd.dya->get_user_data<BooleanUserData>();
+        //- set the attribute value
+        bool val = dynamic_cast<XiaDxp*>(m_device)->get_ctrl()->get_accumulate();
+        user_data->set_value(val);
+        cbd.tga->set_value((Tango::DevBoolean*)&user_data->get_value());
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        //- rethrow exception
+        Tango::Except::re_throw_exception(df,
+                                          "TANGO_DEVICE_ERROR",
+                                          string(df.errors[0].desc).c_str(),
+                                          "AttrViewMca::read_accumulate_callback()");
+    }
+}
+
+//+----------------------------------------------------------------------------
+//
+// method :         AttrViewMca::write_accumulate_callback()
+//
+// description : Write accumulate attribute values to hardware.
+//
+//-----------------------------------------------------------------------------
+void AttrViewMca::write_accumulate_callback(yat4tango::DynamicAttributeWriteCallbackData& cbd)
+{
+    DEBUG_STREAM << "AttrViewMca::write_accumulate_callback()" << endl; //  << cbd.dya->get_name() << endl;
+    try
+    {
+        Tango::DevState state = dynamic_cast<XiaDxp*>(m_device)->get_ctrl()->get_state();
+        if (state == Tango::FAULT	||
+            state == Tango::INIT	||
+            state == Tango::RUNNING	||
+            state == Tango::OFF	||
+            state == Tango::DISABLE)
+        {
+            std::string reason = "It's currently not allowed to write attribute accumulate";
+            Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
+                                           reason.c_str(),
+                                           "AttrViewMca::write_accumulate_callback()");
+        }
+
+        //- be sure the pointer to the dyn. attr. is valid
+        if(!cbd.dya)
+        {
+            THROW_DEVFAILED("INTERNAL_ERROR",
+                            "unexpected NULL pointer to dynamic attribute",
+                            "AttrViewMca::write_accumulate_callback");
+        }
+
+        Tango::DevBoolean val;
+        cbd.tga->get_write_value( val);
+
+        BooleanUserData* user_data = cbd.dya->get_user_data<BooleanUserData>();
+        user_data->set_value(val);
+
+        dynamic_cast<XiaDxp*>(m_device)->get_ctrl()->set_accumulate(val);
+        //memorize in the device properties
+        yat4tango::PropertyHelper::set_property(dynamic_cast<XiaDxp*>(m_device), "__MemorizedAccumulate", val);
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        //- rethrow exception
+        Tango::Except::re_throw_exception(df,
+                                          "TANGO_DEVICE_ERROR",
+                                          string(df.errors[0].desc).c_str(),
+                                          "AttrViewMca::write_accumulate_callback()");
+    }
+}
 //+------------------------------------------------------------------
 /**
  *	method:	AttrViewMca::read_roi_callback

@@ -31,7 +31,7 @@ m_store(store),
 m_board_type(board_type),
 m_is_need_collecting_last_data(false)
 {
-    INFO_STREAM << "Acquisition::Acquisition() - [BEGIN]" << endl;
+    INFO_STREAM << "Acquisition::Acquisition() - [BEGIN]" << endl;    
     if(board_type == "SIMULATOR")        
         m_helper.reset(new SimulatorHelper(dev, board_type));
     else        
