@@ -563,6 +563,7 @@ void XiaDxp::get_device_property()
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "-1", "__MemorizedNumChannel");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "FIXED_REAL", "__MemorizedPresetType");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "1", "__MemorizedPresetValue");
+    yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "False", "__MemorizedAccumulate");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "LOG_STREAM", "StreamType");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedStreamTargetPath");
     yat4tango::PropertyHelper::create_property_if_empty(this, dev_prop, "TO_BE_DEFINED", "__MemorizedStreamTargetFile");

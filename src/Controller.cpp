@@ -301,7 +301,7 @@ void Controller::start_acquisition()
     try
     {
         yat::MutexLock scoped_lock(m_state_lock);
-        m_acquisition->start_acquisition();
+        m_acquisition->start_acquisition(m_conf.is_accumulate);
     }
     catch (Tango::DevFailed& df)
     {
@@ -425,6 +425,23 @@ std::string Controller::get_preset_type()
 void Controller::set_preset_type(const std::string& str_preset_type)
 {
     m_acquisition->set_preset_type(str_preset_type);
+}
+
+
+// ============================================================================
+// Controller::get_accumulate
+// ============================================================================
+bool Controller::get_accumulate()
+{
+    return m_conf.is_accumulate;
+}
+
+// ============================================================================
+// Controller::set_accumulate
+// ============================================================================
+void Controller::set_accumulate(bool accumulate)
+{
+    m_conf.is_accumulate = accumulate;
 }
 
 // ============================================================================

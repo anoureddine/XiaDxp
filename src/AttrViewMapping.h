@@ -47,7 +47,9 @@ protected:
 	
 	/// callback methods for  tango dyn attributes - pixelAdvanceMode
 	void read_pixel_advance_mode_callback(yat4tango::DynamicAttributeReadCallbackData& cbd);	
-	
+
+    /// callback methods for  tango dyn attributes - pixelAdvanceMode
+    void write_pixel_advance_mode_callback(yat4tango::DynamicAttributeWriteCallbackData& cbd);
 	///user data attached to the dynamic attributes
 	LongUserData* m_dyn_nb_pixels;	
     LongUserData* m_dyn_nb_pixels_per_buffer;	

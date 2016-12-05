@@ -169,6 +169,10 @@ public:
  */
 	Tango::DevDouble	__MemorizedPresetValue;
 /**
+ *	Available for MCA Mode Only !
+ */
+	Tango::DevBoolean	__MemorizedAccumulate;
+/**
  *	Define the type of Stream.<BR>
  *	Available types are :<BR>
  *	NO_STREAM<BR>

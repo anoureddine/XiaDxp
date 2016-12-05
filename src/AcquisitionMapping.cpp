@@ -133,7 +133,7 @@ void AcquisitionMapping::start_acquisition(short accumulate)
         INFO_STREAM << "Map Pixels Number = " << m_num_map_pixels << endl;
 
         // start the mapping acquisition
-        m_helper->start_acquisition(0); //@@TODO : Always no accumulate in mapping mode? 
+        m_helper->start_acquisition(0); // Always no accumulate in mapping mode?
         INFO_STREAM << "AcquisitionMapping::start_acquisition() - [END]" << endl;
 
         // enable/disable collecting in TASK_PERIODIC MSG

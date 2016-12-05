@@ -51,6 +51,7 @@ public:
     double board_timebase;
     std::string acquisition_mode;
     std::string acquisition_file;
+    bool is_accumulate;
     std::string stream_type;
     std::string stream_path;
     std::string stream_file;
@@ -133,6 +134,12 @@ public:
 
     /// set preset type
     void set_preset_type(const std::string& str_preset_type);
+
+    /// get accumulate
+    bool get_accumulate();
+
+    /// set accumulate
+    void set_accumulate(bool accumulate);
 
 	/// set num_map_pixels
 	void set_num_map_pixels(long num_map_pixels);

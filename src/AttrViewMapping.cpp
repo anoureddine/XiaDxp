@@ -163,18 +163,21 @@ void AttrViewMapping::init(yat::SharedPtr<DataStore> data_store)
         //- describe the dyn. attr.
         dai.tai.data_type = Tango::DEV_STRING;
         dai.tai.data_format = Tango::SCALAR;
-        dai.tai.writable = Tango::READ;
+        dai.tai.writable = Tango::READ;////@TODO : Tango::READ_WRITE;
         dai.tai.disp_level = Tango::OPERATOR;
         dai.tai.unit = " ";
         dai.tai.format = "%s";
-        dai.tai.description =   "Available values :<br>\n"
-        "GATE<br>\n"
-        "SYNC<br>\n";
+        dai.tai.description =   "Available values :\n"
+        "GATE\n"
+        "SYNC\n";
         // - cleanup tango db option: cleanup tango db when removing this dyn. attr. (i.e. erase its properties fom db)
         //dai.cdb = true;
 
         //- instanciate the read callback (called when the dyn. attr. is read)    
         dai.rcb = yat4tango::DynamicAttributeReadCallback::instanciate(*this, &AttrViewMapping::read_pixel_advance_mode_callback);
+
+        //- instanciate the write callback (called when the dyn. attr. is writen)
+        ////@@TODOD dai.wcb = yat4tango::DynamicAttributeWriteCallback::instanciate(*this, &AttrViewMapping::write_pixel_advance_mode_callback);
 
         //- add the dyn. attr. to the device
         m_dim.dynamic_attributes_manager().add_attribute(dai);
@@ -503,6 +506,62 @@ void AttrViewMapping::read_pixel_advance_mode_callback(yat4tango::DynamicAttribu
                                           "TANGO_DEVICE_ERROR",
                                           string(df.errors[0].desc).c_str(),
                                           "AttrViewMapping::read_pixel_advance_mode_callback()");
+    }
+}
+
+//+----------------------------------------------------------------------------
+//
+// method :         AttrViewMapping::write_pixel_advance_mode_callback()
+//
+// description : Write pixelAdvanceMode attribute values to hardware.
+//
+//-----------------------------------------------------------------------------
+void AttrViewMapping::write_pixel_advance_mode_callback(yat4tango::DynamicAttributeWriteCallbackData& cbd)
+{
+    DEBUG_STREAM << "AttrViewMapping::write_pixel_advance_mode_callback()" << endl; //  << cbd.dya->get_name() << endl;
+    try
+    {
+        Tango::DevState state = dynamic_cast<XiaDxp*>(m_device)->get_ctrl()->get_state();
+        if (state == Tango::FAULT	||
+            state == Tango::INIT	||
+            state == Tango::RUNNING	||
+            state == Tango::OFF	||
+            state == Tango::DISABLE)
+        {
+            std::string reason = "It's currently not allowed to write attribute pixelAdvanceMode";
+            Tango::Except::throw_exception("TANGO_DEVICE_ERROR",
+                                           reason.c_str(),
+                                           "AttrViewMapping::write_pixel_advance_mode_callback()");
+        }
+
+        //- be sure the pointer to the dyn. attr. is valid
+        if(!cbd.dya)
+        {
+            THROW_DEVFAILED("INTERNAL_ERROR",
+                            "unexpected NULL pointer to dynamic attribute",
+                            "AttrViewMapping::write_pixel_advance_mode_callback");
+        }
+
+        Tango::DevString val;
+        cbd.tga->get_write_value( val);
+
+        string current = val;
+        transform(current.begin(), current.end(), current.begin(), ::toupper);
+        dynamic_cast<XiaDxp*>(m_device)->get_ctrl()->set_pixel_advance_mode(current);
+
+        StringUserData* user_data = cbd.dya->get_user_data<StringUserData>();
+        user_data->set_value(val);
+        //memorize in the device properties
+        yat4tango::PropertyHelper::set_property(dynamic_cast<XiaDxp*>(m_device), "__MemorizedPixelAdvanceMode", val);
+    }
+    catch (Tango::DevFailed& df)
+    {
+        ERROR_STREAM << df << endl;
+        //- rethrow exception
+        Tango::Except::re_throw_exception(df,
+                                          "TANGO_DEVICE_ERROR",
+                                          string(df.errors[0].desc).c_str(),
+                                          "AttrViewMapping::write_pixel_advance_mode_callback()");
     }
 }
 

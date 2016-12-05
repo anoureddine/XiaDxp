@@ -16,8 +16,8 @@
         <TANGO.version>8.1.2b-vc9</TANGO.version>
         <OMNIORB.version>4.1.6-vc9</OMNIORB.version>
         <YAT.version>1.10.3-vc9</YAT.version>
-        <YAT4TANGO.version>1.9.3-vc9</YAT4TANGO.version>
-        <NEXUSCPP.version>3.0.7-vc9</NEXUSCPP.version>
+        <YAT4TANGO.version>1.10.0-vc9</YAT4TANGO.version>
+        <NEXUSCPP.version>2.3.3-vc9</NEXUSCPP.version>
         <HDF5.version>1.8.13-vc9</HDF5.version>
         <HANDEL.version>1.2.11</HANDEL.version>
     </properties>
@@ -77,7 +77,7 @@
        
         <dependency>
             <groupId>fr.soleil.lib</groupId>
-            <artifactId>NexusCPP-${aol}-${library}-${mode}</artifactId>
+            <artifactId>NexusCPPV2-${aol}-${library}-${mode}</artifactId>
             <version>${NEXUSCPP.version}</version>
         </dependency>
          
