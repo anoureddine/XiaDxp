@@ -598,9 +598,9 @@ void XiaDxpClass::attribute_factory(vector<Tango::Attr *> &att_list)
 	//	Attribute : peakingTime
 	peakingTimeAttrib	*peaking_time = new peakingTimeAttrib();
 	Tango::UserDefaultAttrProp	peaking_time_prop;
-	peaking_time_prop.set_unit("ms");
+	peaking_time_prop.set_unit("?s");
 	peaking_time_prop.set_format("%6.2f");
-	peaking_time_prop.set_description("Peaking time of the energy filter, specified in ms");
+	peaking_time_prop.set_description("Peaking time of the energy filter, specified in ?s");
 	peaking_time->set_default_properties(peaking_time_prop);
 	att_list.push_back(peaking_time);
 
