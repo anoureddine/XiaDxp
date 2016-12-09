@@ -165,6 +165,8 @@ void XiaDxp::init_device()
     //--------------------------------------------
     get_device_property();
     m_is_device_initialized = false;
+    m_is_first_rois_call = true;
+    m_rois_per_channel.clear();
     m_status_message.str("");
     set_state(Tango::INIT);
 
@@ -345,6 +347,7 @@ void XiaDxp::get_device_property()
 	dev_prop.push_back(Tango::DbDatum("__MemorizedNumChannel"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedPresetType"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedPresetValue"));
+	dev_prop.push_back(Tango::DbDatum("__MemorizedAccumulate"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamType"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetPath"));
 	dev_prop.push_back(Tango::DbDatum("__MemorizedStreamTargetFile"));
@@ -481,6 +484,17 @@ void XiaDxp::get_device_property()
 	}
 	//	And try to extract __MemorizedPresetValue value from database
 	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedPresetValue;
+
+	//	Try to initialize __MemorizedAccumulate from class property
+	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+	if (cl_prop.is_empty()==false)	cl_prop  >>  __MemorizedAccumulate;
+	else {
+		//	Try to initialize __MemorizedAccumulate from default device value
+		def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+		if (def_prop.is_empty()==false)	def_prop  >>  __MemorizedAccumulate;
+	}
+	//	And try to extract __MemorizedAccumulate value from database
+	if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  __MemorizedAccumulate;
 
 	//	Try to initialize __MemorizedStreamType from class property
 	cl_prop = ds_class->get_class_property(dev_prop[++i].name);
@@ -1087,6 +1101,7 @@ void XiaDxp::load_config_file(Tango::DevString argin)
         strcpy(*attr_currentMode_read, (m_map_alias_configuration_files[alias].mode).c_str());
         strcpy(*attr_currentConfigFile_read, (m_map_alias_configuration_files[alias].file).c_str());
         yat4tango::PropertyHelper::set_property(this, "__MemorizedConfigurationAlias", alias);
+        m_is_first_rois_call = true;
     }
     catch (Tango::DevFailed& df)
     {
@@ -1219,6 +1234,8 @@ void XiaDxp::set_rois_from_list(const Tango::DevVarStringArray *argin)
         //refresh the tango view
         m_controller->update_view();
 
+        //get_rois need to update rois from river
+        m_is_first_rois_call = true;
         //save rois in the cfg file (*.ini))
         save_config_file();
     }
@@ -1288,6 +1305,8 @@ void XiaDxp::set_rois_from_file(Tango::DevString argin)
         //refresh the tango view
         m_controller->update_view();
 
+        //get_rois need to update rois from river
+        m_is_first_rois_call = true;
         //save rois in the cfg file (*.ini))
         save_config_file();
 
@@ -1338,6 +1357,8 @@ void XiaDxp::remove_rois(Tango::DevLong argin)
         //refresh the tango view
         m_controller->update_view();
 
+        //get_rois need to update rois from river
+        m_is_first_rois_call = true;
         //save rois in the cfg file (*.ini))
         save_config_file();
     }
@@ -1376,26 +1397,39 @@ Tango::DevVarStringArray *XiaDxp::get_rois()
     DEBUG_STREAM << "XiaDxp::get_rois(): entering... !" << endl;
 
     //	Add your own code to control device here
-    ////////////////////////////////////////////////////////////////////////////////////////        
+    ////////////////////////////////////////////////////////////////////////////////////////
+    INFO_STREAM<<"get_rois() from : "<<(m_is_first_rois_call?std::string("DRIVER"):std::string("CACHE"))<<endl;
+    //clear old list
+    if(m_is_first_rois_call)
+    {
+        m_rois_per_channel.clear();
+    }
+
     argout->length(m_controller->get_nb_channels());
+    DEBUG_STREAM<<"nb channels = "<<m_controller->get_nb_channels()<<endl;
     for (int i = 0; i < m_controller->get_nb_channels(); i++)
     {
         std::stringstream ss;
         ss.str("");
         ss << i;
-        int nb_rois = m_controller->get_nb_rois(i);
-        for (int j = 0; j < nb_rois; j++)
+        if(m_is_first_rois_call)
         {
-            ss << ";";
-            double low = 0, high = 0;
-            m_controller->get_roi_bounds(i, j, low, high);
-            ss << low << ";" << high;
+            int nb_rois = m_controller->get_nb_rois(i);
+            DEBUG_STREAM<<"channel : "<<i<<" - nb rois = "<<nb_rois<<endl;
+            for (int j = 0; j < nb_rois; j++)
+            {
+                ss << ";";
+                double low = 0, high = 0;
+                m_controller->get_roi_bounds(i, j, low, high);
+                ss << low << ";" << high;
+            }
+            m_rois_per_channel.push_back(ss.str());
+            DEBUG_STREAM<<m_rois_per_channel.at(i)<<endl;
         }
 
-        (*argout)[i] = CORBA::string_dup(ss.str().c_str());
-        DEBUG_STREAM << ss.str().c_str();
+        (*argout)[i] = CORBA::string_dup(m_rois_per_channel[i].c_str());
     }
-
+    m_is_first_rois_call = false;
     return argout;
 }
 
@@ -1480,7 +1514,7 @@ void XiaDxp::stream_reset_index()
  *	description:	method to execute "GetDataStreams"
  *	Returns the flyscan data streams associated with this device.
  *
- * @return
+ * @return	
  *
  */
 //+------------------------------------------------------------------
@@ -1565,5 +1599,6 @@ Tango::DevState XiaDxp::dev_state()
     set_status(status.str());
     return argout;
 }
+
 
 }	//	namespace

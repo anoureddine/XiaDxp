@@ -543,6 +543,8 @@ protected:
 
     std::map<std::string, tModeAndFile>  m_map_alias_configuration_files;
     std::map<std::string, std::string>  m_map_alias_rois_files;
+    std::vector<std::string>        m_rois_per_channel;
+    bool m_is_first_rois_call;
     
 };
 
