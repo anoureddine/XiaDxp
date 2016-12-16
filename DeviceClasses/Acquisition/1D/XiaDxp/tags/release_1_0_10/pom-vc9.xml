@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>fr.soleil</groupId>
+        <artifactId>super-pom-C-CPP-device</artifactId>
+        <version>RELEASE</version>
+    </parent>
+    <groupId>fr.soleil.device</groupId>
+    <artifactId>XiaDxp-${aol}-${mode}</artifactId>
+    <version>1.0.10</version>
+    <packaging>nar</packaging>
+    <name>XiaDxp</name>
+    <description>XiaDxp device</description>
+    <properties>
+        <TANGO.version>8.1.2b-vc9</TANGO.version>
+        <OMNIORB.version>4.1.6-vc9</OMNIORB.version>
+        <YAT.version>1.10.3-vc9</YAT.version>
+        <YAT4TANGO.version>1.10.0-vc9</YAT4TANGO.version>
+        <NEXUSCPP.version>2.3.3-vc9</NEXUSCPP.version>
+        <HDF5.version>1.8.13-vc9</HDF5.version>
+        <HANDEL.version>1.2.11</HANDEL.version>
+    </properties>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.freehep</groupId>
+                <artifactId>freehep-nar-plugin</artifactId>
+                <configuration>
+                    <cpp>
+                        <defines>
+                            <define>PROJECT_NAME=${project.name}</define>
+                            <define>PROJECT_VERSION=${project.version}</define>
+                            <define>TANGO_VERSION=${TANGO.version}</define>
+                            <define>OMNIORB_VERSION=${OMNIORB.version}</define>
+                            <define>YAT_VERSION=${YAT.version}</define>
+                            <define>YAT4TANGO_VERSION=${YAT4TANGO.version}</define>
+                            <define>NEXUSCPP_VERSION=${NEXUSCPP.version}</define>
+                            <define>HDF5_VERSION=${HDF5.version}</define>
+                            <define>HANDEL_VERSION=${HANDEL.version}</define>
+                            <define>USE_NX_FINALIZER</define>                                  
+                            <define>SIMULATOR_NB_MODULES_5</define>
+                            <define>SIMULATOR_CLOCK_10_MS</define>
+                        </defines>
+                    </cpp>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>fr.soleil.maven.plugins</groupId>
+                <artifactId>maven-check-plugin</artifactId>
+                <configuration>
+                    <enable>false</enable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>       
+        <dependency>
+            <groupId>org.tango</groupId>
+            <artifactId>tango-cpp-api-${aol}-shared-${mode}</artifactId>
+            <version>${TANGO.version}</version>
+        </dependency>
+		
+        <dependency>
+            <groupId>org.omnigroup</groupId>
+            <artifactId>omniORB-${aol}-shared-${mode}</artifactId>
+            <version>${OMNIORB.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xia</groupId>
+            <artifactId>xMAP-x86-Windows-msvc-shared-release</artifactId>
+            <version>${HANDEL.version}</version>
+        </dependency>
+       
+        <dependency>
+            <groupId>fr.soleil.lib</groupId>
+            <artifactId>NexusCPPV2-${aol}-${library}-${mode}</artifactId>
+            <version>${NEXUSCPP.version}</version>
+        </dependency>
+         
+        <dependency>
+            <groupId>ncsa.uiuc.edu</groupId>
+            <artifactId>HDF5-${aol}-shared-release</artifactId>
+            <version>${HDF5.version}</version>
+        </dependency>        
+                
+        <dependency>
+          <groupId>org.zeromq</groupId>
+          <artifactId>zeromq-${aol}-shared-release</artifactId>
+          <version>3.2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.soleil.lib</groupId>
+            <artifactId>YAT4Tango-${aol}-${library}-${mode}</artifactId>
+            <version>${YAT4TANGO.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.soleil.lib</groupId>
+            <artifactId>YAT-${aol}-${library}-${mode}</artifactId>        
+            <version>${YAT.version}</version>
+        </dependency>
+           
+    </dependencies>
+
+   <scm>
+       <connection>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</connection>
+       <developerConnection>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</developerConnection>
+       <url>${scm.connection.svn.tango-ds}/DeviceClasses/Acquisition/1D/XiaDxp/trunk</url>
+   </scm>
+
+    <developers>
+        <developer>
+            <id>noureddine</id>
+            <name>noureddine</name>
+            <url>http://controle/</url>
+            <organization>Synchrotron Soleil</organization>
+            <organizationUrl>http://www.synchrotron-soleil.fr</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>1</timezone>
+        </developer>
+		
+		<developer>
+           <id>buteau</id>
+           <name>buteau</name>
+           <url>http://controle/</url>
+           <organization>Synchrotron Soleil</organization>
+           <organizationUrl>http://www.synchrotron-soleil.fr</organizationUrl>
+           <roles>
+               <role>manager</role>
+           </roles>
+           <timezone>1</timezone>
+       </developer>
+	   
+    </developers>
+</project>
